@@ -1,0 +1,17 @@
+# Build artifacts / deploy mirror
+/dist/
+*.zip
+
+# Local dev
+server.log
+node_modules/
+
+# Backups
+index-backup.html
+
+# Local tooling & settings
+.claude/
+
+# OS junk
+.DS_Store
+Thumbs.db

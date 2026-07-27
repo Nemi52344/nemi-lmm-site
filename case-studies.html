@@ -1,0 +1,296 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Case Studies, NEMI AI</title>
+<meta name="description" content="Four programs, start to finish: a production-ready EV motorcycle in 9 months, a flight-critical aerospace clamp from 7 hours to 3, a vending-machine line in 5 weeks, and an in-house defense drone powertrain in 4 months.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/css/style.css?v=90">
+</head>
+<body>
+
+<header class="nav">
+  <div class="wrap">
+    <a class="nav__logo" href="index.html"><img src="assets/img/logo-dark.png" alt="NEMI"></a>
+    <nav class="nav__links" id="menu">
+      <a href="index.html">Home</a>
+      <a href="about.html">About Us</a>
+      <div class="nav__item">
+        <a href="offerings.html">Offerings</a>
+        <div class="nav__drop"><a href="lmm-stack.html">LMM Stack</a><a href="case-studies.html">Case Studies</a></div>
+      </div>
+      
+      <a href="careers.html">Careers</a>
+      <a href="contact.html" class="nav__cta">Contact</a>
+    </nav>
+    <button class="nav__burger" aria-label="Menu" onclick="document.getElementById('menu').classList.toggle('open')"><span></span><span></span><span></span></button>
+  </div>
+</header>
+
+<!-- PAGE HERO -->
+<section class="phero">
+  <video class="bgvideo" src="assets/video/case-hero.mp4?v=2" autoplay muted loop playsinline preload="auto" aria-hidden="true"></video>
+  <div class="bgvideo__overlay"></div>
+  <div class="hero__grid"></div>
+  <div class="crops" aria-hidden="true"><span>+</span><span>+</span><span>+</span><span>+</span></div>
+  <div class="wrap">
+    <div class="kicker">Case studies · delivered, not promised</div>
+    <h1 style="margin-top:22px">Proof, <span class="accent">not promises.</span></h1>
+    <p>Real programs run end to end on the LMM, from concept to shipped hardware, across mobility, aerospace and consumer products.</p>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════════════════════════════
+     CASE STUDIES · stacked sections (one per case, full image)
+     To ADD a case: copy ONE <article class="cs-row"> block and fill it in.
+     Image side alternates automatically; the mini advantage-graph endpoint
+     values (etag) are the only chart bits to change.
+     ═════════════════════════════════════════════════════════════════ -->
+<section class="sec-cs bg-bone bp bp--light">
+  <div class="wrap">
+    <div class="cs-head">
+      <div class="offer-num" style="color:var(--emerald)">Case studies</div>
+      <h2>The advantage, <span class="accent-deep">in the numbers.</span></h2>
+    </div>
+  </div>
+
+  <article class="cs-row" data-industry="mobility">
+    <div class="wrap cs-grid">
+      <figure class="cs-visual">
+        <span class="cs-badge">Case 01</span>
+        <img class="cs-photo" src="assets/img/case/bnc-hero.png" alt="BNC Messenger C110" loading="lazy">
+        <div class="cc" aria-hidden="true">
+          <div class="cc__hud">
+            <span class="cc__lg"><i class="i-conv"></i>Conventional</span>
+            <span class="cc__lg"><i class="i-lmm"></i>On the LMM</span>
+            <span class="cc__delta">&darr; ~90% cost</span>
+          </div>
+          <div class="cc__plot">
+            <span class="cc__x tl"></span><span class="cc__x tr"></span><span class="cc__x bl"></span><span class="cc__x br"></span>
+            <svg class="cc__svg" viewBox="0 0 620 290" preserveAspectRatio="none">
+              <defs><linearGradient id="ccf1" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#10a37e" stop-opacity=".36"/><stop offset="1" stop-color="#10a37e" stop-opacity="0"/></linearGradient></defs>
+              <g class="cc-grid"><line x1="44" y1="60" x2="576" y2="60"/><line x1="44" y1="120" x2="576" y2="120"/><line x1="44" y1="180" x2="576" y2="180"/><line class="vt" x1="180" y1="40" x2="180" y2="252"/><line class="vt" x1="316" y1="40" x2="316" y2="252"/><line class="vt" x1="452" y1="40" x2="452" y2="252"/></g>
+              <line class="cc-base" x1="44" y1="252" x2="576" y2="252"/>
+              <path class="cc-fill" fill="url(#ccf1)" d="M44,244 C210,238 400,220 576,206 L576,252 L44,252 Z"/>
+              <path class="cc-conv" pathLength="1" d="M44,240 C210,230 400,150 576,52"/>
+              <path class="cc-lmm" pathLength="1" d="M44,244 C210,238 400,220 576,206"/>
+              <circle class="cc-dot cc-dot--conv" cx="576" cy="52" r="5"/>
+              <circle class="cc-halo" cx="576" cy="206" r="11"/><circle class="cc-dot cc-dot--lmm" cx="576" cy="206" r="6"/>
+              <g class="cc-tag cc-tag--conv" transform="translate(486,52)"><rect x="0" y="-16" width="90" height="32" rx="7"/><text x="45" y="5">$10M+</text></g>
+              <g class="cc-tag cc-tag--lmm" transform="translate(492,206)"><rect x="0" y="-16" width="84" height="32" rx="7"/><text x="42" y="5">&lt;$1M</text></g>
+            </svg>
+            <div class="cc__axis"><span>Kickoff</span><span>Ship</span></div>
+          </div>
+        </div>
+      </figure>
+      <div class="cs-info">
+        <div class="cs-scope">Mobility · EV · BNC Motors</div>
+        <h3 class="cs-title">A production-ready EV in <span class="accent-deep">9 months.</span></h3>
+        <p class="cs-desc">The full arc ran on the LMM, Lumos renders, Anvil CAD and simulation, then build packages driving machining, fabrication, 3D printing and electronics assembly. A 250 kg-payload fleet motorcycle, under a $1,000 price point.</p>
+        <dl class="cs-rows">
+          <div><dt>Client</dt><dd>BNC Motors · India</dd></div>
+          <div><dt>Scope</dt><dd>Design · Build · Ship</dd></div>
+          <div><dt>Timeline</dt><dd>2024 · 9 months</dd></div>
+        </dl>
+        <div class="cs-metrics">
+          <div><b>18 → 9 mo</b><span>to production</span></div>
+          <div><b>&lt;$1M</b><span>program cost</span></div>
+          <div><b>100%</b><span>spec met</span></div>
+        </div>
+        <a class="cs-more" href="case-messenger.html">Read the full case study →</a>
+      </div>
+    </div>
+  </article>
+
+  <article class="cs-row" data-industry="aerospace">
+    <div class="wrap cs-grid">
+      <figure class="cs-visual">
+        <span class="cs-badge">Case 02</span>
+        <img class="cs-photo" src="assets/img/case/aero-hero.jpg" alt="Precision-machined aerospace components" loading="lazy">
+        <div class="cc" aria-hidden="true">
+          <div class="cc__hud">
+            <span class="cc__lg"><i class="i-conv"></i>Conventional</span>
+            <span class="cc__lg"><i class="i-lmm"></i>On the LMM</span>
+            <span class="cc__delta">&darr; 3&ndash;4&times; tighter</span>
+          </div>
+          <div class="cc__plot">
+            <span class="cc__x tl"></span><span class="cc__x tr"></span><span class="cc__x bl"></span><span class="cc__x br"></span>
+            <svg class="cc__svg" viewBox="0 0 620 290" preserveAspectRatio="none">
+              <defs><linearGradient id="ccf2" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#10a37e" stop-opacity=".36"/><stop offset="1" stop-color="#10a37e" stop-opacity="0"/></linearGradient></defs>
+              <g class="cc-grid"><line x1="44" y1="60" x2="576" y2="60"/><line x1="44" y1="120" x2="576" y2="120"/><line x1="44" y1="180" x2="576" y2="180"/><line class="vt" x1="180" y1="40" x2="180" y2="252"/><line class="vt" x1="316" y1="40" x2="316" y2="252"/><line class="vt" x1="452" y1="40" x2="452" y2="252"/></g>
+              <line class="cc-base" x1="44" y1="252" x2="576" y2="252"/>
+              <path class="cc-fill" fill="url(#ccf2)" d="M44,244 C210,238 400,220 576,206 L576,252 L44,252 Z"/>
+              <path class="cc-conv" pathLength="1" d="M44,240 C210,230 400,150 576,52"/>
+              <path class="cc-lmm" pathLength="1" d="M44,244 C210,238 400,220 576,206"/>
+              <circle class="cc-dot cc-dot--conv" cx="576" cy="52" r="5"/>
+              <circle class="cc-halo" cx="576" cy="206" r="11"/><circle class="cc-dot cc-dot--lmm" cx="576" cy="206" r="6"/>
+              <g class="cc-tag cc-tag--conv" transform="translate(486,52)"><rect x="0" y="-16" width="90" height="32" rx="7"/><text x="45" y="5">~50 µm</text></g>
+              <g class="cc-tag cc-tag--lmm" transform="translate(468,206)"><rect x="0" y="-16" width="108" height="32" rx="7"/><text x="54" y="5">10–15 µm</text></g>
+            </svg>
+            <div class="cc__axis"><span>Kickoff</span><span>Serial supply</span></div>
+          </div>
+        </div>
+      </figure>
+      <div class="cs-info">
+        <div class="cs-scope">Aerospace · Structural</div>
+        <h3 class="cs-title">Flight-critical clamp, <span class="accent-deep">held at 10–15 µm.</span></h3>
+        <p class="cs-desc">An aerospace OEM of flight-critical structural hardware needed high-volume overflow without risking quality. LMM-optimized toolpaths cut runtime from seven hours to three on Haas VF2 cells, with First / Middle / Last CMM-SPC inspection on every batch.</p>
+        <dl class="cs-rows">
+          <div><dt>Client</dt><dd>Aerospace OEM</dd></div>
+          <div><dt>Scope</dt><dd>Precision machining · SPC</dd></div>
+          <div><dt>Timeline</dt><dd>Serial supply · AS9100D</dd></div>
+        </dl>
+        <div class="cs-metrics">
+          <div><b>7 → 3 hrs</b><span>runtime per job</span></div>
+          <div><b>10–15 µm</b><span>tolerance held</span></div>
+          <div><b>~15 / day</b><span>serial supply</span></div>
+        </div>
+        <a class="cs-more" href="case-pmi.html">Read the full case study →</a>
+      </div>
+    </div>
+  </article>
+
+  <article class="cs-row" data-industry="appliances">
+    <div class="wrap cs-grid">
+      <figure class="cs-visual">
+        <span class="cs-badge">Case 03</span>
+        <img class="cs-photo" src="assets/img/case/coffee-hero.jpg" alt="Smart filter-coffee machine" loading="lazy">
+        <div class="cc" aria-hidden="true">
+          <div class="cc__hud">
+            <span class="cc__lg"><i class="i-conv"></i>Conventional</span>
+            <span class="cc__lg"><i class="i-lmm"></i>On the LMM</span>
+            <span class="cc__delta">&darr; &frac12; the cost</span>
+          </div>
+          <div class="cc__plot">
+            <span class="cc__x tl"></span><span class="cc__x tr"></span><span class="cc__x bl"></span><span class="cc__x br"></span>
+            <svg class="cc__svg" viewBox="0 0 620 290" preserveAspectRatio="none">
+              <defs><linearGradient id="ccf3" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#10a37e" stop-opacity=".36"/><stop offset="1" stop-color="#10a37e" stop-opacity="0"/></linearGradient></defs>
+              <g class="cc-grid"><line x1="44" y1="60" x2="576" y2="60"/><line x1="44" y1="120" x2="576" y2="120"/><line x1="44" y1="180" x2="576" y2="180"/><line class="vt" x1="180" y1="40" x2="180" y2="252"/><line class="vt" x1="316" y1="40" x2="316" y2="252"/><line class="vt" x1="452" y1="40" x2="452" y2="252"/></g>
+              <line class="cc-base" x1="44" y1="252" x2="576" y2="252"/>
+              <path class="cc-fill" fill="url(#ccf3)" d="M44,244 C210,238 400,220 576,206 L576,252 L44,252 Z"/>
+              <path class="cc-conv" pathLength="1" d="M44,240 C210,230 400,150 576,52"/>
+              <path class="cc-lmm" pathLength="1" d="M44,244 C210,238 400,220 576,206"/>
+              <circle class="cc-dot cc-dot--conv" cx="576" cy="52" r="5"/>
+              <circle class="cc-halo" cx="576" cy="206" r="11"/><circle class="cc-dot cc-dot--lmm" cx="576" cy="206" r="6"/>
+              <g class="cc-tag cc-tag--conv" transform="translate(486,52)"><rect x="0" y="-16" width="90" height="32" rx="7"/><text x="45" y="5">12 wks</text></g>
+              <g class="cc-tag cc-tag--lmm" transform="translate(492,206)"><rect x="0" y="-16" width="84" height="32" rx="7"/><text x="42" y="5">5 wks</text></g>
+            </svg>
+            <div class="cc__axis"><span>Kickoff</span><span>Line live</span></div>
+          </div>
+        </div>
+      </figure>
+      <div class="cs-info">
+        <div class="cs-scope">Consumer Appliances</div>
+        <h3 class="cs-title">A vending-machine line in <span class="accent-deep">5 weeks.</span></h3>
+        <p class="cs-desc">A smart self-cleaning filter-coffee machine, 100 cups an hour. Anvil re-engineered components to eliminate tooling, the imported refrigeration unit was localized as a sealed swap-cartridge, and a full host-cell line was documented to 400 units/month.</p>
+        <dl class="cs-rows">
+          <div><dt>Client</dt><dd>Consumer Appliances brand</dd></div>
+          <div><dt>Scope</dt><dd>Re-engineer · Localize · Line</dd></div>
+          <div><dt>Timeline</dt><dd>5 weeks to line</dd></div>
+        </dl>
+        <div class="cs-metrics">
+          <div><b>5 wks</b><span>line stood up</span></div>
+          <div><b>400 / mo</b><span>zero tooling</span></div>
+          <div><b>−20%</b><span>BOM cost</span></div>
+        </div>
+        <a class="cs-more" href="case-coffee.html">Read the full case study →</a>
+      </div>
+    </div>
+  </article>
+
+  <article class="cs-row" data-industry="defense">
+    <div class="wrap cs-grid">
+      <figure class="cs-visual">
+        <span class="cs-badge">Case 04</span>
+        <img class="cs-photo" src="assets/img/case/drone-hero.jpg" alt="NEMI carbon-fibre defense UAS" loading="lazy">
+        <div class="cc" aria-hidden="true">
+          <div class="cc__hud">
+            <span class="cc__lg"><i class="i-conv"></i>Conventional</span>
+            <span class="cc__lg"><i class="i-lmm"></i>On the LMM</span>
+            <span class="cc__delta">&darr; 4&times; faster</span>
+          </div>
+          <div class="cc__plot">
+            <span class="cc__x tl"></span><span class="cc__x tr"></span><span class="cc__x bl"></span><span class="cc__x br"></span>
+            <svg class="cc__svg" viewBox="0 0 620 290" preserveAspectRatio="none">
+              <defs><linearGradient id="ccf4" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#10a37e" stop-opacity=".36"/><stop offset="1" stop-color="#10a37e" stop-opacity="0"/></linearGradient></defs>
+              <g class="cc-grid"><line x1="44" y1="60" x2="576" y2="60"/><line x1="44" y1="120" x2="576" y2="120"/><line x1="44" y1="180" x2="576" y2="180"/><line class="vt" x1="180" y1="40" x2="180" y2="252"/><line class="vt" x1="316" y1="40" x2="316" y2="252"/><line class="vt" x1="452" y1="40" x2="452" y2="252"/></g>
+              <line class="cc-base" x1="44" y1="252" x2="576" y2="252"/>
+              <path class="cc-fill" fill="url(#ccf4)" d="M44,244 C210,238 400,220 576,206 L576,252 L44,252 Z"/>
+              <path class="cc-conv" pathLength="1" d="M44,240 C210,230 400,150 576,52"/>
+              <path class="cc-lmm" pathLength="1" d="M44,244 C210,238 400,220 576,206"/>
+              <circle class="cc-dot cc-dot--conv" cx="576" cy="52" r="5"/>
+              <circle class="cc-halo" cx="576" cy="206" r="11"/><circle class="cc-dot cc-dot--lmm" cx="576" cy="206" r="6"/>
+              <g class="cc-tag cc-tag--conv" transform="translate(504,52)"><rect x="0" y="-16" width="72" height="32" rx="7"/><text x="36" y="5">16 mo</text></g>
+              <g class="cc-tag cc-tag--lmm" transform="translate(514,206)"><rect x="0" y="-16" width="62" height="32" rx="7"/><text x="31" y="5">4 mo</text></g>
+            </svg>
+            <div class="cc__axis"><span>Kickoff</span><span>Delivered</span></div>
+          </div>
+        </div>
+      </figure>
+      <div class="cs-info">
+        <div class="cs-scope">Defense · UAS</div>
+        <h3 class="cs-title">A drone powertrain, <span class="accent-deep">fully in-house.</span></h3>
+        <p class="cs-desc">NEMI engineered every core powertrain component, battery, motor, ESC and ground control unit, to build-to-spec standards and stood up in-house production for all of them, delivering an indigenous supply chain for the customer's defense UAS program.</p>
+        <dl class="cs-rows">
+          <div><dt>Client</dt><dd>Defense OEM · India</dd></div>
+          <div><dt>Scope</dt><dd>Powertrain · Build-to-spec</dd></div>
+          <div><dt>Timeline</dt><dd>4 months · $100k</dd></div>
+        </dl>
+        <div class="cs-metrics">
+          <div><b>16 → 4 mo</b><span>development</span></div>
+          <div><b>$100k</b><span>5× lower cost</span></div>
+          <div><b>4 / 4</b><span>in-house</span></div>
+        </div>
+        <a class="cs-more" href="case-drone.html">Read the full case study →</a>
+      </div>
+    </div>
+  </article>
+</section>
+
+<!-- CTA -->
+<section class="bg-ink cta-band bp bp--full">
+  <div class="wash"></div>
+  <div class="wrap inner">
+    <h2>Your program could be <span class="accent">the next one.</span></h2>
+    <div style="display:flex;gap:12px;flex-wrap:wrap">
+      <a href="mailto:info@nemilmm.com" class="btn btn--signal">Send an RFQ →</a>
+      <a href="offerings.html" class="btn btn--ghost">See the Offerings</a>
+    </div>
+  </div>
+</section>
+
+<footer class="footer">
+  <div class="wrap">
+    <div class="footer__top">
+      <div class="footer__brand">
+        <img src="assets/img/logo-dark.png" alt="NEMI">
+        <div class="name">NEMI LMM</div>
+        <p>NEMI AI builds Physical AI for manufacturing, the Large Manufacturing Model, one AI system that designs, manufactures and improves physical products end-to-end, proven every day in our owned, full-stack factories.</p>
+      </div>
+      <div><h4>NEMI</h4><ul><li><a href="index.html">Home</a></li><li><a href="about.html">About Us</a></li><li><a href="offerings.html">Offerings</a></li><li><a href="lmm-stack.html">LMM Stack</a></li><li><a href="case-studies.html">Case Studies</a></li><li><a href="careers.html">Careers</a></li></ul></div>
+      <div class="footer__contact">
+        <h4>Contact us</h4>
+        <ul><li><a href="mailto:info@nemilmm.com">info@nemilmm.com</a></li><li><a href="tel:+910000000000">+91 00000 00000</a></li></ul>
+        <p>Full-stack, end-to-end manufacturing automation with Physical AI. US-headquartered in Stafford, Texas, with factories in Coimbatore, India.</p>
+      </div>
+    </div>
+    <div class="footer__bar"><span>© 2026 NEMI AI · PHYSICAL AI · MANUFACTURING-AS-A-SERVICE</span><span>www.nemilmm.com</span></div>
+  </div>
+</footer>
+
+<script src="assets/js/fx.js"></script>
+<script>
+/* Case studies: chart reveals on hover (CSS :hover). On touch devices, first tap reveals it. */
+(function () {
+  if (!('ontouchstart' in window)) return;
+  [].slice.call(document.querySelectorAll('.cs-visual')).forEach(function (v) {
+    v.addEventListener('click', function () { v.classList.toggle('tapped'); });
+  });
+})();
+</script>
+</body>
+</html>
+

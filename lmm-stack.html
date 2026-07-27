@@ -1,0 +1,200 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>The LMM Stack, NEMI AI</title>
+<meta name="description" content="The Large Manufacturing Model, manufacturing's foundation model. Three layers, one system: the suites, the model, and the Fortress Factories it is trained in.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/css/style.css?v=90">
+</head>
+<body>
+
+<header class="nav">
+  <div class="wrap">
+    <a class="nav__logo" href="index.html"><img src="assets/img/logo-dark.png" alt="NEMI"></a>
+    <nav class="nav__links" id="menu">
+      <a href="index.html">Home</a>
+      <a href="about.html">About Us</a>
+      <div class="nav__item">
+        <a href="offerings.html">Offerings</a>
+        <div class="nav__drop"><a href="lmm-stack.html">LMM Stack</a><a href="case-studies.html">Case Studies</a></div>
+      </div>
+      
+      <a href="careers.html">Careers</a>
+      <a href="contact.html" class="nav__cta">Contact</a>
+    </nav>
+    <button class="nav__burger" aria-label="Menu" onclick="document.getElementById('menu').classList.toggle('open')"><span></span><span></span><span></span></button>
+  </div>
+</header>
+
+<!-- PAGE HERO -->
+<section class="phero phero--handvid" style="padding-bottom:60px">
+  <video class="bgvideo" src="assets/video/lmm-hero.mp4" autoplay muted loop playsinline preload="auto" aria-hidden="true"></video>
+  <div class="bgvideo__overlay"></div>
+  <div class="hero__grid"></div>
+  <div class="crops" aria-hidden="true"><span>+</span><span>+</span><span>+</span><span>+</span></div>
+  <div class="wrap">
+    <div class="kicker">Platform · The LMM</div>
+    <h1 style="margin-top:22px">Manufacturing's <span class="accent">foundation model.</span></h1>
+    <p>A stack of interconnected AI tools, hardware and applications that runs the entire arc of a physical product, from idea through production to field feedback.</p>
+  </div>
+</section>
+
+<!-- THE PREMISE -->
+<section class="bg-bone bp bp--light sec-premise">
+  <div class="wrap premise-split">
+    <div class="head" style="margin-bottom:0">
+      <h2>There is no public dataset <span class="accent-deep">for making things.</span></h2>
+      <p class="offer-lede">LLMs learned language from the open internet. Manufacturing knowledge lives in silos, proprietary, closed, locked inside companies that will never let outsiders train on it. So we became the manufacturer. The LMM is trained where the data lives: inside our own factories, on every part we design, tool and ship. Every unit shipped is another training run.</p>
+    </div>
+    <figure class="premise-media">
+      <img src="assets/img/premise-factory.jpg?v=2" alt="Electric-bike final assembly line" loading="lazy">
+      <figcaption class="premise-cap">Where the data lives · Coimbatore</figcaption>
+    </figure>
+  </div>
+</section>
+
+<!-- ARCHITECTURE -->
+<section class="bg-ink bp sec-arch">
+  <div class="wrap">
+    <div class="head">
+      <h2 style="color:var(--bone)">Three layers, <span class="accent">one system.</span></h2>
+    </div>
+    <div class="arch">
+      <div class="arch__layer rv">
+        <div class="arch__tag">Applications · what your team touches</div>
+        <div class="arch__apps">
+          <div class="arch__app"><b>Lumos</b><span>Envision</span></div>
+          <div class="arch__app"><b>Anvil</b><span>Engineer</span></div>
+          <div class="arch__app"><b>Orion</b><span>Manufacture</span></div>
+          <div class="arch__app"><b>Frontier</b><span>Improve</span></div>
+        </div>
+      </div>
+      <div class="arch__link rv rv-d1" aria-hidden="true"><span>runs&nbsp;&darr;</span><span class="arch__link-line"></span><span>&uarr;&nbsp;learns</span></div>
+      <div class="arch__layer rv rv-d1">
+        <div class="arch__tag">Intelligence · the model</div>
+        <div class="arch__core">
+          <div class="arch__core-glow" aria-hidden="true"></div>
+          <b>The Large Manufacturing Model</b>
+          <span>Trained on every part designed, tooled and shipped</span>
+        </div>
+      </div>
+      <div class="arch__link rv rv-d2" aria-hidden="true"><span>directs&nbsp;&darr;</span><span class="arch__link-line"></span><span>&uarr;&nbsp;captures</span></div>
+      <div class="arch__layer rv rv-d2">
+        <div class="arch__tag">Physical · where the data is made</div>
+        <div class="arch__phys">
+          <b>Fortress Factories</b>
+          <span>300,000+ sq ft &middot; batteries &middot; motors &middot; electronics &middot; metals &middot; plastics &middot; tooling &middot; assembly</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- THE SUITES -->
+<section class="bg-bone bp bp--light">
+  <div class="wrap">
+    <div class="head">
+      <h2>Rebuilt to <span class="accent-deep">be automated.</span></h2>
+      <p class="offer-lede">Existing engineering and operations tools are closed, impossible to automate on top of. We rebuilt the stack in-house with generative AI inside. Each suite is named. What runs inside it, our customers see in the room.</p>
+    </div>
+    <div class="grid grid-4 suiteplates">
+      <a class="suiteplate" href="offerings.html">
+        <span class="suiteplate__stage">Envision</span>
+        <span class="suiteplate__name">Lumos</span>
+        <span class="suiteplate__role">Generative rendering</span>
+        <span class="suiteplate__desc">Sketches and requirements become photoreal concepts and explorable 3D form, before a single line of CAD.</span>
+        <span class="suiteplate__spec">
+          <span class="suiteplate__io"><b>in</b> sketches, requirements</span>
+          <span class="suiteplate__io"><b>out</b> concepts, 3D form</span>
+        </span>
+      </a>
+      <a class="suiteplate" href="offerings.html">
+        <span class="suiteplate__stage">Engineer</span>
+        <span class="suiteplate__name">Anvil</span>
+        <span class="suiteplate__role">The engineering engine</span>
+        <span class="suiteplate__desc">Mechanical CAD, electronics, simulation and PLM, one continuous thread from concept to released BOM.</span>
+        <span class="suiteplate__spec">
+          <span class="suiteplate__io"><b>in</b> concept</span>
+          <span class="suiteplate__io"><b>out</b> released BOM</span>
+        </span>
+      </a>
+      <a class="suiteplate" href="offerings.html">
+        <span class="suiteplate__stage">Manufacture</span>
+        <span class="suiteplate__name">Orion</span>
+        <span class="suiteplate__role">The factory's operating system</span>
+        <span class="suiteplate__desc">A live digital-twin ERP, the floor captured automatically and orchestrated in real time, directing people first, robots next.</span>
+        <span class="suiteplate__spec">
+          <span class="suiteplate__io"><b>in</b> released BOM</span>
+          <span class="suiteplate__io"><b>out</b> orchestrated floor</span>
+        </span>
+      </a>
+      <a class="suiteplate" href="offerings.html">
+        <span class="suiteplate__stage">Improve</span>
+        <span class="suiteplate__name">Frontier</span>
+        <span class="suiteplate__role">The field, fed back</span>
+        <span class="suiteplate__desc">Deployed fleets and customers stream telemetry and demand signals straight into the next design cycle.</span>
+        <span class="suiteplate__spec">
+          <span class="suiteplate__io"><b>in</b> field telemetry</span>
+          <span class="suiteplate__io"><b>out</b> next design cycle</span>
+        </span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- COMPOUNDING -->
+<section class="bg-oat bp bp--light sec-service sec-compound">
+  <div class="wrap">
+    <div class="head">
+      <h2>Own the factories. Own the data. <span class="accent-deep">Own the default.</span></h2>
+    </div>
+    <div class="grid grid-4 img2x2">
+      <div class="card"><div class="img-media"><img src="assets/img/stock-factory.jpg?v=5" alt="Robot and automation on an EV manufacturing assembly floor" loading="lazy"></div><h3>Own the Factories</h3><p>Full-stack, owned manufacturing generates the proprietary data no software company can access, and profits on its own.</p></div>
+      <div class="card"><div class="img-media"><img src="assets/img/stock-data.jpg?v=2" alt="Analytics data dashboard on a computer screen" loading="lazy"></div><h3>Own the Data</h3><p>Every part designed becomes reusable reference. Every battery, bracket and board makes the next one more automatic.</p></div>
+      <div class="card card--split">
+        <div class="card__half"><h3>Own the Default</h3><p>As the loop closes, design approaches autonomy and the platform opens, the operating system every hardware company runs on.</p></div>
+        <div class="card__half"><h3>One Closed Loop</h3><p>Sketch to render to CAD to simulation to released BOM to tooling to production to post-sales, 18 months to production-ready, compressed to 9.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="bg-ink cta-band bp bp--full">
+  <div class="wash"></div>
+  <div class="wrap inner">
+    <h2>The model is trained <span class="accent">where the data lives.</span></h2>
+    <div style="display:flex;gap:12px;flex-wrap:wrap">
+      <a href="contact.html" class="btn btn--signal">Book a Walkthrough →</a>
+      <a href="case-studies.html" class="btn btn--ghost">See the Case Studies</a>
+    </div>
+  </div>
+</section>
+
+<footer class="footer">
+  <div class="wrap">
+    <div class="footer__top">
+      <div class="footer__brand">
+        <img src="assets/img/logo-dark.png" alt="NEMI">
+        <div class="name">NEMI LMM</div>
+        <p>NEMI AI builds Physical AI for manufacturing, the Large Manufacturing Model, one AI system that designs, manufactures and improves physical products end-to-end, proven every day in our owned, full-stack factories.</p>
+      </div>
+      <div><h4>NEMI</h4><ul><li><a href="index.html">Home</a></li><li><a href="about.html">About Us</a></li><li><a href="offerings.html">Offerings</a></li><li><a href="lmm-stack.html">LMM Stack</a></li><li><a href="case-studies.html">Case Studies</a></li><li><a href="careers.html">Careers</a></li></ul></div>
+      <div class="footer__contact">
+        <h4>Contact us</h4>
+        <ul><li><a href="mailto:info@nemilmm.com">info@nemilmm.com</a></li><li><a href="tel:+910000000000">+91 00000 00000</a></li></ul>
+        <p>Full-stack, end-to-end manufacturing automation with Physical AI. US-headquartered in Stafford, Texas, with factories in Coimbatore, India.</p>
+      </div>
+    </div>
+    <div class="footer__bar"><span>© 2026 NEMI AI · PHYSICAL AI · MANUFACTURING-AS-A-SERVICE</span><span>www.nemilmm.com</span></div>
+  </div>
+</footer>
+
+<script src="assets/js/fx.js"></script>
+</body>
+</html>
+
