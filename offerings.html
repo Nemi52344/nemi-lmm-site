@@ -8,7 +8,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="assets/css/style.css?v=90">
+<link rel="stylesheet" href="assets/css/style.css?v=102">
 </head>
 <body>
 
@@ -18,12 +18,9 @@
     <nav class="nav__links" id="menu">
       <a href="index.html">Home</a>
       <a href="about.html">About Us</a>
-      <div class="nav__item">
-        <a href="offerings.html" class="active">Offerings</a>
-        <div class="nav__drop"><a href="lmm-stack.html">LMM Stack</a><a href="case-studies.html">Case Studies</a></div>
-      </div>
-      
-      <a href="careers.html">Careers</a>
+            <a href="offerings.html" class="active">Offerings</a>
+      <a href="blog.html">Blog</a>
+<a href="careers.html">Careers</a>
       <a href="contact.html" class="nav__cta">Contact</a>
     </nav>
     <button class="nav__burger" aria-label="Menu" onclick="document.getElementById('menu').classList.toggle('open')"><span></span><span></span><span></span></button>
@@ -32,7 +29,7 @@
 
 <!-- PAGE HERO -->
 <section class="phero">
-  <video class="bgvideo" src="assets/video/services-hero.mp4" autoplay muted loop playsinline preload="auto" aria-hidden="true"></video>
+  <video class="bgvideo" src="assets/video/services-hero.mp4?v=2" autoplay muted loop playsinline preload="auto" aria-hidden="true"></video>
   <div class="bgvideo__overlay"></div>
   <div class="hero__grid"></div>
   <div class="crops" aria-hidden="true"><span>+</span><span>+</span><span>+</span><span>+</span></div>
@@ -66,6 +63,103 @@
   </div>
 </section>
 
+<!-- AT A GLANCE · CORE + AUXILIARY -->
+<section class="bg-oat bp bp--light sec-svcx">
+  <div class="wrap">
+    <div class="svcx-block">
+      <div class="svcx-rule">
+        <span class="svcx-rule__k">Core services</span>
+        <span class="svcx-rule__line"></span>
+        <span class="svcx-rule__note">Main lines &middot; deepest automation</span>
+      </div>
+      <div class="head svcx-h">
+        <h2>Deepest automation, <span class="accent-deep">under one roof.</span></h2>
+      </div>
+      <div class="svcx-core">
+        <div class="svcx-big" data-n="01">
+          <span class="svcx-big__num">[001]</span>
+          <span class="svcx-big__body">
+            <span class="svcx-big__tag">The full stack</span>
+            <span class="svcx-big__name">Complex Assemblies</span>
+            <span class="svcx-big__spec">EVs, drones, appliances and robots, brought together ship-ready.</span>
+          </span>
+        </div>
+        <div class="svcx-big" data-n="02">
+          <span class="svcx-big__num">[002]</span>
+          <span class="svcx-big__body">
+            <span class="svcx-big__tag">Structural core</span>
+            <span class="svcx-big__name">Metal Parts</span>
+            <span class="svcx-big__spec">Machining, turning, EDM, fabrication and casting, to 10&ndash;15 &mu;m.</span>
+          </span>
+        </div>
+        <div class="svcx-big" data-n="03">
+          <span class="svcx-big__num">[003]</span>
+          <span class="svcx-big__body">
+            <span class="svcx-big__tag">Cells &middot; packs &middot; BMS</span>
+            <span class="svcx-big__name">Battery</span>
+            <span class="svcx-big__spec">Cell prep to finished pack, with aging and test in-house.</span>
+          </span>
+        </div>
+      </div>
+    </div>
+
+    <div class="svcx-block">
+      <div class="svcx-rule">
+        <span class="svcx-rule__k">Auxiliary services</span>
+        <span class="svcx-rule__line"></span>
+        <span class="svcx-rule__note">Breadth of the LMM</span>
+      </div>
+      <div class="head svcx-h">
+        <h2>Every path a physical product <span class="accent-deep">can take.</span></h2>
+      </div>
+      <div class="svcx-aux">
+        <article class="svcx-tile">
+          <div class="svcx-tile__body">
+            <span class="svcx-tile__num">04</span>
+            <h3>Tooling &amp; Fixturing</h3>
+            <p>Injection molds, die casting, press tools and fixtures &mdash; designed automatically from the released BOM.</p>
+          </div>
+        </article>
+        <article class="svcx-tile">
+          <div class="svcx-tile__body">
+            <span class="svcx-tile__num">05</span>
+            <h3>SPMs &amp; Robotics</h3>
+            <p>Special-purpose machines and robotic automation &mdash; our first 6-DOF arm ran 27 days after concept.</p>
+          </div>
+        </article>
+        <article class="svcx-tile">
+          <div class="svcx-tile__body">
+            <span class="svcx-tile__num">06</span>
+            <h3>Motor Manufacturing</h3>
+            <p>BLDC, axial-flux and MIL-grade motors, wound and tested in-house.</p>
+          </div>
+        </article>
+        <article class="svcx-tile">
+          <div class="svcx-tile__body">
+            <span class="svcx-tile__num">07</span>
+            <h3>Plastics &amp; Composites</h3>
+            <p>Injection molding, extrusion, blow molding and thermoforming across consumer and industrial programs.</p>
+          </div>
+        </article>
+        <article class="svcx-tile">
+          <div class="svcx-tile__body">
+            <span class="svcx-tile__num">08</span>
+            <h3>Electronics Production</h3>
+            <p>PCB assembly, box build, system integration and test &mdash; up to MIL-STD-810 / 461 grade.</p>
+          </div>
+        </article>
+        <article class="svcx-tile">
+          <div class="svcx-tile__body">
+            <span class="svcx-tile__num">09</span>
+            <h3>Speedshop</h3>
+            <p>Rapid-response production &mdash; first supply in under a week on machined, flight-critical parts.</p>
+          </div>
+        </article>
+      </div>
+    </div>
+  </div>
+</section>
+
 <!-- 01 · TOOLING & FIXTURES -->
 <section class="sec-offer sec-offer--video" id="tooling" data-idx="01 / 07">
   <video class="bgvideo" src="assets/video/offer-tooling.mp4" autoplay muted loop playsinline preload="metadata" aria-hidden="true"></video>
@@ -74,11 +168,11 @@
     <div class="head">
       <h2>Tooling &amp; Fixtures</h2>
       <p class="offer-tag">The tool behind <span class="accent-deep">the product.</span></p>
-      <p class="offer-lede">Tool design generated from part geometry, cut in our own tool rooms, weeks of CAD collapse to days.</p>
+      <p class="offer-lede">Tool design generated from part geometry, then cut in our own tool rooms.</p>
     </div>
     <div class="offer-mod offer-stat">
-      <div class="offer-stat__n">2.5&times;</div>
-      <div class="offer-stat__c"><b>Faster to first shot</b>Mold flow and distortion simulated before steel is ordered. Proven at a top-3 supercar OEM.</div>
+      <div class="offer-stat__n">2&times;</div>
+      <div class="offer-stat__c"><b>Faster to first shot</b>Weeks of CAD and simulation collapsed to days. Proven across multiple automotive and aerospace customers.</div>
     </div>
     <div class="offer-note"><b>Every class:</b> injection molds, casting dies, stamping tools, fixtures &amp; gauges.</div>
   </div>
@@ -86,7 +180,7 @@
 
 <!-- 02 · SPECIAL PURPOSE MACHINES -->
 <section class="sec-offer sec-offer--video" id="spm" data-idx="02 / 07">
-  <video class="bgvideo" src="assets/video/offer-spm.mp4" autoplay muted loop playsinline preload="metadata" aria-hidden="true"></video>
+  <video class="bgvideo" src="assets/video/offer-spm.mp4?v=2" autoplay muted loop playsinline preload="metadata" aria-hidden="true"></video>
   <div class="bgvideo__overlay"></div>
   <div class="wrap">
     <div class="head">
@@ -132,32 +226,27 @@
 
 <!-- 04 · BATTERY SYSTEMS -->
 <section class="sec-offer sec-offer--video" id="battery" data-idx="04 / 07">
-  <video class="bgvideo" src="assets/video/offer-battery.mp4" autoplay muted loop playsinline preload="metadata" aria-hidden="true"></video>
+  <video class="bgvideo" src="assets/video/offer-battery.mp4?v=2" autoplay muted loop playsinline preload="metadata" aria-hidden="true"></video>
   <div class="bgvideo__overlay"></div>
   <div class="wrap">
     <div class="head">
       <h2>Battery Systems</h2>
-      <p class="offer-tag">Packs where <span class="accent-deep">commodity fails.</span></p>
-      <p class="offer-lede">Duty cycle, envelope and cost in; a pack from our characterized cell &amp; BMS library out, certified from the first sketch.</p>
+      <p class="offer-tag">Build to print, <span class="accent-deep">or build to spec.</span></p>
+      <p class="offer-lede">Give us a finished design, or just the spec, duty cycle, envelope and cost, and we build the pack. Faster and cheaper than sourcing it out, from our own characterized cell and BMS library.</p>
     </div>
-    <div class="offer-mod offer-timeline offer-timeline--4">
-      <div class="offer-stage"><div class="offer-stage__t">Print</div><div class="offer-stage__l"><b>Build to Print</b>, your design, our line, with DFM feedback.</div></div>
-      <div class="offer-stage"><div class="offer-stage__t">Adapt</div><div class="offer-stage__l"><b>Adapt from Library</b>, proven architecture; pay for the delta.</div></div>
-      <div class="offer-stage"><div class="offer-stage__t">Custom</div><div class="offer-stage__l"><b>Full Custom</b>, new chemistry, custom BMS, novel envelope.</div></div>
-      <div class="offer-stage"><div class="offer-stage__t">Rescue</div><div class="offer-stage__l"><b>Fix a Failing Pack</b>, root-cause it, take over supply.</div></div>
-    </div>
+    <div class="offer-note"><b>Build to print:</b> your design, our line, with DFM feedback on the way in. <b>Build to spec:</b> requirement in, certified pack out.</div>
   </div>
 </section>
 
 <!-- 05 · MOTORS -->
 <section class="sec-offer sec-offer--video" id="motors" data-idx="05 / 07">
-  <video class="bgvideo" src="assets/video/offer-motors.mp4" autoplay muted loop playsinline preload="metadata" aria-hidden="true"></video>
+  <video class="bgvideo" src="assets/video/offer-motors.mp4?v=2" autoplay muted loop playsinline preload="metadata" aria-hidden="true"></video>
   <div class="bgvideo__overlay"></div>
   <div class="wrap">
     <div class="head">
       <h2>Motors</h2>
-      <p class="offer-tag">Fit the motor <span class="accent-deep">to the application.</span></p>
-      <p class="offer-lede">Electromagnetics designed to the load the machine will actually see, proven on our own dynos.</p>
+      <p class="offer-tag">Build to print, <span class="accent-deep">or build to spec.</span></p>
+      <p class="offer-lede">Give us the drawing, or just the duty cycle, and we design the electromagnetics to the load the machine will actually see, proven on our own dynos.</p>
     </div>
     <div class="offer-mod offer-chips">
       <span class="offer-chip">BLDC</span>
@@ -167,12 +256,13 @@
       <span class="offer-chip">In-house dynos</span>
     </div>
     <div class="offer-note"><b>Curves, not claims</b>, FEA before hardware, measured performance maps after. Modified standard through clean sheet.</div>
+    <div class="offer-note" style="margin-top:12px"><b>Build to print:</b> your design, wound and tested on our line. <b>Build to spec:</b> duty cycle in, qualified motor out.</div>
   </div>
 </section>
 
 <!-- 06 · ELECTRONICS -->
 <section class="sec-offer sec-offer--video" id="electronics" data-idx="06 / 07">
-  <video class="bgvideo" src="assets/video/offer-electronics.mp4" autoplay muted loop playsinline preload="metadata" aria-hidden="true"></video>
+  <video class="bgvideo" src="assets/video/offer-electronics.mp4?v=2" autoplay muted loop playsinline preload="metadata" aria-hidden="true"></video>
   <div class="bgvideo__overlay"></div>
   <div class="wrap">
     <div class="head">
@@ -217,24 +307,21 @@
 <section class="bg-bone sec-service">
   <div class="wrap">
     <div class="head">
-      <h2>The service <span class="accent-deep">around the part.</span></h2>
+      <h2>We deliver on <span class="accent-deep">what matters.</span></h2>
+      <p class="offer-lede">Cost, quality and speed, with real-time visibility and full transparency over your manufacturing.</p>
     </div>
     <div class="svc-rows">
       <div class="svc-row">
-        <div class="svc-row__title"><h3>DFM by Default</h3></div>
-        <p class="svc-row__desc">Every RFQ is answered with a manufacturability review generated by Anvil and checked by our engineers, before you commit.</p>
+        <div class="svc-row__title"><h3>Cost</h3></div>
+        <p class="svc-row__desc">One stack under one roof, so there is no margin stacked vendor on vendor. Component re-engineering has taken 20% out of BOM cost and eliminated tooling spend entirely.</p>
       </div>
       <div class="svc-row">
-        <div class="svc-row__title"><h3>One Point of Contact</h3></div>
-        <p class="svc-row__desc">A program owner from quote to delivery. Weekly progress, no relay races between vendors.</p>
+        <div class="svc-row__title"><h3>Quality</h3></div>
+        <p class="svc-row__desc">AS9100D and ISO 9001 across the stack. Flight-critical work held to 10&ndash;15 &mu;m, inspected First, Middle and Last, with material certs and FAIR on every batch.</p>
       </div>
       <div class="svc-row">
-        <div class="svc-row__title"><h3>Traceability</h3></div>
-        <p class="svc-row__desc">Material certs, FAIR and inspection records under aerospace-grade discipline, AS9100D across the stack.</p>
-      </div>
-      <div class="svc-row">
-        <div class="svc-row__title"><h3>High-Mix First</h3></div>
-        <p class="svc-row__desc">Built for programs where engineering dominates cost, aerospace, defense, space, high-end automotive, medical, energy.</p>
+        <div class="svc-row__title"><h3>Speed</h3></div>
+        <p class="svc-row__desc">Days, not weeks, to first supply. 2.5&times; faster to first shot on tooling, and prototype to 400 units a month inside five weeks.</p>
       </div>
     </div>
   </div>

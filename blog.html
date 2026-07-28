@@ -1,0 +1,273 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Blog, NEMI AI</title>
+<meta name="description" content="Case studies and writing from NEMI AI. Programs run on the Large Manufacturing Model, from a production-ready EV in 9 months to flight-critical parts held at 10-15 microns.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/css/style.css?v=102">
+</head>
+<body>
+
+<header class="nav">
+  <div class="wrap">
+    <a class="nav__logo" href="index.html"><img src="assets/img/logo-dark.png" alt="NEMI"></a>
+    <nav class="nav__links" id="menu">
+      <a href="index.html">Home</a>
+      <a href="about.html">About Us</a>
+      <a href="offerings.html">Offerings</a>
+      <a href="blog.html" class="active">Blog</a>
+      <a href="careers.html">Careers</a>
+      <a href="contact.html" class="nav__cta">Contact</a>
+    </nav>
+    <button class="nav__burger" aria-label="Menu" onclick="document.getElementById('menu').classList.toggle('open')"><span></span><span></span><span></span></button>
+  </div>
+</header>
+
+<!-- PAGE HERO -->
+<section class="phero">
+  <video class="bgvideo" src="assets/video/case-hero.mp4" autoplay muted loop playsinline preload="auto" aria-hidden="true"></video>
+  <div class="bgvideo__overlay"></div>
+  <div class="hero__grid"></div>
+  <div class="crops" aria-hidden="true"><span>+</span><span>+</span><span>+</span><span>+</span></div>
+  <div class="wrap">
+    <div class="kicker">Blog &middot; NEMI AI</div>
+    <h1 style="margin-top:22px">What the model has<br><span class="accent">already built.</span></h1>
+    <p>Programs run end-to-end on the LMM, in our own factories. Every one of them shipped.</p>
+  </div>
+</section>
+
+<!-- MASTER PLAN · first section -->
+<section class="bg-ink bp sec-plan" id="master-plan">
+  <div class="wrap">
+    <article class="letter">
+              <div class="letter__head">
+                <span class="letter__mark">The NEMI Master Plan</span>
+                <span class="letter__from">From the founder's desk</span>
+              </div>
+    
+              <div class="letter__body">
+                <p class="letter__lede">Every few decades, the way we make things changes completely. Ford revolutionized manufacturing with the moving assembly line in 1913. Toyota did it with the Toyota Production System in 1950. Computing and digitization brought new levels of efficiency from the 1980s onward. Each shift moved enormous market share from the companies that adopted the new method to the ones that did not.</p>
+    
+                <p>We are now at the start of the largest of these shifts. Software has already had its moment: a single person can envision, engineer, manufacture, and ship products that once took hundreds of engineers years to build, a 100&times;+ gain in productivity thanks to AI. Hardware is yet to have that moment. Making physical things is still slow: it is still normal for a part to take a month to design and a year to tool, or a product to take years and millions to reach production.</p>
+    
+                <p>NEMI exists to change that.</p>
+    
+                <p>I want a world where hardware can be shipped as fluidly as software, where a small team, or eventually a single person, can will a complex physical product into existence. We are building the system that makes this possible: the <b>Large Manufacturing Model (LMM)</b>, a stack of interconnected AI tools, hardware, and applications that runs the entire arc of a physical product, from idea through production to field feedback. The goal is simple to state and hard to do: do for hardware what LLMs did for software. Hardware is harder than software, so the path has to be different. Here is the plan.</p>
+    
+                <h3>The problem, stated plainly</h3>
+                <p>Two facts shape everything we do. First, all hardware is built from the same handful of building blocks, mechanical parts, electronics, batteries, motors and actuators, HMIs, sensors, and the software that ties them together. A drone, a humanoid, an EV, a phone: each is some combination of these. And every product moves through the same four stages we call NEMI, eNvision (idea to concept), Engineer (concept to engineering), Manufacture (engineering to manufacturing), and Improve (the loop that feeds field learning back into the next design). To automate hardware you have to cover every building block, the full stack, across every stage, end to end. Each cell in that matrix is a company's worth of work on its own.</p>
+                <p>Second, data for hardware doesn't exist in the open. Hardware is mostly proprietary and closed; there are no large public datasets, and the knowledge lives in silos that will never let outsiders train on it. A pure software company cannot get this data. Whoever intends to automate hardware has to be inside the factory. That second fact is the entire reason NEMI is built the way it is.</p>
+    
+                <h3>The plan: be the manufacturer</h3>
+                <p>The only way to get the data and prove the automation is to manufacture, and that is exactly what we do. Today NEMI runs full-stack Fortress Factories across batteries, motors, electronics, metals, plastics, tooling, and complex assemblies, and we sell that capability to customers as Manufacturing-as-a-Service (MaaS). We built and hardened these capabilities on our own EV business, then opened them to outside customers, and now work with several large enterprises. Full-stack we can offer on day one. End-to-end automation has to be earned in phases.</p>
+    
+                <h3>Phase 1, Automate the easy part first: eNvision + Engineer</h3>
+                <p>Every hardware design runs on the same tools: rendering, mechanical and electronics CAD, simulation, and PLM. We have rebuilt these in-house with generative AI inside, because the existing tools are closed and impossible to automate on top of. Each part we design becomes reusable data and a reference for the next. We hold a large library of lithium-ion cells we can assemble into new pack configurations, simulate thermally, and finish as complete electromechanical designs, and a library of battery-management-system designs we can adapt in a fraction of the usual time. Every battery project makes the next one more automatic, until the design is done entirely by the machine. Repeat that across every component type, and you have an engine.</p>
+                <p>When design is automated, the natural market is high-mix, low-volume work, where engineering cost dominates, aerospace, defense, space, high-end automotive, medical, and energy. These constitute a very large market within the physical economy, and only a fraction of it has to move for this to be enormous. We win because our compression of time and cost wins business traditional manufacturers cannot compete with.</p>
+                <p>To gather data fast, we have to grow fast. So we buy small and medium manufacturers already serving these customers. Each acquisition does three things at once: it generates cash, it hands us proprietary data that sharpens the LMM, and it widens our reach. Automation lets us quote more aggressively and win more; full-stack lets us quote on a larger opportunity set. We install the LMM into each business we acquire, and the returns compound. This is not theoretical, our MaaS business was built from such an acquisition two years ago.</p>
+    
+                <h3>Phase 2, Automate the physical world: Manufacture</h3>
+                <p>Running our own factories tells us precisely where automation pays off, so that is where we build next. The key tool in this layer is a digital-twin ERP that captures what is happening on the floor almost automatically, cameras, phones, sensors, and acts as an orchestration brain: first telling human operators what to do, then directing the robots. On the floor, we build robotics by ROI, not by hype. Humanoids are overkill; most tasks need one or two arms, and a static arm costs a fraction of a humanoid, so the arm pays back far faster. Add tooling and fixturing automation from Phase 1, autonomous movers for material handling, and vision-and-arm systems for inspection, and that covers most of a factory. The leverage is this: we use the design automation from Phase 1 to build the Phase 2 robotics quickly and cheaply.</p>
+                <p>With Manufacture automated, we move into high-volume, low-mix work, consumer electronics, automotive, and beyond. That is a market larger still, and again, lower cost and shorter lead times make the business easy to win.</p>
+                <p>At the end of Phase 2, I believe even cellphone manufacturing can be moved back to the US. That drew a lot of mockery when it was first proposed. But electronics concentrated offshore for two reasons, cheap labor, and dense supplier clusters. Automation erodes both. The labor-arbitrage disappears, and a full-stack automated operation internalizes the steps that once required that supplier base. The edge shifts to whoever automates best. We intend to make that real within five years.</p>
+    
+                <h3>Phase 3, Open the platform</h3>
+                <p>As the LMM matures across Phases 1 and 2, design becomes nearly autonomous, our factories become reconfigurable for almost any product, and we can open the tools and the factories as a platform for others to build on. That unlocks essentially all of hardware manufacturing, the entire $16T+ physical economy. It plays out the way foundation models did in software: companies running on the LMM will be so much faster and cheaper that adopting it stops being a choice and becomes the price of staying in the game. And convergence will be even stronger than in software, winning demands full-stack manufacturing, proprietary data accumulated at speed, and, in place of AI data centers, rapidly reconfigurable Fortress Factories around the world. At that point the paradigm has shifted, and we will have built it.</p>
+    
+                <h3>The vision is not a binary bet</h3>
+                <p>The vision is large and genuinely complex, full-stack and end-to-end, every cell in the matrix is a hard problem. Ambitions this size are usually a single, low-probability bet.</p>
+                <p>However, we do not see it this way, and here is why: MaaS is profitable on its own. Winning in manufacturing comes down to cost, quality, and speed, and automation makes us better at all three. High-mix, low-volume work is high-margin and throws off real cash. With automation, low-mix, high-volume can also generate margins and cash. That cash helps fund the LMM, the capacity, and the next acquisition. The ambition is not a single, fragile bet, it compounds on a business that already works.</p>
+                <p>If we are fully right, we have more than a good business, we have launched the next industrial revolution. Hardware is commoditizing faster and faster: it took decades to commoditize the automobile and under five years to commoditize the smartphone. The LMM bends that curve further and captures the value as it bends.</p>
+    
+                <div class="letter__short">
+                  <span class="mono">So, in short, the master plan is</span>
+                  <ol>
+                    <li>Run our own full-stack factories and sell Manufacturing-as-a-Service, profitably, today.</li>
+                    <li>Automate eNvision + Engineer first; win high-mix, low-volume work in aerospace, defense, and high-end industry; buy factories to compound data and cash.</li>
+                    <li>Automate Manufacture; bring robotics and orchestration to the floor; move into high-volume manufacturing.</li>
+                    <li>Open the LMM as the platform every hardware company runs on.</li>
+                  </ol>
+                </div>
+    
+                <p class="letter__close">Every manufacturing company will eventually run on AI. Only a few become the default. We are already compounding. We would be glad to have you build it with us.</p>
+              </div>
+    
+              <div class="letter__sign">
+                <div class="letter__signature">Anirudh Ravi Narayanan</div>
+                <div class="letter__role">Founder &amp; CEO &middot; NEMI</div>
+              </div>
+            </article>
+  </div>
+</section>
+
+<!-- CASE STUDIES · SLIDER -->
+<section class="bg-oat bp bp--light">
+  <div class="wrap">
+    <div class="slider-head">
+      <div class="head" style="margin-bottom:0">
+        <div class="offer-num" style="color:var(--emerald)">Case studies</div>
+        <h2>Four programs, <span class="accent-deep">start to shipped.</span></h2>
+      </div>
+      <div class="slider-nav">
+        <button class="slider-btn" id="csPrev" aria-label="Previous case study">&larr;</button>
+        <button class="slider-btn" id="csNext" aria-label="Next case study">&rarr;</button>
+      </div>
+    </div>
+
+    <div class="cslide" id="csTrack">
+      <a class="cslide__card" href="case-messenger.html">
+        <div class="cslide__media"><img src="assets/img/case/bnc-hero.png" alt="BNC electric fleet motorcycle" loading="lazy"></div>
+        <div class="cslide__body">
+          <span class="cslide__scope">Mobility &middot; EV</span>
+          <h3>A production-ready EV in 9 months.</h3>
+          <div class="cslide__metrics">
+            <div><b>18 &rarr; 9 mo</b><span>to production</span></div>
+            <div><b>&lt;$1M</b><span>program cost</span></div>
+          </div>
+          <span class="cslide__more">Read the case study &rarr;</span>
+        </div>
+      </a>
+
+      <a class="cslide__card" href="case-pmi.html">
+        <div class="cslide__media"><img src="assets/img/case/aero-hero.jpg" alt="Aerospace structural clamp on the VMC" loading="lazy"></div>
+        <div class="cslide__body">
+          <span class="cslide__scope">Aerospace &middot; Structural</span>
+          <h3>Flight-critical clamp, held at 10&ndash;15 &mu;m.</h3>
+          <div class="cslide__metrics">
+            <div><b>7 &rarr; 3 hrs</b><span>runtime per job</span></div>
+            <div><b>~15 / day</b><span>serial supply</span></div>
+          </div>
+          <span class="cslide__more">Read the case study &rarr;</span>
+        </div>
+      </a>
+
+      <a class="cslide__card" href="case-coffee.html">
+        <div class="cslide__media"><img src="assets/img/case/coffee-hero.jpg" alt="Smart filter-coffee vending machine" loading="lazy"></div>
+        <div class="cslide__body">
+          <span class="cslide__scope">Consumer Appliances</span>
+          <h3>A vending-machine line in 5 weeks.</h3>
+          <div class="cslide__metrics">
+            <div><b>400 / mo</b><span>zero tooling</span></div>
+            <div><b>&minus;20%</b><span>BOM cost</span></div>
+          </div>
+          <span class="cslide__more">Read the case study &rarr;</span>
+        </div>
+      </a>
+
+      <a class="cslide__card" href="case-drone.html">
+        <div class="cslide__media"><img src="assets/img/case/drone-hero.jpg" alt="Carbon-fibre defense UAS" loading="lazy"></div>
+        <div class="cslide__body">
+          <span class="cslide__scope">Defense &middot; UAS</span>
+          <h3>A drone powertrain, fully in-house.</h3>
+          <div class="cslide__metrics">
+            <div><b>16 &rarr; 4 mo</b><span>development</span></div>
+            <div><b>4 / 4</b><span>components in-house</span></div>
+          </div>
+          <span class="cslide__more">Read the case study &rarr;</span>
+        </div>
+      </a>
+    </div>
+
+    <div class="slider-dots" id="csDots" aria-hidden="true"></div>
+  </div>
+</section>
+
+<!-- WRITING · COMING SOON -->
+<section class="bg-bone bp bp--light">
+  <div class="wrap">
+    <div class="soon">
+      <div class="offer-num" style="color:var(--emerald)">Writing</div>
+      <h2>Notes from the floor, <span class="accent-deep">coming soon.</span></h2>
+      <p class="offer-lede">We are putting together writing on what we are learning building the LMM inside a working factory. Until then, the case studies above are the record.</p>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="bg-ink cta-band bp bp--full">
+  <div class="wash"></div>
+  <div class="wrap inner">
+    <h2>Your program could be <span class="accent">the next one.</span></h2>
+    <div style="display:flex;gap:12px;flex-wrap:wrap">
+      <a href="contact.html" class="btn btn--signal">Submit a part &rarr;</a>
+      <a href="offerings.html" class="btn btn--ghost">See the Offerings</a>
+    </div>
+  </div>
+</section>
+
+<footer class="footer">
+  <div class="wrap">
+    <div class="footer__top">
+      <div class="footer__brand">
+        <img src="assets/img/logo-dark.png" alt="NEMI">
+        <div class="name">NEMI LMM</div>
+        <p>NEMI AI builds Physical AI for manufacturing, the Large Manufacturing Model, one AI system that designs, manufactures and improves physical products end-to-end, proven every day in our owned, full-stack factories.</p>
+      </div>
+      <div><h4>NEMI</h4><ul><li><a href="index.html">Home</a></li><li><a href="about.html">About Us</a></li><li><a href="offerings.html">Offerings</a></li><li><a href="blog.html">Blog</a></li><li><a href="careers.html">Careers</a></li></ul></div>
+      <div class="footer__contact">
+        <h4>Contact us</h4>
+        <ul><li><a href="mailto:info@nemilmm.com">info@nemilmm.com</a></li><li><a href="tel:+910000000000">+91 00000 00000</a></li></ul>
+        <p>Full-stack, end-to-end manufacturing automation with Physical AI. US-headquartered in Stafford, Texas, with factories in Coimbatore, India.</p>
+      </div>
+    </div>
+    <div class="footer__bar"><span>&copy; 2026 NEMI AI &middot; PHYSICAL AI &middot; MANUFACTURING-AS-A-SERVICE</span><span>www.nemilmm.com</span></div>
+  </div>
+</footer>
+
+<script src="assets/js/fx.js"></script>
+<script>
+/* Case-study slider: scroll-snap track driven by arrows + dots */
+(function () {
+  var track = document.getElementById('csTrack');
+  if (!track) return;
+  var prev = document.getElementById('csPrev');
+  var next = document.getElementById('csNext');
+  var dotWrap = document.getElementById('csDots');
+  var cards = Array.prototype.slice.call(track.querySelectorAll('.cslide__card'));
+
+  function step() {
+    if (cards.length < 2) return track.clientWidth;
+    return cards[1].offsetLeft - cards[0].offsetLeft;
+  }
+  function index() {
+    return Math.round(track.scrollLeft / step());
+  }
+  function goTo(i) {
+    var max = cards.length - 1;
+    i = Math.max(0, Math.min(max, i));
+    /* direct assignment; the easing comes from CSS scroll-behavior */
+    track.scrollLeft = Math.min(i * step(), track.scrollWidth - track.clientWidth);
+    sync();
+  }
+
+  cards.forEach(function (_, i) {
+    var d = document.createElement('button');
+    d.className = 'slider-dot';
+    d.setAttribute('aria-label', 'Go to case study ' + (i + 1));
+    d.addEventListener('click', function () { goTo(i); });
+    dotWrap.appendChild(d);
+  });
+  var dots = Array.prototype.slice.call(dotWrap.children);
+
+  function sync() {
+    var i = index();
+    dots.forEach(function (d, n) { d.classList.toggle('is-on', n === i); });
+    /* how many cards fit at once — disable arrows at the ends */
+    var perView = Math.max(1, Math.round(track.clientWidth / step()));
+    prev.disabled = track.scrollLeft < 4;
+    next.disabled = track.scrollLeft > track.scrollWidth - track.clientWidth - 4;
+  }
+
+  prev.addEventListener('click', function () { goTo(index() - 1); });
+  next.addEventListener('click', function () { goTo(index() + 1); });
+  track.addEventListener('scroll', sync, { passive: true });
+  window.addEventListener('resize', sync);
+  sync();
+})();
+</script>
+</body>
+</html>

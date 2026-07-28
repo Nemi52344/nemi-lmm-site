@@ -517,32 +517,23 @@ section { padding: 88px 0; }
 .team-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px;
   background: transparent; border: 0; padding: 0; box-shadow: none;
 }
-/* each person sits on their own oat card, headshot on the LEFT */
+/* each person sits on their own oat card — name over role, no headshot */
 .person {
-  display: grid; grid-template-columns: 66px 1fr;
+  display: grid; grid-template-columns: 1fr;
   grid-template-rows: auto auto;
-  grid-template-areas: "photo name" "photo role";
-  align-content: center; column-gap: 14px; row-gap: 7px; min-height: 92px;
+  grid-template-areas: "name" "role";
+  align-content: center; row-gap: 7px; min-height: 78px;
   background: var(--oat); border: 1px solid rgba(7,7,7,.12);
-  padding: 14px 16px 14px 14px; overflow: hidden;
+  padding: 16px 18px; overflow: hidden;
   clip-path: polygon(0 0, calc(100% - 12px) 0, 100% 12px, 100% 100%, 0 100%);
   box-shadow: 0 2px 12px rgba(7,7,7,.05);
   transition: transform .3s, box-shadow .3s, border-color .3s;
 }
 .person:hover { transform: translateY(-3px); border-color: rgba(10,73,56,.4);
   box-shadow: 0 10px 26px rgba(7,7,7,.12); }
-.person__photo {
-  grid-area: photo; align-self: center; width: 66px; height: 80px; overflow: hidden;
-  background: var(--graphite); clip-path: polygon(0 0, calc(100% - 5px) 0, 100% 5px, 100% 100%, 0 100%);
-}
-.person__photo img {
-  width: 100%; height: 100%; object-fit: cover; object-position: center top; display: block;
-  filter: grayscale(0.15); transition: transform .5s ease, filter .4s ease;
-}
-.person:hover .person__photo img { transform: scale(1.05); filter: grayscale(0); }
 .person__name {
   grid-area: name; align-self: end; color: var(--ink); font-weight: 600;
-  font-size: 14.5px; letter-spacing: -.2px; line-height: 1.2;
+  font-size: 15px; letter-spacing: -.2px; line-height: 1.25;
 }
 .person__role {
   grid-area: role; align-self: start; color: var(--emerald);
@@ -550,9 +541,8 @@ section { padding: 88px 0; }
   font-family: "IBM Plex Mono", monospace; font-size: 9.5px; letter-spacing: 1.2px; text-transform: uppercase; line-height: 1.3;
 }
 .team-sub { grid-template-columns: repeat(6, 1fr); gap: 14px; }
-.team-sub .person { grid-template-columns: 52px 1fr; column-gap: 11px; padding: 11px 13px; min-height: 76px; }
-.team-sub .person__photo { width: 52px; height: 62px; }
-.team-sub .person__name { font-size: 11px; letter-spacing: -.35px; white-space: nowrap; }
+.team-sub .person { padding: 14px 15px; min-height: 68px; }
+.team-sub .person__name { font-size: 12px; letter-spacing: -.3px; white-space: nowrap; }
 .team-sub .person__role { font-size: 8.5px; letter-spacing: 1px; }
 @media (max-width: 900px) { .team-grid { grid-template-columns: repeat(2, 1fr); } .team-sub { grid-template-columns: repeat(3, 1fr); } }
 @media (max-width: 560px) { .team-grid, .team-sub { grid-template-columns: 1fr !important; } }
@@ -1128,13 +1118,9 @@ button.btn {
 .floor-tile img { width: 100%; height: 100%; object-fit: cover; display: block; }
 @media (prefers-reduced-motion: reduce) { .floor-track { animation: none; } }
 
-/* Careers "trained every day": heading ~30% left, image strip fills the rest with bigger tiles */
-.sec-floor .floor-tile { width: clamp(380px, 34vw, 680px); height: clamp(300px, 33vw, 520px); }
-@media (min-width: 901px) {
-  .sec-floor { gap: clamp(24px, 3vw, 56px); }
-  .sec-floor > .wrap { flex: 0 0 30%; width: 30%; max-width: 30%; }
-  .sec-floor > .floor-marquee { flex: 1 1 auto; min-width: 0; margin-top: 0; }
-}
+/* Careers "life on the floor": full-bleed strip running edge to edge */
+.sec-floor .floor-tile { width: clamp(300px, 27vw, 520px); height: clamp(230px, 25vw, 400px); }
+.sec-floor > .floor-marquee { width: 100%; margin-top: 0; }
 
 /* ===== "Read the full case study" link on a case card ===== */
 .cs-more { display: inline-flex; align-items: center; gap: 8px; margin-top: 26px;
@@ -1854,3 +1840,222 @@ button.btn {
 }
 .plan-close-float .btn:hover { transform: translateY(-2px); filter: drop-shadow(0 18px 40px rgba(7,7,7,.6)); }
 @media (max-width: 560px) { .plan-close-float { bottom: 16px; } .plan-close-float .btn { padding: 13px 24px; font-size: 13.5px; } }
+
+/* ---------- Blog · case-study slider ---------- */
+.slider-head { display: flex; align-items: flex-end; justify-content: space-between; gap: 24px; margin-bottom: clamp(22px, 3vw, 34px); flex-wrap: wrap; }
+.slider-nav { display: flex; gap: 10px; flex-shrink: 0; }
+.slider-btn {
+  width: 46px; height: 46px; display: inline-flex; align-items: center; justify-content: center;
+  background: transparent; color: var(--emerald); border: 1px solid rgba(10,73,56,.3);
+  font-size: 17px; cursor: pointer;
+  clip-path: polygon(0 0, calc(100% - 9px) 0, 100% 9px, 100% 100%, 0 100%);
+  transition: background .25s, color .25s, border-color .25s, opacity .25s;
+}
+.slider-btn:hover:not(:disabled) { background: var(--emerald); color: var(--bone); border-color: var(--emerald); }
+.slider-btn:disabled { opacity: .3; cursor: default; }
+
+.cslide {
+  --cs-gap: clamp(14px, 1.6vw, 22px);
+  display: flex; gap: var(--cs-gap); overflow-x: auto; scroll-snap-type: x proximity;
+  scroll-behavior: smooth; scroll-padding-left: 0; padding-bottom: 4px;
+  scrollbar-width: none; -ms-overflow-style: none;
+}
+.cslide::-webkit-scrollbar { display: none; }
+.cslide__card {
+  flex: 0 0 calc((100% - 2 * var(--cs-gap)) / 3);
+  scroll-snap-align: start; display: flex; flex-direction: column; text-decoration: none;
+  background: var(--bone); border: 1px solid rgba(7,7,7,.12); overflow: hidden;
+  clip-path: polygon(0 0, calc(100% - 16px) 0, 100% 16px, 100% 100%, 0 100%);
+  transition: transform .3s cubic-bezier(.22,.61,.36,1), border-color .3s, box-shadow .3s;
+}
+.cslide__card:hover { transform: translateY(-4px); border-color: rgba(10,73,56,.4); box-shadow: 0 14px 32px rgba(7,7,7,.12); }
+.cslide__media { position: relative; aspect-ratio: 16 / 10; overflow: hidden; background: var(--graphite); }
+.cslide__media img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; display: block;
+  transition: transform .7s cubic-bezier(.22,.61,.36,1); }
+.cslide__card:hover .cslide__media img { transform: scale(1.045); }
+.cslide__body { display: flex; flex-direction: column; flex: 1; padding: 18px 20px 20px; }
+.cslide__scope {
+  font-family: "IBM Plex Mono", monospace; font-size: 10px; letter-spacing: 1.8px;
+  text-transform: uppercase; color: var(--signal);
+}
+.cslide__card h3 { margin: 9px 0 0; font-size: 19px; font-weight: 600; letter-spacing: -.4px; line-height: 1.25; color: var(--ink); }
+.cslide__metrics { display: flex; gap: 22px; margin-top: 16px; padding-top: 14px; border-top: 1px solid rgba(7,7,7,.12); }
+.cslide__metrics b { display: block; font-size: 16px; font-weight: 700; letter-spacing: -.3px; color: var(--ink); }
+.cslide__metrics span { display: block; margin-top: 3px; font-family: "IBM Plex Mono", monospace; font-size: 9px;
+  letter-spacing: 1.1px; text-transform: uppercase; color: rgba(7,7,7,.5); }
+.cslide__more {
+  margin-top: auto; padding-top: 16px;
+  font-family: "IBM Plex Mono", monospace; font-size: 10.5px; font-weight: 600;
+  letter-spacing: 1.4px; text-transform: uppercase; color: var(--emerald);
+}
+.cslide__card:hover .cslide__more { color: var(--signal); }
+
+.slider-dots { display: flex; gap: 8px; justify-content: center; margin-top: clamp(20px, 2.6vw, 30px); }
+.slider-dot { width: 26px; height: 3px; padding: 0; border: 0; cursor: pointer;
+  background: rgba(7,7,7,.18); transition: background .25s; }
+.slider-dot.is-on { background: var(--signal); }
+
+/* writing · coming-soon block */
+.soon { max-width: 660px; }
+.soon h2 { margin-top: 6px; }
+
+@media (max-width: 1000px) { .cslide__card { flex-basis: calc((100% - var(--cs-gap)) / 2); } }
+@media (max-width: 640px) { .cslide__card { flex-basis: 84%; } }
+
+/* ---------- Careers · leadership principles ---------- */
+/* image column runs alongside the card stack, so it costs no extra height */
+.prin-split { display: grid; grid-template-columns: 0.82fr 1.18fr; gap: clamp(18px, 2.6vw, 38px); align-items: stretch; }
+.prin-split--flip .prin-media { order: 2; }
+.prin-media { position: relative; margin: 0; min-height: 260px; overflow: hidden; }
+.prin-media img {
+  position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; display: block;
+  clip-path: polygon(0 0, calc(100% - 18px) 0, 100% 18px, 100% 100%, 0 100%);
+  box-shadow: 0 26px 60px -38px rgba(0,0,0,.45);
+}
+.prin-cards { display: grid; gap: 14px; grid-auto-rows: 1fr; align-content: stretch; }
+@media (max-width: 900px) {
+  .prin-split { grid-template-columns: 1fr; }
+  .prin-split--flip .prin-media { order: 0; }
+  .prin-media { min-height: 220px; }
+}
+/* inside each card the label sits beside the line, so no dead space */
+.sec-principles .grid-2 { grid-auto-rows: 1fr; gap: 16px; }
+.sec-principles .card {
+  display: grid; grid-template-columns: minmax(0, 200px) 1fr; gap: 22px;
+  align-items: start; padding: 22px 24px;
+}
+.sec-principles .card h3 { margin-top: 0; font-size: 18px; letter-spacing: -.35px; line-height: 1.25; }
+.sec-principles .card p { margin-top: 0; font-size: 14px; line-height: 1.55; }
+@media (max-width: 900px) {
+  .sec-principles .grid-2 { grid-template-columns: 1fr; }
+  .sec-principles .card { grid-template-columns: 1fr; gap: 8px; }
+}
+
+/* ---------- Careers · prosperity / pride / progress closer ---------- */
+.ppp { margin-top: clamp(26px, 3vw, 40px); padding-top: clamp(20px, 2.4vw, 28px); border-top: 1px solid rgba(7,7,7,.14); }
+.ppp__k {
+  font-family: "IBM Plex Mono", monospace; font-size: 10px; letter-spacing: 2.4px;
+  text-transform: uppercase; color: var(--emerald); margin-bottom: clamp(14px, 1.6vw, 20px);
+}
+.ppp .grid-3 { gap: 16px; }
+.ppp__item { display: flex; align-items: baseline; gap: 12px; }
+.ppp__item h3 {
+  margin: 0; font-size: 15px; font-weight: 700; letter-spacing: -.2px; color: var(--ink);
+  white-space: nowrap;
+}
+.ppp__item h3::before {
+  content: ''; display: inline-block; width: 14px; height: 2px; background: var(--signal);
+  vertical-align: middle; margin-right: 10px;
+}
+.ppp__item p { margin: 0; font-size: 13.5px; font-weight: 300; line-height: 1.5; color: rgba(7,7,7,.58); }
+@media (max-width: 760px) { .ppp .grid-3 { grid-template-columns: 1fr; } }
+
+/* ---------- Offerings · core + auxiliary service cards ---------- */
+/* compact: the whole core + auxiliary story fits one viewport.
+   vertical rhythm is vh-based so it keeps fitting on shorter screens */
+.sec-svcx { padding-top: clamp(24px, 4vh, 48px) !important; padding-bottom: clamp(24px, 4vh, 48px) !important; }
+.svcx-rule { display: flex; align-items: center; gap: 16px; margin-bottom: 10px; }
+.svcx-rule__k {
+  font-family: "IBM Plex Mono", monospace; font-size: 12px; font-weight: 600;
+  letter-spacing: 4px; text-transform: uppercase; color: var(--signal); white-space: nowrap;
+}
+.svcx-rule__line { flex: 1; height: 1px; background: rgba(7,7,7,.14); }
+.svcx-rule__note {
+  font-family: "IBM Plex Mono", monospace; font-size: 10px; letter-spacing: 2px;
+  text-transform: uppercase; color: rgba(7,7,7,.42); white-space: nowrap;
+}
+.svcx-h { margin: 0 0 clamp(10px, 2.1vh, 21px); }
+.svcx-h h2 { font-size: clamp(22px, 2.6vw, 38px); line-height: 1.1; }
+.svcx-block + .svcx-block { margin-top: clamp(18px, 4.4vh, 44px); }
+
+/* core — deep-emerald panels: blueprint grid, ghost numeral, label at the base */
+.svcx-core { display: grid; grid-template-columns: repeat(3, 1fr); gap: clamp(11px, 1.2vw, 16px); }
+.svcx-big {
+  position: relative; overflow: hidden;
+  display: flex; flex-direction: column; justify-content: flex-end;
+  min-height: clamp(118px, 21vh, 205px); padding: 18px 20px;
+  background:
+    radial-gradient(120% 90% at 88% 6%, rgba(46,230,168,.16) 0%, transparent 58%),
+    linear-gradient(152deg, #0c5540 0%, var(--emerald) 46%, #04241a 100%);
+  border: 1px solid rgba(46,230,168,.2);
+  clip-path: polygon(0 0, calc(100% - 16px) 0, 100% 16px, 100% 100%, 0 100%);
+  transition: transform .3s cubic-bezier(.22,.61,.36,1), border-color .3s, box-shadow .3s;
+}
+/* blueprint grid, fading out toward the label so type stays clean */
+.svcx-big::before {
+  content: ''; position: absolute; inset: 0; pointer-events: none;
+  background-image:
+    linear-gradient(rgba(46,230,168,.075) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(46,230,168,.075) 1px, transparent 1px);
+  background-size: 24px 24px; background-position: -1px -1px;
+  -webkit-mask-image: linear-gradient(to bottom, #000 0%, rgba(0,0,0,.35) 62%, transparent 92%);
+  mask-image: linear-gradient(to bottom, #000 0%, rgba(0,0,0,.35) 62%, transparent 92%);
+}
+/* oversized ghost numeral sitting in the dead space */
+.svcx-big::after {
+  content: attr(data-n); position: absolute; right: 12px; top: -14px; pointer-events: none;
+  font-family: "IBM Plex Mono", monospace; font-weight: 600; line-height: 1;
+  font-size: clamp(64px, 7vw, 104px); color: rgba(254,254,254,.055);
+  transition: color .3s;
+}
+.svcx-big:hover { transform: translateY(-4px); border-color: rgba(46,230,168,.55);
+  box-shadow: 0 16px 38px rgba(4,36,26,.42); }
+.svcx-big:hover::after { color: rgba(46,230,168,.11); }
+.svcx-big__num {
+  position: absolute; top: 15px; left: 20px; z-index: 2;
+  font-family: "IBM Plex Mono", monospace; font-size: 10px; letter-spacing: 2px;
+  color: rgba(46,230,168,.62);
+}
+.svcx-big__body { position: relative; z-index: 2; }
+/* short mint rule above the label */
+.svcx-big__body::before {
+  content: ''; display: block; width: 24px; height: 2px; background: var(--mint);
+  margin-bottom: 11px; transition: width .3s cubic-bezier(.22,.61,.36,1);
+}
+.svcx-big:hover .svcx-big__body::before { width: 44px; }
+.svcx-big__tag {
+  display: block; font-family: "IBM Plex Mono", monospace; font-size: 9.5px;
+  letter-spacing: 2px; text-transform: uppercase; color: var(--signal); margin-bottom: 6px;
+}
+.svcx-big__name {
+  display: block; color: var(--bone); font-weight: 700;
+  font-size: clamp(19px, 1.7vw, 24px); letter-spacing: -.4px; line-height: 1.15;
+}
+.svcx-big__spec {
+  display: block; margin-top: 8px; padding-top: 9px;
+  border-top: 1px solid rgba(254,254,254,.13);
+  color: rgba(236,231,221,.66); font-size: 12px; line-height: 1.45;
+}
+
+/* auxiliary — light boxes with a mint wipe on hover */
+.svcx-aux { display: grid; grid-template-columns: repeat(3, 1fr); grid-auto-rows: 1fr; gap: clamp(11px, 1.2vw, 16px); }
+.svcx-tile {
+  position: relative; display: flex; flex-direction: column;
+  background: var(--bone); border: 1px solid rgba(7,7,7,.12);
+  clip-path: polygon(0 0, calc(100% - 14px) 0, 100% 14px, 100% 100%, 0 100%);
+  transition: transform .3s cubic-bezier(.22,.61,.36,1), border-color .3s, box-shadow .3s;
+}
+/* accent bar wipes across the top edge on hover */
+.svcx-tile::before {
+  content: ''; position: absolute; left: 0; top: 0; height: 2px; width: 0;
+  background: var(--signal); transition: width .4s cubic-bezier(.22,.61,.36,1);
+}
+.svcx-tile:hover::before { width: 100%; }
+.svcx-tile:hover { transform: translateY(-4px); border-color: rgba(10,73,56,.38); box-shadow: 0 12px 28px rgba(7,7,7,.11); }
+.svcx-tile__body { padding: clamp(14px, 1.9vh, 19px) 18px; }
+/* number + hairline sit on one row above the title */
+.svcx-tile__num {
+  display: flex; align-items: center; gap: 9px;
+  font-family: "IBM Plex Mono", monospace; font-size: 10.5px;
+  letter-spacing: 1.6px; color: var(--signal); margin-bottom: 7px;
+}
+.svcx-tile__num::after {
+  content: ''; flex: 1; height: 1px; background: rgba(7,7,7,.13);
+  transition: background .3s;
+}
+.svcx-tile:hover .svcx-tile__num::after { background: rgba(16,163,126,.35); }
+.svcx-tile h3 { margin: 0; color: var(--ink); font-size: 15.5px; font-weight: 600; letter-spacing: -.3px; line-height: 1.2; }
+.svcx-tile p { margin: 7px 0 0; color: rgba(7,7,7,.6); font-size: 12.5px; line-height: 1.5; }
+@media (max-width: 1000px) { .svcx-aux { grid-template-columns: repeat(2, 1fr); } }
+@media (max-width: 760px) { .svcx-core { grid-template-columns: 1fr; } .svcx-rule__note { display: none; } }
+@media (max-width: 560px) { .svcx-aux { grid-template-columns: 1fr; } }

@@ -7,10 +7,8 @@
     '<nav class="nav__links" id="menu">' +
     '<a href="index.html" class="active">Home</a>' +
     '<a href="about.html">About Us</a>' +
-    '<div class="nav__item">' +
     '<a href="offerings.html">Offerings</a>' +
-    '<div class="nav__drop"><a href="lmm-stack.html">LMM Stack</a><a href="case-studies.html">Case Studies</a></div>' +
-    '</div>' +
+    '<a href="blog.html">Blog</a>' +
     '<a href="careers.html">Careers</a>' +
     '<a href="contact.html" class="nav__cta">Contact</a>' +
     '</nav>' +
@@ -31,15 +29,13 @@
     '<li><a href="index.html">Home</a></li>' +
     '<li><a href="about.html">About Us</a></li>' +
     '<li><a href="offerings.html">Offerings</a></li>' +
-    '<li><a href="lmm-stack.html">LMM Stack</a></li>' +
-    '<li><a href="case-studies.html">Case Studies</a></li>' +
+    '<li><a href="blog.html">Blog</a></li>' +
     '<li><a href="careers.html">Careers</a></li>' +
     '</ul></div>' +
     '<div><h4>Platform</h4><ul>' +
-    '<li><a href="offerings.html">Lumos &middot; Envision</a></li>' +
     '<li><a href="offerings.html">Anvil &middot; Engineer</a></li>' +
     '<li><a href="offerings.html">Orion &middot; Manufacture</a></li>' +
-    '<li><a href="offerings.html">Frontier &middot; Improve</a></li>' +
+    '<li><a href="offerings.html">Atlas &middot; Improve</a></li>' +
     '</ul></div>' +
     '<div><h4>Contact</h4><ul>' +
     '<li><a href="mailto:info@nemilmm.com">info@nemilmm.com</a></li>' +
