@@ -725,6 +725,31 @@ h1, h2, h3, h4 {
   .cta-short__lead { max-width: none; }
 }
 
+/* full variant: full-height closing section, centered stack over the weld video */
+.cta-band--full {
+  min-height: 100vh;
+  display: flex; align-items: center;
+  text-align: center;
+  padding: clamp(5rem, 10vw, 8rem) 0;
+  border-top: 1px solid rgba(46, 230, 168, 0.22);
+}
+.cta-band--full .sec-bgvideo { filter: saturate(0.36) brightness(0.6) contrast(1.08); }
+.cta-band--full .sec-bgveil {
+  background:
+    radial-gradient(ellipse 120% 90% at 50% 50%, rgba(7,7,7,0.5) 0%, rgba(7,7,7,0.82) 66%, rgba(7,7,7,0.95) 100%),
+    linear-gradient(to bottom, rgba(7,7,7,0.9) 0%, rgba(7,7,7,0.34) 42%, rgba(7,7,7,0.34) 58%, rgba(7,7,7,0.92) 100%);
+}
+.cta-full { display: flex; flex-direction: column; align-items: center; }
+.cta-full .eyebrow { position: relative; padding-left: 34px; }
+.cta-full .eyebrow::before {
+  content: ''; position: absolute; left: 0; top: 50%; width: 24px; height: 2px;
+  background: var(--s-accent); transform: translateY(-50%);
+}
+.cta-band--full .h-lg { margin: 1rem 0 0; max-width: 15em; line-height: 1.06; }
+.cta-band--full .lede { margin: 1.4rem auto 0; max-width: 40em; }
+.cta-full__actions { display: flex; gap: 14px; flex-wrap: wrap; justify-content: center; margin-top: 2.4rem; }
+.cta-band--full .btn { padding: 1rem 1.9rem; font-size: 0.82rem; }
+
 /* ---------- footer (always dark) ---------- */
 
 footer {
