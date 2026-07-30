@@ -281,16 +281,28 @@ h1, h2, h3, h4 {
   letter-spacing: 0.14em;
   text-transform: uppercase;
   cursor: pointer;
-  transition: all 0.25s;
+  /* explicit list, never `all`: `all` includes clip-path, so the notched corner
+     re-animated on any width recalc (web-font swap) and visibly jumped */
+  transition: background-color 0.25s ease, border-color 0.25s ease, color 0.25s ease;
 }
 .btn:hover { background: var(--s-btn-hover); border-color: var(--s-btn-hover); }
 
+/* The clip-path cuts the top-right diagonal, and a border is painted inside the
+   element, so the diagonal is left unstroked. A border-only button therefore
+   shows a broken outline at the notch. Give the ghost variant a translucent
+   fill instead of an outline, so the notched shape reads on its own. */
 .btn-ghost {
-  background: transparent;
-  border-color: var(--s-line-strong);
+  background: rgba(233, 238, 231, 0.10);
+  -webkit-backdrop-filter: blur(6px);
+  backdrop-filter: blur(6px);
+  border-color: transparent;
   color: var(--s-text);
 }
-.btn-ghost:hover { background: transparent; border-color: var(--s-accent); color: var(--s-accent); }
+.btn-ghost:hover {
+  background: rgba(233, 238, 231, 0.18);
+  border-color: transparent;
+  color: var(--s-text);
+}
 
 .nav .btn {
   padding: 0.6rem 1.2rem;
@@ -777,6 +789,8 @@ footer {
 .foot-grid a:hover { color: #FFFFFF; }
 .foot-brand { color: #FFFFFF; font-weight: 700; font-size: 1.1rem; letter-spacing: 0.3em; margin-bottom: 1rem; }
 .foot-brand span { color: var(--mint); }
+.foot-logo { display: inline-block; margin-bottom: 1.1rem; }
+.foot-logo img { height: 30px; width: auto; display: block; }
 .foot-tag { max-width: 26em; line-height: 1.7; }
 .foot-certs { display: flex; gap: 0.8rem; margin-top: 1.6rem; flex-wrap: wrap; }
 .foot-cert {
@@ -1153,10 +1167,61 @@ footer {
 .crops span:nth-child(3) { bottom: 22px; left: 26px; }
 .crops span:nth-child(4) { bottom: 22px; right: 26px; }
 
-/* Fortress factories — 2x2 real-photo grid */
-.fort-photos { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
-.fort-photos .img-block { aspect-ratio: 4/3; }
-@media (max-width: 700px) { .fort-photos { grid-template-columns: 1fr; } }
+/* blueprint grid backdrop — replaces the molten bg video on the Factories
+   section; same mint grid the page heroes use, faded toward the text side */
+.sec-grid {
+  position: absolute; inset: 0; pointer-events: none; opacity: 0.55;
+  background-image:
+    linear-gradient(rgba(16, 163, 126, 0.10) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(16, 163, 126, 0.10) 1px, transparent 1px);
+  background-size: 56px 56px;
+  -webkit-mask-image: radial-gradient(120% 90% at 70% 50%, #000 40%, transparent 100%);
+  mask-image: radial-gradient(120% 90% at 70% 50%, #000 40%, transparent 100%);
+}
+
+/* Fortress factories — six capability tiles on a fixed 2x3 grid.
+   Both columns start and finish flush; the visual variety comes from unequal
+   ROW heights, not from offsetting a column, so nothing is left hanging.
+   Motion lives on .ib-par (the image inside each frame), never on the grid,
+   so the alignment holds at every scroll position. */
+.fort-photos {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1.16fr 0.9fr 1.04fr;
+  gap: 14px;
+  height: clamp(430px, 66vh, 640px);
+}
+.fort-photos .img-block { height: 100%; aspect-ratio: auto; }
+
+/* parallax layer: over-sized so it can drift without exposing an edge */
+.fort-photos .ib-par {
+  position: absolute; left: 0; right: 0; top: -9%; bottom: -9%;
+  display: block; will-change: transform;
+}
+.fort-photos .ib-par img { width: 100%; height: 100%; object-fit: cover; display: block; }
+
+/* tiles resolve in a diagonal sweep, top-left to bottom-right */
+.fort-photos .img-block {
+  opacity: 0; transform: translateY(14px) scale(0.988);
+  transition: opacity 0.65s cubic-bezier(0.22, 1, 0.36, 1), transform 0.65s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.fort-photos.in .img-block { opacity: 1; transform: none; }
+.fort-photos .img-block:nth-child(1) { transition-delay: 0.04s; }
+.fort-photos .img-block:nth-child(2) { transition-delay: 0.12s; }
+.fort-photos .img-block:nth-child(3) { transition-delay: 0.10s; }
+.fort-photos .img-block:nth-child(4) { transition-delay: 0.18s; }
+.fort-photos .img-block:nth-child(5) { transition-delay: 0.16s; }
+.fort-photos .img-block:nth-child(6) { transition-delay: 0.24s; }
+
+@media (max-width: 700px) {
+  .fort-photos { grid-template-columns: 1fr; grid-template-rows: none; height: auto; }
+  .fort-photos .img-block { aspect-ratio: 16 / 10; height: auto; }
+  .fort-photos .ib-par { transform: none !important; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .fort-photos .ib-par { transform: none !important; }
+  .fort-photos .img-block { opacity: 1; transform: none; transition: none; }
+}
 
 /* ---------- brand alignment pass: hero + type ---------- */
 /* Headlines are sentence case in the brand system; caps live in mono labels only */
@@ -1208,7 +1273,7 @@ h1, h2, h3, h4 { text-transform: none; letter-spacing: -0.015em; }
   .sec-fit > .container { width: 100%; }
   .sec-fit .split { align-items: center; }
   .sec-fit .fort-photos { gap: 12px; }
-  .sec-fit .fort-photos .img-block { aspect-ratio: 16 / 10; }
+  /* the grid sets its own height; tiles fill their row, so no aspect override */
   .sec-fit .stats { margin-top: clamp(1.4rem, 3vh, 2.4rem) !important; }
   .sec-fit .stat { padding: 16px 20px; }
   .sec-fit .stat .v { font-size: clamp(26px, 2.4vw, 34px); }
@@ -2022,14 +2087,43 @@ h1, h2, h3, h4 { text-transform: none; letter-spacing: -0.015em; }
   .nav__drop { position: static; transform: none; opacity: 1; visibility: visible; border: 0; background: transparent; padding: 0 0 0 18px; }
 }
 
-/* hero H1 typewriter caret */
-.hero h1 .hero-type { display: inline; }
-.hero h1.typing .hero-type::after {
+/* hero H1 typewriter caret — sits after the last typed character (later spans
+   are empty until typed). The .typing class is never removed, so the caret
+   keeps blinking after the line finishes rather than disappearing. */
+.hero h1.typing .hero-live::after {
   content: ''; display: inline-block; width: 3px; height: 0.82em;
   margin-left: 6px; vertical-align: -0.04em; background: var(--mint);
   animation: heroCaret 0.7s step-end infinite;
 }
 @keyframes heroCaret { 50% { opacity: 0; } }
+
+/* headline stays plain white end to end — no highlight treatment */
+
+/* centred hero, no CTA row */
+.hero .container.hero--center { text-align: center; }
+.hero--center .lede { margin-left: auto; margin-right: auto; }
+/* One line. A hidden ghost of the finished string reserves the full width, so
+   the centred headline does not slide leftward as the caret types it out. */
+.hero--center h1 {
+  display: inline-grid;
+  white-space: nowrap;
+  margin-left: auto; margin-right: auto;
+}
+.hero--center h1 > span { grid-area: 1 / 1; text-align: left; }
+.hero-ghost { visibility: hidden; }
+@media (max-width: 900px) {
+  .hero--center h1 { display: block; white-space: normal; }
+  .hero-ghost { display: none; }
+}
+/* the description holds until the headline has finished typing */
+.hero-lede {
+  opacity: 0; transform: translateY(12px);
+  transition: opacity 0.75s ease, transform 0.75s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.hero-lede.is-in { opacity: 1; transform: none; }
+@media (prefers-reduced-motion: reduce) {
+  .hero-lede { opacity: 1; transform: none; transition: none; }
+}
 /* typewriter caret for the thesis line */
 .type-fx.typing::after {
   content: ''; display: inline-block; width: 2px; height: 0.95em;
@@ -2085,13 +2179,47 @@ h1, h2, h3, h4 { text-transform: none; letter-spacing: -0.015em; }
   box-shadow: -34px 24px 80px rgba(0,0,0,0.65);
 }
 .suite-media figure::after {
-  /* dark veil — the screenshot sits dimmed inside its box */
-  content: ''; position: absolute; inset: 0; pointer-events: none;
-  background: linear-gradient(90deg, rgba(7,7,7,0.55) 0%, rgba(7,7,7,0.3) 35%, rgba(7,7,7,0.25) 100%);
+  /* light veil only on the text side — the screenshot itself stays bright */
+  content: ''; position: absolute; inset: 38px 0 0 0; pointer-events: none;
+  background: linear-gradient(90deg, rgba(7,7,7,0.38) 0%, rgba(7,7,7,0.08) 30%, rgba(7,7,7,0) 55%);
 }
+
+/* browser-window chrome — each suite screenshot presented as a live app window */
+.suite-media figure { padding-top: 38px; box-sizing: border-box; }
+.dev-bar {
+  position: absolute; top: 0; left: 0; right: 0; height: 38px; z-index: 3;
+  display: flex; align-items: center; gap: 12px; padding: 0 16px; margin: 0;
+  background: linear-gradient(180deg, #131715, #0B0E0C);
+  border-bottom: 1px solid rgba(233, 238, 231, 0.12);
+}
+.dev-dots { display: inline-flex; gap: 7px; }
+.dev-dots span { width: 9px; height: 9px; border-radius: 50%; display: block; }
+.dev-dots span:nth-child(1) { background: #FF5F57; }
+.dev-dots span:nth-child(2) { background: #FEBC2E; }
+.dev-dots span:nth-child(3) { background: #28C840; }
+.dev-app {
+  font-family: 'IBM Plex Mono', monospace; font-size: 0.62rem; font-weight: 600;
+  letter-spacing: 0.16em; text-transform: uppercase;
+  color: rgba(233, 238, 231, 0.78);
+}
+.dev-live {
+  margin-left: auto;
+  font-family: 'IBM Plex Mono', monospace; font-size: 0.56rem; font-weight: 600;
+  letter-spacing: 0.18em; text-transform: uppercase;
+  color: var(--mint);
+  border: 1px solid rgba(16, 163, 126, 0.4);
+  padding: 3px 10px;
+}
+.dev-live::before {
+  content: ''; display: inline-block; width: 6px; height: 6px; margin-right: 7px;
+  border-radius: 50%; background: var(--mint); vertical-align: 1px;
+  animation: devPulse 1.6s ease-in-out infinite;
+}
+@keyframes devPulse { 50% { opacity: 0.35; } }
+@media (prefers-reduced-motion: reduce) { .dev-live::before { animation: none; } }
 .suite-media img {
   width: 100%; height: 100%; object-fit: contain; object-position: center center; display: block;
-  filter: saturate(0.9) brightness(0.72);
+  filter: saturate(0.96) brightness(0.94);
 }
 .suite-infos { position: absolute; left: 0; top: 0; bottom: 0; width: 32%; z-index: 20; }
 .suite-info {
@@ -2130,3 +2258,9 @@ h1, h2, h3, h4 { text-transform: none; letter-spacing: -0.015em; }
   .suite-infos { position: static; width: 100%; }
   .suite-info { position: static; margin-top: 1.6rem; opacity: 1 !important; transform: none !important; pointer-events: auto; }
 }
+
+.foot-wrap { max-width: 1280px; margin: 0 auto; padding: 0 24px; }
+
+/* marquee cards: light placeholder behind images — a not-yet-loaded card must
+   read as paper, never as a black box against this light section */
+.mkt-slide { background: #EFEBE2; }

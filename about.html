@@ -8,7 +8,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="assets/css/style.css?v=102">
+<link rel="stylesheet" href="assets/css/style.css?v=128">
 </head>
 <body>
 
@@ -19,7 +19,7 @@
       <a href="index.html">Home</a>
       <a href="about.html" class="active">About Us</a>
             <a href="offerings.html">Offerings</a>
-      <a href="blog.html">Blog</a>
+      <a href="blog.html">Resources</a>
 <a href="careers.html">Careers</a>
       <a href="contact.html" class="nav__cta">Contact</a>
     </nav>
@@ -29,14 +29,20 @@
 
 <!-- PAGE HERO -->
 <section class="phero">
-  <video class="bgvideo" src="assets/video/hero-robots.mp4?v=1" autoplay muted loop playsinline preload="auto" aria-hidden="true"></video>
+  <div class="phero-slides" aria-hidden="true">
+    <img class="bgvideo phero-slide on" src="assets/img/nemi-team-2.jpg?v=1" alt="">
+    <img class="bgvideo phero-slide" src="assets/img/nemi-team-3.jpg?v=2" alt="" loading="lazy">
+    <img class="bgvideo phero-slide" src="assets/img/nemi-team-mill.jpg?v=1" alt="" loading="lazy">
+    <img class="bgvideo phero-slide" src="assets/img/nemi-team-press.jpg?v=1" alt="" loading="lazy">
+    <img class="bgvideo phero-slide" src="assets/img/nemi-team-grinder.jpg?v=1" alt="" loading="lazy">
+    <img class="bgvideo phero-slide" src="assets/img/nemi-team-lab.jpg?v=1" alt="" loading="lazy">
+  </div>
   <div class="bgvideo__overlay"></div>
   <div class="hero__grid"></div>
   <div class="crops" aria-hidden="true"><span>+</span><span>+</span><span>+</span><span>+</span></div>
   <div class="wrap">
     <div class="kicker">About NEMI</div>
     <h1 style="margin-top:22px">Built by people<br><span class="accent">who ship hardware.</span></h1>
-    <p>NEMI is a Texas corporation building the Large Manufacturing Model, and proving it every day by manufacturing, profitably. Active in Chennai and Coimbatore, more coming soon.</p>
   </div>
 </section>
 
@@ -92,7 +98,7 @@
       <div class="era era--flip era--today">
         <div class="era__node" aria-hidden="true"></div>
         <div class="era__visual rv-r">
-          <div class="era__frame"><img src="assets/img/about-physical-ai.jpg?v=5" alt="A humanoid robot on a modern manufacturing floor alongside engineers" ></div>
+          <div class="era__frame"><img src="assets/img/about-physical-ai.jpg?v=6" alt="Industrial robot arm running an automated production cell" ></div>
         </div>
         <div class="era__info rv-l rv-d1">
           <div class="era__year">2026<span class="era__today">TODAY</span></div>
@@ -113,7 +119,7 @@
     <div class="split">
       <div>
         <h2 style="margin-top:18px">NEMI builds the <span class="accent-deep">Large Manufacturing Model.</span></h2>
-        <p>The AI stack that runs the entire arc of a physical product, proven every day in our own full-stack factories and sold as Manufacturing-as-a-Service. Active in Chennai and Coimbatore.</p>
+        <p>The AI stack that runs the entire arc of a physical product, proven every day in our own full-stack factories and sold as Manufacturing-as-a-Service. Active in Chennai and Coimbatore. More locations coming soon.</p>
         <div class="certs-inline">
           <div class="cert-chip"><b>AS9100D:2016</b><span>Aerospace QMS · Certified</span></div>
           <div class="cert-chip"><b>ISO 9001:2015</b><span>Quality Management · Certified</span></div>
@@ -133,26 +139,26 @@
       <p>Four decades of manufacturing muscle, AI at 100M-user scale, and two Ivy MBAs on the same floor in Coimbatore.</p>
     </div>
     <div class="team-grid">
-      <div class="person"><div class="person__name">Anirudh Ravi Narayanan</div><div class="person__role">CEO</div></div>
-      <div class="person"><div class="person__name">Gokul Madhavan</div><div class="person__role">CFO</div></div>
-      <div class="person"><div class="person__name">Shreerith Seshadri</div><div class="person__role">CTO</div></div>
-      <div class="person"><div class="person__name">Vinoth Thiruvenkatasamy</div><div class="person__role">COO</div></div>
+      <div class="person"><div class="person__name">Anirudh Ravi Narayanan</div><div class="person__role">Chief Executive Officer</div></div>
+      <div class="person"><div class="person__name">Gokul Madhavan</div><div class="person__role">Chief Financial Officer</div></div>
+      <div class="person"><div class="person__name">Shreerith Seshadri</div><div class="person__role">Chief Technology Officer</div></div>
+      <div class="person"><div class="person__name">Vinoth Thiruvenkatasamy</div><div class="person__role">Chief Operating Officer</div></div>
     </div>
 
     <div class="head" style="margin-top:64px;margin-bottom:32px">
-      <div class="kicker">Subsidiary leadership</div>
-      <h2 style="font-size:clamp(24px,3vw,34px)">Presidents with 20–30 years of domain ownership each.</h2>
+      <div class="kicker">Business unit leaders</div>
+      <h2 style="font-size:clamp(24px,3vw,34px)">Business Unit Leaders with 20&ndash;30 years of domain ownership each.</h2>
     </div>
-    <div class="team-grid team-sub" style="grid-template-columns:repeat(4,1fr)">
-      <div class="person"><div class="person__name">Sadasivam B</div><div class="person__role">President · LMM India Dev</div></div>
-      <div class="person"><div class="person__name">Vijay Ragavalu</div><div class="person__role">President · MaaS India</div></div>
-      <div class="person"><div class="person__name">Vijay Ramakrishnan</div><div class="person__role">President · India Commercial</div></div>
-      <div class="person"><div class="person__name">Subramanian R</div><div class="person__role">CFO · India</div></div>
+    <div class="team-grid team-inline">
+      <div class="person"><div class="person__name">Sadasivam B</div><div class="person__role">Business Unit Leader &middot; LMM India Dev</div></div>
+      <div class="person"><div class="person__name">Vijay Ragavalu</div><div class="person__role">Business Unit Leader &middot; MaaS India</div></div>
+      <div class="person"><div class="person__name">Vijay Ramakrishnan</div><div class="person__role">Business Unit Leader &middot; MaaS India Commercial</div></div>
+      <div class="person"><div class="person__name">Subramanian R</div><div class="person__role">Chief Financial Officer · India</div></div>
     </div>
 
     <div class="head" style="margin-top:56px;margin-bottom:32px">
-      <div class="kicker">Advisors</div>
-      <h2 style="font-size:clamp(24px,3vw,34px)">A bench that has run the industry we are automating.</h2>
+      <div class="kicker">Advisory bench</div>
+      <h2 style="font-size:clamp(24px,3vw,34px)">The Advisory Bench, they have run the industry we are automating.</h2>
     </div>
     <div class="team-grid team-sub" style="grid-template-columns:repeat(5,1fr)">
       <div class="person"><div class="person__name">Vinod K. Dasari</div><div class="person__role">Ex-CEO · Ashok Leyland</div></div>
@@ -249,26 +255,50 @@
   </div>
 </section>
 
-<footer class="footer">
-  <div class="wrap">
-    <div class="footer__top">
-      <div class="footer__brand">
-        <img src="assets/img/logo-dark.png" alt="NEMI">
-        <div class="name">NEMI LMM</div>
-        <p>NEMI AI builds Physical AI for manufacturing, the Large Manufacturing Model, one AI system that designs, manufactures and improves physical products end-to-end, proven every day in our owned, full-stack factories.</p>
+<footer>
+  <div class="foot-wrap">
+    <div class="foot-grid">
+      <div>
+        <a class="foot-logo" href="index.html"><img src="assets/img/logo-dark.png" alt="NEMI"></a>
+        <p class="foot-tag">NEMI LMM for Physical AI.<br>Stafford, Texas &middot; Chennai &middot; Coimbatore, India</p>
+        <div class="foot-certs"><span class="foot-cert">AS9100D:2016</span><span class="foot-cert">ISO 9001:2015</span></div>
       </div>
-      <div><h4>NEMI</h4><ul><li><a href="index.html">Home</a></li><li><a href="about.html">About Us</a></li><li><a href="offerings.html">Offerings</a></li><li><a href="careers.html">Careers</a></li></ul></div>
-      <div class="footer__contact">
-        <h4>Contact us</h4>
-        <ul><li><a href="mailto:info@nemilmm.com">info@nemilmm.com</a></li><li><a href="tel:+910000000000">+91 00000 00000</a></li></ul>
-        <p>Full-stack, end-to-end manufacturing automation with Physical AI. US-headquartered in Stafford, Texas, with factories in Coimbatore, India.</p>
-      </div>
+      <div><h4>NEMI</h4><ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="about.html">About Us</a></li>
+        <li><a href="offerings.html">Offerings</a></li>
+        <li><a href="blog.html">Resources</a></li>
+        <li><a href="careers.html">Careers</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul></div>
+      <div><h4>Platform</h4><ul>
+        <li><a href="offerings.html">Anvil &middot; Engineer</a></li>
+        <li><a href="offerings.html">Orion &middot; Manufacture</a></li>
+        <li><a href="offerings.html">Atlas &middot; Improve</a></li>
+      </ul></div>
+      <div><h4>Contact</h4><ul>
+        <li><a href="mailto:info@nemilmm.com">info@nemilmm.com</a></li>
+        <li><a href="tel:+910000000000">+91 00000 00000</a></li>
+      </ul></div>
     </div>
-    <div class="footer__bar"><span>© 2026 NEMI AI · PHYSICAL AI · MANUFACTURING-AS-A-SERVICE</span><span>www.nemilmm.com</span></div>
+    <div class="foot-base"><span>&copy; 2026 NEMI AI. All rights reserved.</span><span>Stafford, Texas &middot; Chennai &middot; Coimbatore, India</span><span><a href="mailto:info@nemilmm.com">info@nemilmm.com</a></span></div>
   </div>
 </footer>
 
 <script src="assets/js/fx.js"></script>
+<script>
+(function(){
+  var slides=document.querySelectorAll(".phero-slide");
+  if(slides.length<2) return;
+  if(window.matchMedia && matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+  var cur=0;
+  setInterval(function(){
+    slides[cur].classList.remove("on");
+    cur=(cur+1)%slides.length;
+    slides[cur].classList.add("on");
+  }, 4500);
+})();
+</script>
 </body>
 </html>
 

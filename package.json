@@ -1,0 +1,12 @@
+{
+  "name": "nemi-site",
+  "version": "1.0.0",
+  "private": true,
+  "description": "NEMI LMM marketing site + platform-neutral OTP email verification.",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "engines": {
+    "node": ">=18"
+  }
+}

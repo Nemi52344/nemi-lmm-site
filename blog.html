@@ -3,12 +3,12 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Blog, NEMI AI</title>
-<meta name="description" content="Case studies and writing from NEMI AI. Programs run on the Large Manufacturing Model, from a production-ready EV in 9 months to flight-critical parts held at 10-15 microns.">
+<title>Resources, NEMI AI</title>
+<meta name="description" content="Resources from NEMI AI: case studies of programs run on the Large Manufacturing Model, quality certifications, and answers to common questions about NEMI LMM.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="assets/css/style.css?v=102">
+<link rel="stylesheet" href="assets/css/style.css?v=128">
 </head>
 <body>
 
@@ -19,7 +19,7 @@
       <a href="index.html">Home</a>
       <a href="about.html">About Us</a>
       <a href="offerings.html">Offerings</a>
-      <a href="blog.html" class="active">Blog</a>
+      <a href="blog.html" class="active">Resources</a>
       <a href="careers.html">Careers</a>
       <a href="contact.html" class="nav__cta">Contact</a>
     </nav>
@@ -27,23 +27,110 @@
   </div>
 </header>
 
-<!-- PAGE HERO -->
-<section class="phero">
-  <video class="bgvideo" src="assets/video/case-hero.mp4" autoplay muted loop playsinline preload="auto" aria-hidden="true"></video>
-  <div class="bgvideo__overlay"></div>
-  <div class="hero__grid"></div>
-  <div class="crops" aria-hidden="true"><span>+</span><span>+</span><span>+</span><span>+</span></div>
+<!-- RESOURCES HUB · typographic header, no media -->
+<section class="bg-ink bp res-hub">
   <div class="wrap">
-    <div class="kicker">Blog &middot; NEMI AI</div>
-    <h1 style="margin-top:22px">What the model has<br><span class="accent">already built.</span></h1>
-    <p>Programs run end-to-end on the LMM, in our own factories. Every one of them shipped.</p>
+    <div class="kicker">Resources &middot; NEMI AI</div>
+    <h1>The proof, the papers,<br><span class="accent">and the plan.</span></h1>
+    <div class="res-index">
+      <a class="res-card" href="#case-studies">
+        <span class="res-card__t">Case studies</span>
+        <span class="res-card__d">Programs run end-to-end on the LMM, in our own factories. Every one shipped.</span>
+        <span class="res-card__go">Browse &darr;</span>
+      </a>
+      <a class="res-card" href="#master-plan">
+        <span class="res-card__t">The Master Plan</span>
+        <span class="res-card__d">The founder&rsquo;s letter: why NEMI exists, and the three phases of the plan.</span>
+        <span class="res-card__go">Read &darr;</span>
+      </a>
+      <a class="res-card" href="#faq">
+        <span class="res-card__t">Get to know NEMI LMM</span>
+        <span class="res-card__d">Straight answers to the questions we hear most.</span>
+        <span class="res-card__go">Ask &darr;</span>
+      </a>
+    </div>
   </div>
 </section>
 
-<!-- MASTER PLAN · first section -->
+<!-- CASE STUDIES · SLIDER -->
+<section class="bg-oat bp bp--light" id="case-studies">
+  <div class="wrap">
+    <div class="slider-head">
+      <div class="head" style="margin-bottom:0">
+        <div class="offer-num" style="color:var(--emerald)">Case studies</div>
+        <h2>Programs, <span class="accent-deep">start to shipped.</span></h2>
+      </div>
+      <div class="slider-nav">
+        <button class="slider-btn" id="csPrev" aria-label="Previous case study">&larr;</button>
+        <button class="slider-btn" id="csNext" aria-label="Next case study">&rarr;</button>
+      </div>
+    </div>
+
+    <div class="cslide" id="csTrack">
+      <a class="cslide__card" href="case-messenger.html">
+        <div class="cslide__media"><img src="assets/img/case/bnc-hero.png" alt="BNC electric fleet motorcycle" loading="lazy"><div class="cs-graph" aria-hidden="true"><span class="cs-graph__t">Time to production</span><div class="cs-bar"><span class="cs-bar__l">Industry</span><span class="cs-bar__track"><span class="cs-bar__fill" style="width:100%"></span></span><span class="cs-bar__v">18 mo</span></div><div class="cs-bar cs-bar--nemi"><span class="cs-bar__l">NEMI</span><span class="cs-bar__track"><span class="cs-bar__fill" style="width:50%"></span></span><span class="cs-bar__v">9 mo</span></div></div></div>
+        <div class="cslide__body">
+          <span class="cslide__scope">Mobility &middot; EV</span>
+          <h3>A production-ready EV in 9 months.</h3>
+          <div class="cslide__metrics">
+            <div><b>18 &rarr; 9 mo</b><span>to production</span></div>
+            <div><b>&lt;$1M</b><span>program cost</span></div>
+          </div>
+          <span class="cslide__more">Read the case study &rarr;</span>
+        </div>
+      </a>
+
+      <a class="cslide__card" href="case-pmi.html">
+        <div class="cslide__media"><img src="assets/img/case/aero-hero.jpg" alt="Aerospace structural clamp on the VMC" loading="lazy"><div class="cs-graph" aria-hidden="true"><span class="cs-graph__t">Runtime per job</span><div class="cs-bar"><span class="cs-bar__l">Typical</span><span class="cs-bar__track"><span class="cs-bar__fill" style="width:100%"></span></span><span class="cs-bar__v">7 hrs</span></div><div class="cs-bar cs-bar--nemi"><span class="cs-bar__l">NEMI</span><span class="cs-bar__track"><span class="cs-bar__fill" style="width:43%"></span></span><span class="cs-bar__v">3 hrs</span></div></div></div>
+        <div class="cslide__body">
+          <span class="cslide__scope">Aerospace &middot; Structural</span>
+          <h3>Flight-critical clamp, held at 10&ndash;15 &mu;m.</h3>
+          <div class="cslide__metrics">
+            <div><b>7 &rarr; 3 hrs</b><span>runtime per job</span></div>
+            <div><b>~15 / day</b><span>serial supply</span></div>
+          </div>
+          <span class="cslide__more">Read the case study &rarr;</span>
+        </div>
+      </a>
+
+      <a class="cslide__card" href="case-coffee.html">
+        <div class="cslide__media"><img src="assets/img/case/coffee-hero.jpg" alt="Smart filter-coffee vending machine" loading="lazy"><div class="cs-graph" aria-hidden="true"><span class="cs-graph__t">BOM cost</span><div class="cs-bar"><span class="cs-bar__l">Before</span><span class="cs-bar__track"><span class="cs-bar__fill" style="width:100%"></span></span><span class="cs-bar__v">100%</span></div><div class="cs-bar cs-bar--nemi"><span class="cs-bar__l">NEMI</span><span class="cs-bar__track"><span class="cs-bar__fill" style="width:80%"></span></span><span class="cs-bar__v">&minus;20%</span></div></div></div>
+        <div class="cslide__body">
+          <span class="cslide__scope">Consumer Appliances</span>
+          <h3>A vending-machine line in 5 weeks.</h3>
+          <div class="cslide__metrics">
+            <div><b>400 / mo</b><span>zero tooling</span></div>
+            <div><b>&minus;20%</b><span>BOM cost</span></div>
+          </div>
+          <span class="cslide__more">Read the case study &rarr;</span>
+        </div>
+      </a>
+
+      <a class="cslide__card" href="case-drone.html">
+        <div class="cslide__media"><img src="assets/img/case/drone-hero.jpg" alt="Carbon-fibre defense UAS" loading="lazy"><div class="cs-graph" aria-hidden="true"><span class="cs-graph__t">Powertrain development</span><div class="cs-bar"><span class="cs-bar__l">Benchmark</span><span class="cs-bar__track"><span class="cs-bar__fill" style="width:100%"></span></span><span class="cs-bar__v">16 mo</span></div><div class="cs-bar cs-bar--nemi"><span class="cs-bar__l">NEMI</span><span class="cs-bar__track"><span class="cs-bar__fill" style="width:25%"></span></span><span class="cs-bar__v">4 mo</span></div></div></div>
+        <div class="cslide__body">
+          <span class="cslide__scope">Defense &middot; UAS</span>
+          <h3>A drone powertrain, fully in-house.</h3>
+          <div class="cslide__metrics">
+            <div><b>16 &rarr; 4 mo</b><span>development</span></div>
+            <div><b>4 / 4</b><span>components in-house</span></div>
+          </div>
+          <span class="cslide__more">Read the case study &rarr;</span>
+        </div>
+      </a>
+    </div>
+
+    <div class="slider-dots" id="csDots" aria-hidden="true"></div>
+  </div>
+</section>
+
+
+<!-- MASTER PLAN · folded -->
 <section class="bg-ink bp sec-plan" id="master-plan">
   <div class="wrap">
-    <article class="letter">
+    <div class="plan-fold" id="planFold">
+      <div class="plan-fold__inner">
+        <article class="letter">
               <div class="letter__head">
                 <span class="letter__mark">The NEMI Master Plan</span>
                 <span class="letter__from">From the founder's desk</span>
@@ -101,91 +188,61 @@
                 <div class="letter__role">Founder &amp; CEO &middot; NEMI</div>
               </div>
             </article>
-  </div>
-</section>
-
-<!-- CASE STUDIES · SLIDER -->
-<section class="bg-oat bp bp--light">
-  <div class="wrap">
-    <div class="slider-head">
-      <div class="head" style="margin-bottom:0">
-        <div class="offer-num" style="color:var(--emerald)">Case studies</div>
-        <h2>Four programs, <span class="accent-deep">start to shipped.</span></h2>
-      </div>
-      <div class="slider-nav">
-        <button class="slider-btn" id="csPrev" aria-label="Previous case study">&larr;</button>
-        <button class="slider-btn" id="csNext" aria-label="Next case study">&rarr;</button>
       </div>
     </div>
-
-    <div class="cslide" id="csTrack">
-      <a class="cslide__card" href="case-messenger.html">
-        <div class="cslide__media"><img src="assets/img/case/bnc-hero.png" alt="BNC electric fleet motorcycle" loading="lazy"></div>
-        <div class="cslide__body">
-          <span class="cslide__scope">Mobility &middot; EV</span>
-          <h3>A production-ready EV in 9 months.</h3>
-          <div class="cslide__metrics">
-            <div><b>18 &rarr; 9 mo</b><span>to production</span></div>
-            <div><b>&lt;$1M</b><span>program cost</span></div>
-          </div>
-          <span class="cslide__more">Read the case study &rarr;</span>
-        </div>
-      </a>
-
-      <a class="cslide__card" href="case-pmi.html">
-        <div class="cslide__media"><img src="assets/img/case/aero-hero.jpg" alt="Aerospace structural clamp on the VMC" loading="lazy"></div>
-        <div class="cslide__body">
-          <span class="cslide__scope">Aerospace &middot; Structural</span>
-          <h3>Flight-critical clamp, held at 10&ndash;15 &mu;m.</h3>
-          <div class="cslide__metrics">
-            <div><b>7 &rarr; 3 hrs</b><span>runtime per job</span></div>
-            <div><b>~15 / day</b><span>serial supply</span></div>
-          </div>
-          <span class="cslide__more">Read the case study &rarr;</span>
-        </div>
-      </a>
-
-      <a class="cslide__card" href="case-coffee.html">
-        <div class="cslide__media"><img src="assets/img/case/coffee-hero.jpg" alt="Smart filter-coffee vending machine" loading="lazy"></div>
-        <div class="cslide__body">
-          <span class="cslide__scope">Consumer Appliances</span>
-          <h3>A vending-machine line in 5 weeks.</h3>
-          <div class="cslide__metrics">
-            <div><b>400 / mo</b><span>zero tooling</span></div>
-            <div><b>&minus;20%</b><span>BOM cost</span></div>
-          </div>
-          <span class="cslide__more">Read the case study &rarr;</span>
-        </div>
-      </a>
-
-      <a class="cslide__card" href="case-drone.html">
-        <div class="cslide__media"><img src="assets/img/case/drone-hero.jpg" alt="Carbon-fibre defense UAS" loading="lazy"></div>
-        <div class="cslide__body">
-          <span class="cslide__scope">Defense &middot; UAS</span>
-          <h3>A drone powertrain, fully in-house.</h3>
-          <div class="cslide__metrics">
-            <div><b>16 &rarr; 4 mo</b><span>development</span></div>
-            <div><b>4 / 4</b><span>components in-house</span></div>
-          </div>
-          <span class="cslide__more">Read the case study &rarr;</span>
-        </div>
-      </a>
+    <div class="plan-cta" style="text-align:center;margin-top:28px">
+      <button class="btn btn--signal" id="planToggle" aria-expanded="false" aria-controls="planFold">View the Full Plan &darr;</button>
     </div>
-
-    <div class="slider-dots" id="csDots" aria-hidden="true"></div>
+    <div class="plan-cta plan-close-float faded" id="planCloseWrap" style="display:none">
+      <button class="btn btn--signal" id="planCollapse" aria-controls="planFold">&uarr; Show less</button>
+    </div>
   </div>
 </section>
 
-<!-- WRITING · COMING SOON -->
-<section class="bg-bone bp bp--light">
+<!-- FAQ · GET TO KNOW NEMI LMM -->
+<section class="bg-oat bp bp--light" id="faq">
   <div class="wrap">
-    <div class="soon">
-      <div class="offer-num" style="color:var(--emerald)">Writing</div>
-      <h2>Notes from the floor, <span class="accent-deep">coming soon.</span></h2>
-      <p class="offer-lede">We are putting together writing on what we are learning building the LMM inside a working factory. Until then, the case studies above are the record.</p>
+    <div class="head">
+      <h2>Get to know <span class="accent-deep">NEMI LMM.</span></h2>
+      <p class="offer-lede">Straight answers to the questions we hear most.</p>
+    </div>
+    <div class="faq" style="margin-top:34px">
+      <details class="faq__item">
+        <summary>What is the Large Manufacturing Model (LMM)?</summary>
+        <p>One AI system that runs the entire arc of a physical product, from idea and engineering through manufacturing to field feedback. It is delivered through three suites: Anvil (engineering), Orion (the factory OS) and Atlas (field telemetry).</p>
+      </details>
+      <details class="faq__item">
+        <summary>Do you actually manufacture, or just provide software?</summary>
+        <p>We manufacture. NEMI owns and runs 300,000+ sq ft of full-stack factories in Chennai and Coimbatore, India, and sells that capacity as Manufacturing-as-a-Service. The LMM is trained inside these factories, on parts we ship.</p>
+      </details>
+      <details class="faq__item">
+        <summary>What can you make?</summary>
+        <p>Tooling and fixtures, special-purpose machines and robotics, precision metal parts to 10&ndash;15 &mu;m, battery packs, motors, electronics, plastics and composites, and complete complex assemblies, under one roof.</p>
+      </details>
+      <details class="faq__item">
+        <summary>How fast will I get a quote?</summary>
+        <p>Send an RFQ and we revert with a quote within 24 hours. For machined, flight-critical parts, our Speedshop has delivered first supply in under a week.</p>
+      </details>
+      <details class="faq__item">
+        <summary>Are you certified for aerospace and regulated work?</summary>
+        <p>Yes. Our factories are certified to AS9100D:2016 (aerospace quality management) and ISO 9001:2015, and hold flight-critical tolerances in serial supply.</p>
+      </details>
+      <details class="faq__item">
+        <summary>Where is NEMI based?</summary>
+        <p>US-headquartered in Stafford, Texas, with owned factories in Chennai and Coimbatore, India, and more locations coming.</p>
+      </details>
     </div>
   </div>
 </section>
+
+
+
+
+
+
+
+
+
 
 <!-- CTA -->
 <section class="bg-ink cta-band bp bp--full">
@@ -199,26 +256,55 @@
   </div>
 </section>
 
-<footer class="footer">
-  <div class="wrap">
-    <div class="footer__top">
-      <div class="footer__brand">
-        <img src="assets/img/logo-dark.png" alt="NEMI">
-        <div class="name">NEMI LMM</div>
-        <p>NEMI AI builds Physical AI for manufacturing, the Large Manufacturing Model, one AI system that designs, manufactures and improves physical products end-to-end, proven every day in our owned, full-stack factories.</p>
+<footer>
+  <div class="foot-wrap">
+    <div class="foot-grid">
+      <div>
+        <a class="foot-logo" href="index.html"><img src="assets/img/logo-dark.png" alt="NEMI"></a>
+        <p class="foot-tag">NEMI LMM for Physical AI.<br>Stafford, Texas &middot; Chennai &middot; Coimbatore, India</p>
+        <div class="foot-certs"><span class="foot-cert">AS9100D:2016</span><span class="foot-cert">ISO 9001:2015</span></div>
       </div>
-      <div><h4>NEMI</h4><ul><li><a href="index.html">Home</a></li><li><a href="about.html">About Us</a></li><li><a href="offerings.html">Offerings</a></li><li><a href="blog.html">Blog</a></li><li><a href="careers.html">Careers</a></li></ul></div>
-      <div class="footer__contact">
-        <h4>Contact us</h4>
-        <ul><li><a href="mailto:info@nemilmm.com">info@nemilmm.com</a></li><li><a href="tel:+910000000000">+91 00000 00000</a></li></ul>
-        <p>Full-stack, end-to-end manufacturing automation with Physical AI. US-headquartered in Stafford, Texas, with factories in Coimbatore, India.</p>
-      </div>
+      <div><h4>NEMI</h4><ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="about.html">About Us</a></li>
+        <li><a href="offerings.html">Offerings</a></li>
+        <li><a href="blog.html">Resources</a></li>
+        <li><a href="careers.html">Careers</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul></div>
+      <div><h4>Platform</h4><ul>
+        <li><a href="offerings.html">Anvil &middot; Engineer</a></li>
+        <li><a href="offerings.html">Orion &middot; Manufacture</a></li>
+        <li><a href="offerings.html">Atlas &middot; Improve</a></li>
+      </ul></div>
+      <div><h4>Contact</h4><ul>
+        <li><a href="mailto:info@nemilmm.com">info@nemilmm.com</a></li>
+        <li><a href="tel:+910000000000">+91 00000 00000</a></li>
+      </ul></div>
     </div>
-    <div class="footer__bar"><span>&copy; 2026 NEMI AI &middot; PHYSICAL AI &middot; MANUFACTURING-AS-A-SERVICE</span><span>www.nemilmm.com</span></div>
+    <div class="foot-base"><span>&copy; 2026 NEMI AI. All rights reserved.</span><span>Stafford, Texas &middot; Chennai &middot; Coimbatore, India</span><span><a href="mailto:info@nemilmm.com">info@nemilmm.com</a></span></div>
   </div>
 </footer>
 
 <script src="assets/js/fx.js"></script>
+<script>
+/* Resources hub: smooth-scroll the index cards down to their section */
+(function () {
+  var cards = document.querySelectorAll('.res-hub .res-card[href^="#"]');
+  if (!cards.length) return;
+  var navH = 72; /* clears the stuck nav */
+  Array.prototype.forEach.call(cards, function (card) {
+    card.addEventListener('click', function (e) {
+      var target = document.querySelector(card.getAttribute('href'));
+      if (!target) return;
+      e.preventDefault();
+      var y = target.getBoundingClientRect().top + window.pageYOffset - navH;
+      window.scrollTo({ top: y, behavior: 'smooth' });
+      if (history.replaceState) history.replaceState(null, '', card.getAttribute('href'));
+    });
+  });
+})();
+</script>
 <script>
 /* Case-study slider: scroll-snap track driven by arrows + dots */
 (function () {
@@ -267,6 +353,44 @@
   track.addEventListener('scroll', sync, { passive: true });
   window.addEventListener('resize', sync);
   sync();
+})();
+</script>
+<script>
+(function(){
+  var t=document.getElementById('planToggle'), f=document.getElementById('planFold');
+  var wrap=document.getElementById('planCloseWrap'), closeBtn=document.getElementById('planCollapse');
+  if(!t||!f) return;
+  var open=false, raf=0;
+  var size=function(){ if(open){ f.style.maxHeight=(f.querySelector('.plan-fold__inner').scrollHeight+40)+'px'; } };
+  /* the float shows only while the reader is inside the open letter:
+     fold spans the viewport midline; above or past it, the float fades */
+  var updateFloat=function(){
+    raf=0;
+    if(!open||!wrap) return;
+    var r=f.getBoundingClientRect(), mid=window.innerHeight/2;
+    var reading=r.top<mid && r.bottom>mid;
+    wrap.classList.toggle('faded', !reading);
+  };
+  var tick=function(){ if(!raf) raf=requestAnimationFrame(updateFloat); };
+  var expand=function(){
+    open=true;
+    f.classList.add('open'); size();
+    t.innerHTML='Show less &uarr;';
+    t.setAttribute('aria-expanded','true');
+    if(wrap){ wrap.style.display='block'; tick(); }
+  };
+  var collapse=function(){
+    open=false;
+    f.classList.remove('open'); f.style.maxHeight='';
+    t.innerHTML='View the Full Plan &darr;';
+    t.setAttribute('aria-expanded','false');
+    if(wrap){ wrap.style.display='none'; wrap.classList.add('faded'); }
+    f.scrollIntoView({behavior:'smooth',block:'start'});
+  };
+  t.addEventListener('click', function(){ open?collapse():expand(); });
+  if(closeBtn) closeBtn.addEventListener('click', collapse);
+  window.addEventListener('scroll', tick, {passive:true});
+  window.addEventListener('resize', function(){ size(); tick(); });
 })();
 </script>
 </body>

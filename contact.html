@@ -8,7 +8,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="assets/css/style.css?v=102">
+<link rel="stylesheet" href="assets/css/style.css?v=128">
 </head>
 <body>
 
@@ -19,7 +19,7 @@
       <a href="index.html">Home</a>
       <a href="about.html">About Us</a>
             <a href="offerings.html">Offerings</a>
-      <a href="blog.html">Blog</a>
+      <a href="blog.html">Resources</a>
 <a href="careers.html">Careers</a>
       <a href="contact.html" class="nav__cta active">Contact</a>
     </nav>
@@ -28,9 +28,7 @@
 </header>
 
 <!-- PAGE HERO -->
-<section class="phero">
-  <video class="bgvideo" id="contactHeroVid" src="assets/video/careers-hero.mp4?v=2" muted loop playsinline preload="auto" aria-hidden="true"></video>
-  <div class="bgvideo__overlay"></div>
+<section class="phero bp">
   <div class="hero__grid"></div>
   <div class="crops" aria-hidden="true"><span>+</span><span>+</span><span>+</span><span>+</span></div>
   <div class="wrap">
@@ -57,16 +55,25 @@
         <div class="cinfo-row"><div class="cinfo-k">Email</div><div class="cinfo-v"><a href="mailto:info@nemilmm.com">info@nemilmm.com</a></div></div>
         <div class="cinfo-row"><div class="cinfo-k">Phone</div><div class="cinfo-v"><a href="tel:+910000000000">+91 00000 00000</a></div></div>
         <div class="cinfo-row"><div class="cinfo-k">Headquarters</div><div class="cinfo-v">Stafford, Texas, USA</div></div>
-        <div class="cinfo-row"><div class="cinfo-k">Factories</div><div class="cinfo-v">Coimbatore, India</div></div>
+        <div class="cinfo-row"><div class="cinfo-k">Factories</div><div class="cinfo-v">Chennai &amp; Coimbatore, India<br><span class="cinfo-soon">More locations coming soon</span></div></div>
         <div class="cinfo-row"><div class="cinfo-k">Response</div><div class="cinfo-v">Within one business day</div></div>
       </div>
       <div class="cform" id="contactForm">
-        <form name="contact" method="POST" data-netlify="true" netlify-honeypot="bot-field" action="/">
+        <form name="contact" method="POST" data-netlify="true" netlify-honeypot="bot-field" action="/" enctype="multipart/form-data">
           <input type="hidden" name="form-name" value="contact">
           <p hidden><label>Leave this blank: <input name="bot-field"></label></p>
           <div class="field-row">
             <div class="field"><label for="cf-name">Your name</label><input id="cf-name" name="name" type="text" autocomplete="name" required></div>
             <div class="field"><label for="cf-email">Email</label><input id="cf-email" name="email" type="email" autocomplete="email" required></div>
+          </div>
+          <div class="otp-verify" data-otp>
+            <button type="button" class="btn btn--signal otp-send">Verify email</button>
+            <div class="otp-step" hidden>
+              <input class="otp-code" type="text" inputmode="numeric" maxlength="6" placeholder="000000" autocomplete="one-time-code" aria-label="6-digit verification code">
+              <button type="button" class="btn btn--ghost otp-confirm">Confirm</button>
+            </div>
+            <span class="otp-msg" role="status"></span>
+            <input type="hidden" name="email_verified" value="">
           </div>
           <div class="field-row">
             <div class="field"><label for="cf-company">Company</label><input id="cf-company" name="company" type="text" autocomplete="organization"></div>
@@ -80,10 +87,11 @@
               </select>
             </div>
           </div>
+          <div class="field"><label for="cf-file">Attachment &middot; CAD, drawing or resume (optional)</label><input id="cf-file" name="attachment" type="file" accept=".pdf,.doc,.docx,.step,.stp,.iges,.igs,.dxf,.dwg,.zip,.png,.jpg,.jpeg"></div>
           <div class="field"><label for="cf-msg">Message</label><textarea id="cf-msg" name="message" required placeholder="Tell us the spec, the timeline, or just say hello."></textarea></div>
           <button type="submit" class="btn btn--signal">Send message →</button>
         </form>
-        <div class="cform__ok"><b>Thanks — your message is in.</b><br>We'll get back to you within one business day.</div>
+        <div class="cform__ok"><b>Thanks, your message is in.</b><br>We'll get back to you within one business day.</div>
       </div>
     </div>
   </div>
@@ -116,55 +124,39 @@
   </div>
 </section>
 
-<footer class="footer">
-  <div class="wrap">
-    <div class="footer__top">
-      <div class="footer__brand">
-        <img src="assets/img/logo-dark.png" alt="NEMI">
-        <div class="name">NEMI LMM</div>
-        <p>NEMI AI builds Physical AI for manufacturing, the Large Manufacturing Model, one AI system that designs, manufactures and improves physical products end-to-end, proven every day in our owned, full-stack factories.</p>
+<footer>
+  <div class="foot-wrap">
+    <div class="foot-grid">
+      <div>
+        <a class="foot-logo" href="index.html"><img src="assets/img/logo-dark.png" alt="NEMI"></a>
+        <p class="foot-tag">NEMI LMM for Physical AI.<br>Stafford, Texas &middot; Chennai &middot; Coimbatore, India</p>
+        <div class="foot-certs"><span class="foot-cert">AS9100D:2016</span><span class="foot-cert">ISO 9001:2015</span></div>
       </div>
-      <div><h4>NEMI</h4><ul><li><a href="index.html">Home</a></li><li><a href="about.html">About Us</a></li><li><a href="offerings.html">Offerings</a></li><li><a href="blog.html">Blog</a></li><li><a href="careers.html">Careers</a></li></ul></div>
-      <div class="footer__contact">
-        <h4>Contact us</h4>
-        <ul><li><a href="mailto:info@nemilmm.com">info@nemilmm.com</a></li><li><a href="tel:+910000000000">+91 00000 00000</a></li></ul>
-        <p>Full-stack, end-to-end manufacturing automation with Physical AI. US-headquartered in Stafford, Texas, with factories in Coimbatore, India.</p>
-      </div>
+      <div><h4>NEMI</h4><ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="about.html">About Us</a></li>
+        <li><a href="offerings.html">Offerings</a></li>
+        <li><a href="blog.html">Resources</a></li>
+        <li><a href="careers.html">Careers</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul></div>
+      <div><h4>Platform</h4><ul>
+        <li><a href="offerings.html">Anvil &middot; Engineer</a></li>
+        <li><a href="offerings.html">Orion &middot; Manufacture</a></li>
+        <li><a href="offerings.html">Atlas &middot; Improve</a></li>
+      </ul></div>
+      <div><h4>Contact</h4><ul>
+        <li><a href="mailto:info@nemilmm.com">info@nemilmm.com</a></li>
+        <li><a href="tel:+910000000000">+91 00000 00000</a></li>
+      </ul></div>
     </div>
-    <div class="footer__bar"><span>© 2026 NEMI AI · PHYSICAL AI · MANUFACTURING-AS-A-SERVICE</span><span>www.nemilmm.com</span></div>
+    <div class="foot-base"><span>&copy; 2026 NEMI AI. All rights reserved.</span><span>Stafford, Texas &middot; Chennai &middot; Coimbatore, India</span><span><a href="mailto:info@nemilmm.com">info@nemilmm.com</a></span></div>
   </div>
 </footer>
 
 <script src="assets/js/fx.js"></script>
-<script>
-/* Contact form: AJAX submit (works with Netlify Forms), then show success inline */
-(function () {
-  var wrap = document.getElementById('contactForm');
-  if (!wrap) return;
-  var form = wrap.querySelector('form');
-  form.addEventListener('submit', function (e) {
-    e.preventDefault();
-    var btn = form.querySelector('button[type="submit"]');
-    if (btn) { btn.disabled = true; btn.textContent = 'Sending…'; }
-    var body = new URLSearchParams(new FormData(form)).toString();
-    fetch(form.getAttribute('action') || '/', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-      body: body
-    }).then(function () { wrap.classList.add('sent'); })
-      .catch(function () { wrap.classList.add('sent'); });
-  });
-})();
-/* Contact hero video: start 2 seconds after load (normal speed) */
-(function () {
-  var v = document.getElementById('contactHeroVid');
-  if (!v) return;
-  setTimeout(function () {
-    var p = v.play();
-    if (p && p.catch) p.catch(function () {});
-  }, 2000);
-})();
-</script>
+<script src="assets/js/otp.js?v=4"></script>
+<script src="assets/js/submit.js?v=1"></script>
 </body>
 </html>
 

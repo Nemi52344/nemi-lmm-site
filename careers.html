@@ -8,7 +8,19 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="assets/css/style.css?v=102">
+<link rel="stylesheet" href="assets/css/style.css?v=128">
+<style>
+  .apply-form { max-width: 640px; margin: 30px auto 0; text-align: left; }
+  .apply-form .apply-q { font-size: clamp(19px, 2.4vw, 24px); font-weight: 600; letter-spacing: -.4px; color: var(--ink); margin: 0 0 16px; line-height: 1.25; }
+  .apply-form textarea { min-height: 150px; }
+  /* separate the ambition band from the black hero above it */
+  .sec-ambition {
+    background:
+      radial-gradient(130% 120% at 0% 0%, rgba(16,163,126,.12), transparent 58%),
+      #0c1512;
+    border-top: 1px solid rgba(16,163,126,.30);
+  }
+</style>
 </head>
 <body class="page-careers">
 
@@ -19,7 +31,7 @@
       <a href="index.html">Home</a>
       <a href="about.html">About Us</a>
             <a href="offerings.html">Offerings</a>
-      <a href="blog.html">Blog</a>
+      <a href="blog.html">Resources</a>
 <a href="careers.html" class="active">Careers</a>
       <a href="contact.html" class="nav__cta">Contact</a>
     </nav>
@@ -28,9 +40,7 @@
 </header>
 
 <!-- PAGE HERO -->
-<section class="phero">
-  <video class="bgvideo" src="assets/video/factory-aerial.mp4?v=1" autoplay muted loop playsinline preload="auto" aria-hidden="true"></video>
-  <div class="bgvideo__overlay"></div>
+<section class="phero bp">
   <div class="hero__grid"></div>
   <div class="crops" aria-hidden="true"><span>+</span><span>+</span><span>+</span><span>+</span></div>
   <div class="wrap">
@@ -59,7 +69,7 @@
       <h2>How we <span class="accent-deep">build.</span></h2>
     </div>
     <div class="prin-split">
-      <figure class="prin-media"><img src="assets/img/care-robotics.jpg" alt="Building an in-house robot arm by hand" loading="lazy"></figure>
+      <figure class="prin-media"><img src="assets/img/care-build.jpg?v=6" alt="Senior engineer reviewing a spec with a colleague on the shop floor" loading="lazy"></figure>
       <div class="prin-cards">
         <div class="card"><h3>Start with first principles</h3><p>Strip it back to what is actually true, not what the industry does.</p></div>
         <div class="card"><h3>Do things differently</h3><p>Once you know what to do, rethink how it gets done.</p></div>
@@ -77,7 +87,7 @@
       <h2>How we <span class="accent-deep">lead.</span></h2>
     </div>
     <div class="prin-split prin-split--flip">
-      <figure class="prin-media"><img src="assets/img/care-floor-wide.jpg" alt="The main assembly floor at shift" loading="lazy"></figure>
+      <figure class="prin-media"><img src="assets/img/care-lead.jpg?v=5" alt="Two engineers reviewing a design on a laptop together" loading="lazy"></figure>
       <div class="prin-cards">
         <div class="card"><h3>You are an owner</h3><p>Everyone holds stock options. Speak up, even outside your remit.</p></div>
         <div class="card"><h3>Be clear on your objectives</h3><p>Know the measurable result. If you are not stretched, ask for more.</p></div>
@@ -96,22 +106,26 @@
   </div>
 </section>
 
-<!-- LIFE AT NEMI -->
-<section class="bg-bone bp sec-floor">
+<!-- LIFE AT NEMI · hidden for now -->
+<section class="bg-bone bp sec-floor" style="display:none">
   <div class="floor-marquee" aria-label="Life on the factory floor">
     <ul class="floor-track">
-      <li class="floor-tile"><img src="assets/img/care-engineering.jpg" alt="Engineers at the CNC" loading="lazy"></li>
-      <li class="floor-tile"><img src="assets/img/fac-battery.jpg" alt="Battery pack build" loading="lazy"></li>
-      <li class="floor-tile"><img src="assets/img/fac-station.jpg" alt="Workstation" loading="lazy"></li>
-      <li class="floor-tile"><img src="assets/img/care-lmm.jpg" alt="AI vision inward area" loading="lazy"></li>
-      <li class="floor-tile"><img src="assets/img/fac-aerial.jpg" alt="Aerial of the facility" loading="lazy"></li>
+      <li class="floor-tile"><img src="assets/img/care-floor-cnc.jpg" alt="Machinist operating a CNC machining centre" loading="lazy"></li>
+      <li class="floor-tile"><img src="assets/img/care-floor-parts.jpg" alt="Rows of machined metal frames on the shop floor" loading="lazy"></li>
+      <li class="floor-tile"><img src="assets/img/care-floor-team.jpg" alt="Team assembling a press die together" loading="lazy"></li>
+      <li class="floor-tile"><img src="assets/img/care-floor-aerial.jpg" alt="Overhead view of the NEMI assembly floor" loading="lazy"></li>
+      <li class="floor-tile"><img src="assets/img/care-floor-benches.jpg" alt="Operators at the electronics workbenches" loading="lazy"></li>
+      <li class="floor-tile"><img src="assets/img/care-floor-cad.jpg" alt="Engineer working on CAD at a design workstation" loading="lazy"></li>
+      <li class="floor-tile"><img src="assets/img/care-floor-review.jpg" alt="Senior engineer reviewing a spec with a colleague on the shop floor" loading="lazy"></li>
     </ul>
     <ul class="floor-track" aria-hidden="true">
-      <li class="floor-tile"><img src="assets/img/care-engineering.jpg" alt="" loading="lazy"></li>
-      <li class="floor-tile"><img src="assets/img/fac-battery.jpg" alt="" loading="lazy"></li>
-      <li class="floor-tile"><img src="assets/img/fac-station.jpg" alt="" loading="lazy"></li>
-      <li class="floor-tile"><img src="assets/img/care-lmm.jpg" alt="" loading="lazy"></li>
-      <li class="floor-tile"><img src="assets/img/fac-aerial.jpg" alt="" loading="lazy"></li>
+      <li class="floor-tile"><img src="assets/img/care-floor-cnc.jpg" alt="" loading="lazy"></li>
+      <li class="floor-tile"><img src="assets/img/care-floor-parts.jpg" alt="" loading="lazy"></li>
+      <li class="floor-tile"><img src="assets/img/care-floor-team.jpg" alt="" loading="lazy"></li>
+      <li class="floor-tile"><img src="assets/img/care-floor-aerial.jpg" alt="" loading="lazy"></li>
+      <li class="floor-tile"><img src="assets/img/care-floor-benches.jpg" alt="" loading="lazy"></li>
+      <li class="floor-tile"><img src="assets/img/care-floor-cad.jpg" alt="" loading="lazy"></li>
+      <li class="floor-tile"><img src="assets/img/care-floor-review.jpg" alt="" loading="lazy"></li>
     </ul>
   </div>
 </section>
@@ -123,31 +137,84 @@
     <h2 style="font-size:clamp(30px,5vw,64px);margin-top:20px;max-width:900px;margin-left:auto;margin-right:auto">Build the system<br><span class="accent">that builds everything else.</span></h2>
     <p style="max-width:560px;margin:22px auto 0;font-weight:300;color:rgba(236,231,221,.7)">No open roles listed right now, but we are always watching for people we haven't met yet. Send your best work.</p>
     <div style="margin-top:36px">
-      <a href="mailto:info@nemilmm.com?subject=Careers%20%E2%80%94%20NEMI" class="btn btn--signal" style="font-size:16px;padding:16px 32px">info@nemilmm.com →</a>
+      <button type="button" class="btn btn--signal" id="applyToggle" style="font-size:16px;padding:16px 32px">Submit your resume &rarr;</button>
+    </div>
+
+    <div class="cform apply-form" id="applyForm" hidden>
+      <form name="careers" method="POST" data-netlify="true" netlify-honeypot="bot-field" action="/" enctype="multipart/form-data">
+        <input type="hidden" name="form-name" value="careers">
+        <p hidden><label>Leave this blank: <input name="bot-field"></label></p>
+        <h3 class="apply-q">Tell us why you want to join NEMI.</h3>
+        <div class="field"><label for="ca-msg">Your message</label><textarea id="ca-msg" name="message" required placeholder="What draws you to Physical AI, what you'd want to build here, and the work you're proudest of shipping."></textarea></div>
+        <div class="field"><label for="ca-file">Resume &middot; PDF (required)</label><input id="ca-file" name="resume" type="file" accept=".pdf" required></div>
+        <div class="field-row">
+          <div class="field"><label for="ca-name">Your name</label><input id="ca-name" name="name" type="text" autocomplete="name" required></div>
+          <div class="field"><label for="ca-email">Email</label><input id="ca-email" name="email" type="email" autocomplete="email" required></div>
+        </div>
+        <div class="otp-verify" data-otp>
+          <button type="button" class="btn btn--signal otp-send">Verify email</button>
+          <div class="otp-step" hidden>
+            <input class="otp-code" type="text" inputmode="numeric" maxlength="6" placeholder="000000" autocomplete="one-time-code" aria-label="6-digit verification code">
+            <button type="button" class="btn btn--ghost otp-confirm">Confirm</button>
+          </div>
+          <span class="otp-msg" role="status"></span>
+          <input type="hidden" name="email_verified" value="">
+        </div>
+        <button type="submit" class="btn btn--signal">Send application &rarr;</button>
+      </form>
+      <div class="cform__ok"><b>Thanks, your application is in.</b><br>We read every one and reach out when there's a fit.</div>
     </div>
   </div>
 </section>
 
-<footer class="footer">
-  <div class="wrap">
-    <div class="footer__top">
-      <div class="footer__brand">
-        <img src="assets/img/logo-dark.png" alt="NEMI">
-        <div class="name">NEMI LMM</div>
-        <p>NEMI AI builds Physical AI for manufacturing, the Large Manufacturing Model, one AI system that designs, manufactures and improves physical products end-to-end, proven every day in our owned, full-stack factories.</p>
+<footer>
+  <div class="foot-wrap">
+    <div class="foot-grid">
+      <div>
+        <a class="foot-logo" href="index.html"><img src="assets/img/logo-dark.png" alt="NEMI"></a>
+        <p class="foot-tag">NEMI LMM for Physical AI.<br>Stafford, Texas &middot; Chennai &middot; Coimbatore, India</p>
+        <div class="foot-certs"><span class="foot-cert">AS9100D:2016</span><span class="foot-cert">ISO 9001:2015</span></div>
       </div>
-      <div><h4>NEMI</h4><ul><li><a href="index.html">Home</a></li><li><a href="about.html">About Us</a></li><li><a href="offerings.html">Offerings</a></li><li><a href="careers.html">Careers</a></li></ul></div>
-      <div class="footer__contact">
-        <h4>Contact us</h4>
-        <ul><li><a href="mailto:info@nemilmm.com">info@nemilmm.com</a></li><li><a href="tel:+910000000000">+91 00000 00000</a></li></ul>
-        <p>Full-stack, end-to-end manufacturing automation with Physical AI. US-headquartered in Stafford, Texas, with factories in Coimbatore, India.</p>
-      </div>
+      <div><h4>NEMI</h4><ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="about.html">About Us</a></li>
+        <li><a href="offerings.html">Offerings</a></li>
+        <li><a href="blog.html">Resources</a></li>
+        <li><a href="careers.html">Careers</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul></div>
+      <div><h4>Platform</h4><ul>
+        <li><a href="offerings.html">Anvil &middot; Engineer</a></li>
+        <li><a href="offerings.html">Orion &middot; Manufacture</a></li>
+        <li><a href="offerings.html">Atlas &middot; Improve</a></li>
+      </ul></div>
+      <div><h4>Contact</h4><ul>
+        <li><a href="mailto:info@nemilmm.com">info@nemilmm.com</a></li>
+        <li><a href="tel:+910000000000">+91 00000 00000</a></li>
+      </ul></div>
     </div>
-    <div class="footer__bar"><span>© 2026 NEMI AI · PHYSICAL AI · MANUFACTURING-AS-A-SERVICE</span><span>www.nemilmm.com</span></div>
+    <div class="foot-base"><span>&copy; 2026 NEMI AI. All rights reserved.</span><span>Stafford, Texas &middot; Chennai &middot; Coimbatore, India</span><span><a href="mailto:info@nemilmm.com">info@nemilmm.com</a></span></div>
   </div>
 </footer>
 
 <script src="assets/js/fx.js"></script>
+<script src="assets/js/otp.js?v=4"></script>
+<script src="assets/js/submit.js?v=1"></script>
+<script>
+/* Careers: reveal the application form in place */
+(function () {
+  var toggle = document.getElementById('applyToggle');
+  var wrap = document.getElementById('applyForm');
+  if (!toggle || !wrap) return;
+  toggle.addEventListener('click', function () {
+    wrap.hidden = false;
+    toggle.style.display = 'none';
+    wrap.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    var ta = wrap.querySelector('textarea');
+    if (ta) setTimeout(function () { ta.focus(); }, 320);
+  });
+})();
+</script>
 <script>
 /* ambition heading: words rise in one by one when the section arrives */
 (function () {

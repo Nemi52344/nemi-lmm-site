@@ -1,3 +1,25 @@
+[functions]
+  directory = "netlify/functions"
+  node_bundler = "esbuild"
+
+# Universal API path: the frontend always calls /api/*, and on Netlify it rewrites to the function.
+# On a standalone Node host (AWS/VPS/local), server.js handles /api/* directly — so the frontend never changes.
+[[redirects]]
+  from = "/api/send-otp"
+  to = "/.netlify/functions/send-otp"
+  status = 200
+  force = true
+[[redirects]]
+  from = "/api/verify-otp"
+  to = "/.netlify/functions/verify-otp"
+  status = 200
+  force = true
+[[redirects]]
+  from = "/api/submit-form"
+  to = "/.netlify/functions/submit-form"
+  status = 200
+  force = true
+
 [[redirects]]
   from = "/services.html"
   to = "/offerings.html"

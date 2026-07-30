@@ -15,61 +15,11 @@
     '<button class="nav__burger" aria-label="Menu"><span></span><span></span><span></span></button>' +
     '</div></header>';
 
-  var year = new Date().getFullYear();
-
-  var footer =
-    '<footer><div class="container">' +
-    '<div class="foot-grid">' +
-    '<div>' +
-    '<div class="foot-brand">NEMI<span>.</span></div>' +
-    '<p class="foot-tag">The NEMI LMM for Physical AI &mdash; the Large Manufacturing Model, AI that runs our manufacturing.</p>' +
-    '<div class="foot-certs"><span class="foot-cert">AS9100D:2016</span><span class="foot-cert">ISO 9001:2015</span></div>' +
-    '</div>' +
-    '<div><h4>NEMI</h4><ul>' +
-    '<li><a href="index.html">Home</a></li>' +
-    '<li><a href="about.html">About Us</a></li>' +
-    '<li><a href="offerings.html">Offerings</a></li>' +
-    '<li><a href="blog.html">Blog</a></li>' +
-    '<li><a href="careers.html">Careers</a></li>' +
-    '</ul></div>' +
-    '<div><h4>Platform</h4><ul>' +
-    '<li><a href="offerings.html">Anvil &middot; Engineer</a></li>' +
-    '<li><a href="offerings.html">Orion &middot; Manufacture</a></li>' +
-    '<li><a href="offerings.html">Atlas &middot; Improve</a></li>' +
-    '</ul></div>' +
-    '<div><h4>Contact</h4><ul>' +
-    '<li><a href="mailto:info@nemilmm.com">info@nemilmm.com</a></li>' +
-    '<li><a href="tel:+910000000000">+91 00000 00000</a></li>' +
-    '</ul></div>' +
-    '</div>' +
-    '<div class="foot-base">' +
-    '<span>&copy; ' + year + ' NEMI AI. All rights reserved.</span>' +
-    '<span>Stafford, Texas &middot; Coimbatore, India</span>' +
-    '<span><a href="mailto:info@nemilmm.com">info@nemilmm.com</a></span>' +
-    '</div>' +
-    '</div></footer>';
 
   document.body.insertAdjacentHTML('afterbegin', nav);
-  document.body.insertAdjacentHTML('beforeend', footer);
 
-  /* hero H1 typewriter: "NEMI LMM / for Physical AI" types in on load */
-  (function () {
-    var h1 = document.querySelector('.hero h1.display');
-    if (!h1) return;
-    if (window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches) return;
-    var full = 'NEMI LMM\nfor Physical AI';
-    h1.style.minHeight = h1.offsetHeight + 'px';   /* reserve height, no reflow */
-    h1.innerHTML = '<span class="hero-type"></span>';
-    var span = h1.querySelector('.hero-type');
-    h1.classList.add('typing');
-    var i = 0;
-    (function step() {
-      i++;
-      span.innerHTML = full.slice(0, i).replace(/\n/g, '<br>');
-      if (i < full.length) { setTimeout(step, 68); }
-      else { setTimeout(function () { h1.classList.remove('typing'); }, 1600); }
-    })();
-  })();
+  /* (hero typewriter lives further down: types into .hero-type inside the
+     ghost-reserved headline, holds the lede until done, caret never stops) */
 
   /* mobile menu */
   var burger = document.querySelector('.nav__burger');
@@ -103,6 +53,32 @@
     document.querySelectorAll('.reveal').forEach(function (el) { io.observe(el); });
   } else {
     revealAll();
+  }
+
+  /* hero: the whole sentence types itself in plain white, then the description
+     fades up. The caret is left blinking (the .typing class is never removed). */
+  var heroTitle = document.getElementById('heroTitle');
+  var heroLede = document.getElementById('heroLede');
+  var heroParts = heroTitle ? Array.prototype.slice.call(heroTitle.querySelectorAll('.ht')) : [];
+  if (heroParts.length) {
+    var heroDone = function () {
+      if (heroLede) heroLede.classList.add('is-in');
+    };
+    if (window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches) {
+      heroParts.forEach(function (p) { p.textContent = p.getAttribute('data-text'); });
+      heroDone();
+    } else {
+      heroTitle.classList.add('typing');
+      var pi = 0, ci = 0;
+      (function typeStep() {
+        if (pi >= heroParts.length) { setTimeout(heroDone, 200); return; }
+        var full = heroParts[pi].getAttribute('data-text');
+        ci++;
+        heroParts[pi].textContent = full.slice(0, ci);
+        if (ci >= full.length) { pi++; ci = 0; }
+        setTimeout(typeStep, 64);
+      })();
+    }
   }
 
   /* thesis card deck: scroll advances the deck; viewed cards tuck up behind
@@ -241,6 +217,37 @@
     };
     window.addEventListener('scroll', suitesTick, { passive: true });
     suitesTick();
+  }
+
+  /* fortress tiles: each photo drifts inside its own frame as the section
+     crosses the viewport. The motion is on the image layer, never on the grid,
+     so the tiles stay locked to their cells. Alternating direction by column
+     keeps neighbouring frames from moving in lockstep. */
+  var fort = document.getElementById('fortPhotos');
+  if (fort && !(window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches)) {
+    var fTiles = fort.querySelectorAll('.img-block');
+    var fRaf = 0;
+    var fortDraw = function () {
+      fRaf = 0;
+      var narrow = window.innerWidth <= 700;
+      var vh = window.innerHeight;
+      for (var i = 0; i < fTiles.length; i++) {
+        var layer = fTiles[i].querySelector('.ib-par');
+        if (!layer) continue;
+        if (narrow) { layer.style.transform = ''; continue; }
+        var r = fTiles[i].getBoundingClientRect();
+        /* 0 as this tile enters from below, 1 once it has passed the top */
+        var p = (vh - r.top) / (vh + r.height);
+        p = Math.min(1, Math.max(0, p));
+        var dir = (i % 2 === 0) ? 1 : -1;
+        var y = (p - 0.5) * 2 * 18 * dir; /* -18px .. +18px inside the frame */
+        layer.style.transform = 'translate3d(0,' + y.toFixed(2) + 'px,0)';
+      }
+    };
+    var fortTick = function () { if (!fRaf) fRaf = requestAnimationFrame(fortDraw); };
+    window.addEventListener('scroll', fortTick, { passive: true });
+    window.addEventListener('resize', fortTick);
+    fortTick();
   }
 
   /* marquee: duplicate chips once so the -50% scroll loops seamlessly */

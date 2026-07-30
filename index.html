@@ -9,25 +9,20 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="assets/css/home.css?v=50">
+<link rel="stylesheet" href="assets/css/home.css?v=64">
 </head>
 <body data-page="home">
 
 <!-- HERO -->
 <section class="hero">
-  <video class="hero-video" autoplay muted loop playsinline poster="assets/img/hero-poster.jpg?v=1">
-    <source src="assets/video/hero-main.mp4?v=9" type="video/mp4">
+  <video class="hero-video" autoplay muted loop playsinline poster="assets/img/hero-poster.jpg?v=5">
+    <source src="assets/video/hero-main.mp4?v=13" type="video/mp4">
   </video>
   <div class="hero-veil"></div>
   <div class="crops" aria-hidden="true"><span>+</span><span>+</span><span>+</span><span>+</span></div>
-  <div class="container">
-    <span class="eyebrow reveal in">LMM for Physical AI</span>
-    <h1 class="display reveal in reveal-d1">NEMI LMM<br>for Physical AI</h1>
-    <p class="lede reveal in reveal-d2">Not AI for manufacturing, AI that runs our manufacturing.<br>Trained inside our own factories. Proven on every part we ship.</p>
-    <div class="hero-cta reveal in reveal-d3">
-      <a class="btn" href="contact.html">Book a Walkthrough</a>
-      <a class="btn btn-ghost" href="offerings.html">Explore the Platform</a>
-    </div>
+  <div class="container hero--center">
+    <h1 class="display" id="heroTitle"><span class="hero-ghost" aria-hidden="true">NEMI LMM for Physical AI</span><span class="hero-live"><span class="ht" data-text="NEMI LMM for Physical AI"></span></span></h1>
+    <p class="lede hero-lede" id="heroLede">Not AI for manufacturing, AI that runs our manufacturing.<br>Trained inside our own factories. Proven on every part we ship.</p>
   </div>
   <div class="scroll-hint"></div>
 </section>
@@ -42,7 +37,7 @@
             <div>
               <p class="thesis-panel__text">Hardware has no internet to scrape. <em>Whoever owns the factories owns the data.</em></p>
             </div>
-            <div class="thesis-vid thesis-vid--big"><video autoplay muted loop playsinline preload="auto" aria-hidden="true"><source src="assets/video/thesis-montage.mp4?v=5" type="video/mp4"></video></div>
+            <div class="thesis-vid thesis-vid--big"><video autoplay muted loop playsinline preload="auto" aria-hidden="true"><source src="assets/video/thesis-data.mp4?v=3" type="video/mp4"></video></div>
           </div>
         </article>
         <article class="tcard">
@@ -50,7 +45,7 @@
             <div>
               <p class="thesis-panel__text">To train the model, <em>you must be the manufacturer.</em></p>
             </div>
-            <div class="thesis-vid thesis-vid--big"><video autoplay muted loop playsinline preload="metadata" aria-hidden="true"><source src="assets/video/thesis-assembly.mp4?v=2" type="video/mp4"></video></div>
+            <div class="thesis-vid thesis-vid--big"><video autoplay muted loop playsinline preload="metadata" aria-hidden="true"><source src="assets/video/thesis-shots.mp4?v=5" type="video/mp4"></video></div>
           </div>
         </article>
         <article class="tcard tcard--text">
@@ -115,9 +110,18 @@
       <p>The LMM is delivered through three interconnected suites. Each replaces a category of closed tools with software built to be automated.</p>
     </div>
     <div class="suite-media">
-      <figure><img src="assets/img/suite-anvil.jpg?v=3" alt="Anvil CAD interface"></figure>
-      <figure><img src="assets/img/suite-orion.jpg?v=3" alt="Orion factory ERP"></figure>
-      <figure><img src="assets/img/suite-atlas.jpg?v=1" alt="Atlas field telemetry"></figure>
+      <figure>
+        <figcaption class="dev-bar" aria-hidden="true"><span class="dev-dots"><span></span><span></span><span></span></span><span class="dev-app">Anvil &middot; Engineering Suite</span><span class="dev-live">Live</span></figcaption>
+        <img src="assets/img/suite-anvil.jpg?v=3" alt="Anvil CAD interface">
+      </figure>
+      <figure>
+        <figcaption class="dev-bar" aria-hidden="true"><span class="dev-dots"><span></span><span></span><span></span></span><span class="dev-app">Orion &middot; Factory OS</span><span class="dev-live">Live</span></figcaption>
+        <img src="assets/img/suite-orion.jpg?v=4" alt="Orion factory ERP">
+      </figure>
+      <figure>
+        <figcaption class="dev-bar" aria-hidden="true"><span class="dev-dots"><span></span><span></span><span></span></span><span class="dev-app">Atlas &middot; Field Telemetry</span><span class="dev-live">Live</span></figcaption>
+        <img src="assets/img/suite-atlas.jpg?v=2" alt="Atlas field telemetry">
+      </figure>
     </div>
     <div class="container suite-stage">
       <div class="suite-infos">
@@ -140,8 +144,7 @@
 
 <!-- FACTORIES -->
 <section class="sec sec-line-top sec-hasbg sec-fit">
-  <video class="sec-bgvideo" autoplay muted loop playsinline preload="metadata" aria-hidden="true"><source src="assets/video/sec-molten.mp4" type="video/mp4"></video>
-  <div class="sec-bgveil" aria-hidden="true"></div>
+  <div class="sec-grid" aria-hidden="true"></div>
   <div class="container">
     <div class="split">
       <div>
@@ -156,11 +159,13 @@
           </div>
         </div>
       </div>
-      <div class="fort-photos reveal reveal-d1">
-        <div class="img-block"><img src="assets/img/real-press-shop.jpg" alt="Stamping presses inside a NEMI Fortress Factory" loading="lazy"><span class="img-cap">Press shop</span></div>
-        <div class="img-block"><img src="assets/img/fac-assembly.jpg" alt="EV assembly line" loading="lazy"><span class="img-cap">Assembly</span></div>
-        <div class="img-block"><img src="assets/img/svc-cnc-spindle.jpg" alt="CNC spindle machining" loading="lazy"><span class="img-cap">Machining</span></div>
-        <div class="img-block"><img src="assets/img/svc-battery-line.jpg" alt="Battery line" loading="lazy"><span class="img-cap">Battery</span></div>
+      <div class="fort-photos reveal reveal-d1" id="fortPhotos">
+        <div class="img-block"><span class="ib-par"><img src="assets/img/svc-cnc-spindle.jpg" alt="CNC spindle cutting a metal part" loading="lazy"></span><span class="img-cap">Machining</span></div>
+        <div class="img-block"><span class="ib-par"><img src="assets/img/real-press-shop.jpg" alt="Sheet-metal fabrication and stamping inside a NEMI Fortress Factory" loading="lazy"></span><span class="img-cap">Fabrication</span></div>
+        <div class="img-block"><span class="ib-par"><img src="assets/img/fort-assembly-orange.jpg?v=3" alt="Technician assembling an orange machine cabinet at the workstation" loading="lazy" style="object-position:50% 34%"></span><span class="img-cap">Assembly</span></div>
+        <div class="img-block"><span class="ib-par"><img src="assets/img/fort-electronics-lab.jpg?v=1" alt="NEMI electronics line, technicians at test benches" loading="lazy"></span><span class="img-cap">Electronics</span></div>
+        <div class="img-block"><span class="ib-par"><img src="assets/img/fac-battery-floor.jpg?v=2" alt="NEMI battery assembly and testing floor" loading="lazy"></span><span class="img-cap">Battery</span></div>
+        <div class="img-block"><span class="ib-par"><img src="assets/img/fort-motors.jpg" alt="Wound motor stator on the motor line" loading="lazy"></span><span class="img-cap">Motors</span></div>
       </div>
     </div>
   </div>
@@ -176,32 +181,44 @@
     </div>
     <div class="mkt-marquee"><div class="mkt-track" data-clone>
       <a class="mkt-slide" href="offerings.html">
-        <img src="assets/img/mkt-aero.jpg?v=6" alt="Commercial airliner on the runway" loading="lazy">
+        <img src="assets/img/mkt-fighter.jpg?v=2" alt="Fifth-generation fighter jet banking through cloud">
         <span class="mkt-slide__cap">Aerospace</span>
       </a>
       <a class="mkt-slide" href="offerings.html">
-        <img src="assets/img/mkt-defense.jpg?v=7" alt="Multirotor camera drone in flight" loading="lazy">
+        <img src="assets/img/mkt-defense.jpg?v=7" alt="Multirotor camera drone in flight">
         <span class="mkt-slide__cap">Defense · UAS</span>
       </a>
       <a class="mkt-slide" href="offerings.html">
-        <img src="assets/img/mkt-auto.jpg?v=6" alt="High-end supercar chassis and drivetrain" loading="lazy">
+        <img src="assets/img/mkt-auto.jpg?v=6" alt="High-end supercar chassis and drivetrain">
         <span class="mkt-slide__cap">High-End Automotive</span>
       </a>
       <a class="mkt-slide" href="offerings.html">
-        <img src="assets/img/app-surgical.jpg?v=9" alt="ICU patient monitor and ventilator equipment" loading="lazy">
+        <img src="assets/img/mkt-medical-device.jpg?v=4" alt="Ultrasound diagnostic system on a mobile cart">
         <span class="mkt-slide__cap">Medical</span>
       </a>
       <a class="mkt-slide" href="offerings.html">
-        <img src="assets/img/app-wind.jpg?v=7" alt="Offshore wind turbines in the ocean" loading="lazy">
+        <img src="assets/img/app-wind.jpg?v=7" alt="Offshore wind turbines in the ocean">
         <span class="mkt-slide__cap">Energy</span>
       </a>
       <a class="mkt-slide" href="offerings.html">
-        <img src="assets/img/mkt-ev.jpg?v=8" alt="Exploded view of an engine and its components" loading="lazy">
+        <img src="assets/img/app-espresso.jpg?v=7" alt="Smart espresso machine with a touchscreen control panel">
+        <span class="mkt-slide__cap">Smart Appliances</span>
+      </a>
+      <a class="mkt-slide" href="offerings.html">
+        <img src="assets/img/mkt-aero2.jpg?v=2" alt="Airliner underside on approach, landing gear down">
+        <span class="mkt-slide__cap">Aerospace</span>
+      </a>
+      <a class="mkt-slide" href="offerings.html">
+        <img src="assets/img/mkt-solar.jpg?v=2" alt="Aerial view of a solar farm between green fields">
+        <span class="mkt-slide__cap">Energy</span>
+      </a>
+      <a class="mkt-slide" href="offerings.html">
+        <img src="assets/img/mkt-ev-boss.jpg?v=1" alt="BOSS E-TWIN electric motorcycle with removable battery packs">
         <span class="mkt-slide__cap">Electric Vehicles</span>
       </a>
       <a class="mkt-slide" href="offerings.html">
-        <img src="assets/img/app-espresso.jpg?v=7" alt="Smart espresso machine with a touchscreen control panel" loading="lazy">
-        <span class="mkt-slide__cap">Smart Appliances</span>
+        <img src="assets/img/mkt-ev.jpg?v=8" alt="Exploded view of an engine laid out part by part">
+        <span class="mkt-slide__cap">High-End Automobiles</span>
       </a>
     </div></div>
   </div>
@@ -214,15 +231,44 @@
   <div class="container cta-full">
     <span class="eyebrow reveal">Start a program</span>
     <h2 class="h-lg reveal reveal-d1">Send an RFQ, or come <span class="accent">walk the floor.</span></h2>
-    <p class="lede reveal reveal-d2">High-mix, low-volume parts, quoted fast and made on a proven loop. Send us a drawing, or book a walkthrough of the plant.</p>
+    <p class="lede reveal reveal-d2">Send an RFQ, we&rsquo;ll revert with a quote within 24 hrs. Or book a walkthrough of the plant.</p>
     <div class="cta-full__actions reveal reveal-d3">
-      <a class="btn" href="contact.html">Submit a Part &rarr;</a>
+      <a class="btn" href="contact.html">Submit a part or spec sheet &rarr;</a>
       <a class="btn btn-ghost" href="about.html">About NEMI</a>
     </div>
   </div>
 </section>
 
-<script src="assets/js/home.js?v=22"></script>
+<script src="assets/js/home.js?v=29"></script>
+<footer>
+  <div class="foot-wrap">
+    <div class="foot-grid">
+      <div>
+        <a class="foot-logo" href="index.html"><img src="assets/img/logo-dark.png" alt="NEMI"></a>
+        <p class="foot-tag">NEMI LMM for Physical AI.<br>Stafford, Texas &middot; Chennai &middot; Coimbatore, India</p>
+        <div class="foot-certs"><span class="foot-cert">AS9100D:2016</span><span class="foot-cert">ISO 9001:2015</span></div>
+      </div>
+      <div><h4>NEMI</h4><ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="about.html">About Us</a></li>
+        <li><a href="offerings.html">Offerings</a></li>
+        <li><a href="blog.html">Resources</a></li>
+        <li><a href="careers.html">Careers</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul></div>
+      <div><h4>Platform</h4><ul>
+        <li><a href="offerings.html">Anvil &middot; Engineer</a></li>
+        <li><a href="offerings.html">Orion &middot; Manufacture</a></li>
+        <li><a href="offerings.html">Atlas &middot; Improve</a></li>
+      </ul></div>
+      <div><h4>Contact</h4><ul>
+        <li><a href="mailto:info@nemilmm.com">info@nemilmm.com</a></li>
+        <li><a href="tel:+910000000000">+91 00000 00000</a></li>
+      </ul></div>
+    </div>
+    <div class="foot-base"><span>&copy; 2026 NEMI AI. All rights reserved.</span><span>Stafford, Texas &middot; Chennai &middot; Coimbatore, India</span><span><a href="mailto:info@nemilmm.com">info@nemilmm.com</a></span></div>
+  </div>
+</footer>
 </body>
 </html>
 
