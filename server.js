@@ -6,6 +6,26 @@
 const http = require('http');
 const fs = require('fs');
 const path = require('path');
+
+/* Load a local .env (gitignored) before anything reads process.env, so running
+   `node server.js` on your own machine can send real email exactly like production. */
+(function loadEnv() {
+  try {
+    var file = path.join(__dirname, '.env');
+    if (!fs.existsSync(file)) return;
+    fs.readFileSync(file, 'utf8').split(/\r?\n/).forEach(function (line) {
+      var t = line.trim();
+      if (!t || t[0] === '#') return;
+      var eq = t.indexOf('=');
+      if (eq < 1) return;
+      var k = t.slice(0, eq).trim();
+      var v = t.slice(eq + 1).trim().replace(/^["']|["']$/g, '');
+      if (k && !process.env[k]) process.env[k] = v;   // real env always wins
+    });
+    console.log('Loaded .env');
+  } catch (e) { /* no .env, carry on */ }
+})();
+
 const core = require('./otp-core');
 const formCore = require('./form-core');
 
@@ -37,6 +57,12 @@ function sendJson(res, statusCode, obj) {
 const server = http.createServer(async function (req, res) {
   const url = new URL(req.url, 'http://localhost');
   const pathname = decodeURIComponent(url.pathname);
+
+  if (pathname === '/api/health') {
+    const r = formCore.handleHealth();
+    res.writeHead(r.statusCode, { 'Content-Type': 'application/json', 'Cache-Control': 'no-store' });
+    return res.end(JSON.stringify(r.body));
+  }
 
   // --- API (same paths the frontend uses on every host) ---
   if (pathname === '/api/send-otp' || pathname === '/api/verify-otp' || pathname === '/api/submit-form') {

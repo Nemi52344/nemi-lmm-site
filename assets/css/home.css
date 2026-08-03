@@ -1184,6 +1184,37 @@ footer {
    ROW heights, not from offsetting a column, so nothing is left hanging.
    Motion lives on .ib-par (the image inside each frame), never on the grid,
    so the alignment holds at every scroll position. */
+/* certifications sit where the stat row used to, same rhythm on the left column */
+/* two equal cells side by side, so they read as one row rather than a stack */
+.fort-certs {
+  margin-top: clamp(1.6rem, 3vw, 2.4rem);
+  display: grid; grid-template-columns: 1fr 1fr; gap: 12px;
+}
+/* A CSS border cannot follow the notched corner: clip-path cuts the diagonal away
+   and leaves the top-right open. So the outer layer IS the edge, and an inset
+   pseudo-element supplies the fill, both clipped to the same shape. */
+.fort-cert {
+  position: relative;
+  background: var(--s-line-strong);
+  padding: 14px 20px;
+  clip-path: polygon(0 0, calc(100% - 12px) 0, 100% 12px, 100% 100%, 0 100%);
+}
+.fort-cert::before {
+  content: ''; position: absolute; inset: 1px;
+  background: #121312;                       /* = the old 5% tint over the #070707 section */
+  clip-path: polygon(0 0, calc(100% - 11px) 0, 100% 11px, 100% 100%, 0 100%);
+}
+.fort-cert b, .fort-cert span { position: relative; z-index: 1; }
+.fort-cert b {
+  display: block; font-weight: 600; font-size: 15px;
+  letter-spacing: -.3px; color: var(--s-head);
+}
+.fort-cert span {
+  display: block; margin-top: 5px;
+  font-family: 'IBM Plex Mono', monospace; font-size: 10px;
+  letter-spacing: 0.12em; text-transform: uppercase; color: var(--s-accent);
+}
+
 .fort-photos {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -1217,6 +1248,7 @@ footer {
   .fort-photos { grid-template-columns: 1fr; grid-template-rows: none; height: auto; }
   .fort-photos .img-block { aspect-ratio: 16 / 10; height: auto; }
   .fort-photos .ib-par { transform: none !important; }
+  .fort-certs { grid-template-columns: 1fr; }   /* stack only when there is no room */
 }
 @media (prefers-reduced-motion: reduce) {
   .fort-photos .ib-par { transform: none !important; }
@@ -1549,6 +1581,12 @@ h1, h2, h3, h4 { text-transform: none; letter-spacing: -0.015em; }
   clip-path: polygon(0 0, calc(100% - 18px) 0, 100% 18px, 100% 100%, 0 100%);
   box-shadow: 0 34px 80px rgba(0, 0, 0, 0.55);
   will-change: transform;
+}
+/* scroll dimming rides on this overlay's opacity (compositor-only) instead of a
+   CSS filter on the card, which would re-composite every video frame */
+.tcard::before {
+  content: ''; position: absolute; inset: 0; z-index: 6;
+  background: #000; opacity: var(--dim, 0); pointer-events: none;
 }
 .tcard .thesis-panel__grid { width: 100%; }
 .tcard .no {
@@ -2008,19 +2046,22 @@ h1, h2, h3, h4 { text-transform: none; letter-spacing: -0.015em; }
 .loop3-row:hover { background: rgba(16,163,126,0.05); }
 
 /* ---------- markets: auto-scrolling marquee, shorter slides ---------- */
+/* real horizontal scroller: auto-drifts, but can be dragged, swiped or wheel-scrolled.
+   The drift is driven from JS (scrollLeft) rather than a transform, so manual
+   scrolling and the animation share one coordinate system instead of fighting. */
 .mkt-marquee {
-  overflow: hidden; margin: 0 calc(-1 * 6vw);
+  overflow-x: auto; overflow-y: hidden; margin: 0 calc(-1 * 6vw);
   -webkit-mask-image: linear-gradient(90deg, transparent, #000 4%, #000 96%, transparent);
   mask-image: linear-gradient(90deg, transparent, #000 4%, #000 96%, transparent);
+  cursor: grab; touch-action: pan-x; overscroll-behavior-x: contain;
+  scrollbar-width: none; -ms-overflow-style: none;
 }
+.mkt-marquee::-webkit-scrollbar { display: none; }
+.mkt-marquee.is-grabbing { cursor: grabbing; }
+.mkt-marquee.is-grabbing .mkt-slide { pointer-events: none; }
 .mkt-track {
   display: flex; gap: 16px; width: max-content; padding: 4px 6vw;
-  animation: mkt-scroll 55s linear infinite;
 }
-.mkt-track.mkt-paused { animation-play-state: paused; }
-.mkt-marquee { cursor: pointer; }
-@keyframes mkt-scroll { from { transform: translateX(0); } to { transform: translateX(-50%); } }
-@media (prefers-reduced-motion: reduce) { .mkt-track { animation: none; } }
 .mkt-slide {
   width: clamp(340px, 34vw, 460px);
   aspect-ratio: 3 / 2;                 /* shorter than 4/5 */

@@ -123,10 +123,12 @@
         if (d >= 0) {
           var k = Math.min(d, 2);
           c.style.transform = 'translateY(' + (-24 * k) + 'px) scale(' + (1 - 0.035 * k) + ')';
-          c.style.filter = 'brightness(' + (1 - 0.16 * Math.min(d, 1)) + ')';
+          /* dim via an overlay's opacity, not a CSS filter: a filter over a playing
+             video forces a full recomposite of every decoded frame and stutters */
+          c.style.setProperty('--dim', (0.16 * Math.min(d, 1)).toFixed(3));
         } else {
           c.style.transform = 'translateY(' + (Math.min(-d, 1) * 112) + '%)';
-          c.style.filter = 'none';
+          c.style.setProperty('--dim', '0');
         }
         c.style.zIndex = 10 + i;
       }
@@ -255,13 +257,93 @@
     t.innerHTML += t.innerHTML;
   });
 
-  /* marquee: keeps scrolling on hover; a click stops it (click again to resume) */
+  /* marquee: drifts on its own, and can also be scrolled by hand (drag, swipe, wheel).
+     The track is duplicated above, so wrapping at the halfway point loops seamlessly. */
   document.querySelectorAll('.mkt-marquee').forEach(function (marquee) {
     var track = marquee.querySelector('.mkt-track');
     if (!track) return;
-    marquee.addEventListener('click', function (e) {
-      e.preventDefault();            /* a click pauses/resumes rather than following the slide link */
-      track.classList.toggle('mkt-paused');
+
+    var LOOP_MS = 150000;            /* one full pass of the list, as before */
+    var IDLE = 2000;                 /* resume drifting this long after you let go */
+    var slow = window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches;
+    var paused = false;              /* toggled by a plain click */
+    var resumeAt = 0;                /* set after any manual interaction */
+    var dragging = false, startX = 0, startScroll = 0, moved = false;
+
+    /* Keep our own float position: reading back element.scrollLeft rounds to whole
+       pixels, so accumulating a sub-pixel step directly on it never moves at all. */
+    var pos = marquee.scrollLeft;
+    var last = 0;
+
+    function hold() { resumeAt = Date.now() + IDLE; }
+
+    function step(now) {
+      var half = track.scrollWidth / 2;
+      var dt = last ? Math.min(now - last, 64) : 0;   /* clamp after a tab switch */
+      last = now;
+
+      if (half > 0) {
+        var manual = dragging || paused || slow || Date.now() < resumeAt;
+        if (manual) {
+          pos = marquee.scrollLeft;                   /* user is driving; follow them */
+        } else {
+          pos += (half / LOOP_MS) * dt;               /* time-based, so 60Hz and 120Hz match */
+        }
+        /* wrap both ways, so dragging backwards is endless too */
+        if (pos >= half) pos -= half;
+        else if (pos < 0) pos += half;
+        if (!manual) marquee.scrollLeft = pos;
+        else if (marquee.scrollLeft >= half || marquee.scrollLeft < 0) marquee.scrollLeft = pos;
+      }
+      requestAnimationFrame(step);
+    }
+    requestAnimationFrame(step);
+
+    /* wheel / trackpad / touch use native scrolling; just pause the drift briefly */
+    marquee.addEventListener('wheel', hold, { passive: true });
+    marquee.addEventListener('touchstart', hold, { passive: true });
+    marquee.addEventListener('touchmove', hold, { passive: true });
+
+    /* click-drag to scroll (mouse only; touch already scrolls natively) */
+    marquee.addEventListener('pointerdown', function (e) {
+      if (e.pointerType !== 'mouse') return;
+      dragging = true; moved = false;
+      startX = e.clientX; startScroll = marquee.scrollLeft;
+      marquee.classList.add('is-grabbing');
     });
+    marquee.addEventListener('pointermove', function (e) {
+      if (!dragging) return;
+      var dx = e.clientX - startX;
+      if (Math.abs(dx) > 3) moved = true;
+      marquee.scrollLeft = startScroll - dx;
+    });
+    function endDrag() {
+      if (!dragging) return;
+      dragging = false; hold();
+      marquee.classList.remove('is-grabbing');
+    }
+    marquee.addEventListener('pointerup', endDrag);
+    marquee.addEventListener('pointercancel', endDrag);
+    marquee.addEventListener('pointerleave', endDrag);
+
+    /* a drag must not follow the slide's link; a plain click still pauses/resumes */
+    marquee.addEventListener('click', function (e) {
+      e.preventDefault();
+      if (!moved) paused = !paused;
+      moved = false;
+    });
+  });
+})();
+
+/* thesis deck videos play at 0.75x */
+(function () {
+  var rate = 0.75;
+  var vids = document.querySelectorAll('.thesis-vid video');
+  Array.prototype.forEach.call(vids, function (v) {
+    var set = function () { v.playbackRate = rate; };
+    set();
+    v.addEventListener('loadedmetadata', set);
+    v.addEventListener('play', set);
+    v.addEventListener('ratechange', function () { if (v.playbackRate !== rate) set(); });
   });
 })();

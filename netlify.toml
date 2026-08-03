@@ -19,6 +19,11 @@
   to = "/.netlify/functions/submit-form"
   status = 200
   force = true
+[[redirects]]
+  from = "/api/health"
+  to = "/.netlify/functions/health"
+  status = 200
+  force = true
 
 [[redirects]]
   from = "/services.html"
@@ -28,3 +33,14 @@
   for = "/assets/*"
   [headers.values]
     Cache-Control = "public, max-age=604800"
+
+# HTML must always be revalidated, otherwise copy edits sit behind a stale browser cache
+# (assets are safe to cache hard because they carry ?v= cache-busters)
+[[headers]]
+  for = "/*.html"
+  [headers.values]
+    Cache-Control = "public, max-age=0, must-revalidate"
+[[headers]]
+  for = "/"
+  [headers.values]
+    Cache-Control = "public, max-age=0, must-revalidate"

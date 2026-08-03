@@ -140,4 +140,20 @@ async function handleSubmit(body) {
   return { statusCode: 200, body: { ok: true } };
 }
 
-module.exports = { handleSubmit };
+// Diagnostic: reports WHICH pieces are configured, never the values.
+// The frontend uses this to fall back to a plain mailto: when email isn't wired up yet.
+function handleHealth() {
+  return {
+    statusCode: 200,
+    body: {
+      email: !!env('RESEND_API_KEY'),      // can we send mail via Resend?
+      otp: !!env('OTP_SECRET'),            // can we sign/verify OTP codes?
+      db: hasSupabase(),                   // optional: are submissions stored?
+      dev: env('OTP_DEV') === '1',
+      from: env('OTP_FROM', 'NEMI <info@nemi-ai.com>'),
+      notifyTo: env('NOTIFY_TO', 'info@nemi-ai.com')
+    }
+  };
+}
+
+module.exports = { handleSubmit, handleHealth };
