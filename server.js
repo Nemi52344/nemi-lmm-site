@@ -78,8 +78,8 @@ const server = http.createServer(async function (req, res) {
 
   // --- static files ---
   if (req.method !== 'GET' && req.method !== 'HEAD') { res.writeHead(405); return res.end('Method not allowed'); }
-  let rel = pathname === '/' ? '/index.html' : pathname;
-  if (rel.endsWith('/')) rel += 'index.html';
+  let rel = pathname === '/' ? '/home.html' : pathname;
+  if (rel.endsWith('/')) rel += 'home.html';
   const filePath = path.join(ROOT, rel);
   // block path traversal and hidden server files
   if (!filePath.startsWith(ROOT) || rel.indexOf('/netlify/') === 0 || rel.indexOf('/node_modules/') === 0) {

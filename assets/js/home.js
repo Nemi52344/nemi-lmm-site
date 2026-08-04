@@ -3,9 +3,9 @@
 (function () {
   var nav =
     '<header class="nav"><div class="wrap">' +
-    '<a class="nav__logo" href="index.html"><img src="assets/img/logo-dark.png" alt="NEMI"></a>' +
+    '<a class="nav__logo" href="home.html"><img src="assets/img/logo-dark.png?v=2" alt="NEMI"></a>' +
     '<nav class="nav__links" id="menu">' +
-    '<a href="index.html" class="active">Home</a>' +
+    '<a href="home.html" class="active">Home</a>' +
     '<a href="about.html">About Us</a>' +
     '<a href="offerings.html">Offerings</a>' +
     '<a href="blog.html">Blog</a>' +
@@ -27,6 +27,19 @@
   if (burger && menu) {
     burger.addEventListener('click', function () { menu.classList.toggle('open'); });
   }
+
+  /* Logo (header + footer) returns you to the top of the page. We're already on
+     home, so glide up instead of reloading the whole page. */
+  document.addEventListener('click', function (e) {
+    var t = e.target;
+    if (!t || !t.closest) return;
+    var logo = t.closest('.nav__logo, .foot-logo');
+    if (!logo) return;
+    e.preventDefault();
+    if (menu) menu.classList.remove('open');          /* close the mobile drawer */
+    var reduce = window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches;
+    window.scrollTo({ top: 0, behavior: reduce ? 'auto' : 'smooth' });
+  });
 
   /* floating glass bar once scrolled past the hero top */
   var navEl = document.querySelector('.nav');

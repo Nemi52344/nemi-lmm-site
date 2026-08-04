@@ -25,6 +25,20 @@
   status = 200
   force = true
 
+# The homepage is home.html, not index.html, so "/" has no directory index of
+# its own — serve home.html there (200 = rewrite, the URL stays "/").
+[[redirects]]
+  from = "/"
+  to = "/home.html"
+  status = 200
+
+# Anything still pointing at the old filename (bookmarks, inbound links, search
+# results) is sent on permanently.
+[[redirects]]
+  from = "/index.html"
+  to = "/home.html"
+  status = 301
+
 [[redirects]]
   from = "/services.html"
   to = "/offerings.html"

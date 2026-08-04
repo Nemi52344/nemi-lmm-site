@@ -5,7 +5,7 @@
 // Config via env vars (same names on every host):
 //   OTP_SECRET       required — long random string used to sign tokens
 //   RESEND_API_KEY   required in production — Resend API key that actually sends the email
-//   OTP_FROM         optional, default "NEMI <info@nemi-ai.com>" (domain must be verified in Resend)
+//   OTP_FROM         optional, default "NEMI <info@nemilmm.com>" (domain must be verified in Resend)
 //   OTP_DEV=1        optional — dev mode: DON'T send email, just log the code to the server console
 const crypto = require('crypto');
 
@@ -68,7 +68,7 @@ async function sendEmail(email, code) {
       method: 'POST',
       headers: { Authorization: 'Bearer ' + key, 'Content-Type': 'application/json' },
       body: JSON.stringify({
-        from: env('OTP_FROM', 'NEMI <info@nemi-ai.com>'),
+        from: env('OTP_FROM', 'NEMI <info@nemilmm.com>'),
         to: [email], subject: 'Your NEMI verification code: ' + code, html: emailHtml(code)
       })
     });
@@ -124,4 +124,33 @@ function verifyProof(token, email) {
   } catch (e) { return false; }
 }
 
-module.exports = { handleSend, handleVerify, verifyProof };
+// The browser verifies through Supabase Auth, which hands back an access token
+// (a 3-part JWT) — not the 2-part HMAC proof verifyProof() understands. Ask
+// Supabase who that token belongs to and require the address to match the one
+// being submitted. We do NOT trust the JWT's own payload: it is attacker-supplied
+// until Supabase confirms it.
+async function verifySupabaseToken(token, email) {
+  const url = env('SUPABASE_URL').replace(/\/+$/, '');
+  const key = env('SUPABASE_ANON_KEY') || env('SUPABASE_SERVICE_KEY');
+  if (!url || !key) return false;
+  try {
+    const r = await fetch(url + '/auth/v1/user', {
+      headers: { apikey: key, Authorization: 'Bearer ' + token }
+    });
+    if (!r.ok) return false;
+    const u = await r.json();
+    const claimed = String(email || '').trim().toLowerCase();
+    return !!u && String(u.email || '').trim().toLowerCase() === claimed;
+  } catch (e) { return false; }
+}
+
+// Accepts either proof format, so the site works whether OTP runs through
+// Supabase Auth or the self-hosted HMAC path.
+async function verifyProofAny(token, email) {
+  const t = String(token || '');
+  if (!t) return false;
+  if (t.split('.').length === 3) return verifySupabaseToken(t, email);
+  return verifyProof(t, email);
+}
+
+module.exports = { handleSend, handleVerify, verifyProof, verifyProofAny };

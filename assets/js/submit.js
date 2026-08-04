@@ -3,7 +3,7 @@
 (function () {
   var API = '/api/submit-form';
   var MAX = 4.5 * 1024 * 1024;
-  var MAILTO = 'info@nemi-ai.com';
+  var MAILTO = 'info@nemilmm.com';
 
   /* If the backend can't send email yet, fall back to opening the visitor's mail
      client with everything pre-filled, and drop the OTP gate (it needs the backend). */
@@ -36,6 +36,28 @@
         }
       }
     });
+  }
+
+  /* Netlify Forms notification.
+     Both forms already carry data-netlify + a hidden form-name, so Netlify picks
+     them up at build time. Posting the fields back to the site makes Netlify
+     record the submission and fire its own email notification — which needs no
+     API key and no DNS, just an address entered in the Netlify UI.
+     Fire-and-forget: this must never block or fail the real submission (on
+     localhost there is no Netlify to receive it, so it simply 404s). */
+  function notifyNetlify(payload, file) {
+    try {
+      var fd = new FormData();
+      fd.append('form-name', payload.form);
+      fd.append('name', payload.name);
+      fd.append('email', payload.email);
+      if (payload.company) fd.append('company', payload.company);
+      if (payload.topic) fd.append('topic', payload.topic);
+      fd.append('message', payload.message);
+      fd.append('email_verified', payload.email_verified ? 'yes' : 'no');
+      if (file) fd.append(payload.form === 'careers' ? 'resume' : 'attachment', file);
+      return fetch('/', { method: 'POST', body: fd }).catch(function () {});
+    } catch (e) { return Promise.resolve(); }
   }
 
   function sendViaMailto(form, payload) {
@@ -106,6 +128,7 @@
               })
             }).then(function (r) {
               if (!r.ok) return r.text().then(function (t) { throw new Error('Could not save your submission. Please try again.'); });
+              notifyNetlify(payload, file);   /* stored — now make sure a human is told */
               wrap.classList.add('sent');
               wrap.scrollIntoView({ behavior: 'smooth', block: 'center' });
             });
@@ -128,9 +151,19 @@
           return;
         }
 
+        /* No Supabase configured. Hand it to Netlify Forms, which records the
+           submission and emails it. Only if that isn't available either do we
+           fall back to opening the visitor's own mail client. */
         if (form.hasAttribute('data-mailto')) {
-          sendViaMailto(form, payload);
-          wrap.classList.add('sent');
+          notifyNetlify(payload, file).then(function (r) {
+            if (r && r.ok) {
+              wrap.classList.add('sent');
+              wrap.scrollIntoView({ behavior: 'smooth', block: 'center' });
+            } else {
+              sendViaMailto(form, payload);
+              wrap.classList.add('sent');
+            }
+          });
           return;
         }
 

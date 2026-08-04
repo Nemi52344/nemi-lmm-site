@@ -16,7 +16,7 @@ try {
 
 const ROOT = __dirname;
 const DIST = path.join(ROOT, "dist");
-const PAGES = ["index.html", "about.html", "services.html", "careers.html", "master-plan.html"];
+const PAGES = ["home.html", "about.html", "services.html", "careers.html", "master-plan.html"];
 const IMG_BUDGET = 350 * 1024;   // recompress anything bigger than this
 const MAX_W = 1920;
 

@@ -1733,12 +1733,21 @@ h1, h2, h3, h4 { text-transform: none; letter-spacing: -0.015em; }
 .nav__burger { display: none; background: none; border: 0; cursor: pointer; padding: 6px; }
 .nav__burger span { display: block; width: 24px; height: 2px; background: #ECE7DD; margin: 5px 0; }
 @media (max-width: 900px) {
-  .nav__links { display: none; position: absolute; top: 84px; left: 0; right: 0;
+  .nav__links { display: none; position: absolute; top: 100%; left: 0; right: 0;
     flex-direction: column; align-items: flex-start; gap: 0; background: rgba(7,7,7,0.96);
     border-bottom: 1px solid rgba(236,231,221,.1); padding: 8px 24px 20px; }
   .nav__links.open { display: flex; }
   .nav__links a { padding: 12px 0; width: 100%; }
   .nav__burger { display: block; }
+  /* The desktop .nav--stuck rules place the links with inset:0 and pull the CTA
+     out to right:12px/top:50%. On mobile that crushes the whole drop-down into
+     the 46px condensed bar and leaves the green Contact block floating over the
+     page. Re-assert the panel layout for the scrolled state. */
+  .nav--stuck .nav__links { top: 100%; right: 0; bottom: auto; left: 0;
+    justify-content: flex-start; }
+  .nav--stuck .nav__links a:not(.nav__cta) { font-size: 12px; padding: 12px 0; }
+  .nav--stuck .nav__cta { position: static; transform: none; margin-left: 0;
+    padding: 12px 18px !important; font-size: 14px !important; }
 }
 
 /* ============================================================

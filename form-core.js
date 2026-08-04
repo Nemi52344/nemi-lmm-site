@@ -79,8 +79,8 @@ async function notify(d, fileUrl) {
       method: 'POST',
       headers: { Authorization: 'Bearer ' + env('RESEND_API_KEY'), 'Content-Type': 'application/json' },
       body: JSON.stringify({
-        from: env('OTP_FROM', 'NEMI <info@nemi-ai.com>'),
-        to: [env('NOTIFY_TO', 'info@nemi-ai.com')],
+        from: env('OTP_FROM', 'NEMI <info@nemilmm.com>'),
+        to: [env('NOTIFY_TO', 'info@nemilmm.com')],
         reply_to: d.email,
         subject: 'New ' + d.form + ' submission: ' + (d.name || d.email),
         html: notifyHtml(d, fileUrl)
@@ -110,7 +110,7 @@ async function handleSubmit(body) {
   if (body.file && body.file.data && Buffer.byteLength(body.file.data, 'base64') > MAX_FILE_BYTES) {
     return { statusCode: 400, body: { error: 'File is too large. Please keep it under 4 MB.' } };
   }
-  d.emailVerified = otp.verifyProof(body.email_verified, d.email);
+  d.emailVerified = await otp.verifyProofAny(body.email_verified, d.email);
   if (!d.emailVerified) return { statusCode: 400, body: { error: 'Please verify your email before submitting.' } };
 
   // Dev mode with nothing configured: accept and log so the flow is testable locally.
@@ -147,11 +147,14 @@ function handleHealth() {
     statusCode: 200,
     body: {
       email: !!env('RESEND_API_KEY'),      // can we send mail via Resend?
-      otp: !!env('OTP_SECRET'),            // can we sign/verify OTP codes?
+      otp: !!env('OTP_SECRET'),            // can we sign/verify our own OTP codes?
+      // Can we confirm a Supabase Auth token? Required, or every submission from
+      // the Supabase OTP flow is rejected as unverified.
+      authCheck: !!env('SUPABASE_URL') && !!(env('SUPABASE_ANON_KEY') || env('SUPABASE_SERVICE_KEY')),
       db: hasSupabase(),                   // optional: are submissions stored?
       dev: env('OTP_DEV') === '1',
-      from: env('OTP_FROM', 'NEMI <info@nemi-ai.com>'),
-      notifyTo: env('NOTIFY_TO', 'info@nemi-ai.com')
+      from: env('OTP_FROM', 'NEMI <info@nemilmm.com>'),
+      notifyTo: env('NOTIFY_TO', 'info@nemilmm.com')
     }
   };
 }
