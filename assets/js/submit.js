@@ -38,40 +38,6 @@
     });
   }
 
-  /* Email the team a copy of the submission.
-     Uses FormSubmit, which needs no account, key or DNS — the first submission
-     triggers a one-time confirmation email to NOTIFY_TO; clicking the link in
-     it activates delivery for every submission after that.
-     The attachment itself is NOT sent: the file stays in Supabase and only its
-     name is mentioned, so drawings and resumes never leave our storage.
-     Fire-and-forget — a failure here must never lose the submission, which is
-     already saved by the time this runs. */
-  var NOTIFY_TO = (window.NEMI_CONFIG || {}).NOTIFY_TO || 'info@nemilmm.com';
-  var NOTIFY_URL = (window.NEMI_CONFIG || {}).NOTIFY_ENDPOINT ||
-    ('https://formsubmit.co/ajax/' + NOTIFY_TO);
-
-  function notifyByEmail(payload, fileName) {
-    try {
-      return fetch(NOTIFY_URL, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
-        body: JSON.stringify({
-          _subject: 'New ' + payload.form + ' submission: ' + (payload.name || payload.email),
-          _template: 'table',
-          _captcha: 'false',
-          Form: payload.form,
-          Name: payload.name,
-          Email: payload.email,
-          Company: payload.company || '-',
-          Topic: payload.topic || '-',
-          Message: payload.message,
-          'Email verified': payload.email_verified ? 'yes' : 'no',
-          Attachment: fileName ? fileName + ' - download it from Supabase' : 'none'
-        })
-      }).catch(function () { });
-    } catch (e) { return Promise.resolve(); }
-  }
-
   function sendViaMailto(form, payload) {
     var lines = [];
     if (payload.name) lines.push('Name: ' + payload.name);
@@ -140,7 +106,6 @@
               })
             }).then(function (r) {
               if (!r.ok) return r.text().then(function (t) { throw new Error('Could not save your submission. Please try again.'); });
-              notifyByEmail(payload, file && file.name);   /* saved — now tell the team */
               wrap.classList.add('sent');
               wrap.scrollIntoView({ behavior: 'smooth', block: 'center' });
             });
@@ -163,18 +128,9 @@
           return;
         }
 
-        /* No Supabase configured: email it directly, and only fall back to the
-           visitor's own mail client if even that fails. */
         if (form.hasAttribute('data-mailto')) {
-          notifyByEmail(payload, file && file.name).then(function (r) {
-            if (r && r.ok) {
-              wrap.classList.add('sent');
-              wrap.scrollIntoView({ behavior: 'smooth', block: 'center' });
-            } else {
-              sendViaMailto(form, payload);
-              wrap.classList.add('sent');
-            }
-          });
+          sendViaMailto(form, payload);
+          wrap.classList.add('sent');
           return;
         }
 

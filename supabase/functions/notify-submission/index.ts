@@ -5,7 +5,9 @@
 //
 // Secrets (set with `supabase secrets set KEY=value`):
 //   NOTIFY_TO         where to send        (default info@nemilmm.com)
-//   MAIL_FROM         sender identity      (default NEMI <info@nemilmm.com>)
+//   MAIL_FROM         sender identity      (default NEMI <info@nemi-ai.com>)
+//                     NOTE: the FROM domain must be verified in Resend.
+//                     nemi-ai.com is; nemilmm.com is not (yet).
 //   RESEND_API_KEY    use Resend to send   ── set ONE of these two ──
 //   SMTP_HOST/PORT/USER/PASS               use your own mailbox's SMTP instead
 //
@@ -17,7 +19,7 @@ import { buildHtml, buildSubject } from "./email.ts";
 
 const env = (k: string, d = "") => Deno.env.get(k) ?? d;
 const NOTIFY_TO = env("NOTIFY_TO", "info@nemilmm.com");
-const MAIL_FROM = env("MAIL_FROM", "NEMI <info@nemilmm.com>");
+const MAIL_FROM = env("MAIL_FROM", "NEMI <info@nemi-ai.com>");
 const BUCKET = env("ATTACHMENT_BUCKET", "applications");
 
 /** Short-lived download link for the stored attachment (7 days). */
