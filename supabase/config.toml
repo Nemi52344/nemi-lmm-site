@@ -1,0 +1,8 @@
+project_id = "wrkfxtodkxhhlzmfpvgt"
+
+# Database Webhooks call this function without a user JWT, so verification must
+# be off or every notification is rejected as unauthorised. Pinning it here
+# means `supabase functions deploy` gets it right without the --no-verify-jwt
+# flag being remembered each time.
+[functions.notify-submission]
+verify_jwt = false
