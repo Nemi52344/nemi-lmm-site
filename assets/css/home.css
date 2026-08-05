@@ -1962,6 +1962,16 @@ h1, h2, h3, h4 { text-transform: none; letter-spacing: -0.015em; }
   .loop4-col { border-right: 0; border-top: 1px solid rgba(233,238,231,0.08); padding: 2rem 0; }
   .loop4-col:first-child { border-top: 0; }
   .loop4-letter { font-size: 3.4rem; }
+
+  /* The closing line is a badge centred on a dashed rule across four columns.
+     Stacked to one column it is nearly as wide as the card, so centring it —
+     and pulling it up over the rule — reads as misaligned against the
+     left-aligned copy above. Make it a plain left-aligned block instead. */
+  .loop4-return { text-align: left; border-top: 0; margin-top: 1.75rem; }
+  .loop4-return__label {
+    display: block; transform: none; text-align: left;
+    padding: 0.85rem 1rem; letter-spacing: 0.16em; line-height: 1.7;
+  }
 }
 .loop3-wrap {
   display: grid; grid-template-columns: minmax(0, 420px) 1fr;
