@@ -108,7 +108,7 @@ async function handleSubmit(body) {
     return { statusCode: 400, body: { error: 'Please attach your resume (PDF).' } };
   }
   if (body.file && body.file.data && Buffer.byteLength(body.file.data, 'base64') > MAX_FILE_BYTES) {
-    return { statusCode: 400, body: { error: 'File is too large. Please keep it under 4 MB.' } };
+    return { statusCode: 400, body: { error: 'File is too large. Please keep it under 4.5 MB.' } };
   }
   d.emailVerified = await otp.verifyProofAny(body.email_verified, d.email);
   if (!d.emailVerified) return { statusCode: 400, body: { error: 'Please verify your email before submitting.' } };

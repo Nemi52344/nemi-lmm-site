@@ -2,7 +2,12 @@
    which stores them in Supabase and emails a notification via Resend. Shows the inline success card. */
 (function () {
   var API = '/api/submit-form';
-  var MAX = 4.5 * 1024 * 1024;
+  /* Supabase Storage caps uploads at 50 MB per file on the current plan, and that
+     ceiling is enforced server-side whatever we do here. We check first only so
+     an oversized file is rejected instantly with a clear message, instead of the
+     visitor waiting through a long upload that is going to be refused. */
+  var MAX = 50 * 1024 * 1024;
+  var MAX_LABEL = '50 MB';
   var MAILTO = 'info@nemilmm.com';
 
   /* If the backend can't send email yet, fall back to opening the visitor's mail
@@ -75,7 +80,7 @@
         }
         var fileInput = form.querySelector('input[type="file"]');
         var file = fileInput && fileInput.files && fileInput.files[0];
-        if (file && file.size > MAX) return fail('File is too large. Please keep it under 4 MB.');
+        if (file && file.size > MAX) return fail('File is too large. Please keep it under ' + MAX_LABEL + '.');
 
         var payload = {
           form: form.getAttribute('name') || 'contact',
@@ -119,8 +124,20 @@
               headers: Object.assign({ 'Content-Type': file.type || 'application/octet-stream' }, hdrs),
               body: file
             })
-              .then(function (r) { return storeThenInsert(r.ok ? path : null); })
-              .catch(function () { return storeThenInsert(null); })
+              .then(function (r) {
+                /* Never submit silently without the file the visitor attached:
+                   they would see "thanks, your message is in" while we received
+                   an enquiry with no drawing and no sign one was ever sent.
+                   Stop and say so, so they can retry or send it another way. */
+                if (!r.ok) {
+                  throw new Error(
+                    r.status === 413
+                      ? 'That file is too large to upload (limit ' + MAX_LABEL + '). Please send a smaller file.'
+                      : 'Your file could not be uploaded, so nothing was sent. Please try again, or email it to us directly.'
+                  );
+                }
+                return storeThenInsert(path);
+              })
               .catch(function (err) { fail(err.message || 'Could not send. Please try again.'); });
           } else {
             storeThenInsert(null).catch(function (err) { fail(err.message || 'Could not send. Please try again.'); });
