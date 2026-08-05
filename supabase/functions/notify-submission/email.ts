@@ -19,7 +19,25 @@ export const safeUrl = (s: unknown) => {
   return /^https?:\/\//i.test(v) ? esc(v) : "";
 };
 
-export function buildHtml(rec: Record<string, unknown>, fileUrl: string | null) {
+/** Every stored path for a submission: the array column, falling back to the
+ *  single-file column for rows written before multi-upload existed. */
+export function attachmentPaths(rec: Record<string, unknown>): string[] {
+  const many = rec.attachment_paths;
+  if (Array.isArray(many) && many.length) return many.map(String);
+  return rec.attachment_path ? [String(rec.attachment_path)] : [];
+}
+
+/** Show just the filename, not the whole storage key. */
+const baseName = (p: string) => String(p).split("/").pop()!.replace(/^\d+-[a-z0-9]{6}-/, "");
+
+// fileUrls is index-matched to attachmentPaths(rec); an entry may be null when
+// that file's signed link could not be created.
+export function buildHtml(
+  rec: Record<string, unknown>,
+  fileUrl: string | null,
+  fileUrls: (string | null)[] = fileUrl ? [fileUrl] : [],
+) {
+  const fileNames = attachmentPaths(rec).map(baseName);
   const row = (k: string, v: string) =>
     v
       ? `<tr><td style="padding:7px 16px 7px 0;font-family:monospace;font-size:11px;letter-spacing:1px;text-transform:uppercase;color:#0a4938;vertical-align:top;white-space:nowrap;">${k}</td>` +
@@ -42,12 +60,22 @@ export function buildHtml(rec: Record<string, unknown>, fileUrl: string | null) 
     row("Company", esc(rec.company)) +
     row("Topic", esc(rec.topic)) +
     row("Message", esc(rec.message).replace(/\n/g, "<br>")) +
+    // One row listing every attached file. fileUrls is index-matched to the
+    // stored paths; a file whose link could not be signed still gets listed by
+    // name, so it is never silently dropped from the notification.
     row(
-      "Attachment",
-      fileUrl
-        ? `<a href="${fileUrl}">Download</a> <span style="color:#888;font-size:12px;">(link valid 7 days)</span>`
-        : rec.attachment_path
-        ? esc(rec.attachment_path)
+      fileNames.length > 1 ? `Attachments (${fileNames.length})` : "Attachment",
+      fileNames.length
+        ? fileNames
+          .map((n, i) =>
+            fileUrls[i]
+              ? `<a href="${fileUrls[i]}">${esc(n)}</a>`
+              : `${esc(n)} <span style="color:#888;font-size:12px;">(link unavailable)</span>`
+          )
+          .join("<br>") +
+          (fileUrls.some(Boolean)
+            ? ' <span style="color:#888;font-size:12px;">(links valid 7 days)</span>'
+            : "")
         : "",
     ) +
     // Shared link, used when the file was too big to upload. Shown as plain

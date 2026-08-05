@@ -43,6 +43,70 @@
     });
   }
 
+  /* ---- chosen-file list -------------------------------------------------
+     A file input's FileList cannot have entries removed, and picking again
+     replaces the whole selection rather than adding to it. So we keep our own
+     array per form: each pick appends, each x removes, and the upload reads
+     from this array rather than from input.files. */
+  function fmtSize(b) {
+    return b >= 1048576 ? (b / 1048576).toFixed(1) + ' MB'
+      : b >= 1024 ? Math.round(b / 1024) + ' KB' : b + ' B';
+  }
+
+  function initFilePicker(form) {
+    var input = form.querySelector('input[type="file"]');
+    var list = form.querySelector('[data-file-list]');
+    if (!input || !list) return;
+    var chosen = [];
+    form._nemiFiles = chosen;
+
+    function render() {
+      list.innerHTML = '';
+      list.hidden = chosen.length === 0;
+      chosen.forEach(function (f, i) {
+        var li = document.createElement('li');
+        li.className = 'file-chip' + (f.size > MAX ? ' file-chip--over' : '');
+
+        var name = document.createElement('span');
+        name.className = 'file-chip__name';
+        name.textContent = f.name;                    /* textContent, never innerHTML */
+        name.title = f.name;
+
+        var size = document.createElement('span');
+        size.className = 'file-chip__size';
+        size.textContent = fmtSize(f.size) + (f.size > MAX ? ' — too large' : '');
+
+        var x = document.createElement('button');
+        x.type = 'button';                            /* not submit */
+        x.className = 'file-chip__x';
+        x.innerHTML = '&times;';
+        x.setAttribute('aria-label', 'Remove ' + f.name);
+        x.addEventListener('click', function () {
+          chosen.splice(i, 1);
+          render();
+        });
+
+        li.appendChild(name); li.appendChild(size); li.appendChild(x);
+        list.appendChild(li);
+      });
+    }
+
+    input.addEventListener('change', function () {
+      Array.prototype.forEach.call(input.files || [], function (f) {
+        /* skip exact duplicates, so picking twice does not attach it twice */
+        var dupe = chosen.some(function (c) {
+          return c.name === f.name && c.size === f.size && c.lastModified === f.lastModified;
+        });
+        if (!dupe) chosen.push(f);
+      });
+      /* clear the native input so re-picking the same file still fires change */
+      input.value = '';
+      render();
+    });
+
+    form._nemiRenderFiles = render;
+  }
+
   function sendViaMailto(form, payload) {
     var lines = [];
     if (payload.name) lines.push('Name: ' + payload.name);
@@ -58,6 +122,7 @@
 
   Array.prototype.forEach.call(document.querySelectorAll('.cform form'), function (form) {
     var wrap = form.closest('.cform');
+    initFilePicker(form);
     var btn = form.querySelector('button[type="submit"]');
     var status = document.createElement('p');
     status.className = 'form-status';
@@ -78,9 +143,20 @@
           if (!btn.getAttribute('data-label')) btn.setAttribute('data-label', btn.textContent);
           btn.disabled = true; btn.textContent = 'Sending…';
         }
+        /* our tracked list when the picker is multi-file, else the native one */
         var fileInput = form.querySelector('input[type="file"]');
-        var file = fileInput && fileInput.files && fileInput.files[0];
-        if (file && file.size > MAX) return fail('File is too large. Please keep it under ' + MAX_LABEL + '.');
+        var files = form._nemiFiles && form._nemiFiles.length
+          ? form._nemiFiles.slice()
+          : (fileInput && fileInput.files ? Array.prototype.slice.call(fileInput.files) : []);
+        var file = files[0];
+        var tooBig = files.filter(function (f) { return f.size > MAX; });
+        if (tooBig.length) {
+          return fail(
+            (tooBig.length === 1 ? '"' + tooBig[0].name + '" is' : tooBig.length + ' files are') +
+            ' over ' + MAX_LABEL + '. Remove ' + (tooBig.length === 1 ? 'it' : 'them') +
+            ' or share a link instead.'
+          );
+        }
 
         var payload = {
           form: form.getAttribute('name') || 'contact',
@@ -102,14 +178,20 @@
           var KEY = cfg.SUPABASE_ANON_KEY;
           var hdrs = { apikey: KEY, Authorization: 'Bearer ' + KEY };
 
-          var storeThenInsert = function (storedPath) {
+          var storeThenInsert = function (storedPaths) {
+            var paths = storedPaths || [];
             return fetch(SB + '/rest/v1/submissions', {
               method: 'POST',
               headers: Object.assign({ 'Content-Type': 'application/json', Prefer: 'return=minimal' }, hdrs),
               body: JSON.stringify({
                 form: payload.form, name: payload.name, email: payload.email,
                 company: payload.company || null, topic: payload.topic || null,
-                message: payload.message, attachment_path: storedPath || null,
+                message: payload.message,
+                /* first path stays in attachment_path so anything reading the
+                   old single-file column keeps working; the full set goes in
+                   attachment_paths */
+                attachment_path: paths[0] || null,
+                attachment_paths: paths.length ? paths : null,
                 attachment_url: payload.attachment_url || null
               })
             }).then(function (r) {
@@ -119,31 +201,49 @@
             });
           };
 
-          if (file) {
-            var safe = file.name.replace(/[^A-Za-z0-9._-]+/g, '_').slice(-80);
-            var path = payload.form + '/' + Date.now() + '-' + Math.random().toString(36).slice(2, 8) + '-' + safe;
-            fetch(SB + '/storage/v1/object/applications/' + path, {
+          var uploadOne = function (f) {
+            var safe = f.name.replace(/[^A-Za-z0-9._-]+/g, '_').slice(-80);
+            var p = payload.form + '/' + Date.now() + '-' + Math.random().toString(36).slice(2, 8) + '-' + safe;
+            return fetch(SB + '/storage/v1/object/applications/' + p, {
               method: 'POST',
-              headers: Object.assign({ 'Content-Type': file.type || 'application/octet-stream' }, hdrs),
-              body: file
-            })
-              .then(function (r) {
-                /* Never submit silently without the file the visitor attached:
-                   they would see "thanks, your message is in" while we received
-                   an enquiry with no drawing and no sign one was ever sent.
-                   Stop and say so, so they can retry or send it another way. */
-                if (!r.ok) {
-                  throw new Error(
-                    r.status === 413
-                      ? 'That file is too large to upload (limit ' + MAX_LABEL + '). Please send a smaller file.'
-                      : 'Your file could not be uploaded, so nothing was sent. Please try again, or email it to us directly.'
-                  );
-                }
-                return storeThenInsert(path);
+              headers: Object.assign({ 'Content-Type': f.type || 'application/octet-stream' }, hdrs),
+              body: f
+            }).then(function (r) {
+              /* Never submit silently without a file the visitor attached: they
+                 would see "thanks, your message is in" while we received an
+                 enquiry with no drawing and no sign one was ever sent. */
+              if (!r.ok) {
+                throw new Error(
+                  r.status === 413
+                    ? '"' + f.name + '" is too large to upload (limit ' + MAX_LABEL + '). Remove it or share a link instead.'
+                    : '"' + f.name + '" could not be uploaded, so nothing was sent. Please try again, or email it to us directly.'
+                );
+              }
+              return p;
+            });
+          };
+
+          if (files.length) {
+            if (btn) btn.textContent = files.length > 1 ? 'Uploading 0/' + files.length + '…' : 'Uploading…';
+            var done = 0;
+            /* sequential, so the progress count is honest and a slow connection
+               is not asked to push several large CAD files at once */
+            files.reduce(function (chain, f) {
+              return chain.then(function (acc) {
+                return uploadOne(f).then(function (p) {
+                  done++;
+                  if (btn && files.length > 1) btn.textContent = 'Uploading ' + done + '/' + files.length + '…';
+                  return acc.concat(p);
+                });
+              });
+            }, Promise.resolve([]))
+              .then(function (paths) {
+                if (btn) btn.textContent = 'Sending…';
+                return storeThenInsert(paths);
               })
               .catch(function (err) { fail(err.message || 'Could not send. Please try again.'); });
           } else {
-            storeThenInsert(null).catch(function (err) { fail(err.message || 'Could not send. Please try again.'); });
+            storeThenInsert([]).catch(function (err) { fail(err.message || 'Could not send. Please try again.'); });
           }
           return;
         }

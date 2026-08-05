@@ -2426,6 +2426,26 @@ footer { background: #07110D; color: #9DA8A0; border-top: 1px solid rgba(233,238
   margin: 6px 0 0; font-family: 'IBM Plex Mono', monospace; font-size: 11px;
   letter-spacing: .04em; color: rgba(7, 7, 7, 0.5);
 }
+
+/* Chosen files, each removable. A file input's own FileList is read-only, so
+   the list is driven by JS state rather than the input itself. */
+.file-list { list-style: none; margin: 10px 0 0; padding: 0; display: flex; flex-wrap: wrap; gap: 8px; }
+.file-chip {
+  display: inline-flex; align-items: center; gap: 10px;
+  padding: 7px 8px 7px 12px; background: #FDFCF7;
+  border: 1px solid rgba(10, 73, 56, 0.28);
+  font-family: 'IBM Plex Mono', monospace; font-size: 11.5px; color: rgba(7, 7, 7, 0.78);
+  max-width: 100%;
+}
+.file-chip__name { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; max-width: 220px; }
+.file-chip__size { color: rgba(7, 7, 7, 0.45); flex: 0 0 auto; }
+.file-chip__x {
+  flex: 0 0 auto; width: 20px; height: 20px; line-height: 1; padding: 0;
+  border: 0; cursor: pointer; background: rgba(10, 73, 56, 0.10);
+  color: var(--emerald); font-size: 14px; font-family: inherit;
+}
+.file-chip__x:hover { background: #b3261e; color: #fff; }
+.file-chip--over { border-color: #b3261e; color: #b3261e; }
 /* Stacked on narrow screens: side by side would squeeze both to unusable widths */
 @media (max-width: 720px) {
   .attach-row { flex-direction: column; align-items: stretch; }
