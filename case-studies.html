@@ -8,7 +8,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="assets/css/style.css?v=147">
+<link rel="stylesheet" href="assets/css/style.css?v=148">
 <link rel="icon" type="image/svg+xml" href="assets/img/favicon.svg?v=7">
 <link rel="icon" type="image/png" sizes="32x32" href="assets/img/favicon-32.png?v=7">
 <link rel="icon" type="image/png" sizes="16x16" href="assets/img/favicon-16.png?v=7">
@@ -295,12 +295,32 @@
 
 <script src="assets/js/fx.js?v=2"></script>
 <script>
-/* Case studies: chart reveals on hover (CSS :hover). On touch devices, first tap reveals it. */
+/* Case studies: the chart sits off-frame at translateX(103%) and slides in on
+   hover. There is no hover on a phone, and nothing on screen suggests tapping
+   does anything — so the chart was simply never seen there. Where hover is
+   unavailable, reveal it as it scrolls into view instead, and still let a tap
+   flip it back to the photo. */
 (function () {
-  if (!('ontouchstart' in window)) return;
-  [].slice.call(document.querySelectorAll('.cs-visual')).forEach(function (v) {
+  var visuals = [].slice.call(document.querySelectorAll('.cs-visual'));
+  if (!visuals.length) return;
+
+  visuals.forEach(function (v) {
     v.addEventListener('click', function () { v.classList.toggle('tapped'); });
   });
+
+  var noHover = window.matchMedia && matchMedia('(hover: none)').matches;
+  if (!noHover) return;                       /* desktop keeps the hover reveal */
+
+  if ('IntersectionObserver' in window) {
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (en) {
+        if (en.isIntersecting) { en.target.classList.add('tapped'); io.unobserve(en.target); }
+      });
+    }, { threshold: 0.35 });
+    visuals.forEach(function (v) { io.observe(v); });
+  } else {
+    visuals.forEach(function (v) { v.classList.add('tapped'); });
+  }
 })();
 </script>
 </body>
