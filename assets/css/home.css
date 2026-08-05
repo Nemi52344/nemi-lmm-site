@@ -2129,6 +2129,21 @@ h1, h2, h3, h4 { text-transform: none; letter-spacing: -0.015em; }
   height: clamp(440px, 52vh, 570px);   /* tall cinematic, trimmed 150px total */
   width: clamp(560px, 50vw, 900px);
 }
+/* Those minimums (560 wide, 440 tall) are bigger than a phone screen, so a
+   single slide overflowed the viewport and stood 54% of the screen tall.
+   Size to the viewport instead, and leave a sliver of the next slide showing
+   so it still reads as something you can scroll. */
+@media (max-width: 860px) {
+  .mkt-slide {
+    width: 76vw;
+    height: auto;
+    aspect-ratio: 3 / 2;
+    clip-path: polygon(0 0, calc(100% - 16px) 0, 100% 16px, 100% 100%, 0 100%);
+  }
+  .mkt-track { gap: 12px; padding: 4px 12px; }
+  .mkt-slide__cap { left: 14px; bottom: 12px; font-size: 0.98rem; }
+  .mkt-slide__num { top: 12px; left: 12px; font-size: 0.6rem; }
+}
 /* Full-bleed: break out of the container, span the whole viewport edge to edge */
 .mkt-marquee {
   width: 100vw;
