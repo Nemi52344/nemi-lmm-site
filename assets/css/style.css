@@ -1367,11 +1367,25 @@ button.btn {
 .crops span:nth-child(4) { bottom: 18px; right: 22px; }
 
 /* ================= Reveal on scroll ================= */
-.rv, .rv-l, .rv-r { opacity: 0; transition: opacity .7s ease, transform .7s ease; }
-.rv { transform: translateY(26px); }
-.rv-l { transform: translateX(-40px); }
-.rv-r { transform: translateX(40px); }
-.rv.shown, .rv-l.shown, .rv-r.shown { opacity: 1; transform: none; }
+/* Hidden only once fx.js has confirmed it is running (it sets .js-anim on
+   <html> immediately). Without that guard, a script error or a blocked file
+   would leave every revealed element stuck at opacity 0 — the content would
+   be gone rather than merely un-animated. */
+.js-anim .rv,
+.js-anim .rv-l,
+.js-anim .rv-r { opacity: 0; transition: opacity .7s ease, transform .7s ease; }
+.js-anim .rv { transform: translateY(26px); }
+.js-anim .rv-l { transform: translateX(-40px); }
+.js-anim .rv-r { transform: translateX(40px); }
+.js-anim .rv.shown,
+.js-anim .rv-l.shown,
+.js-anim .rv-r.shown { opacity: 1; transform: none; }
+
+@media (prefers-reduced-motion: reduce) {
+  .js-anim .rv, .js-anim .rv-l, .js-anim .rv-r {
+    opacity: 1; transform: none; transition: none;
+  }
+}
 .rv-d1 { transition-delay: .15s; }
 
 /* ================= NEMI loop journey (full-bleed alternating) ================= */

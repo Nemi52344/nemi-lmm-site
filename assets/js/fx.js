@@ -2,6 +2,11 @@
    Uses rAF-throttled scroll checks (no IntersectionObserver) so it behaves
    identically in every browser. Respects prefers-reduced-motion. */
 (function () {
+  /* Tell the CSS it is safe to hide revealed elements. Set first thing: if this
+     file fails to load or throws, the class is absent and everything stays
+     visible rather than being stuck invisible. */
+  document.documentElement.classList.add("js-anim");
+
   var reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
   var els = Array.prototype.slice.call(document.querySelectorAll(".rv, .rv-l, .rv-r"));
   var vids = Array.prototype.slice.call(document.querySelectorAll("video[data-flow]"));
