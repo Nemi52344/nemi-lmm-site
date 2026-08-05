@@ -89,6 +89,8 @@
           company: (form.querySelector('input[name="company"]') || {}).value || '',
           topic: (form.querySelector('select[name="topic"]') || {}).value || '',
           message: (form.querySelector('textarea[name="message"]') || {}).value || '',
+          /* Escape hatch for files past the 50 MB upload ceiling: a shared link. */
+          attachment_url: ((form.querySelector('input[name="attachment_url"]') || {}).value || '').trim(),
           email_verified: (form.querySelector('input[name="email_verified"]') || {}).value || ''
         };
 
@@ -107,7 +109,8 @@
               body: JSON.stringify({
                 form: payload.form, name: payload.name, email: payload.email,
                 company: payload.company || null, topic: payload.topic || null,
-                message: payload.message, attachment_path: storedPath || null
+                message: payload.message, attachment_path: storedPath || null,
+                attachment_url: payload.attachment_url || null
               })
             }).then(function (r) {
               if (!r.ok) return r.text().then(function (t) { throw new Error('Could not save your submission. Please try again.'); });

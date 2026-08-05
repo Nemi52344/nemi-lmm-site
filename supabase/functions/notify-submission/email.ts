@@ -1,8 +1,23 @@
 // Pure email rendering — no Deno APIs, so it can be unit-tested outside the
 // Edge Function runtime.
 
+// Quotes matter as much as angle brackets here: these values land inside
+// href="..." attributes, and an unescaped quote lets a submitted string break
+// out of the attribute and inject its own — in an email we open ourselves.
 export const esc = (s: unknown) =>
-  String(s ?? "").replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
+  String(s ?? "")
+    .replace(/&/g, "&amp;")
+    .replace(/</g, "&lt;")
+    .replace(/>/g, "&gt;")
+    .replace(/"/g, "&quot;")
+    .replace(/'/g, "&#39;");
+
+// Only ever emit links we know are http(s). A submitted "javascript:..." URL
+// would otherwise become a clickable script in the notification.
+export const safeUrl = (s: unknown) => {
+  const v = String(s ?? "").trim();
+  return /^https?:\/\//i.test(v) ? esc(v) : "";
+};
 
 export function buildHtml(rec: Record<string, unknown>, fileUrl: string | null) {
   const row = (k: string, v: string) =>
@@ -33,6 +48,17 @@ export function buildHtml(rec: Record<string, unknown>, fileUrl: string | null) 
         ? `<a href="${fileUrl}">Download</a> <span style="color:#888;font-size:12px;">(link valid 7 days)</span>`
         : rec.attachment_path
         ? esc(rec.attachment_path)
+        : "",
+    ) +
+    // Shared link, used when the file was too big to upload. Shown as plain
+    // text if it is not a normal http(s) URL, so it is never a live link we
+    // did not vet.
+    row(
+      "Shared link",
+      rec.attachment_url
+        ? (safeUrl(rec.attachment_url)
+          ? `<a href="${safeUrl(rec.attachment_url)}">${esc(rec.attachment_url)}</a>`
+          : esc(rec.attachment_url))
         : "",
     ) +
     row("Received", esc(rec.created_at)) +

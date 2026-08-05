@@ -2408,3 +2408,26 @@ footer { background: #07110D; color: #9DA8A0; border-top: 1px solid rgba(233,238
   background: var(--emerald); color: var(--bone);
   font-family: 'IBM Plex Mono', monospace; font-size: 11px; letter-spacing: 1px; text-transform: uppercase;
 }
+
+/* Attachment row: pick a file, OR paste a link when it is too big to upload.
+   Both sit on one line; the file picker keeps its natural width and the link
+   box takes the rest. */
+.attach-row { display: flex; gap: 12px; align-items: stretch; }
+/* flex-basis 0 on both, so they split the row evenly instead of the file input's
+   wide intrinsic width ("CHOOSE FILE" + filename) crushing the link box. */
+.attach-row input[type="file"] { flex: 1 1 0; min-width: 0; }
+.attach-row .attach-or {
+  align-self: center; flex: 0 0 auto;
+  font-family: 'IBM Plex Mono', monospace; font-size: 11px; letter-spacing: 1px;
+  text-transform: uppercase; color: rgba(7, 7, 7, 0.45);
+}
+.attach-row input[type="url"] { flex: 1 1 0; min-width: 0; }
+.attach-note {
+  margin: 6px 0 0; font-family: 'IBM Plex Mono', monospace; font-size: 11px;
+  letter-spacing: .04em; color: rgba(7, 7, 7, 0.5);
+}
+/* Stacked on narrow screens: side by side would squeeze both to unusable widths */
+@media (max-width: 720px) {
+  .attach-row { flex-direction: column; align-items: stretch; }
+  .attach-row .attach-or { align-self: flex-start; }
+}
