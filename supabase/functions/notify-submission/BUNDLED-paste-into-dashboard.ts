@@ -105,17 +105,27 @@ async function sendViaResend(subject: string, html: string, replyTo: string) {
 
 async function sendViaSmtp(subject: string, html: string) {
   const host = env("SMTP_HOST");
-  if (!host) return false;
+  const pass = env("SMTP_PASS");
+  // Both are needed. Without the password the connection just hangs on auth,
+  // so bail out early and let the Resend fallback handle it.
+  if (!host || !pass) return false;
+  const port = Number(env("SMTP_PORT", "587"));
   const client = new SMTPClient({
     connection: {
       hostname: host,
-      port: Number(env("SMTP_PORT", "587")),
-      tls: env("SMTP_PORT", "587") === "465",
-      auth: { username: env("SMTP_USER"), password: env("SMTP_PASS") },
+      port,
+      // 587 is STARTTLS (tls:false + starttls), 465 is implicit TLS.
+      tls: port === 465,
+      auth: { username: env("SMTP_USER"), password: pass },
     },
   });
+  // Microsoft 365 rejects mail whose From is not the authenticated mailbox, so
+  // send as SMTP_USER rather than the shared MAIL_FROM (which is the Resend
+  // sender on a different domain).
+  const from = env("SMTP_FROM") ||
+    (env("SMTP_USER") ? `NEMI <${env("SMTP_USER")}>` : MAIL_FROM);
   try {
-    await client.send({ from: MAIL_FROM, to: NOTIFY_TO, subject, html, content: "text/html" });
+    await client.send({ from, to: NOTIFY_TO, subject, html, content: "text/html" });
     return true;
   } catch (e) {
     console.error("smtp failed", e);
@@ -145,9 +155,12 @@ Deno.serve(async (req) => {
   const subject = buildSubject(rec);
   const html = buildHtml(rec, fileUrl);
 
-  // Resend if configured, otherwise plain SMTP.
-  const ok = (await sendViaResend(subject, html, String(rec.email))) ||
-    (await sendViaSmtp(subject, html));
+  // SMTP wins when it is configured, because sending through our own mailbox
+  // lets the mail genuinely come FROM info@nemilmm.com. Resend can only send as
+  // a domain verified in its account (nemi-ai.com), so it stays as the fallback
+  // — if SMTP is down or misconfigured the notification still gets through.
+  const ok = (await sendViaSmtp(subject, html)) ||
+    (await sendViaResend(subject, html, String(rec.email)));
 
   if (!ok) {
     // 500 makes the failure visible in the webhook's delivery log rather than
