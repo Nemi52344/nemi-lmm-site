@@ -123,7 +123,12 @@
   var deckWrap = document.querySelector('.thesis-deckwrap');
   var deckCards = deckWrap ? Array.prototype.slice.call(deckWrap.querySelectorAll('.tcard')) : [];
   var deckCount = deckWrap ? deckWrap.querySelector('.thesis-count') : null;
-  if (deckCards.length && window.innerWidth > 860) {
+  /* The deck stacks on every width now, not just desktop — the CSS keeps the
+     sticky pane on mobile too. Skipped only for reduced-motion, where the CSS
+     falls back to a plain vertical list. */
+  var deckOn = deckCards.length &&
+    !(window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches);
+  if (deckOn) {
     var deckTick = function () {
       var rect = deckWrap.getBoundingClientRect();
       var total = deckWrap.offsetHeight - window.innerHeight;
@@ -154,7 +159,9 @@
     deckTick();
   }
   /* no deck ticker (mobile) — type when the text scrolls into view */
-  if (typeEm && !(deckCards.length && window.innerWidth > 860)) {
+  /* The deck ticker starts the typewriter when card 03 slides in. Only fall
+     back to an in-view trigger when the deck is not running at all. */
+  if (typeEm && !deckOn) {
     if ('IntersectionObserver' in window) {
       var tio = new IntersectionObserver(function (en) {
         if (en[0].isIntersecting) { startTyping(); tio.disconnect(); }
@@ -169,6 +176,20 @@
      from the right (60% of the page) and the left info rises in; scroll
      advances through all four suites */
   var suitesWrap = document.querySelector('.suites-wrap');
+
+  /* Narrow screens: the desktop pairing animation is off and everything is
+     static, so the markup's natural order renders all three screenshots first
+     and all three descriptions after. Move each screenshot in under its own
+     description, so it reads Anvil > shot > Orion > shot > Atlas > shot. */
+  if (suitesWrap && window.innerWidth <= 860) {
+    var mFigs = Array.prototype.slice.call(suitesWrap.querySelectorAll('.suite-media figure'));
+    var mInfos = Array.prototype.slice.call(suitesWrap.querySelectorAll('.suite-info'));
+    mInfos.forEach(function (info, i) {
+      if (mFigs[i]) info.appendChild(mFigs[i]);
+    });
+    suitesWrap.classList.add('suites-paired');
+  }
+
   if (suitesWrap && window.innerWidth > 860) {
     var sFigs = Array.prototype.slice.call(suitesWrap.querySelectorAll('.suite-media figure'));
     var sInfos = Array.prototype.slice.call(suitesWrap.querySelectorAll('.suite-info'));

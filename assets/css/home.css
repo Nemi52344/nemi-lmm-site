@@ -1600,9 +1600,24 @@ h1, h2, h3, h4 { text-transform: none; letter-spacing: -0.015em; }
 .tcard .thesis-panel__text { font-size: clamp(1.4rem, 2.4vw, 2.1rem); }
 .tcard .thesis-vid--big { aspect-ratio: 16 / 9.5; }
 @media (max-width: 860px) {
+  /* Keep the stacked card deck on mobile too. dvh rather than vh so the
+     sticky pane is not cut off by the browser's collapsing address bar, and a
+     shorter scroll run (220vh) so three cards do not take forever to get
+     through on a phone. */
+  .thesis-deckwrap { height: 220vh; }
+  .thesis-decksec {
+    position: sticky; top: 0; height: 100dvh;
+    display: flex; align-items: center; padding: 1.5rem 0;
+  }
+  .thesis-deck { position: relative; height: min(74dvh, 560px); margin-top: 0; }
+  .tcard { position: absolute; inset: 0; margin-top: 0; }
+}
+/* No sticky/transform tricks when the visitor has asked for less motion:
+   fall back to a plain vertical list. */
+@media (max-width: 860px) and (prefers-reduced-motion: reduce) {
   .thesis-deckwrap { height: auto; }
   .thesis-decksec { position: static; height: auto; padding: 4rem 0; }
-  .thesis-deck { height: auto; margin-top: 0; }
+  .thesis-deck { height: auto; }
   .tcard { position: static; transform: none !important; margin-top: 1.2rem; }
 }
 
@@ -2307,6 +2322,23 @@ h1, h2, h3, h4 { text-transform: none; letter-spacing: -0.015em; }
   .suites-intro { position: static; opacity: 1 !important; transform: none !important; }
   .suite-infos { position: static; width: 100%; }
   .suite-info { position: static; margin-top: 1.6rem; opacity: 1 !important; transform: none !important; pointer-events: auto; }
+
+  /* home.js moves each screenshot inside its own description on narrow
+     screens, so a suite reads name > copy > shot instead of all three shots
+     followed by all three descriptions. */
+  .suites-paired .suite-media { display: none; }        /* now empty */
+  .suites-paired .suite-info { margin-top: 2.6rem; }
+  .suites-paired .suite-info figure {
+    margin: 1.4rem 0 0; padding: 0; position: static;
+    width: 100% !important; height: auto !important;
+    aspect-ratio: 16/9; overflow: hidden;
+    border: 1px solid rgba(236,231,221,.14); background: #0d100f;
+  }
+  .suites-paired .suite-info figure img {
+    width: 100%; height: 100%; object-fit: cover; display: block;
+  }
+  /* the fake browser chrome reads as clutter at this size */
+  .suites-paired .suite-info figure .dev-bar { display: none; }
 }
 
 .foot-wrap { max-width: 1280px; margin: 0 auto; padding: 0 24px; }
