@@ -503,6 +503,19 @@ section { padding: 88px 0; }
 
 /* ---------- Page hero (interior) ---------- */
 .phero { background: var(--ink); color: var(--bone); padding: 110px 0 72px; position: relative; overflow: hidden; }
+/* Desktop gets full-viewport sections from the min-width:901px rule, so page
+   heroes fill the screen there. Below that they collapsed to content height —
+   about 33% of a phone screen — which wasted the background imagery and made
+   the hero read as a thin banner. dvh, not vh, so the collapsing browser bar
+   cannot push the content out of view. */
+@media (max-width: 900px) {
+  .phero {
+    min-height: 100dvh;
+    display: flex; align-items: center;
+    padding-top: 96px; padding-bottom: 64px;
+  }
+  .phero > .wrap { width: 100%; }
+}
 .phero h1 { font-size: clamp(34px, 5vw, 68px); letter-spacing: -2.5px; }
 .phero p { margin-top: 22px; max-width: 640px; font-weight: 300; color: rgba(236,231,221,.75); }
 
