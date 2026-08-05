@@ -1780,6 +1780,21 @@ button.btn {
   clip-path: polygon(0 0, calc(100% - 12px) 0, 100% 12px, 100% 100%, 0 100%); }
 .sec-who .cert-chip b { color: var(--bone); }
 .sec-who .cert-chip span { color: var(--signal); }
+/* Stacked on narrow screens they each size to their own text — 242px next to
+   282px — so the left edges line up but the right ones are ragged. Stretch
+   them to a shared width so the block reads as one aligned column. */
+@media (max-width: 900px) {
+  .certs-inline { flex-direction: column; align-items: stretch; }
+  .certs-inline .cert-chip { width: 100%; }
+  /* The location caption is a one-line label pinned bottom-right on desktop.
+     At this width it wraps to two lines and rides up over the last chip, so
+     put it back in normal flow underneath instead. */
+  .sec-who__caption {
+    position: static; right: auto; bottom: auto;
+    display: block; margin: 1.25rem 24px 0;
+    letter-spacing: 2px; line-height: 1.7;
+  }
+}
 
 /* ================= Eras timeline (Every few decades) ================= */
 @media (min-width: 901px) { .sec-eras { display: block; min-height: auto; padding: 96px 0; } }
