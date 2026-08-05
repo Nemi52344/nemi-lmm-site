@@ -2356,6 +2356,25 @@ h1, h2, h3, h4 { text-transform: none; letter-spacing: -0.015em; }
      followed by all three descriptions. */
   .suites-paired .suite-media { display: none; }        /* now empty */
   .suites-paired .suite-info { margin-top: 2.6rem; }
+
+  /* Fade up on arrival. The !important is to beat the .suite-info rule above,
+     which force-clears the desktop animation's opacity/transform. Only applied
+     under .suites-paired, which JS adds — so if the script never runs, that
+     base rule still shows everything. */
+  .suites-paired .suite-info {
+    opacity: 0 !important;
+    transform: translateY(26px) !important;
+    transition: opacity .8s ease, transform .8s cubic-bezier(.22, 1, .36, 1);
+  }
+  .suites-paired .suite-info.in {
+    opacity: 1 !important;
+    transform: none !important;
+  }
+  .suites-paired .suite-info figure {
+    opacity: 0; transform: translateY(14px);
+    transition: opacity .8s ease .15s, transform .8s cubic-bezier(.22, 1, .36, 1) .15s;
+  }
+  .suites-paired .suite-info.in figure { opacity: 1; transform: none; }
   .suites-paired .suite-info figure {
     margin: 1.4rem 0 0; padding: 0; position: static;
     width: 100% !important; height: auto !important;

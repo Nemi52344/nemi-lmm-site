@@ -188,6 +188,23 @@
       if (mFigs[i]) info.appendChild(mFigs[i]);
     });
     suitesWrap.classList.add('suites-paired');
+
+    /* Fade each suite up as it arrives, like the rest of the page. The desktop
+       version animates via the scroll ticker, which is off at this width.
+       Observed here rather than reusing the .reveal pass above, because these
+       blocks are rearranged after that pass has already run. */
+    if ('IntersectionObserver' in window &&
+        !(window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches)) {
+      var sio = new IntersectionObserver(function (entries) {
+        entries.forEach(function (en) {
+          if (en.isIntersecting) { en.target.classList.add('in'); sio.unobserve(en.target); }
+        });
+      }, { threshold: 0.15, rootMargin: '0px 0px -40px 0px' });
+      mInfos.forEach(function (info) { sio.observe(info); });
+    } else {
+      /* No observer, or reduced motion: show everything immediately. */
+      mInfos.forEach(function (info) { info.classList.add('in'); });
+    }
   }
 
   if (suitesWrap && window.innerWidth > 860) {
