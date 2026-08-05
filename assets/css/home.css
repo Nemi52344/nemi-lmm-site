@@ -1973,13 +1973,18 @@ h1, h2, h3, h4 { text-transform: none; letter-spacing: -0.015em; }
   .loop4-col:first-child { border-top: 0; }
   .loop4-letter { font-size: 3.4rem; }
 
+  /* Stacked to a single column, each stage reads better centred — the big
+     letter, the stage label and the copy sit on one axis instead of a ragged
+     left edge with a large letter floating above it. */
+  .loop4-col { text-align: center; }
+  .loop4-col p { margin-left: auto; margin-right: auto; max-width: 34ch; }
+
   /* The closing line is a badge centred on a dashed rule across four columns.
-     Stacked to one column it is nearly as wide as the card, so centring it —
-     and pulling it up over the rule — reads as misaligned against the
-     left-aligned copy above. Make it a plain left-aligned block instead. */
-  .loop4-return { text-align: left; border-top: 0; margin-top: 1.75rem; }
+     Stacked it is nearly as wide as the card, so keep it a plain block rather
+     than pulling it up over the rule — but centre it to match the stages. */
+  .loop4-return { text-align: center; border-top: 0; margin-top: 1.75rem; }
   .loop4-return__label {
-    display: block; transform: none; text-align: left;
+    display: block; transform: none; text-align: center;
     padding: 0.85rem 1rem; letter-spacing: 0.16em; line-height: 1.7;
   }
 }
