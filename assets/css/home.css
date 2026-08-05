@@ -1663,6 +1663,16 @@ h1, h2, h3, h4 { text-transform: none; letter-spacing: -0.015em; }
 /* thesis deck: 50px inset around the video half */
 .tcard { padding: 50px; }
 
+/* That 50px inset is for the desktop side-by-side layout. Stacked on a phone
+   it eats a third of a 330px card, and the text column's own
+   clamp(1.8rem,...) padding sits on top of it — which the video half does not
+   have, so the two never shared a left edge (text 102px, video 74px). Give the
+   card one modest inset and let both halves sit flush inside it. */
+@media (max-width: 860px) {
+  .tcard { padding: 22px; }
+  .tcard .thesis-panel__grid > div:first-child { padding: 4px 0 18px; }
+}
+
 /* ---------- thesis deck: brand trio card fills ---------- */
 .tcard:nth-of-type(1) { background: var(--deep); }
 .tcard:nth-of-type(2) { background: var(--surface-2); }

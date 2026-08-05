@@ -2467,9 +2467,10 @@ footer { background: #07110D; color: #9DA8A0; border-top: 1px solid rgba(233,238
   text-transform: uppercase; color: rgba(7, 7, 7, 0.45);
 }
 .attach-row input[type="url"] { flex: 1 1 0; min-width: 0; }
+/* Sits above the picker, so it is read before choosing rather than after. */
 .attach-note {
-  margin: 6px 0 0; font-family: 'IBM Plex Mono', monospace; font-size: 11px;
-  letter-spacing: .04em; color: rgba(7, 7, 7, 0.5);
+  margin: 0 0 9px; font-family: 'IBM Plex Mono', monospace; font-size: 11px;
+  letter-spacing: .04em; line-height: 1.6; color: rgba(7, 7, 7, 0.5);
 }
 
 /* Chosen files, each removable. A file input's own FileList is read-only, so
