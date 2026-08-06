@@ -1767,7 +1767,13 @@ h1, h2, h3, h4 { text-transform: none; letter-spacing: -0.015em; }
 }
 .nav--stuck .wrap { height: 46px; padding: 0 18px; max-width: none; }
 .nav--stuck .nav__logo img { height: 22px; }
-.nav--stuck .nav__links { position: absolute; inset: 0; justify-content: center; }
+/* inset:0 spans the whole condensed bar so the links can centre in it — but that
+   also lays an invisible sheet over the logo and swallows the click, so the
+   "tap the logo to go home" affordance died the moment you scrolled past 120px.
+   Let pointers through the container and re-arm them on the links themselves. */
+.nav--stuck .nav__links { position: absolute; inset: 0; justify-content: center;
+  pointer-events: none; }
+.nav--stuck .nav__links > a { pointer-events: auto; }
 .nav--stuck .nav__links a:not(.nav__cta) { font-size: 11px; padding: 6px 14px; }
 .nav--stuck .nav__cta { position: absolute; right: 12px; top: 50%; transform: translateY(-50%);
   margin-left: 0; padding: 8px 16px !important; font-size: 13px !important; }
@@ -1794,7 +1800,7 @@ h1, h2, h3, h4 { text-transform: none; letter-spacing: -0.015em; }
      the 46px condensed bar and leaves the green Contact block floating over the
      page. Re-assert the panel layout for the scrolled state. */
   .nav--stuck .nav__links { top: 100%; right: 0; bottom: auto; left: 0;
-    justify-content: flex-start; }
+    justify-content: flex-start; pointer-events: auto; }
   .nav--stuck .nav__links a:not(.nav__cta) { font-size: 12px; padding: 12px 0; }
   .nav--stuck .nav__cta { position: static; transform: none; margin-left: 0;
     padding: 12px 18px !important; font-size: 14px !important; }
