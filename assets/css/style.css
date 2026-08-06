@@ -656,9 +656,23 @@ button.btn {
   letter-spacing: -.4px; color: var(--emerald); }
 .letter__role { margin-top: 7px; font-family: "IBM Plex Mono", monospace;
   text-transform: uppercase; letter-spacing: 2px; font-size: 10px; color: var(--grey); }
+.letter__turn { margin-top: 26px !important; font-size: 23px !important; font-weight: 600;
+  letter-spacing: -.3px; line-height: 1.4 !important; color: var(--emerald) !important; }
+.letter__phase { margin-top: 30px; padding: 26px 30px; background: var(--oat-pale);
+  border-left: 3px solid var(--signal);
+  clip-path: polygon(0 0, calc(100% - 16px) 0, 100% 16px, 100% 100%, 0 100%); }
+.letter__phase-num { font-family: "IBM Plex Mono", monospace; text-transform: uppercase;
+  letter-spacing: 3px; font-size: 11px; font-weight: 600; color: var(--signal); }
+.letter__phase h4 { margin-top: 10px; font-size: 21px; line-height: 1.28; font-weight: 600;
+  letter-spacing: -.3px; color: var(--emerald); }
+.letter__phase p { margin-top: 14px; font-size: 15.5px; line-height: 1.7; color: #23231f; }
 @media (max-width: 640px) {
   .letter__body p, .letter__lede { font-size: 15px !important; }
   .letter__short { padding: 22px 22px; }
+  /* beats `.letter__body p` (0,1,1) above, which is also !important */
+  .letter__body p.letter__turn { font-size: 20px !important; }
+  .letter__phase { padding: 22px 22px; }
+  .letter__phase h4 { font-size: 18px; }
 }
 
 /* ---------- Offerings page ---------- */
