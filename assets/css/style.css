@@ -2278,6 +2278,13 @@ footer { background: #07110D; color: #9DA8A0; border-top: 1px solid rgba(233,238
 .foot-tag { max-width: 26em; line-height: 1.7; }
 .foot-certs { display: flex; gap: 0.8rem; margin-top: 1.6rem; flex-wrap: wrap; }
 .foot-cert { border: 1px solid rgba(233,238,231,0.26); padding: 0.35rem 0.8rem; font-family: 'IBM Plex Mono', monospace; font-size: 0.62rem; font-weight: 600; letter-spacing: 0.1em; color: #9DA8A0; }
+/* social: same bordered chip language as the cert badges, square corners */
+.foot-social { display: flex; gap: 0.6rem; margin-top: 1.5rem; }
+.foot-social a { display: inline-flex; align-items: center; justify-content: center;
+  width: 40px; height: 40px; border: 1px solid rgba(233,238,231,0.26); color: #9DA8A0;
+  transition: color .2s, background .2s, border-color .2s; }
+.foot-social a:hover { color: var(--ink); background: var(--signal); border-color: var(--signal); }
+.foot-social svg { display: block; }
 .foot-base { border-top: 1px solid rgba(233,238,231,0.13); padding-top: 2rem; display: flex; justify-content: space-between; gap: 1.5rem; flex-wrap: wrap; font-family: 'IBM Plex Mono', monospace; font-size: 0.68rem; letter-spacing: 0.04em; }
 .foot-base a { color: inherit; text-decoration: none; }
 @media (max-width: 900px) { .foot-grid { grid-template-columns: 1fr 1fr; } }
@@ -2291,6 +2298,7 @@ footer { background: #07110D; color: #9DA8A0; border-top: 1px solid rgba(233,238
   .foot-grid ul li a { display: block; padding: 11px 0; }
   .foot-base { gap: 0.75rem; }
   .foot-base a { display: inline-block; padding: 6px 0; }
+  .foot-social a { width: 44px; height: 44px; }
 }
 
 /* Resources: FAQ split with side image */

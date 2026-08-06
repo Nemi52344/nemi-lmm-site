@@ -806,6 +806,19 @@ footer {
   letter-spacing: 0.1em;
   color: #9DA8A0;
 }
+/* social: same bordered chip language as the cert badges, square corners */
+.foot-social { display: flex; gap: 0.6rem; margin-top: 1.5rem; }
+.foot-social a {
+  display: inline-flex; align-items: center; justify-content: center;
+  width: 40px; height: 40px;
+  border: 1px solid rgba(233, 238, 231, 0.26);
+  color: #9DA8A0;
+  transition: color .2s, background .2s, border-color .2s;
+}
+.foot-social a:hover { color: #070707; background: var(--s-accent, #10A37E); border-color: var(--s-accent, #10A37E); }
+.foot-social svg { display: block; }
+/* keyed on hover capability, not width, so a touchscreen laptop gets it too */
+@media (hover: none) { .foot-social a { width: 44px; height: 44px; } }
 .foot-base {
   border-top: 1px solid rgba(233, 238, 231, 0.13);
   padding-top: 2rem;
