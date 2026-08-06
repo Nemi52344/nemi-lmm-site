@@ -640,42 +640,75 @@ button.btn {
   letter-spacing: 3px; font-size: 12px; font-weight: 600; color: var(--emerald); }
 .letter__from { font-family: "IBM Plex Mono", monospace; text-transform: uppercase;
   letter-spacing: 2px; font-size: 10px; color: var(--grey); }
-.letter__body p { margin-top: 16px; font-size: 16px; line-height: 1.72; color: #23231f; }
-.letter__body b { font-weight: 600; color: var(--ink); }
-.letter__lede { font-size: 19px !important; line-height: 1.6 !important; color: var(--ink) !important; }
-.letter__body h3 { margin-top: 38px; font-family: "IBM Plex Mono", monospace;
-  text-transform: uppercase; letter-spacing: 1.5px; font-size: 13px; font-weight: 600;
-  color: var(--emerald); }
-.letter__short { margin-top: 40px; padding: 28px 30px; background: var(--oat);
-  clip-path: polygon(0 0, calc(100% - 16px) 0, 100% 16px, 100% 100%, 0 100%); }
-.letter__short > .mono { display: block; margin-bottom: 14px; font-size: 11px;
-  letter-spacing: 3px; color: var(--emerald); }
-.letter__short ol { margin: 0; padding-left: 22px; }
-.letter__short li { margin-top: 11px; font-size: 15px; line-height: 1.6; color: #23231f; }
-.letter__close { margin-top: 34px !important; font-size: 18px !important; font-weight: 500;
-  color: var(--ink) !important; line-height: 1.6 !important; }
-.letter__sign { margin-top: 38px; padding-top: 26px; border-top: 1px solid rgba(7,7,7,.12); }
-.letter__signature { font-size: 27px; font-weight: 500; font-style: italic;
-  letter-spacing: -.4px; color: var(--emerald); }
-.letter__role { margin-top: 7px; font-family: "IBM Plex Mono", monospace;
-  text-transform: uppercase; letter-spacing: 2px; font-size: 10px; color: var(--grey); }
-.letter__turn { margin-top: 26px !important; font-size: 23px !important; font-weight: 600;
-  letter-spacing: -.3px; line-height: 1.4 !important; color: var(--emerald) !important; }
-.letter__phase { margin-top: 30px; padding: 26px 30px; background: var(--oat-pale);
-  border-left: 3px solid var(--signal);
-  clip-path: polygon(0 0, calc(100% - 16px) 0, 100% 16px, 100% 100%, 0 100%); }
+.letter__body p { margin-top: 20px; font-size: 17px; line-height: 1.78; color: #23231f; }
+.letter__body b { font-weight: 600; color: var(--emerald); }
+.letter__lede { font-size: 17px !important; line-height: 1.78 !important; color: #23231f !important; }
+/* Section heads: emerald rule, then the title in the display face. The rule is an
+   inline-block on ::before rather than a flex child so a heading that wraps keeps
+   the dash tied to its first line. */
+.letter__body h3 { margin-top: 56px; font-family: "Space Grotesk", sans-serif;
+  text-transform: none; letter-spacing: -.7px; font-size: clamp(23px, 2.7vw, 33px);
+  font-weight: 700; line-height: 1.18; color: var(--emerald); }
+.letter__body h3::before { content: ''; display: inline-block; vertical-align: middle;
+  width: 42px; height: 3px; margin-right: 18px; background: var(--signal); }
+.letter__short { margin-top: 26px; padding: 0; background: none; clip-path: none;
+  list-style: none; }
+.letter__short li { position: relative; margin-top: 18px; padding-left: 34px;
+  font-size: 17px; line-height: 1.7; color: #23231f; }
+.letter__short li::before { content: ''; position: absolute; left: 2px; top: .58em;
+  width: 11px; height: 11px; background: var(--signal); }
+.letter__close { margin-top: 42px !important; font-size: clamp(20px, 2.2vw, 27px) !important;
+  font-weight: 700; letter-spacing: -.6px;
+  color: var(--emerald) !important; line-height: 1.32 !important; }
+.letter__sign { margin-top: 44px; padding-top: 30px; border-top: 1px solid rgba(7,7,7,.14); }
+.letter__signature { font-size: clamp(22px, 2.4vw, 29px); font-weight: 700; font-style: normal;
+  letter-spacing: -.6px; color: var(--emerald); }
+.letter__role { margin-top: 9px; font-family: "IBM Plex Mono", monospace;
+  text-transform: none; letter-spacing: 1.5px; font-size: 12px; color: var(--grey); }
+.letter__turn { margin-top: 34px !important; font-size: clamp(21px, 2.3vw, 28px) !important;
+  font-weight: 700; letter-spacing: -.6px; line-height: 1.3 !important;
+  color: var(--emerald) !important; }
+/* square corners, flat oat fill, emerald spine — the phase blocks in the letter */
+.letter__phase { margin-top: 34px; padding: 32px 36px; background: var(--oat-pale);
+  border-left: 3px solid var(--signal); clip-path: none; }
 .letter__phase-num { font-family: "IBM Plex Mono", monospace; text-transform: uppercase;
-  letter-spacing: 3px; font-size: 11px; font-weight: 600; color: var(--signal); }
-.letter__phase h4 { margin-top: 10px; font-size: 21px; line-height: 1.28; font-weight: 600;
-  letter-spacing: -.3px; color: var(--emerald); }
-.letter__phase p { margin-top: 14px; font-size: 15.5px; line-height: 1.7; color: #23231f; }
+  letter-spacing: 3px; font-size: 12px; font-weight: 600; color: var(--signal); }
+.letter__phase h4 { margin-top: 12px; font-size: clamp(19px, 2.1vw, 26px); line-height: 1.24;
+  font-weight: 700; letter-spacing: -.6px; color: var(--emerald); }
+.letter__phase p { margin-top: 18px; font-size: 16px; line-height: 1.75; color: #23231f; }
+
+/* ---------- Master plan · standalone founder's letter ---------- */
+.mpl-hero { position: relative; overflow: hidden; background: var(--ink); color: var(--bone);
+  padding: clamp(96px, 15vh, 168px) 0 clamp(64px, 10vh, 116px); }
+.mpl-hero::before { content: ''; position: absolute; inset: 0; pointer-events: none;
+  background: radial-gradient(120% 90% at 8% 100%, rgba(16,163,126,.30), transparent 62%); }
+.mpl-hero > .wrap { position: relative; z-index: 1; }
+.mpl-kicker { display: flex; align-items: center; gap: 18px;
+  font-family: "IBM Plex Mono", monospace; text-transform: uppercase; letter-spacing: 3px;
+  font-size: 12px; font-weight: 600; color: var(--signal); }
+.mpl-kicker::before { content: ''; flex: 0 0 auto; width: 46px; height: 2px; background: var(--signal); }
+.mpl-title { margin-top: 26px; font-size: clamp(38px, 6.6vw, 88px); font-weight: 700;
+  letter-spacing: -2.5px; line-height: 1.02; color: var(--bone); }
+.mpl-sub { margin-top: 26px; font-family: "IBM Plex Mono", monospace;
+  font-size: clamp(14px, 1.5vw, 20px); letter-spacing: .4px; color: var(--signal); }
+.mpl-byline { margin-top: 38px; font-family: "IBM Plex Mono", monospace; text-transform: uppercase;
+  letter-spacing: 2px; font-size: 11px; color: var(--grey); }
+.mpl-body { background: var(--bone); padding: clamp(56px, 8vw, 104px) 0 clamp(72px, 10vw, 128px); }
+/* no card, no shadow: the letter is the page here, unlike the folded copies on
+   About and Resources which still sit in a .letter card on a dark section */
+.mpl-letter { max-width: 880px; margin: 0 auto; }
+.mpl-letter .letter__body > p:first-child { margin-top: 0; }
+
 @media (max-width: 640px) {
-  .letter__body p, .letter__lede { font-size: 15px !important; }
-  .letter__short { padding: 22px 22px; }
+  .letter__body p, .letter__lede { font-size: 16px !important; }
   /* beats `.letter__body p` (0,1,1) above, which is also !important */
-  .letter__body p.letter__turn { font-size: 20px !important; }
-  .letter__phase { padding: 22px 22px; }
-  .letter__phase h4 { font-size: 18px; }
+  .letter__body p.letter__turn { font-size: 21px !important; }
+  .letter__body h3 { margin-top: 42px; }
+  .letter__body h3::before { width: 28px; margin-right: 13px; }
+  .letter__short li { font-size: 16px; padding-left: 28px; }
+  .letter__phase { padding: 24px 22px; }
+  .mpl-hero { padding: 104px 0 56px; }
+  .mpl-title { letter-spacing: -1.4px; }
 }
 
 /* ---------- Offerings page ---------- */
