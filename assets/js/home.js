@@ -8,7 +8,7 @@
     '<a href="home.html" class="active">Home</a>' +
     '<a href="about.html">About Us</a>' +
     '<a href="offerings.html">Offerings</a>' +
-    '<a href="blog.html">Blog</a>' +
+    '<a href="blog.html">Resources</a>' +
     '<a href="careers.html">Careers</a>' +
     '<a href="contact.html" class="nav__cta">Contact</a>' +
     '</nav>' +
