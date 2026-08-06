@@ -21,6 +21,9 @@
 
 * { box-sizing: border-box; margin: 0; padding: 0; }
 
+/* Do NOT add overflow-x: clip/hidden here. Measured: even `clip` stops the
+   sticky sections (.sec-pin, .sec-deck, .faq-side) from pinning — they scroll
+   away instead. Horizontal overflow is fixed at its source instead; see .eras. */
 html { scroll-behavior: auto; -webkit-text-size-adjust: 100%; }
 
 body {
@@ -1327,6 +1330,11 @@ button.btn {
   /* At 30px tall the wordmark ran to 142px — 38% of a 375px screen. */
   .nav__logo img { height: 23px; }
   .nav--stuck .nav__logo img { height: 19px; }
+  /* Shrinking the wordmark also shrank the tap target to 23px tall, well under
+     the ~44px a thumb needs, so "tap the logo to go home" kept missing. Pad the
+     link out to a 44px target without changing how big the logo looks. */
+  .nav__logo { min-height: 44px; padding-right: 10px; }
+  .foot-logo { padding: 7px 12px 7px 0; margin-bottom: calc(1.1rem - 7px); }
   /* The desktop .nav--stuck rules place the links with inset:0 and pull the CTA
      out to right:12px/top:50%. On mobile that crushes the whole drop-down into
      the 46px condensed bar and leaves the green Contact block floating over the
@@ -1813,7 +1821,11 @@ button.btn {
 /* ================= Eras timeline (Every few decades) ================= */
 @media (min-width: 901px) { .sec-eras { display: block; min-height: auto; padding: 96px 0; } }
 .sec-eras .head { margin-bottom: 52px; }
-.eras { position: relative; }
+/* The era rows sit flush to the .wrap edge, and .rv-r parks them 40px further
+   right until they animate in — 16px past the viewport on a phone. Clip here so
+   that overshoot never joins the page's scrollable area. `clip` (not `hidden`)
+   keeps this from becoming a scroll container. */
+.eras { position: relative; overflow-x: clip; }
 .eras__spine { position: absolute; left: 50%; top: 0; bottom: 0; width: 1px; background: rgba(236,231,221,.15); }
 .era { position: relative; display: grid; grid-template-columns: 1fr 1fr; align-items: center; }
 .era + .era { margin-top: 60px; }

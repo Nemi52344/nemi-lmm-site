@@ -79,6 +79,10 @@
 
 * { margin: 0; padding: 0; box-sizing: border-box; }
 
+/* Do NOT add overflow-x: clip/hidden here. Measured: it stops .thesis-decksec
+   and .suites-sec from sticking (they scroll away instead of pinning), which
+   kills the card-deck and suites scroll sequences. Horizontal overflow is
+   fixed at its source instead — see .mkt-marquee. */
 html { scroll-behavior: smooth; }
 
 body {
@@ -1767,6 +1771,11 @@ h1, h2, h3, h4 { text-transform: none; letter-spacing: -0.015em; }
   /* At 30px tall the wordmark ran to 142px — 38% of a 375px screen. */
   .nav__logo img { height: 23px; }
   .nav--stuck .nav__logo img { height: 19px; }
+  /* Shrinking the wordmark also shrank the tap target to 23px tall, well under
+     the ~44px a thumb needs, so "tap the logo to go home" kept missing. Pad the
+     link out to a 44px target without changing how big the logo looks. */
+  .nav__logo { min-height: 44px; padding-right: 10px; }
+  .foot-logo { padding: 7px 12px 7px 0; margin-bottom: calc(1.1rem - 7px); }
   /* The desktop .nav--stuck rules place the links with inset:0 and pull the CTA
      out to right:12px/top:50%. On mobile that crushes the whole drop-down into
      the 46px condensed bar and leaves the green Contact block floating over the
@@ -2159,11 +2168,14 @@ h1, h2, h3, h4 { text-transform: none; letter-spacing: -0.015em; }
   .mkt-slide__cap { left: 14px; bottom: 12px; font-size: 0.98rem; }
   .mkt-slide__num { top: 12px; left: 12px; font-size: 0.6rem; }
 }
-/* Full-bleed: break out of the container, span the whole viewport edge to edge */
+/* Full-bleed: the marquee lives outside .container in the markup, so it already
+   spans the section edge to edge. Do NOT reach for `width: 100vw` here — 100vw
+   includes the classic scrollbar, which pushed the whole document 8px wider
+   than the viewport and gave every desktop visitor a sideways scroll. */
 .mkt-marquee {
-  width: 100vw;
-  margin-left: calc(50% - 50vw);
-  margin-right: calc(50% - 50vw);
+  width: auto;
+  margin-left: 0;
+  margin-right: 0;
   -webkit-mask-image: none;
   mask-image: none;
 }

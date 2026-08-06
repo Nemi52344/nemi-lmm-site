@@ -12,7 +12,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="assets/css/home.css?v=80">
+<link rel="stylesheet" href="assets/css/home.css?v=84">
 </head>
 <body data-page="home">
 
@@ -179,7 +179,11 @@
       <h2 class="h-lg">Where Our Work Ends Up</h2>
       <p class="lede">High-mix, low-volume programs where engineering cost dominates the market, the ones the loop was built to win first.</p>
     </div>
-    <div class="mkt-marquee"><div class="mkt-track" data-clone>
+  </div>
+  <!-- outside .container on purpose: the marquee is full-bleed, and sitting
+       here it simply fills the section instead of needing a 100vw breakout
+       (100vw counts the scrollbar, which sent the whole page 8px sideways) -->
+  <div class="mkt-marquee"><div class="mkt-track" data-clone>
       <a class="mkt-slide" href="offerings.html">
         <img src="assets/img/mkt-fighter.jpg?v=2" alt="Fifth-generation fighter jet banking through cloud">
         <span class="mkt-slide__cap">Aerospace</span>
@@ -220,8 +224,7 @@
         <img src="assets/img/mkt-ev.jpg?v=8" alt="Exploded view of an engine laid out part by part">
         <span class="mkt-slide__cap">High-End Automobiles</span>
       </a>
-    </div></div>
-  </div>
+  </div></div>
 </section>
 
 <!-- CTA -->
