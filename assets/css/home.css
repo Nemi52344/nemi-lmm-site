@@ -1736,9 +1736,6 @@ h1, h2, h3, h4 { text-transform: none; letter-spacing: -0.015em; }
 .nav__logo img { height: 30px; width: auto; }
 .nav__links { display: flex; align-items: center; gap: 8px; }
 .nav__links a {
-  /* nowrap: with 7 items the flex row shrinks each link, and "About Us" was
-     breaking onto two lines inside its own box just above the burger breakpoint */
-  white-space: nowrap;
   position: relative;
   font-family: "IBM Plex Mono", monospace;
   font-size: 12px; letter-spacing: 2px; text-transform: uppercase;
@@ -2461,14 +2458,3 @@ h1, h2, h3, h4 { text-transform: none; letter-spacing: -0.015em; }
 /* marquee cards: light placeholder behind images — a not-yet-loaded card must
    read as paper, never as a black box against this light section */
 .mkt-slide { background: #EFEBE2; }
-
-/* Seven nav items only just clear the logo at the top of the desktop range
-   (measured: 0px of gap just above the burger breakpoint). Starts at 900.02px,
-   not 901px: a fractional viewport of ~900.5 matches neither max-width:900 nor
-   min-width:901, and fell through to the untightened row.
-   Tighten the links across that narrow band so the row keeps real breathing
-   room instead of fitting by a hair. */
-@media (min-width: 900.02px) and (max-width: 1090px) {
-  .nav__links a { padding: 8px 11px; letter-spacing: 1.4px; }
-  .nav__cta { margin-left: 8px; padding: 11px 16px !important; }
-}
