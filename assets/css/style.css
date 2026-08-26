@@ -79,6 +79,9 @@ section { padding: 88px 0; }
 .nav__logo img { height: 30px; width: auto; }
 .nav__links { display: flex; align-items: center; gap: 8px; }
 .nav__links a {
+  /* nowrap: with 7 items the flex row shrinks each link, and "About Us" was
+     breaking onto two lines inside its own box just above the burger breakpoint */
+  white-space: nowrap;
   position: relative;
   font-family: "IBM Plex Mono", monospace;
   font-size: 12px; letter-spacing: 2px; text-transform: uppercase;
@@ -2666,4 +2669,15 @@ footer { background: #07110D; color: #9DA8A0; border-top: 1px solid rgba(233,238
   .ir-phase { padding: 24px 22px; }
   .ir-contact { padding: 26px 24px; }
   .ir-doc { padding: 20px 22px; }
+}
+
+/* Seven nav items only just clear the logo at the top of the desktop range
+   (measured: 0px of gap just above the burger breakpoint). Starts at 900.02px,
+   not 901px: a fractional viewport of ~900.5 matches neither max-width:900 nor
+   min-width:901, and fell through to the untightened row.
+   Tighten the links across that narrow band so the row keeps real breathing
+   room instead of fitting by a hair. */
+@media (min-width: 900.02px) and (max-width: 1090px) {
+  .nav__links a { padding: 8px 11px; letter-spacing: 1.4px; }
+  .nav__cta { margin-left: 8px; padding: 11px 16px !important; }
 }
