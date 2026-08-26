@@ -2589,3 +2589,81 @@ footer { background: #07110D; color: #9DA8A0; border-top: 1px solid rgba(233,238
   .attach-row { flex-direction: column; align-items: stretch; }
   .attach-row .attach-or { align-self: flex-start; }
 }
+
+/* ---------- Investor Relations page ---------- */
+.ir-lede { margin-top: 24px; max-width: 720px; font-size: clamp(16px, 1.5vw, 19px);
+  line-height: 1.7; color: rgba(236,231,221,.72); }
+
+/* copy column + pinned callout; collapses to one column on tablet */
+.ir-split { display: grid; grid-template-columns: 1.35fr 0.65fr; gap: clamp(28px, 4vw, 64px);
+  align-items: start; }
+.ir-split__body p { margin-top: 18px; font-size: 16px; line-height: 1.8; color: rgba(236,231,221,.72); }
+.ir-split__body p:first-child { margin-top: 0; }
+
+.ir-callout { padding: 32px 30px; background: rgba(16,163,126,.10);
+  border-left: 3px solid var(--signal); }
+.ir-callout__v { font-size: clamp(38px, 4.4vw, 58px); font-weight: 700; letter-spacing: -2px;
+  line-height: 1; color: var(--signal); }
+.ir-callout__l { margin-top: 12px; font-family: "IBM Plex Mono", monospace; text-transform: uppercase;
+  letter-spacing: 2px; font-size: 10px; color: rgba(236,231,221,.6); }
+.ir-callout p { margin-top: 20px; padding-top: 20px; font-size: 14px; line-height: 1.7;
+  color: rgba(236,231,221,.75); border-top: 1px solid rgba(236,231,221,.14); }
+
+/* proof tiles: the number leads, the whole tile is the link */
+.ir-proof { display: grid; grid-template-columns: repeat(2, 1fr); gap: 18px; }
+.ir-proof__item { display: block; padding: 32px 34px; background: var(--bone);
+  border: 1px solid rgba(7,7,7,.1); text-decoration: none; color: var(--ink);
+  clip-path: polygon(0 0, calc(100% - 20px) 0, 100% 20px, 100% 100%, 0 100%);
+  transition: transform .25s, box-shadow .25s; }
+.ir-proof__item:hover { transform: translateY(-3px); box-shadow: 0 26px 50px -34px rgba(0,0,0,.5); }
+.ir-proof__v { font-size: clamp(26px, 3vw, 38px); font-weight: 700; letter-spacing: -1.2px;
+  line-height: 1; color: var(--emerald); }
+.ir-proof__item h3 { margin-top: 16px; font-size: 19px; font-weight: 600; letter-spacing: -.3px; }
+.ir-proof__item p { margin-top: 10px; font-size: 14.5px; line-height: 1.7; color: rgba(7,7,7,.62); }
+.ir-proof__item .cs-more { margin-top: 20px; }
+
+/* phases: numbered rail, same language as the letter's phase cards */
+.ir-phases { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
+.ir-phase { padding: 30px 32px; background: rgba(236,231,221,.04);
+  border-left: 3px solid var(--signal); }
+.ir-phase__n { font-family: "IBM Plex Mono", monospace; text-transform: uppercase;
+  letter-spacing: 3px; font-size: 11px; font-weight: 600; color: var(--signal); }
+.ir-phase h3 { margin-top: 12px; font-size: 20px; font-weight: 600; letter-spacing: -.4px;
+  color: var(--bone); }
+.ir-phase p { margin-top: 14px; font-size: 14.5px; line-height: 1.75; color: rgba(236,231,221,.7); }
+.ir-plan-cta { margin-top: 42px; }
+
+/* document list */
+.ir-docs { display: grid; gap: 14px; }
+.ir-doc { display: block; padding: 24px 28px; background: var(--oat-pale);
+  border-left: 3px solid var(--emerald); text-decoration: none; color: var(--ink);
+  transition: background .2s, transform .2s; }
+.ir-doc:hover { background: var(--oat); transform: translateX(3px); }
+.ir-doc__k { display: block; font-family: "IBM Plex Mono", monospace; text-transform: uppercase;
+  letter-spacing: 2.5px; font-size: 10px; font-weight: 600; color: var(--signal); }
+.ir-doc__t { display: block; margin-top: 8px; font-size: 19px; font-weight: 600;
+  letter-spacing: -.3px; color: var(--emerald); }
+.ir-doc__d { display: block; margin-top: 6px; font-size: 14px; line-height: 1.6; color: rgba(7,7,7,.6); }
+
+.ir-contact { padding: 34px 32px; background: var(--oat-pale); }
+.ir-contact h3 { font-size: 21px; font-weight: 600; letter-spacing: -.4px; color: var(--emerald); }
+.ir-contact > p { margin: 14px 0 22px; font-size: 14.5px; line-height: 1.7; color: rgba(7,7,7,.62); }
+
+/* legal small print — deliberately quiet, but present */
+.ir-legal { background: var(--ink); padding: 0 0 54px; }
+.ir-legal p { max-width: 980px; margin-top: 14px; font-size: 12px; line-height: 1.75;
+  color: rgba(236,231,221,.42); }
+.ir-legal b { color: rgba(236,231,221,.62); font-weight: 600; }
+
+@media (max-width: 980px) {
+  .ir-split { grid-template-columns: 1fr; }
+  .ir-phases { grid-template-columns: 1fr; }
+}
+@media (max-width: 760px) {
+  .ir-proof { grid-template-columns: 1fr; }
+  .ir-proof__item { padding: 26px 24px; }
+  .ir-callout { padding: 26px 24px; }
+  .ir-phase { padding: 24px 22px; }
+  .ir-contact { padding: 26px 24px; }
+  .ir-doc { padding: 20px 22px; }
+}
