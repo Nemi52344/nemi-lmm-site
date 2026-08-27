@@ -134,7 +134,6 @@
     var wait = Math.max(0, HOLD - (Date.now() - started));
     setTimeout(function () {
       if (settled === 'cancelled') return;
-      store('nemiRouted', '1');
       /* replace(), not assign(): Back returns to the site rather than bouncing
          through this router again */
       location.replace(us ? D : S);
@@ -147,10 +146,11 @@
     });
   });
 
-  /* Coming back here after being routed once means the automatic answer was
-     probably wrong — show the routes instead of bouncing them forward again.
-     This is the escape hatch, so the first-run screen can stay clean. */
-  if (read('nemiRouted')) {
+  /* The loader runs on every visit — it is the whole point of the page, so it is
+     never skipped. invest.html?choose=1 is the way to reach the manual picker
+     (for anyone whose IP reads wrong, or to link someone straight to it) without
+     putting a second control on the clean screen. */
+  if (/[?&]choose=1/.test(location.search)) {
     reveal('Choose a route below.');
     return;
   }
