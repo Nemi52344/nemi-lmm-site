@@ -4,11 +4,12 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Invest in NEMI</title>
-<meta name="description" content="Choose the NEMI investment page for your jurisdiction: Regulation D for US persons, Regulation S for investors outside the United States.">
+<meta name="description" content="Routing you to the NEMI investment page for your jurisdiction: Regulation D for US persons, Regulation S for investors outside the United States.">
 <meta name="robots" content="noindex, follow">
 <meta name="theme-color" content="#070707">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preconnect" href="https://get.geojs.io" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="assets/css/style.css?v=162">
 <link rel="icon" type="image/svg+xml" href="assets/img/favicon.svg?v=7">
@@ -30,24 +31,49 @@
     letter-spacing: -1.6px; line-height: 1.06; }
   .inv-sub { margin-top: 20px; max-width: 620px; font-size: clamp(15px, 1.5vw, 17px);
     line-height: 1.7; color: rgba(236,231,221,.72); }
-  .inv-status { margin-top: 30px; min-height: 20px; font-family: "IBM Plex Mono", monospace;
+
+  /* loading state */
+  .inv-status { margin-top: 34px; min-height: 20px; font-family: "IBM Plex Mono", monospace;
     text-transform: uppercase; letter-spacing: 2px; font-size: 11px; color: var(--grey); }
   .inv-status b { color: var(--signal); font-weight: 600; }
-  .inv-opts { margin-top: 18px; display: grid; grid-template-columns: repeat(2, minmax(0,1fr));
+  .inv-bar { margin-top: 14px; width: min(420px, 100%); height: 2px;
+    background: rgba(236,231,221,.14); overflow: hidden; }
+  .inv-bar span { display: block; height: 100%; width: 0; background: var(--signal); }
+  .inv-bar.run span { animation: invfill 2400ms cubic-bezier(.4,0,.2,1) forwards; }
+  @keyframes invfill { from { width: 0; } to { width: 100%; } }
+  .inv-bar.done { display: none; }
+  @media (prefers-reduced-motion: reduce) {
+    .inv-bar.run span { animation: none; width: 100%; }
+  }
+
+  /* The two routes stay out of the way while we are detecting; they appear only
+     if the lookup cannot decide, or if the reader asks to pick. */
+  .inv-opts { margin-top: 22px; display: none; grid-template-columns: repeat(2, minmax(0,1fr));
     gap: 16px; max-width: 780px; }
+  .inv-opts.show { display: grid; animation: invrise .45s ease both; }
+  @keyframes invrise { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: none; } }
   .inv-opt { display: block; padding: 26px 28px; text-decoration: none;
     background: rgba(236,231,221,.04); border: 1px solid rgba(236,231,221,.14);
-    color: var(--bone); transition: background .2s, border-color .2s, transform .2s;
-    clip-path: polygon(0 0, calc(100% - 16px) 0, 100% 16px, 100% 100%, 0 100%); }
+    color: var(--bone); transition: background .2s, border-color .2s, transform .2s; }
   .inv-opt:hover { background: rgba(16,163,126,.12); border-color: rgba(16,163,126,.5);
     transform: translateY(-2px); }
-  .inv-opt__k { font-family: "IBM Plex Mono", monospace; text-transform: uppercase;
+  .inv-opt__k { display: block; font-family: "IBM Plex Mono", monospace; text-transform: uppercase;
     letter-spacing: 2.5px; font-size: 10px; font-weight: 600; color: var(--signal); }
-  .inv-opt__t { margin-top: 10px; font-size: 20px; font-weight: 600; letter-spacing: -.4px; }
-  .inv-opt__d { margin-top: 8px; font-size: 13.5px; line-height: 1.65; color: rgba(236,231,221,.62); }
+  .inv-opt__t { display: block; margin-top: 10px; font-size: 20px; font-weight: 600; letter-spacing: -.4px; }
+  .inv-opt__d { display: block; margin-top: 8px; font-size: 13.5px; line-height: 1.65; color: rgba(236,231,221,.62); }
+
+  /* quiet escape hatch during the wait, so a wrong read is never a trap */
+  .inv-manual { margin-top: 20px; height: 16px; opacity: 0; transition: opacity .4s; }
+  .inv-manual.show { opacity: 1; }
+  .inv-manual.gone { display: none; }
+  .inv-manual button { background: none; border: 0; padding: 0; cursor: pointer;
+    font-family: "IBM Plex Mono", monospace; text-transform: uppercase; letter-spacing: 2px;
+    font-size: 11px; color: var(--grey); text-decoration: underline; text-underline-offset: 4px; }
+  .inv-manual button:hover { color: var(--signal); }
+
   .inv-note { margin-top: 30px; max-width: 720px; font-size: 12px; line-height: 1.7;
     color: rgba(236,231,221,.42); }
-  .inv-back { display: inline-block; margin-top: 26px; font-family: "IBM Plex Mono", monospace;
+  .inv-back { display: inline-block; margin-top: 24px; font-family: "IBM Plex Mono", monospace;
     text-transform: uppercase; letter-spacing: 2px; font-size: 11px; color: var(--grey);
     text-decoration: none; }
   .inv-back:hover { color: var(--signal); }
@@ -63,12 +89,17 @@
     <a class="inv-logo" href="home.html"><img src="assets/img/logo-dark.png?v=2" alt="NEMI"></a>
 
     <div class="inv-kicker">Invest in NEMI</div>
-    <h1>Two routes.<br><span class="accent">Pick the one that applies to you.</span></h1>
-    <p class="inv-sub">NEMI runs separate offerings for US persons and for investors outside the United States. Choose the one that matches your status.</p>
+    <h1 id="invHead">Taking you to the<br><span class="accent">right offering.</span></h1>
+    <p class="inv-sub" id="invSub">NEMI runs separate offerings for US persons and for investors outside the United States. One moment while we check which one applies to you.</p>
 
     <p class="inv-status" id="invStatus" role="status">Checking your region&hellip;</p>
+    <div class="inv-bar run" id="invBar" aria-hidden="true"><span></span></div>
 
-    <div class="inv-opts">
+    <div class="inv-manual" id="invManual">
+      <button type="button" id="invChoose">Choose manually instead</button>
+    </div>
+
+    <div class="inv-opts" id="invOpts">
       <a class="inv-opt" id="optD" href="https://invest-reg-d.nemilmm.com/">
         <span class="inv-opt__k">Regulation D</span>
         <span class="inv-opt__t">I am a US person</span>
@@ -81,7 +112,7 @@
       </a>
     </div>
 
-    <p class="inv-note">Region is detected from your IP address as a convenience only. It can be wrong if you are travelling or using a VPN, and it does not determine your eligibility &mdash; that is verified on the offering page itself. Pick whichever route is actually correct for you.</p>
+    <p class="inv-note">Region is detected from your IP address as a convenience only. It can be wrong if you are travelling or using a VPN, and it does not determine your eligibility &mdash; that is verified on the offering page itself.</p>
 
     <a class="inv-back" href="home.html">&larr; Back to nemilmm.com</a>
   </div>
@@ -91,63 +122,92 @@
 (function () {
   var D = 'https://invest-reg-d.nemilmm.com/';
   var S = 'https://invest-reg-s.nemilmm.com/';
+  var HOLD = 2400;            /* the loading beat, matched to the progress bar */
+  var LOOKUP_TIMEOUT = 2200;  /* inside HOLD, so a dead lookup costs no extra wait */
+
   var statusEl = document.getElementById('invStatus');
-  var done = false;
+  var barEl = document.getElementById('invBar');
+  var optsEl = document.getElementById('invOpts');
+  var manualEl = document.getElementById('invManual');
+  var headEl = document.getElementById('invHead');
+  var subEl = document.getElementById('invSub');
+  var started = Date.now();
+  var settled = false;
 
-  function go(country) {
-    if (done) return;
-    done = true;
+  function reveal(message) {
+    if (settled) return;
+    settled = true;
+    barEl.className = 'inv-bar done';
+    statusEl.textContent = message;
+    headEl.innerHTML = 'Two routes.<br><span class="accent">Pick the one that applies to you.</span>';
+    subEl.textContent = 'NEMI runs separate offerings for US persons and for investors outside the United States. Choose the one that matches your status.';
+    manualEl.className = 'inv-manual gone';
+    optsEl.className = 'inv-opts show';
+  }
+
+  function route(country) {
+    if (settled) return;
+    settled = true;
     var us = country === 'US';
-    statusEl.innerHTML = 'Detected <b>' + (country || 'unknown') + '</b> &middot; opening ' +
+    statusEl.innerHTML = 'Detected <b>' + country + '</b> &middot; opening ' +
       (us ? 'Regulation D' : 'Regulation S') + '&hellip;';
-    /* replace(), not assign(): back from the offering should return to the site,
-       not bounce through this router again */
-    setTimeout(function () { location.replace(us ? D : S); }, 650);
+    /* Always let the loading beat finish, even when the lookup answers in 80ms:
+       a redirect that fires before anything has been read just reads as a glitch. */
+    var wait = Math.max(0, HOLD - (Date.now() - started));
+    /* replace(), not assign(): Back returns to the site rather than bouncing
+       through this router again */
+    setTimeout(function () { if (settled !== 'cancelled') location.replace(us ? D : S); }, wait);
   }
 
-  function manual(reason) {
-    if (done) return;
-    done = true;
-    statusEl.textContent = reason;
-  }
+  /* A manual choice is remembered for the session, so someone who came back to
+     switch routes is not auto-redirected away from their own decision. */
+  function remember(v) { try { sessionStorage.setItem('nemiCountry', v); } catch (e) {} }
 
-  /* An earlier answer is reused for the session so a second visit does not
-     re-query, and so a reader who came back to switch routes is not redirected
-     away from their own choice. */
-  var cached = null;
-  try { cached = sessionStorage.getItem('nemiCountry'); } catch (e) {}
-  if (sessionStorage && cached === 'MANUAL') { manual('Choose a route below.'); return; }
-  if (cached) { go(cached); return; }
-
-  /* If either option is clicked while the lookup is still running, that choice
-     wins and the redirect is cancelled. */
+  document.getElementById('invChoose').addEventListener('click', function () {
+    settled = false;          /* let reveal() run even though a route was pending */
+    remember('MANUAL');
+    reveal('Choose a route below.');
+  });
   ['optD', 'optS'].forEach(function (id) {
     document.getElementById(id).addEventListener('click', function () {
-      done = true;
-      try { sessionStorage.setItem('nemiCountry', 'MANUAL'); } catch (e) {}
+      settled = 'cancelled';  /* stop any pending auto-redirect from overriding this */
+      remember('MANUAL');
     });
   });
 
-  if (!('fetch' in window)) { manual('Choose a route below.'); return; }
+  /* Offer the escape hatch partway through the wait, not instantly — it should
+     read as a fallback, not as the primary action. */
+  setTimeout(function () {
+    if (settled === false || settled === true) {
+      if (!optsEl.classList.contains('show')) manualEl.className = 'inv-manual show';
+    }
+  }, 900);
+
+  var cached = null;
+  try { cached = sessionStorage.getItem('nemiCountry'); } catch (e) {}
+  if (cached === 'MANUAL') { reveal('Choose a route below.'); return; }
+  if (cached) { route(cached); return; }
+
+  if (!('fetch' in window)) { reveal('Choose a route below.'); return; }
 
   var ctrl = ('AbortController' in window) ? new AbortController() : null;
   var timer = setTimeout(function () {
     if (ctrl) ctrl.abort();
-    manual('Could not detect your region. Choose a route below.');
-  }, 2500);
+    reveal('Could not detect your region. Choose a route below.');
+  }, LOOKUP_TIMEOUT);
 
   fetch('https://get.geojs.io/v1/ip/country.json', ctrl ? { signal: ctrl.signal } : {})
     .then(function (r) { return r.ok ? r.json() : Promise.reject(); })
     .then(function (j) {
       clearTimeout(timer);
-      var c = (j && (j.country || j.country_code) || '').toUpperCase();
-      if (!c) return manual('Could not detect your region. Choose a route below.');
-      try { sessionStorage.setItem('nemiCountry', c); } catch (e) {}
-      go(c);
+      var c = ((j && (j.country || j.country_code)) || '').toUpperCase();
+      if (!c) return reveal('Could not detect your region. Choose a route below.');
+      remember(c);
+      route(c);
     })
     .catch(function () {
       clearTimeout(timer);
-      manual('Could not detect your region. Choose a route below.');
+      reveal('Could not detect your region. Choose a route below.');
     });
 })();
 </script>
