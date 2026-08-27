@@ -2458,3 +2458,39 @@ h1, h2, h3, h4 { text-transform: none; letter-spacing: -0.015em; }
 /* marquee cards: light placeholder behind images — a not-yet-loaded card must
    read as paper, never as a black box against this light section */
 .mkt-slide { background: #EFEBE2; }
+
+/* ---------- Nav: Invest button ---------- */
+/* Outlined against the filled Contact CTA it sits beside, so the two read as a
+   pair without competing. Same chamfer, same type treatment. */
+.nav__invest {
+  margin-left: 10px;
+  color: var(--mint) !important;
+  border: 1px solid rgba(16,163,126,.55);
+  padding: 10px 18px !important;
+  font-weight: 600; font-family: "Space Grotesk", sans-serif !important;
+  letter-spacing: 0 !important; text-transform: none !important; font-size: 14px !important;
+  clip-path: polygon(0 0, calc(100% - 10px) 0, 100% 10px, 100% 100%, 0 100%);
+  transition: background .2s, color .2s, border-color .2s;
+}
+.nav__invest::after { display: none; }
+.nav__invest:hover { background: var(--mint); color: var(--forest) !important; border-color: var(--mint); }
+
+/* With Invest in the row there are 7 items again: without nowrap the flex row
+   shrinks each link enough that "About Us" breaks onto two lines. */
+.nav__links a { white-space: nowrap; }
+
+/* The row only just clears the logo at the top of the desktop range, so tighten
+   it across that band. Starts at 900.02px, not 901px: at a fractional viewport
+   of ~900.5 neither max-width:900 nor min-width:901 matches, and the width fell
+   through the gap onto the untightened row. */
+@media (min-width: 900.02px) and (max-width: 1120px) {
+  .nav__links a { padding: 8px 10px; letter-spacing: 1.3px; }
+  .nav__invest { margin-left: 6px; padding: 10px 13px !important; }
+  .nav__cta { margin-left: 6px; padding: 11px 15px !important; }
+}
+@media (max-width: 900px) {
+  /* in the drawer it is a full-width row like the others, not a pill */
+  .nav__invest { margin-left: 0; border: 0; padding: 12px 0 !important;
+    color: var(--mint) !important; clip-path: none; }
+  .nav__invest:hover { background: none; color: var(--mint) !important; }
+}

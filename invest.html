@@ -1,0 +1,155 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Invest in NEMI</title>
+<meta name="description" content="Choose the NEMI investment page for your jurisdiction: Regulation D for US persons, Regulation S for investors outside the United States.">
+<meta name="robots" content="noindex, follow">
+<meta name="theme-color" content="#070707">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/css/style.css?v=161">
+<link rel="icon" type="image/svg+xml" href="assets/img/favicon.svg?v=7">
+<link rel="icon" type="image/png" sizes="32x32" href="assets/img/favicon-32.png?v=7">
+<link rel="icon" type="image/png" sizes="16x16" href="assets/img/favicon-16.png?v=7">
+<link rel="apple-touch-icon" sizes="180x180" href="assets/img/apple-touch-icon.png?v=7">
+<style>
+  .inv-gate { min-height: 100vh; min-height: 100dvh; display: flex; align-items: center;
+    background: var(--ink); color: var(--bone); position: relative; overflow: hidden; }
+  .inv-gate::before { content: ''; position: absolute; inset: 0; pointer-events: none;
+    background: radial-gradient(120% 90% at 8% 100%, rgba(16,163,126,.28), transparent 62%); }
+  .inv-gate > .wrap { position: relative; z-index: 1; padding-top: 60px; padding-bottom: 60px; }
+  .inv-logo img { height: 28px; width: auto; }
+  .inv-kicker { display: flex; align-items: center; gap: 16px; margin-top: 46px;
+    font-family: "IBM Plex Mono", monospace; text-transform: uppercase; letter-spacing: 3px;
+    font-size: 11px; font-weight: 600; color: var(--signal); }
+  .inv-kicker::before { content: ''; flex: 0 0 auto; width: 42px; height: 2px; background: var(--signal); }
+  .inv-gate h1 { margin-top: 22px; font-size: clamp(30px, 4.6vw, 54px); font-weight: 700;
+    letter-spacing: -1.6px; line-height: 1.06; }
+  .inv-sub { margin-top: 20px; max-width: 620px; font-size: clamp(15px, 1.5vw, 17px);
+    line-height: 1.7; color: rgba(236,231,221,.72); }
+  .inv-status { margin-top: 30px; min-height: 20px; font-family: "IBM Plex Mono", monospace;
+    text-transform: uppercase; letter-spacing: 2px; font-size: 11px; color: var(--grey); }
+  .inv-status b { color: var(--signal); font-weight: 600; }
+  .inv-opts { margin-top: 18px; display: grid; grid-template-columns: repeat(2, minmax(0,1fr));
+    gap: 16px; max-width: 780px; }
+  .inv-opt { display: block; padding: 26px 28px; text-decoration: none;
+    background: rgba(236,231,221,.04); border: 1px solid rgba(236,231,221,.14);
+    color: var(--bone); transition: background .2s, border-color .2s, transform .2s;
+    clip-path: polygon(0 0, calc(100% - 16px) 0, 100% 16px, 100% 100%, 0 100%); }
+  .inv-opt:hover { background: rgba(16,163,126,.12); border-color: rgba(16,163,126,.5);
+    transform: translateY(-2px); }
+  .inv-opt__k { font-family: "IBM Plex Mono", monospace; text-transform: uppercase;
+    letter-spacing: 2.5px; font-size: 10px; font-weight: 600; color: var(--signal); }
+  .inv-opt__t { margin-top: 10px; font-size: 20px; font-weight: 600; letter-spacing: -.4px; }
+  .inv-opt__d { margin-top: 8px; font-size: 13.5px; line-height: 1.65; color: rgba(236,231,221,.62); }
+  .inv-note { margin-top: 30px; max-width: 720px; font-size: 12px; line-height: 1.7;
+    color: rgba(236,231,221,.42); }
+  .inv-back { display: inline-block; margin-top: 26px; font-family: "IBM Plex Mono", monospace;
+    text-transform: uppercase; letter-spacing: 2px; font-size: 11px; color: var(--grey);
+    text-decoration: none; }
+  .inv-back:hover { color: var(--signal); }
+  @media (max-width: 680px) { .inv-opts { grid-template-columns: 1fr; } }
+</style>
+</head>
+<body>
+
+<section class="inv-gate">
+  <div class="hero__grid"></div>
+  <div class="crops" aria-hidden="true"><span>+</span><span>+</span><span>+</span><span>+</span></div>
+  <div class="wrap">
+    <a class="inv-logo" href="home.html"><img src="assets/img/logo-dark.png?v=2" alt="NEMI"></a>
+
+    <div class="inv-kicker">Invest in NEMI</div>
+    <h1>Two routes.<br><span class="accent">Pick the one that applies to you.</span></h1>
+    <p class="inv-sub">NEMI runs separate offerings for US persons and for investors outside the United States. Choose the one that matches your status.</p>
+
+    <p class="inv-status" id="invStatus" role="status">Checking your region&hellip;</p>
+
+    <div class="inv-opts">
+      <a class="inv-opt" id="optD" href="https://invest-reg-d.nemilmm.com/">
+        <span class="inv-opt__k">Regulation D</span>
+        <span class="inv-opt__t">I am a US person</span>
+        <span class="inv-opt__d">For accredited investors in the United States.</span>
+      </a>
+      <a class="inv-opt" id="optS" href="https://invest-reg-s.nemilmm.com/">
+        <span class="inv-opt__k">Regulation S</span>
+        <span class="inv-opt__t">I am outside the US</span>
+        <span class="inv-opt__d">For investors resident outside the United States.</span>
+      </a>
+    </div>
+
+    <p class="inv-note">Region is detected from your IP address as a convenience only. It can be wrong if you are travelling or using a VPN, and it does not determine your eligibility &mdash; that is verified on the offering page itself. Pick whichever route is actually correct for you.</p>
+
+    <a class="inv-back" href="home.html">&larr; Back to nemilmm.com</a>
+  </div>
+</section>
+
+<script>
+(function () {
+  var D = 'https://invest-reg-d.nemilmm.com/';
+  var S = 'https://invest-reg-s.nemilmm.com/';
+  var statusEl = document.getElementById('invStatus');
+  var done = false;
+
+  function go(country) {
+    if (done) return;
+    done = true;
+    var us = country === 'US';
+    statusEl.innerHTML = 'Detected <b>' + (country || 'unknown') + '</b> &middot; opening ' +
+      (us ? 'Regulation D' : 'Regulation S') + '&hellip;';
+    /* replace(), not assign(): back from the offering should return to the site,
+       not bounce through this router again */
+    setTimeout(function () { location.replace(us ? D : S); }, 650);
+  }
+
+  function manual(reason) {
+    if (done) return;
+    done = true;
+    statusEl.textContent = reason;
+  }
+
+  /* An earlier answer is reused for the session so a second visit does not
+     re-query, and so a reader who came back to switch routes is not redirected
+     away from their own choice. */
+  var cached = null;
+  try { cached = sessionStorage.getItem('nemiCountry'); } catch (e) {}
+  if (sessionStorage && cached === 'MANUAL') { manual('Choose a route below.'); return; }
+  if (cached) { go(cached); return; }
+
+  /* If either option is clicked while the lookup is still running, that choice
+     wins and the redirect is cancelled. */
+  ['optD', 'optS'].forEach(function (id) {
+    document.getElementById(id).addEventListener('click', function () {
+      done = true;
+      try { sessionStorage.setItem('nemiCountry', 'MANUAL'); } catch (e) {}
+    });
+  });
+
+  if (!('fetch' in window)) { manual('Choose a route below.'); return; }
+
+  var ctrl = ('AbortController' in window) ? new AbortController() : null;
+  var timer = setTimeout(function () {
+    if (ctrl) ctrl.abort();
+    manual('Could not detect your region. Choose a route below.');
+  }, 2500);
+
+  fetch('https://get.geojs.io/v1/ip/country.json', ctrl ? { signal: ctrl.signal } : {})
+    .then(function (r) { return r.ok ? r.json() : Promise.reject(); })
+    .then(function (j) {
+      clearTimeout(timer);
+      var c = (j && (j.country || j.country_code) || '').toUpperCase();
+      if (!c) return manual('Could not detect your region. Choose a route below.');
+      try { sessionStorage.setItem('nemiCountry', c); } catch (e) {}
+      go(c);
+    })
+    .catch(function () {
+      clearTimeout(timer);
+      manual('Could not detect your region. Choose a route below.');
+    });
+})();
+</script>
+</body>
+</html>
