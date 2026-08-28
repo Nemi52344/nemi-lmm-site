@@ -1366,11 +1366,17 @@ button.btn {
   .grid-2, .split { grid-template-columns: 1fr; }
   .split { gap: 28px; }
   .footer__top { grid-template-columns: 1fr; gap: 32px; }
+  /* Solid, not .96: the drawer is a panel you read menu items off, not glass.
+     See the .nav--stuck note below for why even .96 was not opaque enough. */
   .nav__links { display: none; position: absolute; top: 100%; left: 0; right: 0;
-    flex-direction: column; align-items: flex-start; gap: 0; background: rgba(7,7,7,0.96);
+    flex-direction: column; align-items: flex-start; gap: 0; background: var(--ink);
     border-bottom: 1px solid rgba(236,231,221,.1); padding: 8px 24px 20px; }
   .nav__links.open { display: flex; }
   .nav__links a { padding: 12px 0; width: 100%; }
+  /* .nav__cta keeps its desktop margin-left:14px in the drawer, which pushed the
+     Contact block 14px right of every other row and 14px past the panel's right
+     padding. Only the scrolled state had ever reset it. */
+  .nav__cta { margin-left: 0; }
   .nav__burger { display: block; }
   /* At 30px tall the wordmark ran to 142px — 38% of a 375px screen. */
   .nav__logo img { height: 23px; }
@@ -1385,11 +1391,24 @@ button.btn {
      the 46px condensed bar and leaves the green Contact block floating over the
      page. Re-assert the panel layout for the scrolled state. */
   .nav--stuck .nav__links { top: 100%; right: 0; bottom: auto; left: 0;
-    justify-content: flex-start; pointer-events: auto; }
+    justify-content: flex-start; pointer-events: auto;
+    /* the desktop condensed-bar rule sets padding-right:12px to pull the row to
+       the bar edge; in the drawer that left 24px of padding on the left and 12px
+       on the right, so restate the panel padding */
+    padding: 8px 24px 20px; }
+  /* The condensed bar is 35% ink over a blur. backdrop-filter makes the nav a
+     backdrop root, so the drawer — a child hanging below the bar's own box —
+     gets composited into that group and the page reads straight through it,
+     whatever alpha the panel itself carries. With the menu open the header
+     stops being glass and becomes a solid surface, which is what a drawer
+     wants anyway. */
+  .nav--stuck:has(.nav__links.open) { background: var(--ink);
+    backdrop-filter: none; -webkit-backdrop-filter: none; }
   .nav--stuck .nav__links a:not(.nav__cta):not(.nav__invest) { font-size: 12px; padding: 12px 0; }
   /* the condensed-bar sizing above is (0,2,0) and !important, so the drawer has
-     to restate Invest at matching weight or it stays pill-sized in the panel */
-  .nav--stuck .nav__invest { margin-left: 0; padding: 12px 0 !important; font-size: 12px !important; }
+     to restate Invest at matching weight or it keeps the 46px-bar padding and
+     the box collapses to a thin outlined strip */
+  .nav--stuck .nav__invest { margin-left: 0; padding: 11px 22px !important; font-size: 14px !important; }
   .nav--stuck .nav__cta { position: static; transform: none; margin-left: 0;
     padding: 12px 18px !important; font-size: 14px !important; }
   .stats { grid-template-columns: 1fr; }
@@ -2631,10 +2650,15 @@ footer { background: #07110D; color: #9DA8A0; border-top: 1px solid rgba(233,238
   .nav__cta { margin-left: 6px; padding: 11px 15px !important; }
 }
 @media (max-width: 900px) {
-  /* in the drawer it is a full-width row like the others, not a pill */
-  .nav__invest { margin-left: 0; border: 0; padding: 12px 0 !important;
+  /* In the drawer Invest pairs with Contact, so it is boxed like Contact rather
+     than sitting as a bare text row among the section links — outlined instead
+     of filled, since it is the secondary of the two. Same padding as .nav__cta
+     so the two stack as one block with their labels on the same left edge. */
+  .nav__invest { margin: 10px 0 8px; border: 1px solid rgba(16,163,126,.55);
+    width: 100%; padding: 11px 22px !important; font-size: 14px !important;
     color: var(--signal) !important; clip-path: none; }
-  .nav__invest:hover { background: none; color: var(--signal) !important; }
+  .nav__invest:hover { background: var(--signal); color: var(--emerald) !important;
+    border-color: var(--signal); }
 }
 /* "Sadasivam Balasubramaniam" is far longer than the other names in this row,
    and .team-inline nowraps them. Let this row wrap instead of overflowing. */
