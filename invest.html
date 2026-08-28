@@ -18,35 +18,40 @@
 <link rel="apple-touch-icon" sizes="180x180" href="assets/img/apple-touch-icon.png?v=7">
 <style>
   .inv-gate { min-height: 100vh; min-height: 100dvh; display: flex; align-items: center;
-    background: var(--ink); color: var(--bone); position: relative; overflow: hidden; }
+    justify-content: center; background: var(--ink); color: var(--bone);
+    position: relative; overflow: hidden; }
   .inv-gate::before { content: ''; position: absolute; inset: 0; pointer-events: none;
-    background: radial-gradient(120% 90% at 8% 100%, rgba(16,163,126,.28), transparent 62%); }
-  .inv-gate > .wrap { position: relative; z-index: 1; padding-top: 60px; padding-bottom: 60px; }
+    background: radial-gradient(120% 90% at 50% 108%, rgba(16,163,126,.26), transparent 62%); }
+  .inv-gate > .wrap { position: relative; z-index: 1; text-align: center;
+    padding-top: 56px; padding-bottom: 56px; }
+  .inv-logo { display: inline-block; }
   .inv-logo img { height: 30px; width: auto; }
-  .inv-gate h1 { margin-top: 54px; font-size: clamp(32px, 5vw, 60px); font-weight: 700;
-    letter-spacing: -1.8px; line-height: 1.05; }
+  .inv-gate h1 { margin-top: 40px; font-size: clamp(30px, 4.4vw, 52px); font-weight: 700;
+    letter-spacing: -1.6px; line-height: 1.06; }
 
-  /* Loader: the brand's slim emerald rule, drawn as it fills. Determinate on
-     purpose — it doubles as the countdown to the redirect. */
-  .inv-bar { margin-top: 40px; width: min(430px, 100%); height: 2px;
+  /* The counter is the loader. Oversized figures are the brand's loudest
+     element, and it doubles as an honest countdown: it hits 100 exactly when
+     the redirect fires. tabular-nums stops the width jittering as digits change. */
+  .inv-pct { margin-top: 38px; font-size: clamp(72px, 13vw, 168px); font-weight: 700;
+    letter-spacing: -6px; line-height: .9; color: var(--bone);
+    font-variant-numeric: tabular-nums; font-feature-settings: "tnum" 1; }
+  .inv-pct em { font-style: normal; color: var(--signal); }
+
+  .inv-bar { margin: 30px auto 0; width: min(360px, 78%); height: 2px;
     background: rgba(236,231,221,.13); overflow: hidden; }
   .inv-bar i { display: block; height: 100%; width: 0; background: var(--signal); }
-  .inv-bar.run i { animation: invfill 2400ms cubic-bezier(.35,0,.25,1) forwards; }
-  @keyframes invfill { from { width: 0; } to { width: 100%; } }
   .inv-bar.done { display: none; }
-  @media (prefers-reduced-motion: reduce) { .inv-bar.run i { animation: none; width: 100%; } }
 
-  .inv-status { margin-top: 18px; min-height: 18px; font-family: "IBM Plex Mono", monospace;
+  .inv-status { margin-top: 20px; min-height: 18px; font-family: "IBM Plex Mono", monospace;
     text-transform: uppercase; letter-spacing: 2.5px; font-size: 11px; color: var(--grey); }
   .inv-status b { color: var(--signal); font-weight: 600; }
 
-  /* Everything below is the fallback: shown only when the region cannot be
-     read, or when someone comes back to switch routes. */
+  /* Fallback only: shown when the region cannot be read, or via ?choose=1 */
   .inv-rest { display: none; }
   .inv-rest.show { display: block; animation: invrise .45s ease both; }
   @keyframes invrise { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: none; } }
-  .inv-opts { margin-top: 26px; display: grid; grid-template-columns: repeat(2, minmax(0,1fr));
-    gap: 16px; max-width: 780px; }
+  .inv-opts { margin: 26px auto 0; display: grid; grid-template-columns: repeat(2, minmax(0,1fr));
+    gap: 16px; max-width: 780px; text-align: left; }
   .inv-opt { display: block; padding: 26px 28px; text-decoration: none;
     background: rgba(236,231,221,.04); border: 1px solid rgba(236,231,221,.14);
     color: var(--bone); transition: background .2s, border-color .2s, transform .2s; }
@@ -56,7 +61,7 @@
     letter-spacing: 2.5px; font-size: 10px; font-weight: 600; color: var(--signal); }
   .inv-opt__t { display: block; margin-top: 10px; font-size: 20px; font-weight: 600; letter-spacing: -.4px; }
   .inv-opt__d { display: block; margin-top: 8px; font-size: 13.5px; line-height: 1.65; color: rgba(236,231,221,.62); }
-  .inv-note { margin-top: 28px; max-width: 720px; font-size: 12px; line-height: 1.7;
+  .inv-note { margin: 28px auto 0; max-width: 640px; font-size: 12px; line-height: 1.7;
     color: rgba(236,231,221,.42); }
   .inv-back { display: inline-block; margin-top: 22px; font-family: "IBM Plex Mono", monospace;
     text-transform: uppercase; letter-spacing: 2px; font-size: 11px; color: var(--grey);
@@ -75,7 +80,8 @@
 
     <h1 id="invHead">Taking you to the<br><span class="accent">right offering.</span></h1>
 
-    <div class="inv-bar run" id="invBar" aria-hidden="true"><i></i></div>
+    <div class="inv-pct" id="invPct" aria-hidden="true">0<em>%</em></div>
+    <div class="inv-bar" id="invBar" aria-hidden="true"><i></i></div>
     <p class="inv-status" id="invStatus" role="status">Checking your region&hellip;</p>
 
     <div class="inv-rest" id="invRest">
@@ -101,69 +107,88 @@
 (function () {
   var D = 'https://invest-reg-d.nemilmm.com/';
   var S = 'https://invest-reg-s.nemilmm.com/';
-  var HOLD = 2400;            /* the loading beat, matched to the bar */
-  var LOOKUP_TIMEOUT = 2200;  /* inside HOLD, so a dead lookup adds no extra wait */
+  var HOLD = 2600;            /* how long 0 -> 100 takes */
+  var LOOKUP_TIMEOUT = 2000;  /* inside HOLD, so a decision always exists by 100% */
 
-  var statusEl = document.getElementById('invStatus');
+  var pctEl = document.getElementById('invPct');
+  var fillEl = document.querySelector('#invBar i');
   var barEl = document.getElementById('invBar');
+  var statusEl = document.getElementById('invStatus');
   var restEl = document.getElementById('invRest');
   var headEl = document.getElementById('invHead');
+
   var started = Date.now();
-  var settled = false;
+  var decision = null;        /* {code,label} once known, or 'fail' */
+  var cancelled = false;      /* a deliberate click beats the auto-redirect */
+  var finished = false;
 
   function store(k, v) { try { sessionStorage.setItem(k, v); } catch (e) {} }
   function read(k) { try { return sessionStorage.getItem(k); } catch (e) { return null; } }
 
   function reveal(message) {
-    if (settled === 'cancelled') return;
-    settled = true;
+    if (cancelled) return;
+    finished = true;
+    pctEl.style.display = 'none';
     barEl.className = 'inv-bar done';
     statusEl.textContent = message;
     headEl.innerHTML = 'Two routes.<br><span class="accent">Pick the one that applies to you.</span>';
     restEl.className = 'inv-rest show';
   }
 
-  function route(code, label) {
-    if (settled) return;
-    settled = true;
-    var us = code === 'US';
-    statusEl.innerHTML = 'Detected <b>' + label + '</b> &middot; opening&hellip;';
-    /* The hold is a floor, not an added delay: the lookup usually answers in
-       well under a second, and redirecting before anything has been read just
-       looks like a glitch. */
-    var wait = Math.max(0, HOLD - (Date.now() - started));
-    setTimeout(function () {
-      if (settled === 'cancelled') return;
+  /* One clock drives the number, the bar and the redirect, so 100% is not a
+     decoration — it is the moment the page leaves. */
+  var reduce = window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches;
+  function tick() {
+    if (finished || cancelled) return;
+    var p = Math.min(1, (Date.now() - started) / HOLD);
+    var n = Math.round(p * 100);
+    pctEl.firstChild.nodeValue = String(n);
+    fillEl.style.width = (p * 100) + '%';
+    if (p < 1) {
+      (window.requestAnimationFrame || function (f) { setTimeout(f, 16); })(tick);
+      return;
+    }
+    finished = true;
+    if (decision && decision !== 'fail') {
       /* replace(), not assign(): Back returns to the site rather than bouncing
          through this router again */
-      location.replace(us ? D : S);
-    }, wait);
+      location.replace(decision.code === 'US' ? D : S);
+    } else {
+      finished = false;
+      reveal('Could not detect your region. Choose a route below.');
+    }
+  }
+  if (reduce) { pctEl.firstChild.nodeValue = '100'; fillEl.style.width = '100%'; }
+  (window.requestAnimationFrame || function (f) { setTimeout(f, 16); })(tick);
+
+  function decide(code, label) {
+    if (finished || cancelled) return;
+    decision = { code: code, label: label };
+    statusEl.innerHTML = 'Detected <b>' + label + '</b> &middot; opening&hellip;';
   }
 
   ['optD', 'optS'].forEach(function (id) {
-    document.getElementById(id).addEventListener('click', function () {
-      settled = 'cancelled';   /* a deliberate choice beats a pending redirect */
-    });
+    document.getElementById(id).addEventListener('click', function () { cancelled = true; });
   });
 
   /* The loader runs on every visit — it is the whole point of the page, so it is
-     never skipped. invest.html?choose=1 is the way to reach the manual picker
-     (for anyone whose IP reads wrong, or to link someone straight to it) without
-     putting a second control on the clean screen. */
+     never skipped. invest.html?choose=1 reaches the manual picker (for anyone
+     whose IP reads wrong, or to link someone straight to it) without putting a
+     second control on the clean screen. */
   if (/[?&]choose=1/.test(location.search)) {
     reveal('Choose a route below.');
     return;
   }
 
   var cachedCode = read('nemiCode');
-  if (cachedCode) { route(cachedCode, read('nemiName') || cachedCode); return; }
+  if (cachedCode) { decide(cachedCode, read('nemiName') || cachedCode); return; }
 
-  if (!('fetch' in window)) { reveal('Choose a route below.'); return; }
+  if (!('fetch' in window)) { decision = 'fail'; return; }
 
   var ctrl = ('AbortController' in window) ? new AbortController() : null;
   var timer = setTimeout(function () {
     if (ctrl) ctrl.abort();
-    reveal('Could not detect your region. Choose a route below.');
+    decision = decision || 'fail';
   }, LOOKUP_TIMEOUT);
 
   fetch('https://get.geojs.io/v1/ip/country.json', ctrl ? { signal: ctrl.signal } : {})
@@ -171,15 +196,15 @@
     .then(function (j) {
       clearTimeout(timer);
       var code = ((j && (j.country || j.country_code)) || '').toUpperCase();
-      if (!code) return reveal('Could not detect your region. Choose a route below.');
+      if (!code) { decision = 'fail'; return; }
       var label = (j && j.name) || code;   /* "India" reads better than "IN" */
       store('nemiCode', code);
       store('nemiName', label);
-      route(code, label);
+      decide(code, label);
     })
     .catch(function () {
       clearTimeout(timer);
-      reveal('Could not detect your region. Choose a route below.');
+      decision = decision || 'fail';
     });
 })();
 </script>
