@@ -29,22 +29,26 @@
   .inv-gate h1 { margin-top: 40px; font-size: clamp(30px, 4.4vw, 52px); font-weight: 700;
     letter-spacing: -1.6px; line-height: 1.06; }
 
-  /* The counter is the loader. Oversized figures are the brand's loudest
-     element, and it doubles as an honest countdown: it hits 100 exactly when
-     the redirect fires. tabular-nums stops the width jittering as digits change. */
-  .inv-pct { margin-top: 38px; font-size: clamp(72px, 13vw, 168px); font-weight: 700;
-    letter-spacing: -6px; line-height: .9; color: var(--bone);
-    font-variant-numeric: tabular-nums; font-feature-settings: "tnum" 1; }
-  .inv-pct em { font-style: normal; color: var(--signal); }
-
-  .inv-bar { margin: 30px auto 0; width: min(360px, 78%); height: 2px;
-    background: rgba(236,231,221,.13); overflow: hidden; }
+  /* The loader is the brand's slim emerald rule plus a mono readout — the same
+     way the system treats any other measurement. Deliberately quiet: the
+     headline is the message, this is just the instrument. The rule is ticked
+     every 10% so it reads as a scale rather than a generic progress bar. */
+  .inv-bar { margin: 42px auto 0; width: min(300px, 74%); height: 3px; position: relative;
+    background: rgba(236,231,221,.12); }
+  .inv-bar::after { content: ''; position: absolute; inset: 0; pointer-events: none;
+    background: repeating-linear-gradient(90deg,
+      rgba(236,231,221,.30) 0 1px, transparent 1px 10%); }
   .inv-bar i { display: block; height: 100%; width: 0; background: var(--signal); }
   .inv-bar.done { display: none; }
 
-  .inv-status { margin-top: 20px; min-height: 18px; font-family: "IBM Plex Mono", monospace;
+  .inv-status { margin-top: 18px; min-height: 18px; display: flex; justify-content: center;
+    align-items: baseline; gap: 12px; font-family: "IBM Plex Mono", monospace;
     text-transform: uppercase; letter-spacing: 2.5px; font-size: 11px; color: var(--grey); }
   .inv-status b { color: var(--signal); font-weight: 600; }
+  /* tabular-nums + a fixed cell so the line does not shuffle as digits change */
+  .inv-pct { color: var(--signal); font-weight: 600; min-width: 4.5ch; text-align: right;
+    font-variant-numeric: tabular-nums; font-feature-settings: "tnum" 1; }
+  .inv-status.done { display: block; }
 
   /* Fallback only: shown when the region cannot be read, or via ?choose=1 */
   .inv-rest { display: none; }
@@ -74,15 +78,13 @@
 
 <section class="inv-gate">
   <div class="hero__grid"></div>
-  <div class="crops" aria-hidden="true"><span>+</span><span>+</span><span>+</span><span>+</span></div>
   <div class="wrap">
     <a class="inv-logo" href="home.html"><img src="assets/img/logo-dark.png?v=2" alt="NEMI"></a>
 
     <h1 id="invHead">Taking you to the<br><span class="accent">right offering.</span></h1>
 
-    <div class="inv-pct" id="invPct" aria-hidden="true">0<em>%</em></div>
     <div class="inv-bar" id="invBar" aria-hidden="true"><i></i></div>
-    <p class="inv-status" id="invStatus" role="status">Checking your region&hellip;</p>
+    <p class="inv-status" id="invStatus" role="status"><span class="inv-pct" id="invPct" aria-hidden="true">0%</span><span id="invMsg">Checking your region&hellip;</span></p>
 
     <div class="inv-rest" id="invRest">
       <div class="inv-opts">
@@ -111,6 +113,7 @@
   var LOOKUP_TIMEOUT = 2000;  /* inside HOLD, so a decision always exists by 100% */
 
   var pctEl = document.getElementById('invPct');
+  var msgEl = document.getElementById('invMsg');
   var fillEl = document.querySelector('#invBar i');
   var barEl = document.getElementById('invBar');
   var statusEl = document.getElementById('invStatus');
@@ -128,9 +131,10 @@
   function reveal(message) {
     if (cancelled) return;
     finished = true;
-    pctEl.style.display = 'none';
     barEl.className = 'inv-bar done';
-    statusEl.textContent = message;
+    pctEl.style.display = 'none';
+    statusEl.className = 'inv-status done';   /* drop the flex row, one line again */
+    msgEl.textContent = message;
     headEl.innerHTML = 'Two routes.<br><span class="accent">Pick the one that applies to you.</span>';
     restEl.className = 'inv-rest show';
   }
@@ -141,8 +145,7 @@
   function tick() {
     if (finished || cancelled) return;
     var p = Math.min(1, (Date.now() - started) / HOLD);
-    var n = Math.round(p * 100);
-    pctEl.firstChild.nodeValue = String(n);
+    pctEl.textContent = Math.round(p * 100) + '%';
     fillEl.style.width = (p * 100) + '%';
     if (p < 1) {
       (window.requestAnimationFrame || function (f) { setTimeout(f, 16); })(tick);
@@ -158,13 +161,13 @@
       reveal('Could not detect your region. Choose a route below.');
     }
   }
-  if (reduce) { pctEl.firstChild.nodeValue = '100'; fillEl.style.width = '100%'; }
+  if (reduce) { pctEl.textContent = '100%'; fillEl.style.width = '100%'; }
   (window.requestAnimationFrame || function (f) { setTimeout(f, 16); })(tick);
 
   function decide(code, label) {
     if (finished || cancelled) return;
     decision = { code: code, label: label };
-    statusEl.innerHTML = 'Detected <b>' + label + '</b> &middot; opening&hellip;';
+    msgEl.innerHTML = 'Detected <b>' + label + '</b> &middot; opening&hellip;';   /* msgEl, not statusEl: statusEl also holds the % readout */
   }
 
   ['optD', 'optS'].forEach(function (id) {
