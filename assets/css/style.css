@@ -2660,7 +2660,7 @@ footer { background: #07110D; color: #9DA8A0; border-top: 1px solid rgba(233,238
   .nav__invest:hover { background: var(--signal); color: var(--emerald) !important;
     border-color: var(--signal); }
 }
-/* "Sadasivam Balasubramaniam" is far longer than the other names in this row,
+/* "Sadasivam Balasubramanian" is far longer than the other names in this row,
    and .team-inline nowraps them. Let this row wrap instead of overflowing. */
 .team-inline .person__name { white-space: normal; }
 /* Between the burger breakpoint and ~1120px these cards are 4-up and narrow.
