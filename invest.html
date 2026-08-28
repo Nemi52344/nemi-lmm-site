@@ -167,7 +167,7 @@
   function decide(code, label) {
     if (finished || cancelled) return;
     decision = { code: code, label: label };
-    msgEl.innerHTML = 'Detected <b>' + label + '</b> &middot; opening&hellip;';   /* msgEl, not statusEl: statusEl also holds the % readout */
+    msgEl.innerHTML = 'Location <b>' + label + '</b> &middot; opening&hellip;';   /* msgEl, not statusEl: statusEl also holds the % readout */
   }
 
   ['optD', 'optS'].forEach(function (id) {
