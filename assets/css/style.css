@@ -548,9 +548,8 @@ section { padding: 88px 0; }
 /* each person sits on their own oat card — name over role, no headshot */
 .person {
   display: grid; grid-template-columns: 1fr;
-  /* third row is optional — a card with no .person__exp collapses it to 0 */
-  grid-template-rows: auto auto auto;
-  grid-template-areas: "name" "role" "exp";
+  grid-template-rows: auto auto;
+  grid-template-areas: "name" "role";
   align-content: center; row-gap: 7px; min-height: 78px;
   background: var(--oat); border: 1px solid rgba(7,7,7,.12);
   padding: 16px 18px; overflow: hidden;
@@ -569,13 +568,6 @@ section { padding: 88px 0; }
   background: transparent; border: 0; padding: 0;
   font-family: "IBM Plex Mono", monospace; font-size: 9.5px; letter-spacing: 1.2px; text-transform: uppercase; line-height: 1.3;
 }
-/* optional third line under the role — quieter than the role, ink not emerald,
-   so the card still reads name-first */
-.person__exp {
-  grid-area: exp; align-self: start; margin-top: 1px;
-  color: rgba(7,7,7,.55); font-family: "IBM Plex Mono", monospace;
-  font-size: 9.5px; letter-spacing: 1px; text-transform: uppercase; line-height: 1.3;
-}
 .team-sub { grid-template-columns: repeat(6, 1fr); gap: 14px; }
 .team-sub .person { padding: 14px 15px; min-height: 68px; }
 .team-sub .person__name { font-size: 12px; letter-spacing: -.3px; white-space: nowrap; }
@@ -590,7 +582,7 @@ section { padding: 88px 0; }
 .team-grid .person:hover { transform: none; box-shadow: none; }
 .person__face {
   position: absolute; inset: 0; display: grid; align-content: center; row-gap: 7px;
-  grid-template-columns: 1fr; grid-template-areas: "name" "role" "exp";
+  grid-template-columns: 1fr; grid-template-areas: "name" "role";
   padding: 12px 16px; background: var(--oat); border: 1px solid rgba(7,7,7,.12);
   clip-path: polygon(0 0, calc(100% - 12px) 0, 100% 12px, 100% 100%, 0 100%);
   backface-visibility: hidden; -webkit-backface-visibility: hidden;
@@ -2644,10 +2636,9 @@ footer { background: #07110D; color: #9DA8A0; border-top: 1px solid rgba(233,238
     color: var(--signal) !important; clip-path: none; }
   .nav__invest:hover { background: none; color: var(--signal) !important; }
 }
-/* "Sadasivam Bala Subramaniam" is far longer than the other names in this row,
+/* "Sadasivam Balasubramaniam" is far longer than the other names in this row,
    and .team-inline nowraps them. Let this row wrap instead of overflowing. */
 .team-inline .person__name { white-space: normal; }
-.team-inline .person__exp { white-space: nowrap; }
 /* Between the burger breakpoint and ~1120px these cards are 4-up and narrow.
    The nowrap role ("Business Unit Leader · MaaS India Commercial" measures
    242px in a 197px card) forced the grid column wider than the card and
