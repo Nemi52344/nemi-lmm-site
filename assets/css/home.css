@@ -1771,12 +1771,18 @@ h1, h2, h3, h4 { text-transform: none; letter-spacing: -0.015em; }
    also lays an invisible sheet over the logo and swallows the click, so the
    "tap the logo to go home" affordance died the moment you scrolled past 120px.
    Let pointers through the container and re-arm them on the links themselves. */
-.nav--stuck .nav__links { position: absolute; inset: 0; justify-content: center;
-  pointer-events: none; }
+/* Condensed bar: everything after the logo sits right, the same order as the
+   full-size nav. Centring the links and pinning only the CTA (what this used to
+   do) stranded Invest in the middle of the bar, away from the button it pairs
+   with. inset:0 still spans the bar so the row can align to its right edge. */
+.nav--stuck .nav__links { position: absolute; inset: 0; justify-content: flex-end;
+  padding-right: 12px; pointer-events: none; }
 .nav--stuck .nav__links > a { pointer-events: auto; }
-.nav--stuck .nav__links a:not(.nav__cta) { font-size: 11px; padding: 6px 14px; }
-.nav--stuck .nav__cta { position: absolute; right: 12px; top: 50%; transform: translateY(-50%);
-  margin-left: 0; padding: 8px 16px !important; font-size: 13px !important; }
+.nav--stuck .nav__links a:not(.nav__cta):not(.nav__invest) { font-size: 11px; padding: 6px 14px; }
+/* Both buttons shrink to the 46px bar — at full size they crowded it. */
+.nav--stuck .nav__invest { margin-left: 6px; padding: 7px 13px !important; font-size: 13px !important; }
+.nav--stuck .nav__cta { position: static; transform: none;
+  margin-left: 8px; padding: 8px 16px !important; font-size: 13px !important; }
 @keyframes nav-drop { from { transform: translate(-50%, -130%); } to { transform: translate(-50%, 0); } }
 .nav__burger { display: none; background: none; border: 0; cursor: pointer; padding: 6px; }
 .nav__burger span { display: block; width: 24px; height: 2px; background: #ECE7DD; margin: 5px 0; }
@@ -1801,7 +1807,10 @@ h1, h2, h3, h4 { text-transform: none; letter-spacing: -0.015em; }
      page. Re-assert the panel layout for the scrolled state. */
   .nav--stuck .nav__links { top: 100%; right: 0; bottom: auto; left: 0;
     justify-content: flex-start; pointer-events: auto; }
-  .nav--stuck .nav__links a:not(.nav__cta) { font-size: 12px; padding: 12px 0; }
+  .nav--stuck .nav__links a:not(.nav__cta):not(.nav__invest) { font-size: 12px; padding: 12px 0; }
+  /* the condensed-bar sizing above is (0,2,0) and !important, so the drawer has
+     to restate Invest at matching weight or it stays pill-sized in the panel */
+  .nav--stuck .nav__invest { margin-left: 0; padding: 12px 0 !important; font-size: 12px !important; }
   .nav--stuck .nav__cta { position: static; transform: none; margin-left: 0;
     padding: 12px 18px !important; font-size: 14px !important; }
 }
