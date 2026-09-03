@@ -3,13 +3,12 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Invest in NEMI</title>
-<meta name="description" content="Routing you to the NEMI investment page for your jurisdiction: Regulation D for US persons, Regulation S for investors outside the United States.">
+<title>Invest in NEMI — Coming soon</title>
+<meta name="description" content="NEMI AI's investment offering is not open yet. Details will be published on this page when it is.">
 <meta name="robots" content="noindex, follow">
 <meta name="theme-color" content="#070707">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="preconnect" href="https://get.geojs.io" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="assets/css/style.css?v=169">
 <link rel="icon" type="image/svg+xml" href="assets/img/favicon.svg?v=7">
@@ -26,52 +25,38 @@
     padding-top: 56px; padding-bottom: 56px; }
   .inv-logo { display: inline-block; }
   .inv-logo img { height: 30px; width: auto; }
-  .inv-gate h1 { margin-top: 40px; font-size: clamp(30px, 4.4vw, 52px); font-weight: 700;
-    letter-spacing: -1.6px; line-height: 1.06; }
 
-  /* The loader is the brand's slim emerald rule plus a mono readout — the same
-     way the system treats any other measurement. Deliberately quiet: the
-     headline is the message, this is just the instrument. The rule is ticked
-     every 10% so it reads as a scale rather than a generic progress bar. */
-  .inv-bar { margin: 42px auto 0; width: min(300px, 74%); height: 3px; position: relative;
+  .inv-eyebrow { margin-top: 40px; font-family: "IBM Plex Mono", monospace;
+    text-transform: uppercase; letter-spacing: 2.5px; font-size: 11px; color: var(--signal); }
+  .inv-gate h1 { margin-top: 14px; font-size: clamp(32px, 5vw, 60px); font-weight: 700;
+    letter-spacing: -1.8px; line-height: 1.04; }
+  /* the emerald rule under the headline is the same instrument mark the rest of
+     the system uses — a measured line, ticked, not a decorative underline */
+  .inv-rule { margin: 30px auto 0; width: min(220px, 60%); height: 3px; position: relative;
     background: rgba(236,231,221,.12); }
-  .inv-bar::after { content: ''; position: absolute; inset: 0; pointer-events: none;
+  .inv-rule::after { content: ''; position: absolute; inset: 0;
     background: repeating-linear-gradient(90deg,
       rgba(236,231,221,.30) 0 1px, transparent 1px 10%); }
-  .inv-bar i { display: block; height: 100%; width: 0; background: var(--signal); }
-  .inv-bar.done { display: none; }
+  .inv-rule i { display: block; height: 100%; width: 38%; background: var(--signal); }
 
-  .inv-status { margin-top: 18px; min-height: 18px; display: flex; justify-content: center;
-    align-items: baseline; gap: 12px; font-family: "IBM Plex Mono", monospace;
-    text-transform: uppercase; letter-spacing: 2.5px; font-size: 11px; color: var(--grey); }
-  .inv-status b { color: var(--signal); font-weight: 600; }
-  /* tabular-nums + a fixed cell so the line does not shuffle as digits change */
-  .inv-pct { color: var(--signal); font-weight: 600; min-width: 4.5ch; text-align: right;
-    font-variant-numeric: tabular-nums; font-feature-settings: "tnum" 1; }
-  .inv-status.done { display: block; }
-
-  /* Fallback only: shown when the region cannot be read, or via ?choose=1 */
-  .inv-rest { display: none; }
-  .inv-rest.show { display: block; animation: invrise .45s ease both; }
-  @keyframes invrise { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: none; } }
-  .inv-opts { margin: 26px auto 0; display: grid; grid-template-columns: repeat(2, minmax(0,1fr));
-    gap: 16px; max-width: 780px; text-align: left; }
-  .inv-opt { display: block; padding: 26px 28px; text-decoration: none;
-    background: rgba(236,231,221,.04); border: 1px solid rgba(236,231,221,.14);
-    color: var(--bone); transition: background .2s, border-color .2s, transform .2s; }
-  .inv-opt:hover { background: rgba(16,163,126,.12); border-color: rgba(16,163,126,.5);
-    transform: translateY(-2px); }
-  .inv-opt__k { display: block; font-family: "IBM Plex Mono", monospace; text-transform: uppercase;
-    letter-spacing: 2.5px; font-size: 10px; font-weight: 600; color: var(--signal); }
-  .inv-opt__t { display: block; margin-top: 10px; font-size: 20px; font-weight: 600; letter-spacing: -.4px; }
-  .inv-opt__d { display: block; margin-top: 8px; font-size: 13.5px; line-height: 1.65; color: rgba(236,231,221,.62); }
-  .inv-note { margin: 28px auto 0; max-width: 640px; font-size: 12px; line-height: 1.7;
+  .inv-lede { margin: 30px auto 0; max-width: 620px; font-size: 16.5px; line-height: 1.75;
+    color: rgba(236,231,221,.72); font-weight: 300; }
+  .inv-actions { margin-top: 34px; display: flex; gap: 14px; justify-content: center;
+    flex-wrap: wrap; }
+  .inv-note { margin: 34px auto 0; max-width: 620px; font-size: 12px; line-height: 1.7;
     color: rgba(236,231,221,.42); }
-  .inv-back { display: inline-block; margin-top: 22px; font-family: "IBM Plex Mono", monospace;
+  .inv-back { display: inline-block; margin-top: 26px; font-family: "IBM Plex Mono", monospace;
     text-transform: uppercase; letter-spacing: 2px; font-size: 11px; color: var(--grey);
     text-decoration: none; }
   .inv-back:hover { color: var(--signal); }
-  @media (max-width: 680px) { .inv-opts { grid-template-columns: 1fr; } }
+  /* .btn's chamfer is a clip-path, and a clip cuts the border stroke itself
+     rather than mitring it — so an outlined button loses its top-right edge.
+     The filled button keeps the chamfer; the outlined one is square, the same
+     call already made for the Invest button in the nav. */
+  .inv-actions .btn--ghost { clip-path: none; }
+  @media (max-width: 560px) {
+    .inv-actions .btn { width: 100%; justify-content: center; }
+  }
 </style>
 </head>
 <body>
@@ -81,135 +66,24 @@
   <div class="wrap">
     <a class="inv-logo" href="home.html"><img src="assets/img/logo-dark.png?v=2" alt="NEMI"></a>
 
-    <h1 id="invHead">Taking you to the<br><span class="accent">right offering.</span></h1>
+    <p class="inv-eyebrow">Invest</p>
+    <h1>Coming <span class="accent">soon.</span></h1>
+    <div class="inv-rule" aria-hidden="true"><i></i></div>
 
-    <div class="inv-bar" id="invBar" aria-hidden="true"><i></i></div>
-    <p class="inv-status" id="invStatus" role="status"><span class="inv-pct" id="invPct" aria-hidden="true">0%</span><span id="invMsg">Checking your region&hellip;</span></p>
+    <p class="inv-lede">Our investment offering is not open yet. When it is, the details
+      will be published on this page.</p>
 
-    <div class="inv-rest" id="invRest">
-      <div class="inv-opts">
-        <a class="inv-opt" id="optD" href="https://invest-reg-d.nemilmm.com/">
-          <span class="inv-opt__k">Regulation D</span>
-          <span class="inv-opt__t">I am a US person</span>
-          <span class="inv-opt__d">For accredited investors in the United States.</span>
-        </a>
-        <a class="inv-opt" id="optS" href="https://invest-reg-s.nemilmm.com/">
-          <span class="inv-opt__k">Regulation S</span>
-          <span class="inv-opt__t">I am outside the US</span>
-          <span class="inv-opt__d">For investors resident outside the United States.</span>
-        </a>
-      </div>
-      <p class="inv-note">Region is detected from your IP address as a convenience only. It can be wrong if you are travelling or using a VPN, and it does not determine your eligibility &mdash; that is verified on the offering page itself.</p>
-      <a class="inv-back" href="home.html">&larr; Back to nemilmm.com</a>
+    <div class="inv-actions">
+      <a class="btn btn--signal" href="master-plan.html">Read the Master Plan</a>
+      <a class="btn btn--ghost" href="contact.html">Talk to us</a>
     </div>
+
+    <p class="inv-note">This page is informational. It is not an offer to sell, or a
+      solicitation of an offer to buy, any security.</p>
+
+    <a class="inv-back" href="home.html">&larr; Back to nemilmm.com</a>
   </div>
 </section>
 
-<script>
-(function () {
-  var D = 'https://invest-reg-d.nemilmm.com/';
-  var S = 'https://invest-reg-s.nemilmm.com/';
-  var HOLD = 2600;            /* how long 0 -> 100 takes */
-  var LOOKUP_TIMEOUT = 2000;  /* inside HOLD, so a decision always exists by 100% */
-
-  var pctEl = document.getElementById('invPct');
-  var msgEl = document.getElementById('invMsg');
-  var fillEl = document.querySelector('#invBar i');
-  var barEl = document.getElementById('invBar');
-  var statusEl = document.getElementById('invStatus');
-  var restEl = document.getElementById('invRest');
-  var headEl = document.getElementById('invHead');
-
-  var started = Date.now();
-  var decision = null;        /* {code,label} once known, or 'fail' */
-  var cancelled = false;      /* a deliberate click beats the auto-redirect */
-  var finished = false;
-
-  function store(k, v) { try { sessionStorage.setItem(k, v); } catch (e) {} }
-  function read(k) { try { return sessionStorage.getItem(k); } catch (e) { return null; } }
-
-  function reveal(message) {
-    if (cancelled) return;
-    finished = true;
-    barEl.className = 'inv-bar done';
-    pctEl.style.display = 'none';
-    statusEl.className = 'inv-status done';   /* drop the flex row, one line again */
-    msgEl.textContent = message;
-    headEl.innerHTML = 'Two routes.<br><span class="accent">Pick the one that applies to you.</span>';
-    restEl.className = 'inv-rest show';
-  }
-
-  /* One clock drives the number, the bar and the redirect, so 100% is not a
-     decoration — it is the moment the page leaves. */
-  var reduce = window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches;
-  function tick() {
-    if (finished || cancelled) return;
-    var p = Math.min(1, (Date.now() - started) / HOLD);
-    pctEl.textContent = Math.round(p * 100) + '%';
-    fillEl.style.width = (p * 100) + '%';
-    if (p < 1) {
-      (window.requestAnimationFrame || function (f) { setTimeout(f, 16); })(tick);
-      return;
-    }
-    finished = true;
-    if (decision && decision !== 'fail') {
-      /* replace(), not assign(): Back returns to the site rather than bouncing
-         through this router again */
-      location.replace(decision.code === 'US' ? D : S);
-    } else {
-      finished = false;
-      reveal('Could not detect your region. Choose a route below.');
-    }
-  }
-  if (reduce) { pctEl.textContent = '100%'; fillEl.style.width = '100%'; }
-  (window.requestAnimationFrame || function (f) { setTimeout(f, 16); })(tick);
-
-  function decide(code, label) {
-    if (finished || cancelled) return;
-    decision = { code: code, label: label };
-    msgEl.innerHTML = 'Location <b>' + label + '</b> &middot; opening&hellip;';   /* msgEl, not statusEl: statusEl also holds the % readout */
-  }
-
-  ['optD', 'optS'].forEach(function (id) {
-    document.getElementById(id).addEventListener('click', function () { cancelled = true; });
-  });
-
-  /* The loader runs on every visit — it is the whole point of the page, so it is
-     never skipped. invest.html?choose=1 reaches the manual picker (for anyone
-     whose IP reads wrong, or to link someone straight to it) without putting a
-     second control on the clean screen. */
-  if (/[?&]choose=1/.test(location.search)) {
-    reveal('Choose a route below.');
-    return;
-  }
-
-  var cachedCode = read('nemiCode');
-  if (cachedCode) { decide(cachedCode, read('nemiName') || cachedCode); return; }
-
-  if (!('fetch' in window)) { decision = 'fail'; return; }
-
-  var ctrl = ('AbortController' in window) ? new AbortController() : null;
-  var timer = setTimeout(function () {
-    if (ctrl) ctrl.abort();
-    decision = decision || 'fail';
-  }, LOOKUP_TIMEOUT);
-
-  fetch('https://get.geojs.io/v1/ip/country.json', ctrl ? { signal: ctrl.signal } : {})
-    .then(function (r) { return r.ok ? r.json() : Promise.reject(); })
-    .then(function (j) {
-      clearTimeout(timer);
-      var code = ((j && (j.country || j.country_code)) || '').toUpperCase();
-      if (!code) { decision = 'fail'; return; }
-      var label = (j && j.name) || code;   /* "India" reads better than "IN" */
-      store('nemiCode', code);
-      store('nemiName', label);
-      decide(code, label);
-    })
-    .catch(function () {
-      clearTimeout(timer);
-      decision = decision || 'fail';
-    });
-})();
-</script>
 </body>
 </html>
