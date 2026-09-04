@@ -30,14 +30,11 @@
     text-transform: uppercase; letter-spacing: 2.5px; font-size: 11px; color: var(--signal); }
   .inv-gate h1 { margin-top: 14px; font-size: clamp(32px, 5vw, 60px); font-weight: 700;
     letter-spacing: -1.8px; line-height: 1.04; }
-  /* the emerald rule under the headline is the same instrument mark the rest of
-     the system uses — a measured line, ticked, not a decorative underline */
-  .inv-rule { margin: 30px auto 0; width: min(220px, 60%); height: 3px; position: relative;
-    background: rgba(236,231,221,.12); }
-  .inv-rule::after { content: ''; position: absolute; inset: 0;
-    background: repeating-linear-gradient(90deg,
-      rgba(236,231,221,.30) 0 1px, transparent 1px 10%); }
-  .inv-rule i { display: block; height: 100%; width: 38%; background: var(--signal); }
+  /* A short emerald accent rule under the headline. This used to be the ticked
+     progress bar from the geo-router loader; once the page went static nothing
+     was driving it, so it sat frozen at 38% and read as a stalled load. A solid
+     rule says "accent" and cannot be mistaken for progress. */
+  .inv-rule { margin: 30px auto 0; width: 64px; height: 3px; background: var(--signal); }
 
   .inv-lede { margin: 30px auto 0; max-width: 620px; font-size: 16.5px; line-height: 1.75;
     color: rgba(236,231,221,.72); font-weight: 300; }
@@ -68,7 +65,7 @@
 
     <p class="inv-eyebrow">Invest</p>
     <h1>Coming <span class="accent">soon.</span></h1>
-    <div class="inv-rule" aria-hidden="true"><i></i></div>
+    <div class="inv-rule" aria-hidden="true"></div>
 
     <p class="inv-lede">Our investment offerings are not open yet. Stay tuned.</p>
 
