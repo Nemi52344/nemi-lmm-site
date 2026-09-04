@@ -37,7 +37,13 @@
           note = document.createElement('p');
           note.className = 'otp-msg mailto-note';
           note.textContent = 'Your email app will open with the details filled in. Please attach your file there before sending.';
-          fileField.parentElement.appendChild(note);
+          /* Hang it off the enclosing .field, not the input's immediate parent.
+             On the contact form that parent is .attach-row, a flex container —
+             appending there made the note a third flex item, and since the two
+             inputs are flex:1 1 0 with min-width:0 they collapsed to a few
+             pixels while the note took the row. The note belongs under the
+             whole field anyway, full width. */
+          (fileField.closest('.field') || fileField.parentElement).appendChild(note);
         }
       }
     });
