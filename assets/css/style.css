@@ -690,22 +690,33 @@ button.btn {
 .letter__phase p { margin-top: 18px; font-size: 16px; line-height: 1.75; color: #23231f; }
 
 /* ---------- Master plan · standalone founder's letter ---------- */
-.mpl-hero { position: relative; overflow: hidden; background: var(--ink); color: var(--bone);
-  padding: clamp(96px, 15vh, 168px) 0 clamp(64px, 10vh, 116px); }
-.mpl-hero::before { content: ''; position: absolute; inset: 0; pointer-events: none;
-  background: radial-gradient(120% 90% at 8% 100%, rgba(16,163,126,.30), transparent 62%); }
-.mpl-hero > .wrap { position: relative; z-index: 1; }
-.mpl-kicker { display: flex; align-items: center; gap: 18px;
-  font-family: "IBM Plex Mono", monospace; text-transform: uppercase; letter-spacing: 3px;
-  font-size: 12px; font-weight: 600; color: var(--signal); }
-.mpl-kicker::before { content: ''; flex: 0 0 auto; width: 46px; height: 2px; background: var(--signal); }
-.mpl-title { margin-top: 26px; font-size: clamp(38px, 6.6vw, 88px); font-weight: 700;
-  letter-spacing: -2.5px; line-height: 1.02; color: var(--bone); }
-.mpl-sub { margin-top: 26px; font-family: "IBM Plex Mono", monospace;
-  font-size: clamp(14px, 1.5vw, 20px); letter-spacing: .4px; color: var(--signal); }
-.mpl-byline { margin-top: 38px; font-family: "IBM Plex Mono", monospace; text-transform: uppercase;
-  letter-spacing: 2px; font-size: 11px; color: var(--grey); }
-.mpl-body { background: var(--bone); padding: clamp(56px, 8vw, 104px) 0 clamp(72px, 10vw, 128px); }
+/* Title plate: the letter's cover card, matched to the PDF edition — deep emerald,
+   inset on the bone page at the letter's own column width, a fine 41px grid, and
+   two "+" crop marks. Sizes are the PDF's (510pt card) scaled to the 880px column. */
+.mpl-hero { position: relative; background: var(--bone); color: var(--bone);
+  padding: calc(84px + clamp(20px, 3vw, 36px)) 0 0; }
+.mpl-plate { position: relative; overflow: hidden; max-width: 880px; margin: 0 auto;
+  background-color: var(--emerald);
+  background-image:
+    linear-gradient(rgba(236,231,208,.07) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(236,231,208,.07) 1px, transparent 1px);
+  background-size: 41px 41px;
+  padding: clamp(40px, 8.5vw, 75px) clamp(22px, 7.7vw, 68px) clamp(38px, 7.2vw, 64px); }
+.mpl-plate__crops span { position: absolute; font-family: "IBM Plex Mono", monospace;
+  font-size: 15px; line-height: 1; color: rgba(236,231,208,.55); }
+.mpl-plate__crops span:nth-child(1) { top: 24px; left: 24px; }
+.mpl-plate__crops span:nth-child(2) { right: 24px; bottom: 26px; }
+.mpl-kicker { display: flex; align-items: center; gap: 16px;
+  font-family: "IBM Plex Mono", monospace; text-transform: uppercase; letter-spacing: 3.5px;
+  font-size: clamp(12px, 1.8vw, 16px); font-weight: 500; color: #7fc0ac; }
+.mpl-kicker::before { content: ''; flex: 0 0 auto; width: 45px; height: 2px; background: #7fc0ac; }
+.mpl-title { margin: clamp(22px, 4vw, 36px) 0 0; font-size: clamp(36px, 7.3vw, 64px); font-weight: 700;
+  letter-spacing: -2px; line-height: 1.02; color: #ece7d0; }
+.mpl-sub { margin-top: clamp(20px, 3.8vw, 34px); font-family: "IBM Plex Mono", monospace;
+  font-size: clamp(14px, 2.4vw, 21px); letter-spacing: 0; color: #7fc0ac; }
+.mpl-byline { margin-top: clamp(28px, 5vw, 46px); font-family: "IBM Plex Mono", monospace; text-transform: uppercase;
+  letter-spacing: 2px; font-size: clamp(10px, 1.5vw, 13.5px); line-height: 1.7; color: rgba(236,231,208,.5); }
+.mpl-body { background: var(--bone); padding: clamp(40px, 7vw, 62px) 0 clamp(72px, 10vw, 128px); }
 /* no card, no shadow: the letter is the page here, unlike the folded copies on
    About and Resources which still sit in a .letter card on a dark section */
 .mpl-letter { max-width: 880px; margin: 0 auto; }
@@ -719,8 +730,8 @@ button.btn {
   .letter__body h3::before { width: 28px; margin-right: 13px; }
   .letter__short li { font-size: 16px; padding-left: 28px; }
   .letter__phase { padding: 24px 22px; }
-  .mpl-hero { padding: 104px 0 56px; }
-  .mpl-title { letter-spacing: -1.4px; }
+  .mpl-hero { padding-top: 96px; }
+  .mpl-title { letter-spacing: -1.2px; }
 }
 
 /* ---------- Offerings page ---------- */
@@ -2670,3 +2681,33 @@ footer { background: #07110D; color: #9DA8A0; border-top: 1px solid rgba(233,238
 @media (max-width: 1120px) {
   .team-inline .person__role { white-space: normal; }
 }
+
+
+/* Light-page nav (Master Plan): the header sits on the bone page above the emerald
+   title plate, so links and the logo flip to ink until the bar condenses on scroll
+   (the condensed bar gets a darker pill so bone text still reads over a light page).
+   The open mobile drawer keeps its dark styling, hence :not(.open). */
+.nav--light:not(.nav--stuck) .nav__links:not(.open) a:not(.nav__cta):not(.nav__invest) { color: rgba(7,7,7,.62); }
+.nav--light:not(.nav--stuck) .nav__links:not(.open) a:not(.nav__cta):not(.nav__invest):hover { color: var(--ink); }
+.nav--light:not(.nav--stuck) .nav__links:not(.open) a.active:not(.nav__cta):not(.nav__invest) { color: var(--emerald); }
+.nav--light:not(.nav--stuck) .nav__links:not(.open) .nav__invest { color: var(--emerald) !important; border-color: rgba(10,73,56,.45); }
+.nav--light:not(.nav--stuck) .nav__logo img { filter: invert(1); }
+.nav--light:not(.nav--stuck) .nav__burger span { background: var(--ink); }
+.nav--light.nav--stuck { background: rgba(7,7,7,.82); }
+
+/* The same cover plate inside the folded letter cards on About and Resources.
+   The card's content column is ~696px, so every size steps down to ~0.79x of the
+   standalone page's, which keeps the PDF's proportions. */
+.letter .mpl-plate { max-width: none; margin: 0 0 clamp(20px, 3.5vw, 30px);
+  background-size: 32px 32px;
+  padding: clamp(32px, 6.8vw, 59px) clamp(18px, 6.1vw, 54px) clamp(30px, 5.7vw, 51px); }
+.letter .mpl-plate__crops span { font-size: 13px; }
+.letter .mpl-plate__crops span:nth-child(1) { top: 19px; left: 19px; }
+.letter .mpl-plate__crops span:nth-child(2) { right: 19px; bottom: 21px; }
+.letter .mpl-kicker { font-size: clamp(11px, 1.45vw, 13px); letter-spacing: 3px; gap: 13px; }
+.letter .mpl-kicker::before { width: 36px; }
+.letter .mpl-title { margin: clamp(18px, 3.2vw, 28px) 0 0; font-size: clamp(30px, 5.8vw, 51px); letter-spacing: -1.6px; }
+.letter .mpl-sub { margin-top: clamp(16px, 3vw, 27px); font-size: clamp(13px, 1.9vw, 17px); }
+.letter .mpl-byline { margin-top: clamp(22px, 4vw, 36px); font-size: clamp(9.5px, 1.2vw, 11px); letter-spacing: 1.6px; }
+/* Taller teaser so the cover plate and the opening paragraph both show before the fade. */
+.plan-fold { max-height: 720px; }
