@@ -1,0 +1,45 @@
+/* NEMI · nav additions shared by every page.
+   Loaded after style.css (inner pages) and home.css (homepage), which each carry their
+   own copy of the nav rules (including the base .nav__item / .nav__drop dropdown), so
+   anything that must apply to both lives here once. */
+
+/* ---------- Resources dropdown ---------- */
+/* drawn chevron rather than a text glyph, which rendered as a dot at this size */
+.nav__caret { display: inline-block; width: 6px; height: 6px; margin-left: 9px; font-size: 0; vertical-align: middle;
+  border-right: 1.5px solid currentColor; border-bottom: 1.5px solid currentColor; opacity: .75;
+  transform: translateY(-3px) rotate(45deg); transition: transform .22s ease; }
+.nav__item:hover .nav__caret, .nav__item:focus-within .nav__caret { transform: translateY(0) rotate(225deg); }
+
+/* The panel's rows are also `.nav__links a`, so they would inherit the bar links'
+   padding, underline and (when condensed) smaller sizes. These selectors out-rank
+   every one of those rules in both stylesheets. */
+.nav .nav__links .nav__item .nav__drop a {
+  display: block; padding: 11px 20px; font-size: 11px; letter-spacing: 2px; white-space: nowrap;
+  color: rgba(236,231,221,.85); }
+.nav .nav__links .nav__item .nav__drop a::after { display: none; }
+.nav .nav__links .nav__item .nav__drop a:hover { color: #10a37e; background: rgba(16,163,126,.08); }
+.nav .nav__links .nav__item .nav__drop a.is-current { color: #2ee6a8; }
+/* light page top (Master Plan): bar links go ink, but the panel itself stays dark */
+.nav--light:not(.nav--stuck) .nav__links:not(.open) .nav__item .nav__drop a:not(.nav__cta):not(.nav__invest) { color: rgba(236,231,221,.85); }
+.nav--light:not(.nav--stuck) .nav__links:not(.open) .nav__item .nav__drop a:not(.nav__cta):not(.nav__invest):hover { color: #10a37e; }
+.nav--light:not(.nav--stuck) .nav__links:not(.open) .nav__item .nav__drop a.is-current:not(.nav__cta):not(.nav__invest) { color: #2ee6a8; }
+/* the condensed row switches pointer events off on itself and back on for direct links only */
+.nav--stuck .nav__links > .nav__item { pointer-events: auto; }
+
+@media (max-width: 900px) {
+  /* drawer: Resources shows as a row with its three pages indented beneath it */
+  .nav__item { width: 100%; }
+  .nav__caret { display: none; }
+  .nav .nav__links .nav__item .nav__drop { clip-path: none; min-width: 0; }
+  .nav .nav__links .nav__item .nav__drop a { padding: 10px 0; font-size: 12px; }
+  .nav .nav__links .nav__item .nav__drop a:hover { background: none; }
+
+  /* the desktop underline is inset for padded bar links; stretched across a drawer row
+     it reads as a misplaced divider, so the current page is marked by colour plus a
+     short mint tick instead */
+  .nav__links a:not(.nav__cta):not(.nav__invest)::after { display: none; }
+  .nav__links a.active:not(.nav__cta):not(.nav__invest) { padding-left: 16px; position: relative; }
+  .nav__links a.active:not(.nav__cta):not(.nav__invest)::before {
+    content: ''; position: absolute; left: 0; top: 50%; width: 8px; height: 2px;
+    margin-top: -1px; background: #2ee6a8; }
+}

@@ -693,7 +693,10 @@ button.btn {
 /* Title plate: the letter's cover card, matched to the PDF edition — deep emerald,
    inset on the bone page at the letter's own column width, a fine 41px grid, and
    two "+" crop marks. Sizes are the PDF's (510pt card) scaled to the 880px column. */
-.mpl-hero { position: relative; background: var(--bone); color: var(--bone);
+/* display/min-height: opt out of the desktop rule that stretches every <section> to a
+   full viewport and centres its content, which left the plate floating mid-screen with
+   a large empty band above and below it. The plate sits directly under the nav instead. */
+.mpl-hero { position: relative; display: block; min-height: 0; background: var(--bone); color: var(--bone);
   padding: calc(84px + clamp(20px, 3vw, 36px)) 0 0; }
 .mpl-plate { position: relative; overflow: hidden; max-width: 880px; margin: 0 auto;
   background-color: var(--emerald);
@@ -716,7 +719,7 @@ button.btn {
   font-size: clamp(14px, 2.4vw, 21px); letter-spacing: 0; color: #7fc0ac; }
 .mpl-byline { margin-top: clamp(28px, 5vw, 46px); font-family: "IBM Plex Mono", monospace; text-transform: uppercase;
   letter-spacing: 2px; font-size: clamp(10px, 1.5vw, 13.5px); line-height: 1.7; color: rgba(236,231,208,.5); }
-.mpl-body { background: var(--bone); padding: clamp(40px, 7vw, 62px) 0 clamp(72px, 10vw, 128px); }
+.mpl-body { display: block; min-height: 0; background: var(--bone); padding: clamp(40px, 7vw, 62px) 0 clamp(72px, 10vw, 128px); }
 /* no card, no shadow: the letter is the page here, unlike the folded copies on
    About and Resources which still sit in a .letter card on a dark section */
 .mpl-letter { max-width: 880px; margin: 0 auto; }
@@ -2558,10 +2561,28 @@ footer { background: #07110D; color: #9DA8A0; border-top: 1px solid rgba(233,238
 }
 .svcx-tile:hover .svcx-tile__body::after { opacity: 1; transform: translateX(0); }
 
-/* Resources FAQ: full-width now the side image is gone — two columns of questions */
-.faq { columns: 2; column-gap: 3.5rem; }
-.faq__item { break-inside: avoid; }
-@media (max-width: 820px) { .faq { columns: 1; } }
+/* FAQ page: one vertical list, numbered like the menu rows, at the reading width the
+   Master Plan letter uses. .sec-faq opts out of the full-viewport section rule so six
+   short rows are not stranded in the middle of a screen-tall band. */
+.sec-faq { display: block; min-height: 0; padding: clamp(56px, 7vw, 96px) 0 clamp(64px, 8vw, 112px); }
+.faq { max-width: 880px; counter-reset: faq; }
+.faq__item { counter-increment: faq; }
+.faq__item:first-child { border-top: 1px solid rgba(7,7,7,0.12); }
+.faq__item summary { padding-left: 56px; transition: color .2s ease; }
+.faq__item summary:hover, .faq__item[open] summary { color: var(--emerald); }
+.faq__item summary::before {
+  content: counter(faq, decimal-leading-zero); position: absolute; left: 2px; top: 50%; transform: translateY(-50%);
+  font-family: 'IBM Plex Mono', monospace; font-size: 12px; font-weight: 500; letter-spacing: 1.5px; color: var(--signal);
+}
+.faq__item p { padding-left: 56px; }
+@media (max-width: 640px) {
+  .faq__item summary { padding-left: 40px; font-size: 16px; }
+  .faq__item p { padding-left: 40px; }
+}
+/* Compact page hero: title block only, so the content below starts on the first screen.
+   Both breakpoints, because .phero is made full-height separately above and below 900px. */
+@media (min-width: 901px) { .phero--compact { min-height: 0; padding: 176px 0 84px; } }
+@media (max-width: 900px) { .phero.phero--compact { min-height: 0; padding-top: 128px; padding-bottom: 52px; } }
 
 /* Contact form: file input styled like the other fields */
 .field input[type="file"] {
@@ -2711,3 +2732,48 @@ footer { background: #07110D; color: #9DA8A0; border-top: 1px solid rgba(233,238
 .letter .mpl-byline { margin-top: clamp(22px, 4vw, 36px); font-size: clamp(9.5px, 1.2vw, 11px); letter-spacing: 1.6px; }
 /* Taller teaser so the cover plate and the opening paragraph both show before the fade. */
 .plan-fold { max-height: 720px; }
+
+/* ---------- Blogs index ----------
+   .sec-blog opts out of the full-viewport section rule, like .sec-faq. Each post is one
+   card: a cover on the left in the Master Plan plate's language (emerald, fine grid,
+   two crop marks), the details on the right. */
+.sec-blog { display: block; min-height: 0; padding: clamp(56px, 7vw, 96px) 0 clamp(64px, 8vw, 112px); }
+.posts { display: grid; gap: 28px; }
+.post {
+  display: grid; grid-template-columns: minmax(0, 1.05fr) minmax(0, 1fr);
+  background: var(--bone); color: var(--ink); text-decoration: none;
+  border: 1px solid rgba(7,7,7,.12);
+  clip-path: polygon(0 0, calc(100% - 24px) 0, 100% 24px, 100% 100%, 0 100%);
+  transition: transform .28s ease, border-color .28s ease;
+}
+.post:hover { transform: translateY(-4px); border-color: rgba(10,73,56,.5); }
+.post__cover {
+  position: relative; overflow: hidden; min-height: clamp(240px, 26vw, 340px);
+  display: flex; flex-direction: column; justify-content: center;
+  padding: clamp(28px, 4.4vw, 60px);
+  background-color: var(--emerald);
+  background-image:
+    linear-gradient(rgba(236,231,208,.07) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(236,231,208,.07) 1px, transparent 1px);
+  background-size: 34px 34px;
+}
+.post__cover-k { display: flex; align-items: center; gap: 14px;
+  font-family: "IBM Plex Mono", monospace; text-transform: uppercase; letter-spacing: 3px;
+  font-size: clamp(10.5px, 1vw, 13px); font-weight: 500; color: #7fc0ac; }
+.post__cover-k::before { content: ''; flex: 0 0 auto; width: 36px; height: 2px; background: #7fc0ac; }
+.post__cover-t { margin-top: clamp(16px, 2vw, 26px); font-size: clamp(28px, 3.5vw, 48px); font-weight: 700;
+  letter-spacing: -1.6px; line-height: 1.04; color: #ece7d0; }
+.post__body { display: flex; flex-direction: column; justify-content: center; gap: 14px; padding: clamp(26px, 3.8vw, 52px); }
+.post__meta { font-family: "IBM Plex Mono", monospace; text-transform: uppercase; letter-spacing: 2px;
+  font-size: 11px; font-weight: 500; color: var(--signal); }
+.post__title { font-size: clamp(24px, 2.6vw, 34px); font-weight: 600; letter-spacing: -.8px; line-height: 1.12; color: var(--ink); }
+.post__excerpt { font-size: 16px; line-height: 1.7; font-weight: 300; color: rgba(7,7,7,.72); }
+.post__by { font-family: "IBM Plex Mono", monospace; text-transform: uppercase; letter-spacing: 1.6px; font-size: 10.5px; color: var(--grey); }
+.post__go { align-self: flex-start; margin-top: 6px; padding-bottom: 4px;
+  font-family: "IBM Plex Mono", monospace; text-transform: uppercase; letter-spacing: 2px; font-size: 12px; font-weight: 600;
+  color: var(--emerald); border-bottom: 1px solid currentColor; transition: color .2s ease; }
+.post:hover .post__go { color: var(--signal); }
+@media (max-width: 820px) {
+  .post { grid-template-columns: 1fr; }
+  .post__cover { min-height: 210px; }
+}

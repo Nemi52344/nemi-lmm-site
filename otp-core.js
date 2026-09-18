@@ -46,7 +46,7 @@ function emailHtml(code) {
           <p style="margin:0;font-family:'Segoe UI',Helvetica,Arial,sans-serif;font-size:13px;line-height:1.6;color:rgba(7,7,7,.5);">If you didn&rsquo;t request this, you can safely ignore this email. No action is taken until the code is entered.</p>
         </td></tr>
         <tr><td style="background:#101512;padding:18px 32px;">
-          <span style="font-family:'Segoe UI',Helvetica,Arial,sans-serif;font-size:12px;color:rgba(236,231,221,.55);">NEMI AI &middot; Stafford, Texas &middot; Chennai &middot; Coimbatore</span>
+          <span style="font-family:'Segoe UI',Helvetica,Arial,sans-serif;font-size:12px;color:rgba(236,231,221,.55);">NEMI LMM &middot; Stafford, Texas &middot; Chennai &middot; Coimbatore</span>
         </td></tr>
       </table>
     </td></tr>

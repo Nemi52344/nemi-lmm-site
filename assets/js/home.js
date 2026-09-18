@@ -5,10 +5,17 @@
     '<header class="nav"><div class="wrap">' +
     '<a class="nav__logo" href="home.html"><img src="assets/img/logo-dark.png?v=2" alt="NEMI"></a>' +
     '<nav class="nav__links" id="menu">' +
-    '<a href="home.html" class="active">Home</a>' +
+    '<a href="home.html" class="active" aria-current="page">Home</a>' +
     '<a href="about.html">About Us</a>' +
     '<a href="offerings.html">Offerings</a>' +
-    '<a href="blog.html">Resources</a>' +
+    '<div class="nav__item">' +
+    '<a href="blog.html" aria-haspopup="true">Resources<span class="nav__caret" aria-hidden="true">&#9662;</span></a>' +
+    '<div class="nav__drop">' +
+    '<a href="case-studies.html">Case Studies</a>' +
+    '<a href="blog.html">Blogs</a>' +
+    '<a href="faq.html">FAQs</a>' +
+    '</div>' +
+    '</div>' +
     '<a href="careers.html">Careers</a>' +
     '<a href="invest.html" class="nav__invest">Invest</a>' +
     '<a href="contact.html" class="nav__cta">Contact</a>' +
