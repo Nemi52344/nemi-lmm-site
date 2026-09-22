@@ -19,52 +19,65 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 
   gtag('config', 'G-RLBK1DLVN7');
 </script>
-<title>Blogs · NEMI LMM</title>
-<meta name="description" content="Insights, updates and ideas on Physical AI and manufacturing from NEMI LMM.">
+<!--
+  NEMI BLOG POST TEMPLATE. Not a page. Blocked from the public site in netlify.toml.
+  How to use it: _s4/BLOG_RULES.md
+  1. Copy to blog-<slug>.html (lowercase, hyphens). Never publish this file itself.
+  2. Replace every {{PLACEHOLDER}}. Search for "{{" before publishing: zero hits allowed.
+  3. Remove the robots noindex line below.
+  4. Every number in the body needs a numbered source in "Sources" and a row in the evidence audit.
+-->
+<title>{{TITLE}} | NEMI</title>
+<meta name="description" content="{{DESCRIPTION: 140-160 characters, no numbers that are not in the body}}">
+<meta name="robots" content="noindex, nofollow"><!-- TEMPLATE ONLY: delete this line in the real post -->
 <!-- SEO:start -->
-<link rel="canonical" href="https://nemilmm.com/blog.html">
+<link rel="canonical" href="https://nemilmm.com/blog-{{SLUG}}.html">
 <meta name="theme-color" content="#070707">
-<meta property="og:type" content="website">
+<meta property="og:type" content="article">
 <meta property="og:site_name" content="NEMI">
 <meta property="og:locale" content="en_US">
-<meta property="og:url" content="https://nemilmm.com/blog.html">
-<meta property="og:title" content="Blogs · NEMI LMM">
-<meta property="og:description" content="Insights, updates and ideas on Physical AI and manufacturing from NEMI LMM.">
+<meta property="og:url" content="https://nemilmm.com/blog-{{SLUG}}.html">
+<meta property="og:title" content="{{TITLE}}">
+<meta property="og:description" content="{{DESCRIPTION}}">
 <meta property="og:image" content="https://nemilmm.com/assets/img/og-card.jpg?v=1">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
-<meta property="og:image:alt" content="NEMI — the Large Manufacturing Model">
+<meta property="article:published_time" content="{{YYYY-MM-DD}}">
+<meta property="article:modified_time" content="{{YYYY-MM-DD}}">
+<meta property="article:section" content="{{CATEGORY}}">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:site" content="@Nemi_LMM">
-<meta name="twitter:title" content="Blogs · NEMI LMM">
-<meta name="twitter:description" content="Insights, updates and ideas on Physical AI and manufacturing from NEMI LMM.">
+<meta name="twitter:title" content="{{TITLE}}">
+<meta name="twitter:description" content="{{DESCRIPTION}}">
 <meta name="twitter:image" content="https://nemilmm.com/assets/img/og-card.jpg?v=1">
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
-  "@type": "Blog",
-  "name": "NEMI LMM Blogs",
-  "url": "https://nemilmm.com/blog.html",
+  "@type": "BlogPosting",
+  "headline": "{{TITLE}}",
+  "description": "{{DESCRIPTION}}",
+  "url": "https://nemilmm.com/blog-{{SLUG}}.html",
+  "mainEntityOfPage": "https://nemilmm.com/blog-{{SLUG}}.html",
+  "image": "https://nemilmm.com/assets/img/og-card.jpg?v=1",
+  "datePublished": "{{YYYY-MM-DD}}",
+  "dateModified": "{{YYYY-MM-DD}}",
+  "articleSection": "{{CATEGORY}}",
+  "author": { "@type": "Person", "name": "{{AUTHOR NAME}}", "jobTitle": "{{AUTHOR ROLE}}" },
   "publisher": {
     "@type": "Organization",
     "name": "NEMI",
-    "logo": {
-      "@type": "ImageObject",
-      "url": "https://nemilmm.com/assets/img/logo-light.png"
-    }
-  },
-  "blogPost": [
-    {
-      "@type": "BlogPosting",
-      "headline": "The NEMI Master Plan",
-      "url": "https://nemilmm.com/master-plan.html",
-      "datePublished": "2026-09-01",
-      "articleSection": "Company",
-      "author": {
-        "@type": "Person",
-        "name": "Anirudh Ravi Narayanan"
-      }
-    }
+    "logo": { "@type": "ImageObject", "url": "https://nemilmm.com/assets/img/logo-light.png" }
+  }
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://nemilmm.com/" },
+    { "@type": "ListItem", "position": 2, "name": "Blogs", "item": "https://nemilmm.com/blog.html" },
+    { "@type": "ListItem", "position": 3, "name": "{{TITLE}}" }
   ]
 }
 </script>
@@ -86,7 +99,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <!-- End Google Tag Manager (noscript) -->
 
-<header class="nav">
+<header class="nav nav--light">
   <div class="wrap">
     <a class="nav__logo" href="home.html"><img src="assets/img/logo-dark.png?v=2" alt="NEMI"></a>
     <nav class="nav__links" id="menu">
@@ -109,26 +122,91 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   </div>
 </header>
 
-<!-- PAGE HERO -->
-<section class="phero phero--compact bp">
-  <div class="hero__grid"></div>
-  <div class="crops" aria-hidden="true"><span>+</span><span>+</span><span>+</span><span>+</span></div>
-  <div class="wrap">
-    <div class="kicker">Blogs &middot; NEMI LMM</div>
-    <h1 style="margin-top:22px">The NEMI LMM <span class="accent">blogs.</span></h1>
-    <p>Insights, updates and ideas on Physical AI and manufacturing.</p>
+<!-- ARTICLE · HEADER -->
+<article>
+<header class="art-hero">
+  <div class="art-wrap">
+    <nav class="art-crumbs" aria-label="Breadcrumb"><a href="home.html">Home</a> / <a href="blog.html">Blogs</a> / {{SHORT TITLE}}</nav>
+    <!-- CATEGORY: exactly one of Company · Engineering · Factory floor · Industry -->
+    <a class="art-cat" href="blog.html">{{CATEGORY}}</a>
+    <h1 class="art-title">{{TITLE}}</h1>
+    <p class="art-dek">{{DEK: one or two sentences. What the reader learns. No superlatives, no absolutes.}}</p>
+    <div class="art-byline">
+      <span>By <b>{{AUTHOR NAME}}</b>, {{AUTHOR ROLE}}</span>
+      <span>Published <time datetime="{{YYYY-MM-DD}}">{{DD Mon YYYY}}</time></span>
+      <!-- Keep this line only once the post has been edited after publishing -->
+      <span>Updated <time datetime="{{YYYY-MM-DD}}">{{DD Mon YYYY}}</time></span>
+      <span>{{N}} min read</span>
+    </div>
   </div>
-</section>
+</header>
 
-<!-- POSTS · newest first.
-     To ADD a post, follow _s4/BLOG_RULES.md. In short: copy _post-template.html to
-     blog-<slug>.html, then copy one <a class="post"> card below to the TOP of .posts,
-     and add a line to the archive and to the Blog JSON-LD above.
-     data-category must be one of: Company · Engineering · Factory floor · Industry.
-     Deal / transaction content never goes on the blog: it belongs on the Investors page. -->
-<section class="bg-oat bp bp--light sec-blog" id="posts">
+<!-- OPTIONAL COVER. Delete the figure if there is no image. Photos must be ours or licensed;
+     no customer parts, logos or sites without written permission. -->
+<figure class="art-cover">
+  <img src="assets/img/{{COVER}}.jpg" alt="{{ALT TEXT}}" width="1600" height="900" loading="eager">
+  <figcaption>{{CAPTION}}</figcaption>
+</figure>
+
+<!-- ARTICLE · BODY -->
+<div class="art-body">
+  <div class="art-wrap">
+    <div class="prose">
+      <p>{{Opening paragraph.}}</p>
+
+      <h2>{{Section heading}}</h2>
+      <p>{{Body text. Any figure gets a numbered source, like this.}}<sup><a href="#src-1" id="ref-1">1</a></sup></p>
+      <!-- Audit trail: each <sup> maps to a row in _s4/S4_evidence_audit.xlsx. Note the row ID here: {{C##}} -->
+
+      <ul>
+        <li>{{List item}}</li>
+        <li>{{List item}}</li>
+      </ul>
+
+      <!-- Quotes: only with the speaker's written approval, filed with the post's evidence. -->
+      <blockquote>
+        <p>{{Quote}}</p>
+        <cite>{{Name, role, organisation}}</cite>
+      </blockquote>
+
+      <h2>{{Section heading}}</h2>
+      <p>{{Body text.}}</p>
+    </div>
+
+    <!-- SOURCES · required whenever the post contains a number, a customer result or a comparison -->
+    <section class="art-notes" aria-labelledby="src-h">
+      <h2 id="src-h">Sources</h2>
+      <ol>
+        <li id="src-1">{{Public description of the source, e.g. "NEMI program records, 2024. Figures are for this program only."}} <a href="#ref-1" aria-label="Back to text">&#8617;</a></li>
+      </ol>
+    </section>
+
+    <!-- UPDATE HISTORY · never edit a published post silently. Add a dated line for every change
+         and a matching row in _s4/CHANGELOG.md. Delete this section until the first edit. -->
+    <section class="art-notes" aria-labelledby="upd-h">
+      <h2 id="upd-h">Update history</h2>
+      <ul>
+        <li><time datetime="{{YYYY-MM-DD}}">{{DD Mon YYYY}}</time>: {{What changed and why.}}</li>
+      </ul>
+    </section>
+
+    <!-- DISCLOSURE · keep when the post talks about plans, roadmap, targets, ambitions or the future.
+         Counsel owns the wording; replace with the Legends page link once it is live. -->
+    <p class="art-disclosure"><b>Forward-looking statements.</b> This post contains forward-looking statements,
+      including statements about NEMI&rsquo;s plans, products and future performance. They reflect current beliefs,
+      are not guarantees, and actual results may differ materially. NEMI undertakes no obligation to update them
+      except as required by law.</p>
+
+    <!-- DO NOT ADD: any mention of the transaction, the SPAC, a listing, valuation, projections, ownership,
+         timetable or fundraising. That content is a public filing (Form 425) and lives only on the Investors page. -->
+  </div>
+</div>
+</article>
+
+<!-- RELATED · one or two post cards copied from blog.html. Delete the section if there are none. -->
+<section class="art-related">
   <div class="wrap">
-    <div class="blog-filter" id="blogFilter" role="group" aria-label="Filter posts by category" hidden></div>
+    <h2>Keep reading</h2>
     <div class="posts">
       <a class="post" href="master-plan.html" data-category="Company">
         <div class="post__cover">
@@ -138,24 +216,12 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         </div>
         <div class="post__body">
           <div class="post__meta"><time datetime="2026-09-01">September 2026</time> &middot; Company &middot; Founder's letter</div>
-          <h2 class="post__title">The NEMI Master Plan</h2>
+          <h3 class="post__title">The NEMI Master Plan</h3>
           <p class="post__excerpt">Do for hardware what LLMs did for software. The founder&rsquo;s letter: why NEMI exists, and the three phases of the plan.</p>
-          <div class="post__by">Anirudh Ravi Narayanan &middot; Founder &amp; CEO</div>
           <span class="post__go">Read the letter &rarr;</span>
         </div>
       </a>
     </div>
-
-    <!-- ARCHIVE · one <li> per post, newest first, grouped by year -->
-    <nav class="blog-archive" aria-label="Archive">
-      <h2>Archive</h2>
-      <div class="blog-archive__year">
-        <b>2026</b>
-        <ul>
-          <li><time datetime="2026-09-01">Sep</time><a href="master-plan.html">The NEMI Master Plan</a></li>
-        </ul>
-      </div>
-    </nav>
   </div>
 </section>
 
@@ -205,7 +271,6 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 </footer>
 
 <script src="assets/js/fx.js?v=2"></script>
-<script src="assets/js/blog.js?v=1"></script>
 <!-- Cloudflare Web Analytics --><script type='module' src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "c0f89f8fdcc44be8b836753c1f342d17"}'></script><!-- End Cloudflare Web Analytics -->
 </body>
 </html>

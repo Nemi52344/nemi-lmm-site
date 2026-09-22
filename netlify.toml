@@ -32,6 +32,13 @@
   status = 404
   force = true
 
+# Blog post template is a working file, not a page.
+[[redirects]]
+  from = "/_post-template.html"
+  to = "/home.html"
+  status = 404
+  force = true
+
 # The homepage is home.html, not index.html, so "/" has no directory index of
 # its own — serve home.html there (200 = rewrite, the URL stays "/").
 [[redirects]]
