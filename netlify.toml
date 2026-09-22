@@ -25,6 +25,13 @@
   status = 200
   force = true
 
+# S-4 workspace (evidence audit, change log, legends draft) must never be served.
+[[redirects]]
+  from = "/_s4/*"
+  to = "/home.html"
+  status = 404
+  force = true
+
 # The homepage is home.html, not index.html, so "/" has no directory index of
 # its own — serve home.html there (200 = rewrite, the URL stays "/").
 [[redirects]]
