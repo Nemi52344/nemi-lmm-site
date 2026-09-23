@@ -81,3 +81,34 @@
   .art-hero { padding-top: 104px; }
   .blog-archive__year { grid-template-columns: 1fr; gap: 6px; }
 }
+
+/* ---------- Investors page ----------
+   Deliberately plain: a filing index, not a marketing page. */
+.ir-sec { display: block; min-height: 0; padding: clamp(52px, 6.5vw, 88px) 0; }
+.ir-wrap { display: block; }
+.ir-lead { max-width: 820px; }
+.ir-eyebrow { font: 500 11px/1 "IBM Plex Mono", monospace; text-transform: uppercase; letter-spacing: 2.5px; color: var(--signal); }
+.ir-lead h2 { margin-top: 18px; font-size: clamp(26px, 3.4vw, 40px); font-weight: 700; letter-spacing: -1.2px; line-height: 1.12; }
+.ir-sub { margin-top: 18px; font-size: 17px; line-height: 1.75; font-weight: 300; color: rgba(7,7,7,.72); }
+.ir-actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 28px; }
+.ir-note { margin-top: 22px; font-size: 12.5px; line-height: 1.7; color: var(--grey); }
+.ir-h { font: 600 11px/1 "IBM Plex Mono", monospace; text-transform: uppercase; letter-spacing: 2.5px;
+  color: var(--grey); margin-bottom: 24px; }
+.ir-docs { list-style: none; margin: 0; padding: 0; border-top: 1px solid rgba(7,7,7,.14); }
+.ir-docs li { display: grid; grid-template-columns: 210px 1fr auto; gap: 18px; align-items: baseline;
+  padding: 16px 0; border-bottom: 1px solid rgba(7,7,7,.14); font-size: 15px; }
+.ir-docs__k { font: 500 11px/1.6 "IBM Plex Mono", monospace; text-transform: uppercase; letter-spacing: 1.8px; color: var(--grey); }
+.ir-docs a { color: var(--emerald); text-decoration: none; }
+.ir-docs a:hover { text-decoration: underline; }
+.ir-docs time { font: 500 11px/1.6 "IBM Plex Mono", monospace; text-transform: uppercase; letter-spacing: 1.5px; color: var(--grey); }
+.ir-faq details { border-bottom: 1px solid rgba(7,7,7,.14); padding: 16px 0; }
+.ir-faq summary { cursor: pointer; font-size: 16.5px; font-weight: 500; color: var(--ink); }
+.ir-faq summary::marker { color: var(--signal); }
+.ir-faq p { margin-top: 12px; font-size: 15px; line-height: 1.75; color: rgba(7,7,7,.72); max-width: 760px; }
+.ir-legends { max-width: 880px; }
+.ir-legends p { font-size: 12.5px; line-height: 1.75; color: rgba(7,7,7,.66); }
+.ir-legends p + p { margin-top: 14px; }
+.ir-legends a { color: var(--emerald); }
+@media (max-width: 720px) {
+  .ir-docs li { grid-template-columns: 1fr; gap: 6px; }
+}
