@@ -605,6 +605,7 @@ section { padding: 88px 0; }
 /* Five in the leadership row since the CFO appointment: keep one even row on desktop
    rather than four plus an orphan. Falls back to the shared 2-up / 1-up rules below. */
 .team-grid--five { grid-template-columns: repeat(5, 1fr); }
+.team-grid--five .person { min-height: 128px; }
 @media (max-width: 1180px) and (min-width: 901px) { .team-grid--five { grid-template-columns: repeat(3, 1fr); } }
 @media (max-width: 900px) { .team-grid { grid-template-columns: repeat(2, 1fr); } .team-sub { grid-template-columns: repeat(3, 1fr); } }
 @media (max-width: 560px) { .team-grid, .team-sub { grid-template-columns: 1fr !important; } }
@@ -2793,3 +2794,10 @@ footer { background: #07110D; color: #9DA8A0; border-top: 1px solid rgba(233,238
 .svcx-tile__status:not(:empty) { vertical-align: middle; }
 .svcx-key { display: flex; flex-wrap: wrap; gap: 8px 22px; margin-top: 22px;
   font: 500 10.5px/1.7 "IBM Plex Mono", monospace; text-transform: uppercase; letter-spacing: 1.6px; color: var(--grey); }
+
+/* The CFO card carries a longer bio than the rest, and on a phone the card is
+   narrow enough that it wraps to the full height. Give the leadership row more
+   room below 560px. Appended last so it wins over the shared .team-grid rule. */
+@media (max-width: 560px) {
+  .team-grid--five .person { min-height: 152px; }
+}
