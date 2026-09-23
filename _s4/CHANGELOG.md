@@ -20,3 +20,5 @@ and counsel sign-off. Purpose: show that nothing changed because of the offering
 | 2026-09-23 | BCA-Ready | about, master-plan, lmm-stack | "over 300,000 sq ft" now "over 300,000 sq ft in India" | Deck footnote: present footprint of factories in India | Pending | Not live |
 | 2026-09-23 | BCA-Ready | about | Subramanian Ramaswamy retitled from "Chief Financial Officer, India" to "Finance Head, India" | Only one CFO can appear in the S-4 officer list | Pending | Not live |
 | 2026-09-23 | BCA-Ready | _investors-draft.html, legends | Investors page built unpublished; announcement-day runbook written | Stage 2 of the plan: announcement day is a switch-on, not a build | n/a | Not live |
+| 2026-09-23 | BCA-Ready | about | Kevin Flick added as Chief Financial Officer, with a bio drafted from his LinkedIn profile | New CFO appointed Sep 2026 | Pending: needs his written sign-off and the S-4 bio | Not live |
+| 2026-09-23 | BCA-Ready | about | Gokul Madhavan retitled from Chief Financial Officer to Chief Strategy Officer | Role change | Pending | Not live |
