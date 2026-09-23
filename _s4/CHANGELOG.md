@@ -14,3 +14,9 @@ and counsel sign-off. Purpose: show that nothing changed because of the offering
 | 2026-09-22 | NemiLMM-S4 | case-studies, case-messenger | BNC labelled as NEMI subsidiary / internal program | Related-party result shown beside third-party cases | Pending | Not live |
 | 2026-09-22 | NemiLMM-S4 | case-drone | Removed Bengaluru, 1997, CEMILAC, "partner to India's leading defense and space agencies" | Customer identifiable without written permission | Pending | Not live |
 | 2026-09-22 | NemiLMM-S4 | netlify.toml | /_s4/* blocked from being served | Keep drafts and audit off the public site | n/a | n/a |
+| 2026-09-23 | BCA-Ready | offerings | Nine categories labelled "Near-term focus" (3) and "Available" (6), with a key | Deck splits Phase 1 / Phase 2 services; site implied all nine are equally operational | Pending | Not live |
+| 2026-09-23 | BCA-Ready | case-drone, case-studies | Removed the $500k benchmark and "5x lower cost". Kept 4 months, $100k, 16-month benchmark | $500k / 5x are not in the investor deck and have no source yet | Pending | Not live |
+| 2026-09-23 | BCA-Ready | home | "Hardware has no internet to scrape" to "no large public datasets to scrape" | Matches the deck's wording, and is literally true | Pending | Not live |
+| 2026-09-23 | BCA-Ready | about, master-plan, lmm-stack | "over 300,000 sq ft" now "over 300,000 sq ft in India" | Deck footnote: present footprint of factories in India | Pending | Not live |
+| 2026-09-23 | BCA-Ready | about | Subramanian Ramaswamy retitled from "Chief Financial Officer, India" to "Finance Head, India" | Only one CFO can appear in the S-4 officer list | Pending | Not live |
+| 2026-09-23 | BCA-Ready | _investors-draft.html, legends | Investors page built unpublished; announcement-day runbook written | Stage 2 of the plan: announcement day is a switch-on, not a build | n/a | Not live |

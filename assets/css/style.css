@@ -2777,3 +2777,15 @@ footer { background: #07110D; color: #9DA8A0; border-top: 1px solid rgba(233,238
   .post { grid-template-columns: 1fr; }
   .post__cover { min-height: 210px; }
 }
+
+/* ---------- Offering status labels ----------
+   Which categories are the near-term focus and which are available on request.
+   Lives here rather than in style.css so the S-4 wording changes stay in one file. */
+.svcx-tile__status {
+  display: inline-block; margin-bottom: 8px;
+  font: 500 9.5px/1 "IBM Plex Mono", monospace; text-transform: uppercase; letter-spacing: 1.8px;
+  padding: 5px 8px; border: 1px solid rgba(7,7,7,.18); color: var(--grey);
+}
+.svcx-tile__status:not(:empty) { vertical-align: middle; }
+.svcx-key { display: flex; flex-wrap: wrap; gap: 8px 22px; margin-top: 22px;
+  font: 500 10.5px/1.7 "IBM Plex Mono", monospace; text-transform: uppercase; letter-spacing: 1.6px; color: var(--grey); }
