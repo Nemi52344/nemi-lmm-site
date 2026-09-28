@@ -42,8 +42,10 @@
 
 /* The banner sits between the header and the body, so it needs its own grid
    surface: without it the page shows one plain band across the widest image. */
-.art-coverband { background: var(--bone); }
-.art-coverband > .art-cover { position: relative; z-index: 1; }
+/* The figure's own top margin would collapse out of the band and leave a 40px
+   strip with no grid, so the band owns the spacing instead. */
+.art-coverband { background: var(--bone); padding-top: 40px; }
+.art-coverband > .art-cover { position: relative; z-index: 1; margin-top: 0; }
 
 /* ---------- Article ----------
    One width, 920px, a touch wider than the founder's letter at 880. Images sit
