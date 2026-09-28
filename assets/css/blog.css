@@ -123,3 +123,7 @@
 /* Figures inside a post */
 .prose figure { margin: 34px 0; }
 .prose figure img { width: 100%; height: auto; display: block; }
+
+/* Photo credit inside a caption */
+.art-credit { display: inline-block; margin-left: 6px; font-family: "IBM Plex Mono", monospace;
+  font-size: 10.5px; letter-spacing: .6px; text-transform: uppercase; color: rgba(7,7,7,.42); }
