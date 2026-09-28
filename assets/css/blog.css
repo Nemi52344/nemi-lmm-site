@@ -112,3 +112,14 @@
 @media (max-width: 720px) {
   .ir-docs li { grid-template-columns: 1fr; gap: 6px; }
 }
+
+/* Post card with a photo behind it, rather than the plain emerald plate.
+   The image sits under a dark wash so the kicker and title stay legible. */
+.post__cover--photo { position: relative; isolation: isolate; }
+.post__photo { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; z-index: -2; }
+.post__cover--photo::after { content: ''; position: absolute; inset: 0; z-index: -1;
+  background: linear-gradient(180deg, rgba(10,73,56,.62) 0%, rgba(7,7,7,.78) 100%); }
+
+/* Figures inside a post */
+.prose figure { margin: 34px 0; }
+.prose figure img { width: 100%; height: auto; display: block; }
