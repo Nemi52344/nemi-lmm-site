@@ -1,3 +1,9 @@
+# DEMO BRANCH: a review copy of the site. Nothing on it should be indexed.
+[[headers]]
+  for = "/*"
+  [headers.values]
+    X-Robots-Tag = "noindex, nofollow, noarchive"
+
 # ---------------------------------------------------------------------------
 # DEMO SITE (Netlify) vs LIVE SITE (EC2, nginx)
 #

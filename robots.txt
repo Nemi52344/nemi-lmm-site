@@ -1,8 +1,2 @@
 User-agent: *
-Allow: /
-
-# Superseded pages kept on disk only so old links keep resolving.
-Disallow: /index-backup.html
-Disallow: /services.html
-
-Sitemap: https://nemilmm.com/sitemap.xml
+Disallow: /
