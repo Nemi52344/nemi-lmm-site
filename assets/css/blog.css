@@ -35,7 +35,7 @@
    last footnote. */
 :root { --art-measure: 1040px; }
 
-.art-hero { background: var(--bone); color: var(--ink); padding: 128px 0 0; }
+.art-hero { display: block; min-height: 0; background: var(--bone); color: var(--ink); padding: 128px 0 0; }
 .art-wrap { max-width: var(--art-measure); margin: 0 auto; padding: 0 24px; }
 .art-crumbs { font: 500 11px/1.6 "IBM Plex Mono", monospace; text-transform: uppercase; letter-spacing: 2px; color: var(--grey); }
 .art-crumbs a { color: var(--grey); text-decoration: none; }
@@ -80,18 +80,22 @@
 .prose figure img { width: 100%; height: auto; display: block; }
 .art-cover figcaption, .prose figcaption { margin-top: 12px; font-size: 13px; line-height: 1.6; color: var(--grey); }
 
-/* Sources, updates, disclosure: the parts that keep every claim traceable */
-.art-notes { margin-top: 64px; padding-top: 26px; border-top: 1px solid rgba(7,7,7,.14); }
+/* Sources, updates, disclosure: the parts that keep every claim traceable.
+   These are <section> elements, so they inherit the site's full-viewport rule
+   (display:flex, centred, 100vh). Opt out the same way .sec-faq and .sec-blog do,
+   or the heading floats beside the list instead of sitting above it. */
+.art-notes { display: block; min-height: 0; align-items: initial;
+  margin-top: 64px; padding: 26px 0 0; border-top: 1px solid rgba(7,7,7,.14); }
 .art-notes + .art-notes { margin-top: 30px; }
-.art-notes h2 { font: 600 11px/1 "IBM Plex Mono", monospace; text-transform: uppercase; letter-spacing: 2.5px; color: var(--grey); }
-.art-notes ol, .art-notes ul { margin: 16px 0 0; padding-left: 20px; }
+.art-notes > h2 { display: block; margin: 0 0 16px; font: 600 11px/1 "IBM Plex Mono", monospace; text-transform: uppercase; letter-spacing: 2.5px; color: var(--grey); }
+.art-notes ol, .art-notes ul { margin: 0; padding-left: 22px; }
 .art-notes li { font-size: 13.5px; line-height: 1.7; color: rgba(7,7,7,.66); }
 .art-notes li + li { margin-top: 8px; }
 .art-notes time { font-family: "IBM Plex Mono", monospace; font-size: 12px; }
 .art-disclosure { margin-top: 30px; padding: 20px 22px; background: var(--oat-pale);
   font-size: 12.5px; line-height: 1.65; color: rgba(7,7,7,.66); }
 
-.art-related { background: var(--oat); padding: clamp(56px, 7vw, 88px) 0; }
+.art-related { display: block; min-height: 0; background: var(--oat); padding: clamp(56px, 7vw, 88px) 0; }
 .art-related h2 { font: 600 11px/1 "IBM Plex Mono", monospace; text-transform: uppercase; letter-spacing: 2.5px;
   color: var(--grey); margin-bottom: 26px; }
 
