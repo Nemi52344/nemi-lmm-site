@@ -29,10 +29,11 @@
 .blog-archive li a:hover { color: var(--emerald); }
 
 /* ---------- Article ----------
-   One width, 760px, about 75 characters a line. Images sit inside the text
-   column rather than breaking out of it, so the left edge is a single unbroken
-   line from the breadcrumb to the last footnote. */
-:root { --art-measure: 760px; }
+   One width, 880px, the same measure the founder's letter runs at, so the two
+   pages sit on the same grid. Images stay inside the column rather than breaking
+   out, and the left edge is a single unbroken line from the breadcrumb to the
+   last footnote. */
+:root { --art-measure: 880px; }
 
 .art-hero { background: var(--bone); color: var(--ink); padding: 128px 0 0; }
 .art-wrap { max-width: var(--art-measure); margin: 0 auto; padding: 0 24px; }
@@ -54,9 +55,9 @@
 .art-body { background: var(--bone); padding: 40px 0 clamp(64px, 9vw, 112px); }
 
 .prose > * + * { margin-top: 22px; }
-.prose p, .prose li { font-size: 17px; line-height: 1.78; color: #23231f; }
+.prose p, .prose li { font-size: 17.5px; line-height: 1.8; color: #23231f; }
 /* The opening paragraph carries the piece: a size up, and no indent games. */
-.prose > p:first-child { font-size: 19px; line-height: 1.68; color: #1a1a17; }
+.prose > p:first-child { font-size: 19.5px; line-height: 1.7; color: #1a1a17; }
 .prose h2 { margin-top: 64px; font-family: "Space Grotesk", sans-serif; font-size: clamp(21px, 2.2vw, 27px);
   font-weight: 600; letter-spacing: -.5px; line-height: 1.2; color: var(--ink); }
 /* The same emerald mark the founder's letter puts before its headings, same
