@@ -604,9 +604,9 @@ section { padding: 88px 0; }
 @media (prefers-reduced-motion: reduce) { .person__face { transition: none; } }
 /* Five in the leadership row since the CFO appointment: keep one even row on desktop
    rather than four plus an orphan. Falls back to the shared 2-up / 1-up rules below. */
-.team-grid--five { grid-template-columns: repeat(5, 1fr); }
-.team-grid--five .person { min-height: 128px; }
-@media (max-width: 1180px) and (min-width: 901px) { .team-grid--five { grid-template-columns: repeat(3, 1fr); } }
+.team-grid--seven { grid-template-columns: repeat(4, 1fr); }
+.team-grid--seven .person { min-height: 128px; }
+@media (max-width: 1180px) and (min-width: 901px) { .team-grid--seven { grid-template-columns: repeat(3, 1fr); } }
 @media (max-width: 900px) { .team-grid { grid-template-columns: repeat(2, 1fr); } .team-sub { grid-template-columns: repeat(3, 1fr); } }
 @media (max-width: 560px) { .team-grid, .team-sub { grid-template-columns: 1fr !important; } }
 /* on touch the cards are full width, so give the text room to breathe */
@@ -2799,7 +2799,7 @@ footer { background: #07110D; color: #9DA8A0; border-top: 1px solid rgba(233,238
    narrow enough that it wraps to the full height. Give the leadership row more
    room below 560px. Appended last so it wins over the shared .team-grid rule. */
 @media (max-width: 560px) {
-  .team-grid--five .person { min-height: 152px; }
+  .team-grid--seven .person { min-height: 152px; }
 }
 
 /* An illustration standing in for hardware has to say so on the page, not just
