@@ -2801,3 +2801,13 @@ footer { background: #07110D; color: #9DA8A0; border-top: 1px solid rgba(233,238
 @media (max-width: 560px) {
   .team-grid--five .person { min-height: 152px; }
 }
+
+/* An illustration standing in for hardware has to say so on the page, not just
+   in the alt text. Used on the Defense UAS case, where the hero is a render. */
+.cd-illus { position: relative; z-index: 2; margin: 26px 0 0;
+  font: 500 10px/1 "IBM Plex Mono", monospace; text-transform: uppercase; letter-spacing: 1.8px;
+  color: rgba(236,231,221,.6); }
+.cs-illus { position: absolute; left: 14px; bottom: 14px; z-index: 2;
+  font: 500 9.5px/1 "IBM Plex Mono", monospace; text-transform: uppercase; letter-spacing: 1.6px;
+  color: rgba(255,255,255,.82); background: rgba(7,7,7,.55); padding: 5px 8px; }
+@media (max-width: 720px) { .cd-illus { margin-top: 20px; font-size: 9px; } }
