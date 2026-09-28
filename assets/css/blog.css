@@ -34,6 +34,10 @@
    notes sit inside that wrap rather than on their own surface. */
 .bp > .art-wrap { position: relative; z-index: 1; }
 .art-hero.bp::before, .art-body.bp::before { z-index: 0; }
+/* The section default is a 56px square, which reads coarse behind a page of body
+   copy. Use the 32px square the founder's letter plate uses: same drawing, finer
+   pitch, and it matches the template a post sits next to. */
+.art-hero.bp::before, .art-body.bp::before, .art-related.bp::before { background-size: 32px 32px; }
 
 /* ---------- Article ----------
    One width, 920px, a touch wider than the founder's letter at 880. Images sit
