@@ -28,6 +28,13 @@
 .blog-archive li a { color: var(--ink); text-decoration: none; }
 .blog-archive li a:hover { color: var(--emerald); }
 
+/* ---------- Blueprint grid ----------
+   The .bp / .bp--light pair paints the site's faint blueprint grid and lifts
+   ".wrap" above it. An article uses .art-wrap, so it needs the same lift, and the
+   notes sit inside that wrap rather than on their own surface. */
+.bp > .art-wrap { position: relative; z-index: 1; }
+.art-hero.bp::before, .art-body.bp::before { z-index: 0; }
+
 /* ---------- Article ----------
    One width, 920px, a touch wider than the founder's letter at 880. Images sit
    at the column width, so the column also sets how large they read. Images stay inside the column rather than breaking
