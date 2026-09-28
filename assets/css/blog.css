@@ -37,7 +37,13 @@
 /* The section default is a 56px square, which reads coarse behind a page of body
    copy. Use the 32px square the founder's letter plate uses: same drawing, finer
    pitch, and it matches the template a post sits next to. */
-.art-hero.bp::before, .art-body.bp::before, .art-related.bp::before { background-size: 32px 32px; }
+.art-hero.bp::before, .art-body.bp::before, .art-related.bp::before,
+.art-coverband.bp::before { background-size: 32px 32px; }
+
+/* The banner sits between the header and the body, so it needs its own grid
+   surface: without it the page shows one plain band across the widest image. */
+.art-coverband { background: var(--bone); }
+.art-coverband > .art-cover { position: relative; z-index: 1; }
 
 /* ---------- Article ----------
    One width, 920px, a touch wider than the founder's letter at 880. Images sit
