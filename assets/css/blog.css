@@ -29,12 +29,10 @@
 .blog-archive li a:hover { color: var(--emerald); }
 
 /* ---------- Article ----------
-   Two widths only, and everything hangs off them:
-     text  760px  (about 75 characters a line, the comfortable measure)
-     media 1080px (figures break out of the column, centred on the same axis)
-   The header, the body, the notes and the captions all use the text width, so
-   the left edge is a single unbroken line down the page. */
-:root { --art-measure: 760px; --art-media: 1080px; }
+   One width, 760px, about 75 characters a line. Images sit inside the text
+   column rather than breaking out of it, so the left edge is a single unbroken
+   line from the breadcrumb to the last footnote. */
+:root { --art-measure: 760px; }
 
 .art-hero { background: var(--bone); color: var(--ink); padding: 128px 0 0; }
 .art-wrap { max-width: var(--art-measure); margin: 0 auto; padding: 0 24px; }
@@ -50,8 +48,8 @@
   font: 500 11px/1.6 "IBM Plex Mono", monospace; text-transform: uppercase; letter-spacing: 1.6px; color: var(--grey); }
 .art-byline b { color: var(--ink); font-weight: 600; }
 
-/* Banner and inline figures share one width and one caption style */
-.art-cover { width: min(var(--art-media), calc(100vw - 48px)); margin: 44px auto 0; padding: 0; }
+/* Banner and inline figures sit at the text width, like everything else */
+.art-cover { max-width: var(--art-measure); margin: 40px auto 0; padding: 0 24px; }
 .art-cover img { width: 100%; height: auto; display: block; }
 .art-body { background: var(--bone); padding: 40px 0 clamp(64px, 9vw, 112px); }
 
@@ -76,8 +74,8 @@
   font-style: normal; text-transform: uppercase; letter-spacing: 1.6px; color: var(--grey); }
 .prose sup a { text-decoration: none; font: 600 11px/1 "IBM Plex Mono", monospace; }
 
-/* Figures break out of the text column, centred on the same axis */
-.prose figure { width: min(var(--art-media), calc(100vw - 48px)); margin: 44px 0 44px 50%; transform: translateX(-50%); }
+/* Figures stay inside the column */
+.prose figure { width: 100%; margin: 36px 0; }
 .prose figure img { width: 100%; height: auto; display: block; }
 .art-cover figcaption, .prose figcaption { margin-top: 12px; font-size: 13px; line-height: 1.6; color: var(--grey); }
 
@@ -97,9 +95,8 @@
   color: var(--grey); margin-bottom: 26px; }
 
 @media (max-width: 860px) {
-  /* Below the media width the figures simply fill the column, no break-out */
-  .prose figure { width: 100%; margin: 34px 0; transform: none; }
-  .art-cover { width: 100%; padding: 0 24px; margin-top: 32px; }
+  .prose figure { margin: 28px 0; }
+  .art-cover { margin-top: 30px; }
 }
 @media (max-width: 560px) {
   .art-hero { padding-top: 104px; }
