@@ -28,47 +28,66 @@
 .blog-archive li a { color: var(--ink); text-decoration: none; }
 .blog-archive li a:hover { color: var(--emerald); }
 
-/* Article */
+/* ---------- Article ----------
+   Two widths only, and everything hangs off them:
+     text  760px  (about 75 characters a line, the comfortable measure)
+     media 1080px (figures break out of the column, centred on the same axis)
+   The header, the body, the notes and the captions all use the text width, so
+   the left edge is a single unbroken line down the page. */
+:root { --art-measure: 760px; --art-media: 1080px; }
+
 .art-hero { background: var(--bone); color: var(--ink); padding: 128px 0 0; }
-.art-wrap { max-width: 760px; margin: 0 auto; padding: 0 24px; }
+.art-wrap { max-width: var(--art-measure); margin: 0 auto; padding: 0 24px; }
 .art-crumbs { font: 500 11px/1.6 "IBM Plex Mono", monospace; text-transform: uppercase; letter-spacing: 2px; color: var(--grey); }
 .art-crumbs a { color: var(--grey); text-decoration: none; }
 .art-crumbs a:hover { color: var(--emerald); }
 .art-cat { display: inline-block; margin-top: 30px; font: 600 11px/1 "IBM Plex Mono", monospace;
   text-transform: uppercase; letter-spacing: 2.5px; color: var(--signal); text-decoration: none; }
-.art-title { margin-top: 16px; font-size: clamp(32px, 5vw, 54px); font-weight: 700; letter-spacing: -1.8px; line-height: 1.06; }
-.art-dek { margin-top: 20px; font-size: clamp(17px, 1.8vw, 20px); line-height: 1.6; font-weight: 300; color: rgba(7,7,7,.72); }
-.art-byline { display: flex; flex-wrap: wrap; gap: 8px 22px; margin-top: 32px; padding: 18px 0;
+.art-title { margin-top: 16px; font-size: clamp(32px, 4.6vw, 52px); font-weight: 700; letter-spacing: -1.8px; line-height: 1.07; }
+.art-dek { margin-top: 20px; font-size: clamp(17px, 1.7vw, 19px); line-height: 1.62; font-weight: 300; color: rgba(7,7,7,.66); }
+.art-byline { display: flex; flex-wrap: wrap; gap: 8px 22px; margin-top: 30px; padding: 16px 0;
   border-top: 1px solid rgba(7,7,7,.14); border-bottom: 1px solid rgba(7,7,7,.14);
   font: 500 11px/1.6 "IBM Plex Mono", monospace; text-transform: uppercase; letter-spacing: 1.6px; color: var(--grey); }
 .art-byline b { color: var(--ink); font-weight: 600; }
-.art-cover { margin: 40px auto 0; max-width: 1040px; padding: 0 24px; }
-.art-cover img { width: 100%; height: auto; display: block; }
-.art-cover figcaption { margin-top: 10px; font-size: 13px; color: var(--grey); }
 
-.art-body { background: var(--bone); padding: 44px 0 clamp(64px, 9vw, 112px); }
+/* Banner and inline figures share one width and one caption style */
+.art-cover { width: min(var(--art-media), calc(100vw - 48px)); margin: 44px auto 0; padding: 0; }
+.art-cover img { width: 100%; height: auto; display: block; }
+.art-body { background: var(--bone); padding: 40px 0 clamp(64px, 9vw, 112px); }
+
 .prose > * + * { margin-top: 22px; }
 .prose p, .prose li { font-size: 17px; line-height: 1.78; color: #23231f; }
-.prose h2 { margin-top: 56px; font-size: clamp(22px, 2.4vw, 30px); letter-spacing: -.6px; line-height: 1.2; color: var(--ink); }
+/* The opening paragraph carries the piece: a size up, and no indent games. */
+.prose > p:first-child { font-size: 19px; line-height: 1.68; color: #1a1a17; }
+.prose h2 { margin-top: 64px; font-family: "Space Grotesk", sans-serif; font-size: clamp(21px, 2.2vw, 27px);
+  font-weight: 600; letter-spacing: -.5px; line-height: 1.2; color: var(--ink); }
+/* The same emerald mark the founder's letter puts before its headings, same
+   geometry, so a post and the letter read as one family. */
+.prose h2::before { content: ''; display: inline-block; vertical-align: middle;
+  width: 42px; height: 3px; margin-right: 18px; background: var(--signal); }
+.prose h2 + p { margin-top: 18px; }
 .prose h3 { margin-top: 40px; font-size: 20px; letter-spacing: -.3px; color: var(--ink); }
 .prose a { color: var(--emerald); }
 .prose ul, .prose ol { padding-left: 22px; }
 .prose li + li { margin-top: 8px; }
-.prose blockquote { margin: 34px 0; padding: 4px 0 4px 24px; border-left: 3px solid var(--signal);
+.prose blockquote { margin: 38px 0; padding: 4px 0 4px 24px; border-left: 3px solid var(--signal);
   font-size: 20px; line-height: 1.55; color: var(--ink); }
 .prose blockquote cite { display: block; margin-top: 10px; font: 500 11px/1.6 "IBM Plex Mono", monospace;
   font-style: normal; text-transform: uppercase; letter-spacing: 1.6px; color: var(--grey); }
-.prose figure img { width: 100%; height: auto; display: block; }
-.prose figcaption { margin-top: 10px; font-size: 13px; color: var(--grey); }
 .prose sup a { text-decoration: none; font: 600 11px/1 "IBM Plex Mono", monospace; }
 
+/* Figures break out of the text column, centred on the same axis */
+.prose figure { width: min(var(--art-media), calc(100vw - 48px)); margin: 44px 0 44px 50%; transform: translateX(-50%); }
+.prose figure img { width: 100%; height: auto; display: block; }
+.art-cover figcaption, .prose figcaption { margin-top: 12px; font-size: 13px; line-height: 1.6; color: var(--grey); }
+
 /* Sources, updates, disclosure: the parts that keep every claim traceable */
-.art-notes { margin-top: 56px; padding-top: 26px; border-top: 1px solid rgba(7,7,7,.14); }
+.art-notes { margin-top: 64px; padding-top: 26px; border-top: 1px solid rgba(7,7,7,.14); }
 .art-notes + .art-notes { margin-top: 30px; }
 .art-notes h2 { font: 600 11px/1 "IBM Plex Mono", monospace; text-transform: uppercase; letter-spacing: 2.5px; color: var(--grey); }
 .art-notes ol, .art-notes ul { margin: 16px 0 0; padding-left: 20px; }
-.art-notes li { font-size: 14px; line-height: 1.65; color: rgba(7,7,7,.72); }
-.art-notes li + li { margin-top: 6px; }
+.art-notes li { font-size: 13.5px; line-height: 1.7; color: rgba(7,7,7,.66); }
+.art-notes li + li { margin-top: 8px; }
 .art-notes time { font-family: "IBM Plex Mono", monospace; font-size: 12px; }
 .art-disclosure { margin-top: 30px; padding: 20px 22px; background: var(--oat-pale);
   font-size: 12.5px; line-height: 1.65; color: rgba(7,7,7,.66); }
@@ -77,53 +96,23 @@
 .art-related h2 { font: 600 11px/1 "IBM Plex Mono", monospace; text-transform: uppercase; letter-spacing: 2.5px;
   color: var(--grey); margin-bottom: 26px; }
 
+@media (max-width: 860px) {
+  /* Below the media width the figures simply fill the column, no break-out */
+  .prose figure { width: 100%; margin: 34px 0; transform: none; }
+  .art-cover { width: 100%; padding: 0 24px; margin-top: 32px; }
+}
 @media (max-width: 560px) {
   .art-hero { padding-top: 104px; }
+  .prose h2::before { width: 28px; margin-right: 13px; }
+  .art-title { letter-spacing: -1.2px; }
   .blog-archive__year { grid-template-columns: 1fr; gap: 6px; }
 }
-
-/* ---------- Investors page ----------
-   Deliberately plain: a filing index, not a marketing page. */
-.ir-sec { display: block; min-height: 0; padding: clamp(52px, 6.5vw, 88px) 0; }
-.ir-wrap { display: block; }
-.ir-lead { max-width: 820px; }
-.ir-eyebrow { font: 500 11px/1 "IBM Plex Mono", monospace; text-transform: uppercase; letter-spacing: 2.5px; color: var(--signal); }
-.ir-lead h2 { margin-top: 18px; font-size: clamp(26px, 3.4vw, 40px); font-weight: 700; letter-spacing: -1.2px; line-height: 1.12; }
-.ir-sub { margin-top: 18px; font-size: 17px; line-height: 1.75; font-weight: 300; color: rgba(7,7,7,.72); }
-.ir-actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 28px; }
-.ir-note { margin-top: 22px; font-size: 12.5px; line-height: 1.7; color: var(--grey); }
-.ir-h { font: 600 11px/1 "IBM Plex Mono", monospace; text-transform: uppercase; letter-spacing: 2.5px;
-  color: var(--grey); margin-bottom: 24px; }
-.ir-docs { list-style: none; margin: 0; padding: 0; border-top: 1px solid rgba(7,7,7,.14); }
-.ir-docs li { display: grid; grid-template-columns: 210px 1fr auto; gap: 18px; align-items: baseline;
-  padding: 16px 0; border-bottom: 1px solid rgba(7,7,7,.14); font-size: 15px; }
-.ir-docs__k { font: 500 11px/1.6 "IBM Plex Mono", monospace; text-transform: uppercase; letter-spacing: 1.8px; color: var(--grey); }
-.ir-docs a { color: var(--emerald); text-decoration: none; }
-.ir-docs a:hover { text-decoration: underline; }
-.ir-docs time { font: 500 11px/1.6 "IBM Plex Mono", monospace; text-transform: uppercase; letter-spacing: 1.5px; color: var(--grey); }
-.ir-faq details { border-bottom: 1px solid rgba(7,7,7,.14); padding: 16px 0; }
-.ir-faq summary { cursor: pointer; font-size: 16.5px; font-weight: 500; color: var(--ink); }
-.ir-faq summary::marker { color: var(--signal); }
-.ir-faq p { margin-top: 12px; font-size: 15px; line-height: 1.75; color: rgba(7,7,7,.72); max-width: 760px; }
-.ir-legends { max-width: 880px; }
-.ir-legends p { font-size: 12.5px; line-height: 1.75; color: rgba(7,7,7,.66); }
-.ir-legends p + p { margin-top: 14px; }
-.ir-legends a { color: var(--emerald); }
-@media (max-width: 720px) {
-  .ir-docs li { grid-template-columns: 1fr; gap: 6px; }
-}
-
-/* Post card with a photo behind it, rather than the plain emerald plate.
-   The image sits under a dark wash so the kicker and title stay legible. */
-.post__cover--photo { position: relative; isolation: isolate; }
-.post__photo { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; z-index: -2; }
-.post__cover--photo::after { content: ''; position: absolute; inset: 0; z-index: -1;
-  background: linear-gradient(180deg, rgba(10,73,56,.62) 0%, rgba(7,7,7,.78) 100%); }
-
-/* Figures inside a post */
-.prose figure { margin: 34px 0; }
-.prose figure img { width: 100%; height: auto; display: block; }
 
 /* Photo credit inside a caption */
 .art-credit { display: inline-block; margin-left: 6px; font-family: "IBM Plex Mono", monospace;
   font-size: 10.5px; letter-spacing: .6px; text-transform: uppercase; color: rgba(7,7,7,.42); }
+
+/* The nav is sticky, so a jump to a footnote or back to the text would land
+   underneath it. Push every jump target clear of the bar. */
+.prose h2[id], .prose sup a, .art-notes li[id], .prose p[id], .prose [id] { scroll-margin-top: 96px; }
+.art-notes li:target { background: var(--oat-pale); box-shadow: 0 0 0 6px var(--oat-pale); }
