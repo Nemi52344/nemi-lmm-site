@@ -2811,3 +2811,10 @@ footer { background: #07110D; color: #9DA8A0; border-top: 1px solid rgba(233,238
   font: 500 9.5px/1 "IBM Plex Mono", monospace; text-transform: uppercase; letter-spacing: 1.6px;
   color: rgba(255,255,255,.82); background: rgba(7,7,7,.55); padding: 5px 8px; }
 @media (max-width: 720px) { .cd-illus { margin-top: 20px; font-size: 9px; } }
+
+/* Two executives also sit on the board. Rather than list them twice, the card
+   carries a small tag and the board section shows only the independents. */
+.person__tag { display: inline-block; margin-top: 10px; padding: 4px 8px;
+  font: 500 9px/1 "IBM Plex Mono", monospace; text-transform: uppercase; letter-spacing: 1.6px;
+  color: var(--emerald); border: 1px solid rgba(10, 73, 56, .32); }
+.team-note { margin-top: 12px; max-width: 640px; font-size: 14px; line-height: 1.6; color: rgba(7,7,7,.6); }
