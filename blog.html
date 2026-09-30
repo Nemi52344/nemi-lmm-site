@@ -56,9 +56,21 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   "blogPost": [
     {
       "@type": "BlogPosting",
+      "headline": "The World Order Is Determined by Hardware and Manufacturing",
+      "url": "https://nemilmm.com/blog-world-order-hardware-manufacturing.html",
+      "datePublished": "2026-09-28",
+      "articleSection": "Industry",
+      "author": {
+        "@type": "Person",
+        "name": "Anirudh Ravi Narayanan"
+      }
+    },
+    {
+      "@type": "BlogPosting",
       "headline": "The NEMI Master Plan",
       "url": "https://nemilmm.com/master-plan.html",
       "datePublished": "2026-09-01",
+      "articleSection": "Company",
       "author": {
         "@type": "Person",
         "name": "Anirudh Ravi Narayanan"
@@ -73,6 +85,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="assets/css/style.css?v=174">
 <link rel="stylesheet" href="assets/css/nav-menu.css?v=12">
+<link rel="stylesheet" href="assets/css/blog.css?v=15">
 <link rel="icon" type="image/svg+xml" href="assets/img/favicon.svg?v=7">
 <link rel="icon" type="image/png" sizes="32x32" href="assets/img/favicon-32.png?v=7">
 <link rel="icon" type="image/png" sizes="16x16" href="assets/img/favicon-16.png?v=7">
@@ -118,18 +131,38 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   </div>
 </section>
 
-<!-- POSTS · newest first. To ADD a post: copy one <a class="post"> block above the others. -->
+<!-- POSTS · newest first.
+     To ADD a post, follow _s4/BLOG_RULES.md. In short: copy _post-template.html to
+     blog-<slug>.html, then copy one <a class="post"> card below to the TOP of .posts,
+     and add a line to the archive and to the Blog JSON-LD above.
+     data-category must be one of: Company · Engineering · Factory floor · Industry.
+     Deal / transaction content never goes on the blog: it belongs on the Investors page. -->
 <section class="bg-oat bp bp--light sec-blog" id="posts">
   <div class="wrap">
+    <div class="blog-filter" id="blogFilter" role="group" aria-label="Filter posts by category" hidden></div>
     <div class="posts">
-      <a class="post" href="master-plan.html">
+      <a class="post" href="blog-world-order-hardware-manufacturing.html" data-category="Industry">
+        <div class="post__cover post__cover--photo">
+          <img class="post__photo" src="assets/img/blog/world-order-1-lancashire-looms.jpg" alt="Women working rows of power looms in a Lancashire weaving shed" loading="lazy">
+          <div class="post__cover-k">Industry</div>
+          <div class="post__cover-t">The world order is decided by manufacturing</div>
+        </div>
+        <div class="post__body">
+          <div class="post__meta"><time datetime="2026-09-28">September 2026</time> &middot; Industry &middot; 5 min read</div>
+          <h2 class="post__title">The World Order Is Determined by Hardware and Manufacturing</h2>
+          <p class="post__excerpt">Every nation that rose to lead the world order did so on the back of a manufacturing transformation. Five cases, 250 years, and what the pattern says about the next one.</p>
+          <div class="post__by">Anirudh Ravi Narayanan &middot; Founder &amp; CEO</div>
+          <span class="post__go">Read the post &rarr;</span>
+        </div>
+      </a>
+      <a class="post" href="master-plan.html" data-category="Company">
         <div class="post__cover">
           <div class="mpl-plate__crops" aria-hidden="true"><span>+</span><span>+</span></div>
           <div class="post__cover-k">Founder's letter</div>
           <div class="post__cover-t">The Nemi Master Plan</div>
         </div>
         <div class="post__body">
-          <div class="post__meta">September 2026 &middot; Founder's letter</div>
+          <div class="post__meta"><time datetime="2026-09-01">September 2026</time> &middot; Company &middot; Founder's letter</div>
           <h2 class="post__title">The NEMI Master Plan</h2>
           <p class="post__excerpt">Do for hardware what LLMs did for software. The founder&rsquo;s letter: why NEMI exists, and the three phases of the plan.</p>
           <div class="post__by">Anirudh Ravi Narayanan &middot; Founder &amp; CEO</div>
@@ -137,6 +170,18 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         </div>
       </a>
     </div>
+
+    <!-- ARCHIVE · one <li> per post, newest first, grouped by year -->
+    <nav class="blog-archive" aria-label="Archive">
+      <h2>Archive</h2>
+      <div class="blog-archive__year">
+        <b>2026</b>
+        <ul>
+          <li><time datetime="2026-09-28">Sep</time><a href="blog-world-order-hardware-manufacturing.html">The World Order Is Determined by Hardware and Manufacturing</a></li>
+          <li><time datetime="2026-09-01">Sep</time><a href="master-plan.html">The NEMI Master Plan</a></li>
+        </ul>
+      </div>
+    </nav>
   </div>
 </section>
 
@@ -186,6 +231,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 </footer>
 
 <script src="assets/js/fx.js?v=2"></script>
+<script src="assets/js/blog.js?v=1"></script>
 <!-- Cloudflare Web Analytics --><script type='module' src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "c0f89f8fdcc44be8b836753c1f342d17"}'></script><!-- End Cloudflare Web Analytics -->
 </body>
 </html>
