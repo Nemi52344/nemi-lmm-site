@@ -2794,7 +2794,7 @@ footer { background: #07110D; color: #9DA8A0; border-top: 1px solid rgba(233,238
    orphan. Two of those executives also sit on the board, so their card carries a
    tag instead of being listed again in a board section. */
 .team-grid--seven { grid-template-columns: repeat(4, 1fr); }
-.team-grid--seven .person { min-height: 176px; }
+.team-grid--seven .person { min-height: 112px; }
 @media (max-width: 1180px) and (min-width: 901px) { .team-grid--seven { grid-template-columns: repeat(3, 1fr); } }
 .person__tag { display: inline-block; margin-top: 10px; padding: 4px 8px;
   font: 500 9px/1 "IBM Plex Mono", monospace; text-transform: uppercase; letter-spacing: 1.6px;
@@ -2804,4 +2804,4 @@ footer { background: #07110D; color: #9DA8A0; border-top: 1px solid rgba(233,238
    needs its own copies or it would stay at four columns on a phone */
 @media (max-width: 900px) { .team-grid--seven { grid-template-columns: repeat(2, 1fr); } }
 @media (max-width: 560px) { .team-grid--seven { grid-template-columns: 1fr !important; }
-  .team-grid--seven .person { min-height: 200px; } }
+  .team-grid--seven .person { min-height: 132px; } }
