@@ -2800,4 +2800,8 @@ footer { background: #07110D; color: #9DA8A0; border-top: 1px solid rgba(233,238
   font: 500 9px/1 "IBM Plex Mono", monospace; text-transform: uppercase; letter-spacing: 1.6px;
   color: var(--emerald); border: 1px solid rgba(10, 73, 56, .32); }
 .team-note { margin-top: 12px; max-width: 640px; font-size: 14px; line-height: 1.6; color: rgba(7,7,7,.6); }
-@media (max-width: 560px) { .team-grid--seven .person { min-height: 200px; } }
+/* the shared .team-grid breakpoints live earlier in this file, so the modifier
+   needs its own copies or it would stay at four columns on a phone */
+@media (max-width: 900px) { .team-grid--seven { grid-template-columns: repeat(2, 1fr); } }
+@media (max-width: 560px) { .team-grid--seven { grid-template-columns: 1fr !important; }
+  .team-grid--seven .person { min-height: 200px; } }
