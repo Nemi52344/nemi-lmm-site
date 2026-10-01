@@ -2796,9 +2796,6 @@ footer { background: #07110D; color: #9DA8A0; border-top: 1px solid rgba(233,238
 .team-grid--seven { grid-template-columns: repeat(4, 1fr); }
 .team-grid--seven .person { min-height: 112px; }
 @media (max-width: 1180px) and (min-width: 901px) { .team-grid--seven { grid-template-columns: repeat(3, 1fr); } }
-.person__tag { display: inline-block; margin-top: 10px; padding: 4px 8px;
-  font: 500 9px/1 "IBM Plex Mono", monospace; text-transform: uppercase; letter-spacing: 1.6px;
-  color: var(--emerald); border: 1px solid rgba(10, 73, 56, .32); }
 .team-note { margin-top: 12px; max-width: 640px; font-size: 14px; line-height: 1.6; color: rgba(7,7,7,.6); }
 /* the shared .team-grid breakpoints live earlier in this file, so the modifier
    needs its own copies or it would stay at four columns on a phone */
@@ -2839,12 +2836,6 @@ footer { background: #07110D; color: #9DA8A0; border-top: 1px solid rgba(233,238
 .team-roster .person__back { margin-top: 14px; }
 .team-roster .person__back p { font-size: 13px; line-height: 1.62; color: rgba(7,7,7,.62); }
 
-/* board membership: a mark, not a boxed-in chip the width of the card */
-.team-roster .person__tag { display: inline-flex; align-items: center; gap: 7px;
-  margin-top: 10px; padding: 0; border: 0; font-size: 9.5px; letter-spacing: 1.8px;
-  color: rgba(7,7,7,.5); }
-.team-roster .person__tag::before { content: ''; width: 5px; height: 5px; background: var(--signal);
-  border-radius: 50%; }
 
 .team-note { margin-top: 12px; max-width: 640px; font-size: 14px; line-height: 1.6; color: rgba(7,7,7,.6); }
 
