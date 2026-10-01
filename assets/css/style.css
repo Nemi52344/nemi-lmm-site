@@ -2845,10 +2845,11 @@ footer { background: #07110D; color: #9DA8A0; border-top: 1px solid rgba(233,238
 
 .team-grid .person__name { margin-top: 11px; font-size: 15.5px; font-weight: 600;
   letter-spacing: -.35px; line-height: 1.18; white-space: normal; }
-.person__fields { margin: 11px 0 0; display: grid; grid-template-columns: 58px 1fr;
-  column-gap: 11px; row-gap: 0; }
-.person__fields dt { font: 400 8px/1.6 "IBM Plex Mono", monospace; letter-spacing: 1.2px;
-  text-transform: uppercase; color: var(--grey); }
+.person__fields { margin: 11px 0 0; display: flex; align-items: baseline;
+  column-gap: 9px; row-gap: 0; }
+.person__fields dt { flex: 0 0 auto; font: 400 8px/1.6 "IBM Plex Mono", monospace;
+  letter-spacing: 1.2px; text-transform: uppercase; color: var(--grey); }
+.person__fields dd { flex: 1 1 auto; }
 .person__fields dd { margin: 0; font-size: 11.5px; line-height: 1.5; color: rgba(7, 7, 7, .62); }
 .person__fields dd.person__roleval { color: var(--emerald); font-weight: 500; }
 
@@ -2912,7 +2913,7 @@ footer { background: #07110D; color: #9DA8A0; border-top: 1px solid rgba(233,238
   .team-grid .person__back { position: static; grid-area: 2 / 1; width: auto;
     min-height: 0; opacity: 1; transform: none; display: block; justify-items: stretch;
     padding: 0 17px 17px; border-top: 0; pointer-events: auto; }
-  .team-grid .person__back .person__fields { display: grid; max-width: none; }
+  .team-grid .person__back .person__fields { display: flex; max-width: none; }
   .team-grid .person__back .person__fields dt { display: block; }
   .team-grid .person__back .person__fields dd { text-align: left; opacity: 1; transform: none; }
   .team-grid .person.is-flipped .person__front { opacity: 1; transform: none; }
