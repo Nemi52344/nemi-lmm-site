@@ -2794,7 +2794,7 @@ footer { background: #07110D; color: #9DA8A0; border-top: 1px solid rgba(233,238
    orphan. Two of those executives also sit on the board, so their card carries a
    tag instead of being listed again in a board section. */
 .team-grid--seven { grid-template-columns: repeat(4, 1fr); }
-.team-grid--seven .person { min-height: 112px; }
+.team-grid--seven .person { min-height: 128px; }
 @media (max-width: 1180px) and (min-width: 901px) { .team-grid--seven { grid-template-columns: repeat(3, 1fr); } }
 .team-note { margin-top: 12px; max-width: 640px; font-size: 14px; line-height: 1.6; color: rgba(7,7,7,.6); }
 /* the shared .team-grid breakpoints live earlier in this file, so the modifier
@@ -2802,52 +2802,3 @@ footer { background: #07110D; color: #9DA8A0; border-top: 1px solid rgba(233,238
 @media (max-width: 900px) { .team-grid--seven { grid-template-columns: repeat(2, 1fr); } }
 @media (max-width: 560px) { .team-grid--seven { grid-template-columns: 1fr !important; }
   .team-grid--seven .person { min-height: 132px; } }
-
-/* ---------- Team roster ----------
-   Replaces the flip-card treatment on the About page. One hairline grid, bios on
-   the face instead of hidden behind a hover, no chamfer, no drop shadow, no fill.
-   Reads as a spec sheet of people rather than a wall of beige tiles. */
-.team-roster { display: grid; gap: 0; border: 1px solid rgba(7,7,7,.14); background: var(--bone); }
-.team-roster .person {
-  position: static; display: block; min-height: 0; padding: 24px 22px;
-  background: transparent; border: 0; border-left: 1px solid rgba(7,7,7,.1);
-  border-top: 1px solid rgba(7,7,7,.1); box-shadow: none; clip-path: none;
-  perspective: none; transition: background .22s ease;
-}
-.team-roster .person:hover { background: var(--oat-pale); transform: none; box-shadow: none; }
-/* Chrome applies align-content to block containers too, which floated the
-   shorter cards off the top rule. Pin every card's content to the top. */
-.team-roster .person, .team-roster .person__face { align-content: start; }
-/* first cell of each row and the first row lose their inner rule */
-.team-roster .person:nth-child(4n+1) { border-left: 0; }
-.team-roster .person:nth-child(-n+4) { border-top: 0; }
-
-/* the two faces stop being faces: both render inline, stacked */
-.team-roster .person__face {
-  position: static; inset: auto; display: block; padding: 0; row-gap: 0;
-  background: transparent; border: 0; clip-path: none; box-shadow: none;
-  backface-visibility: visible; -webkit-backface-visibility: visible;
-  transform: none !important; transition: none;
-}
-.team-roster .person__name { font-size: 17px; font-weight: 600; letter-spacing: -.3px; line-height: 1.22;
-  white-space: normal; }
-.team-roster .person__role { margin-top: 9px; font-size: 10px; letter-spacing: 1.9px; line-height: 1.5;
-  white-space: normal; color: var(--emerald); }
-.team-roster .person__back { margin-top: 14px; }
-.team-roster .person__back p { font-size: 13px; line-height: 1.62; color: rgba(7,7,7,.62); }
-
-
-.team-note { margin-top: 12px; max-width: 640px; font-size: 14px; line-height: 1.6; color: rgba(7,7,7,.6); }
-
-@media (max-width: 900px) {
-  .team-roster { grid-template-columns: repeat(2, 1fr) !important; }
-  .team-roster .person:nth-child(4n+1) { border-left: 1px solid rgba(7,7,7,.1); }
-  .team-roster .person:nth-child(-n+4) { border-top: 1px solid rgba(7,7,7,.1); }
-  .team-roster .person:nth-child(2n+1) { border-left: 0; }
-  .team-roster .person:nth-child(-n+2) { border-top: 0; }
-}
-@media (max-width: 560px) {
-  .team-roster { grid-template-columns: 1fr !important; }
-  .team-roster .person { border-left: 0 !important; border-top: 1px solid rgba(7,7,7,.1) !important; padding: 20px 18px; }
-  .team-roster .person:first-child { border-top: 0 !important; }
-}
