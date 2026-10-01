@@ -2789,3 +2789,15 @@ footer { background: #07110D; color: #9DA8A0; border-top: 1px solid rgba(233,238
 @media (max-width: 560px) {
   .team-grid--five .person { min-height: 152px; }
 }
+
+/* Seven in the leadership row: one even row on desktop rather than four plus an
+   orphan. Two of those executives also sit on the board, so their card carries a
+   tag instead of being listed again in a board section. */
+.team-grid--seven { grid-template-columns: repeat(4, 1fr); }
+.team-grid--seven .person { min-height: 176px; }
+@media (max-width: 1180px) and (min-width: 901px) { .team-grid--seven { grid-template-columns: repeat(3, 1fr); } }
+.person__tag { display: inline-block; margin-top: 10px; padding: 4px 8px;
+  font: 500 9px/1 "IBM Plex Mono", monospace; text-transform: uppercase; letter-spacing: 1.6px;
+  color: var(--emerald); border: 1px solid rgba(10, 73, 56, .32); }
+.team-note { margin-top: 12px; max-width: 640px; font-size: 14px; line-height: 1.6; color: rgba(7,7,7,.6); }
+@media (max-width: 560px) { .team-grid--seven .person { min-height: 200px; } }
