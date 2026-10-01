@@ -2815,8 +2815,8 @@ footer { background: #07110D; color: #9DA8A0; border-top: 1px solid rgba(233,238
   position: relative; display: grid; grid-template-columns: 1fr; padding: 0; min-height: 0;
   background: transparent; border: 0; box-shadow: none; clip-path: none;
   perspective: none; overflow: visible;
-  /* the card is stretched to the tallest in its row, so the single row and both
-     faces have to stretch with it or the plate borders stop short */
+  /* the card is stretched to the tallest in its row, so the row and the front
+     face have to stretch with it or the plate borders stop short */
   align-content: stretch; grid-template-rows: 1fr; row-gap: 0;
 }
 .team-grid .person__face {
@@ -2837,7 +2837,7 @@ footer { background: #07110D; color: #9DA8A0; border-top: 1px solid rgba(233,238
 .team-grid .person__face::before { top: 6px; left: 6px; border-width: 1px 0 0 1px; }
 .team-grid .person__face::after { bottom: 6px; right: 6px; border-width: 0 1px 1px 0; }
 
-.person__head { display: flex; justify-content: space-between; align-items: center;
+.person__head { display: flex; justify-content: flex-end; align-items: center;
   padding-bottom: 9px; border-bottom: 1px solid rgba(7, 7, 7, .08); }
 .person__id { font: 500 8.5px/1 "IBM Plex Mono", monospace; letter-spacing: 1.5px; color: var(--grey); }
 .person__code { font: 600 8.5px/1 "IBM Plex Mono", monospace; letter-spacing: 1.4px;
@@ -2852,8 +2852,14 @@ footer { background: #07110D; color: #9DA8A0; border-top: 1px solid rgba(233,238
 .person__fields dd { margin: 0; font-size: 11.5px; line-height: 1.5; color: rgba(7, 7, 7, .62); }
 .person__fields dd.person__roleval { color: var(--emerald); font-weight: 500; }
 
-/* the reveal */
-.team-grid .person__back { opacity: 0; transform: translateY(7px); pointer-events: none; }
+/* The reveal. The card is only as tall as the role plate, so the background panel
+   is taken out of flow and overlays it, growing downward over whatever sits below
+   instead of padding every card out to the length of its longest bio. */
+.team-grid .person__back {
+  position: absolute; top: 0; left: 0; width: 100%; height: auto; min-height: 100%;
+  z-index: 3; opacity: 0; transform: translateY(7px); pointer-events: none;
+}
+.team-grid .person:hover, .team-grid .person:focus-within { z-index: 6; }
 .team-grid .person:hover .person__front,
 .team-grid .person:focus-within .person__front,
 .team-grid .person.is-flipped .person__front { opacity: 0; transform: translateY(-7px); }
@@ -2883,7 +2889,8 @@ footer { background: #07110D; color: #9DA8A0; border-top: 1px solid rgba(233,238
 @media (hover: none) {
   .team-grid .person { grid-template-rows: auto auto; align-content: start; }
   .team-grid .person__front { grid-area: 1 / 1; border-bottom: 0; padding-bottom: 0; }
-  .team-grid .person__back { grid-area: 2 / 1; opacity: 1; transform: none;
+  .team-grid .person__back { position: static; grid-area: 2 / 1; width: auto;
+    min-height: 0; opacity: 1; transform: none;
     border-top: 0; padding-top: 0; pointer-events: auto; }
   .team-grid .person.is-flipped .person__front { opacity: 1; transform: none; }
   .team-grid .person__back .person__head,
