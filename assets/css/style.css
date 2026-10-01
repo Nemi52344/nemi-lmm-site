@@ -2802,3 +2802,92 @@ footer { background: #07110D; color: #9DA8A0; border-top: 1px solid rgba(233,238
 @media (max-width: 900px) { .team-grid--seven { grid-template-columns: repeat(2, 1fr); } }
 @media (max-width: 560px) { .team-grid--seven { grid-template-columns: 1fr !important; }
   .team-grid--seven .person { min-height: 132px; } }
+
+/* ---------- Team: engineering spec plate ----------
+   The card reads as a datasheet: a part line, a role code, registration marks at
+   two corners, then labelled fields. The front carries the role, and the back,
+   which holds the background, cross-fades in on hover, focus or tap. Replaces the
+   3D flip; the .is-flipped class still drives it on touch. */
+/* Both faces sit in the same grid cell, so the card is exactly as tall as the
+   longer of the two at any width. No min-height to keep in sync, and the bio can
+   never be clipped. */
+.team-grid .person {
+  position: relative; display: grid; grid-template-columns: 1fr; padding: 0; min-height: 0;
+  background: transparent; border: 0; box-shadow: none; clip-path: none;
+  perspective: none; overflow: visible;
+  /* the card is stretched to the tallest in its row, so the single row and both
+     faces have to stretch with it or the plate borders stop short */
+  align-content: stretch; grid-template-rows: 1fr; row-gap: 0;
+}
+.team-grid .person__face {
+  grid-area: 1 / 1; align-self: stretch;
+  position: relative; inset: auto; display: block; align-content: start; row-gap: 0;
+  padding: 15px 17px 17px; background: var(--bone);
+  border: 1px solid rgba(7, 7, 7, .13); clip-path: none; box-shadow: none;
+  backface-visibility: visible; -webkit-backface-visibility: visible;
+  transition: opacity .34s ease, transform .34s cubic-bezier(.3, .9, .35, 1),
+              border-color .25s ease, box-shadow .25s ease;
+}
+/* registration marks, top left and bottom right */
+.team-grid .person__face::before,
+.team-grid .person__face::after {
+  content: ''; position: absolute; width: 9px; height: 9px;
+  border-color: var(--emerald); border-style: solid; opacity: .5;
+}
+.team-grid .person__face::before { top: 6px; left: 6px; border-width: 1px 0 0 1px; }
+.team-grid .person__face::after { bottom: 6px; right: 6px; border-width: 0 1px 1px 0; }
+
+.person__head { display: flex; justify-content: space-between; align-items: center;
+  padding-bottom: 9px; border-bottom: 1px solid rgba(7, 7, 7, .08); }
+.person__id { font: 500 8.5px/1 "IBM Plex Mono", monospace; letter-spacing: 1.5px; color: var(--grey); }
+.person__code { font: 600 8.5px/1 "IBM Plex Mono", monospace; letter-spacing: 1.4px;
+  color: var(--bone); background: var(--emerald); padding: 5px 7px; }
+
+.team-grid .person__name { margin-top: 11px; font-size: 15.5px; font-weight: 600;
+  letter-spacing: -.35px; line-height: 1.18; white-space: normal; }
+.person__fields { margin: 11px 0 0; display: grid; grid-template-columns: 58px 1fr;
+  column-gap: 11px; row-gap: 0; }
+.person__fields dt { font: 400 8px/1.6 "IBM Plex Mono", monospace; letter-spacing: 1.2px;
+  text-transform: uppercase; color: var(--grey); }
+.person__fields dd { margin: 0; font-size: 11.5px; line-height: 1.5; color: rgba(7, 7, 7, .62); }
+.person__fields dd.person__roleval { color: var(--emerald); font-weight: 500; }
+
+/* the reveal */
+.team-grid .person__back { opacity: 0; transform: translateY(7px); pointer-events: none; }
+.team-grid .person:hover .person__front,
+.team-grid .person:focus-within .person__front,
+.team-grid .person.is-flipped .person__front { opacity: 0; transform: translateY(-7px); }
+.team-grid .person:hover .person__back,
+.team-grid .person:focus-within .person__back,
+.team-grid .person.is-flipped .person__back { opacity: 1; transform: translateY(0); }
+.team-grid .person:hover .person__face,
+.team-grid .person:focus-within .person__face,
+.team-grid .person.is-flipped .person__face {
+  border-color: rgba(10, 73, 56, .42); box-shadow: 0 14px 32px rgba(7, 7, 7, .09);
+}
+@media (prefers-reduced-motion: reduce) {
+  .team-grid .person__face { transition: opacity .01s linear; }
+  .team-grid .person__back, .team-grid .person:hover .person__front { transform: none; }
+}
+
+/* the three smaller groups carry shorter bios, so they need less plate */
+.team-grid.team-sub .person__name { font-size: 14.5px; white-space: normal; }
+.team-grid.team-sub .person__fields dd { font-size: 11.5px; }
+.team-inline .person__name { white-space: normal; }
+.team-inline .person__face { padding: 15px 17px 17px; }
+
+
+/* No hover means no reveal to discover, so a touch device gets one taller plate
+   with both fields on it rather than a card that hides half its content behind a
+   tap. The two faces stack into a single bordered plate. */
+@media (hover: none) {
+  .team-grid .person { grid-template-rows: auto auto; align-content: start; }
+  .team-grid .person__front { grid-area: 1 / 1; border-bottom: 0; padding-bottom: 0; }
+  .team-grid .person__back { grid-area: 2 / 1; opacity: 1; transform: none;
+    border-top: 0; padding-top: 0; pointer-events: auto; }
+  .team-grid .person.is-flipped .person__front { opacity: 1; transform: none; }
+  .team-grid .person__back .person__head,
+  .team-grid .person__back .person__name { display: none; }
+  .team-grid .person__back .person__fields { margin-top: 9px; }
+  .team-grid .person__front::after, .team-grid .person__back::before { display: none; }
+}
