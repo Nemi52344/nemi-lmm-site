@@ -2839,6 +2839,15 @@ footer { background: #07110D; color: #9DA8A0; border-top: 1px solid rgba(233,238
 
 .person__head { display: flex; justify-content: flex-end; align-items: center;
   padding-bottom: 9px; border-bottom: 1px solid rgba(7, 7, 7, .08); }
+/* headshot sits at the left of the head row, the role code stays pinned right.
+   The source portraits are framed to the waist, so the frame crops in on the
+   head and shoulders rather than shrinking the whole picture. */
+.person__photo { position: relative; flex: 0 0 auto; width: 64px; height: 64px; margin-right: auto;
+  overflow: hidden; background: #f4f4f2; border: 1px solid rgba(7, 7, 7, .13); }
+.person__photo img { position: absolute; left: -35%; top: -12%; width: 170%; height: 170%;
+  max-width: none; object-fit: cover; }
+.team-sub .person__photo { width: 56px; height: 56px; }
+.person__head { align-items: flex-start; }
 .person__id { font: 500 8.5px/1 "IBM Plex Mono", monospace; letter-spacing: 1.5px; color: var(--grey); }
 .person__code { font: 600 8.5px/1 "IBM Plex Mono", monospace; letter-spacing: 1.4px;
   color: var(--bone); background: var(--emerald); padding: 5px 7px; }
