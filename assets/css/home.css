@@ -2403,6 +2403,9 @@ h1, h2, h3, h4 { text-transform: none; letter-spacing: -0.015em; }
 }
 @keyframes devPulse { 50% { opacity: 0.35; } }
 @media (prefers-reduced-motion: reduce) { .dev-live::before { animation: none; } }
+/* Not yet live: Orion in validation, Atlas on the roadmap. Same chip, no pulse. */
+.dev-live--muted { color: rgba(233, 238, 231, 0.6); border-color: rgba(233, 238, 231, 0.24); }
+.dev-live--muted::before { background: rgba(233, 238, 231, 0.45); animation: none; }
 .suite-media img {
   width: 100%; height: 100%; object-fit: contain; object-position: center center; display: block;
   filter: saturate(0.96) brightness(0.94);
