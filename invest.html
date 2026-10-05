@@ -19,8 +19,8 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 
   gtag('config', 'G-RLBK1DLVN7');
 </script>
-<title>Invest in NEMI — Coming soon</title>
-<meta name="description" content="NEMI LMM's investment offering is not open yet. Details will be published on this page when it is.">
+<title>Investor access · NEMI</title>
+<meta name="description" content="Request access to NEMI investor materials. Shared with verified accredited investors after an NDA.">
 <meta name="robots" content="noindex, follow">
 <meta name="theme-color" content="#070707">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -32,43 +32,57 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <link rel="icon" type="image/png" sizes="16x16" href="assets/img/favicon-16.png?v=7">
 <link rel="apple-touch-icon" sizes="180x180" href="assets/img/apple-touch-icon.png?v=7">
 <style>
-  .inv-gate { min-height: 100vh; min-height: 100dvh; display: flex; align-items: center;
-    justify-content: center; background: var(--ink); color: var(--bone);
+  /* Investor access portal. Public page = the request form only. Everything
+     confidential (deck, terms, model, data room) is shared after an NDA and an
+     accreditation check, so nothing on this page states terms, valuation,
+     projections or a transaction. */
+  .inv-gate { min-height: 100vh; min-height: 100dvh; background: var(--ink); color: var(--bone);
     position: relative; overflow: hidden; }
   .inv-gate::before { content: ''; position: absolute; inset: 0; pointer-events: none;
     background: radial-gradient(120% 90% at 50% 108%, rgba(16,163,126,.26), transparent 62%); }
-  .inv-gate > .wrap { position: relative; z-index: 1; text-align: center;
-    padding-top: 56px; padding-bottom: 56px; }
+  .inv-gate > .wrap { position: relative; z-index: 1; padding-top: 48px; padding-bottom: 64px; }
+  .inv-top { display: flex; align-items: center; justify-content: space-between; gap: 16px; }
   .inv-logo { display: inline-block; }
   .inv-logo img { height: 30px; width: auto; }
-
-  .inv-eyebrow { margin-top: 40px; font-family: "IBM Plex Mono", monospace;
-    text-transform: uppercase; letter-spacing: 2.5px; font-size: 11px; color: var(--signal); }
-  .inv-gate h1 { margin-top: 14px; font-size: clamp(32px, 5vw, 60px); font-weight: 700;
-    letter-spacing: -1.8px; line-height: 1.04; }
-  /* A short emerald accent rule under the headline. This used to be the ticked
-     progress bar from the geo-router loader; once the page went static nothing
-     was driving it, so it sat frozen at 38% and read as a stalled load. A solid
-     rule says "accent" and cannot be mistaken for progress. */
-  .inv-rule { margin: 30px auto 0; width: 64px; height: 3px; background: var(--signal); }
-
-  .inv-lede { margin: 30px auto 0; max-width: 620px; font-size: 16.5px; line-height: 1.75;
-    color: rgba(236,231,221,.72); font-weight: 300; }
-  .inv-actions { margin-top: 34px; display: flex; gap: 14px; justify-content: center;
-    flex-wrap: wrap; }
-  .inv-note { margin: 34px auto 0; max-width: 620px; font-size: 12px; line-height: 1.7;
-    color: rgba(236,231,221,.42); }
-  .inv-back { display: inline-block; margin-top: 26px; font-family: "IBM Plex Mono", monospace;
-    text-transform: uppercase; letter-spacing: 2px; font-size: 11px; color: var(--grey);
-    text-decoration: none; }
+  .inv-back { font-family: "IBM Plex Mono", monospace; text-transform: uppercase; letter-spacing: 2px;
+    font-size: 11px; color: var(--grey); text-decoration: none; }
   .inv-back:hover { color: var(--signal); }
-  /* .btn's chamfer is a clip-path, and a clip cuts the border stroke itself
-     rather than mitring it — so an outlined button loses its top-right edge.
-     The filled button keeps the chamfer; the outlined one is square, the same
-     call already made for the Invest button in the nav. */
-  .inv-actions .btn--ghost { clip-path: none; }
-  @media (max-width: 560px) {
-    .inv-actions .btn { width: 100%; justify-content: center; }
+  .inv-grid { margin-top: 56px; display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.05fr);
+    gap: 56px; align-items: start; }
+  .inv-eyebrow { font-family: "IBM Plex Mono", monospace; text-transform: uppercase;
+    letter-spacing: 2.5px; font-size: 11px; color: var(--signal); }
+  .inv-gate h1 { margin-top: 14px; font-size: clamp(32px, 4.6vw, 56px); font-weight: 700;
+    letter-spacing: -1.6px; line-height: 1.05; }
+  .inv-rule { margin: 26px 0 0; width: 64px; height: 3px; background: var(--signal); }
+  .inv-lede { margin-top: 24px; max-width: 540px; font-size: 16px; line-height: 1.75;
+    color: rgba(236,231,221,.74); font-weight: 300; }
+  .inv-steps { margin: 34px 0 0; padding: 0; list-style: none; counter-reset: s; max-width: 540px; }
+  .inv-steps li { counter-increment: s; position: relative; padding: 14px 0 14px 46px;
+    border-top: 1px solid rgba(236,231,221,.12); font-size: 14.5px; line-height: 1.6;
+    color: rgba(236,231,221,.8); }
+  .inv-steps li:last-child { border-bottom: 1px solid rgba(236,231,221,.12); }
+  .inv-steps li::before { content: counter(s, decimal-leading-zero); position: absolute; left: 0; top: 15px;
+    font-family: "IBM Plex Mono", monospace; font-size: 11px; letter-spacing: 1.5px; color: var(--signal); }
+  .inv-steps b { display: block; color: var(--bone); font-weight: 600; }
+  .inv-mail { margin-top: 26px; font-size: 14px; color: rgba(236,231,221,.66); }
+  .inv-mail a { color: var(--signal); }
+  .inv-card { background: var(--bone); color: var(--ink); padding: 32px 30px 30px;
+    border: 1px solid rgba(7,7,7,.12); }
+  .inv-card h2 { font-size: 22px; letter-spacing: -.4px; }
+  .inv-card .inv-cardnote { margin-top: 6px; font-size: 13px; line-height: 1.6; color: rgba(7,7,7,.6); }
+  /* the shared .cform is already a card; inside this one it is just the form */
+  .inv-card .cform { margin-top: 22px; padding: 0; border: 0; background: none; box-shadow: none; clip-path: none; }
+  .inv-card .cform label.inv-check { display: flex; gap: 10px; align-items: flex-start; margin: 14px 0 0;
+    font-family: inherit; font-size: 13px; letter-spacing: 0; text-transform: none; line-height: 1.55;
+    color: rgba(7,7,7,.75); }
+  .inv-card .cform .inv-check input { margin-top: 2px; flex: 0 0 auto; width: 16px; height: 16px; padding: 0;
+    accent-color: var(--emerald); }
+  @media (max-width: 560px) { .inv-card .cform .field-row { grid-template-columns: 1fr; gap: 0; } }
+  .inv-legal { margin-top: 48px; max-width: 980px; font-size: 11.5px; line-height: 1.7;
+    color: rgba(236,231,221,.45); }
+  @media (max-width: 900px) {
+    .inv-grid { grid-template-columns: 1fr; gap: 40px; margin-top: 40px; }
+    .inv-card { padding: 26px 20px 22px; }
   }
 </style>
 </head>
@@ -79,28 +93,111 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <!-- End Google Tag Manager (noscript) -->
 
 <section class="inv-gate">
-  <div class="hero__grid"></div>
-  <div class="wrap">
+<div class="hero__grid"></div>
+<div class="wrap">
+  <div class="inv-top">
     <a class="inv-logo" href="home.html"><img src="assets/img/logo-dark.png?v=2" alt="NEMI"></a>
-
-    <p class="inv-eyebrow">Invest</p>
-    <h1>Coming <span class="accent">soon.</span></h1>
-    <div class="inv-rule" aria-hidden="true"></div>
-
-    <p class="inv-lede">Our investment offerings are not open yet. Stay tuned.</p>
-
-    <div class="inv-actions">
-      <a class="btn btn--signal" href="master-plan.html">Read the Master Plan</a>
-      <a class="btn btn--ghost" href="contact.html">Talk to us</a>
-    </div>
-
-    <p class="inv-note">This page is informational. It is not an offer to sell, or a
-      solicitation of an offer to buy, any security.</p>
-
     <a class="inv-back" href="home.html">&larr; Back to nemilmm.com</a>
   </div>
+
+  <div class="inv-grid">
+    <div>
+      <p class="inv-eyebrow">Investor access</p>
+      <h1>Invest in <span class="accent">NEMI.</span></h1>
+      <div class="inv-rule" aria-hidden="true"></div>
+      <p class="inv-lede">Investor materials, including the deck, term sheet, financial model and data room, are shared with verified accredited investors once an NDA is in place. Request access below and our investor relations team will take you through the next steps.</p>
+      <ol class="inv-steps">
+        <li><b>Request access</b>Tell us who you are and verify your email.</li>
+        <li><b>Sign the NDA</b>We send it to the address you verified.</li>
+        <li><b>Confirm accreditation</b>A short verification, as US securities law requires before any materials are shared.</li>
+        <li><b>Data room</b>Full materials, and time with the team.</li>
+      </ol>
+      <p class="inv-mail">Prefer email? Write to <a href="mailto:invest@nemilmm.com">invest@nemilmm.com</a>.</p>
+    </div>
+
+    <div class="inv-card">
+      <h2>Request investor access</h2>
+      <p class="inv-cardnote">Nothing confidential is shared on this page. We reply within two business days.</p>
+      <div class="cform" id="investForm">
+        <form name="contact" method="POST" action="/" data-invest>
+          <input type="hidden" name="form-name" value="contact">
+          <p hidden><label>Leave this blank: <input name="bot-field"></label></p>
+          <div class="field-row">
+            <div class="field"><label for="iv-name">Full name</label><input id="iv-name" name="name" type="text" autocomplete="name" required></div>
+            <div class="field"><label for="iv-email">Email</label><input id="iv-email" name="email" type="email" autocomplete="email" required></div>
+          </div>
+          <div class="otp-verify" data-otp>
+            <button type="button" class="btn btn--signal otp-send">Verify email</button>
+            <div class="otp-step" hidden>
+              <input class="otp-code" type="text" inputmode="numeric" maxlength="6" placeholder="000000" autocomplete="one-time-code" aria-label="6-digit verification code">
+              <button type="button" class="btn btn--ghost otp-confirm">Confirm</button>
+            </div>
+            <span class="otp-msg" role="status"></span>
+            <input type="hidden" name="email_verified" value="">
+          </div>
+          <div class="field-row">
+            <div class="field"><label for="iv-company">Firm or entity (optional)</label><input id="iv-company" name="company" type="text" autocomplete="organization"></div>
+            <div class="field"><label for="iv-country">Country of residence</label><input id="iv-country" name="country" type="text" autocomplete="country-name" required></div>
+          </div>
+          <div class="field-row">
+            <div class="field"><label for="iv-type">Investor type</label>
+              <select id="iv-type" name="topic" required>
+                <option value="">Select one</option>
+                <option>Investor access · US accredited individual</option>
+                <option>Investor access · US accredited entity</option>
+                <option>Investor access · Family office or fund</option>
+                <option>Investor access · Non-US investor</option>
+              </select>
+            </div>
+            <div class="field"><label for="iv-size">Indicative interest</label>
+              <select id="iv-size" name="size" required>
+                <option value="">Select one</option>
+                <option>Under $100k</option>
+                <option>$100k to $1M</option>
+                <option>$1M and above</option>
+                <option>Not sure yet</option>
+              </select>
+            </div>
+          </div>
+          <div class="field"><label for="iv-note">Anything we should know (optional)</label><textarea id="iv-note" name="note" rows="3" placeholder="How you heard about NEMI, timing, questions."></textarea></div>
+          <textarea name="message" hidden aria-hidden="true" tabindex="-1"></textarea>
+          <label class="inv-check"><input type="checkbox" name="accredited" required><span>I am an accredited investor as defined in Rule 501 of Regulation D, or a non-US person, and I understand NEMI will verify this before sharing any materials.</span></label>
+          <label class="inv-check"><input type="checkbox" name="nda" required><span>I agree to sign a non-disclosure agreement before receiving confidential information.</span></label>
+          <button type="submit" class="btn btn--signal" style="margin-top:20px">Request access &rarr;</button>
+        </form>
+        <div class="cform__ok"><b>Thanks, your request is in.</b><br>We'll send the NDA to your verified email within two business days.</div>
+      </div>
+    </div>
+  </div>
+
+  <p class="inv-legal">This page is not an offer to sell, or a solicitation of an offer to buy, any security. Any securities will be offered only to verified accredited investors in reliance on an exemption from registration under the Securities Act of 1933, will not be registered, and will be subject to restrictions on resale. Materials are shared under NDA and subject to definitive documentation.</p>
+</div>
 </section>
 
+<script>
+/* The shared form handler sends one free-text "message". Build it from the
+   investor fields just before that handler runs (this listener is registered
+   first, so it fires first), so the request reads cleanly in the inbox. */
+(function () {
+  var f = document.querySelector('form[data-invest]');
+  if (!f) return;
+  f.addEventListener('submit', function () {
+    function v(n) { var el = f.querySelector('[name="' + n + '"]'); return el ? (el.value || '').trim() : ''; }
+    f.querySelector('textarea[name="message"]').value = [
+      'INVESTOR ACCESS REQUEST',
+      'Investor type: ' + v('topic').replace('Investor access · ', ''),
+      'Country: ' + v('country'),
+      'Indicative interest: ' + v('size'),
+      'Accredited / non-US: confirmed by the investor (to be verified)',
+      'NDA: agreed to sign',
+      v('note') ? 'Note: ' + v('note') : ''
+    ].filter(Boolean).join('\n');
+  }, true);
+})();
+</script>
+<script src="assets/js/nemi-config.js?v=1"></script>
+<script src="assets/js/otp.js?v=7"></script>
+<script src="assets/js/submit.js?v=11"></script>
 <!-- Cloudflare Web Analytics --><script type='module' src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "c0f89f8fdcc44be8b836753c1f342d17"}'></script><!-- End Cloudflare Web Analytics -->
 </body>
 </html>
