@@ -602,11 +602,11 @@ section { padding: 88px 0; }
 .team-sub.team-grid .person { min-height: 98px; }
 .team-sub .person__back p { font-size: 9.5px; line-height: 1.38; }
 @media (prefers-reduced-motion: reduce) { .person__face { transition: none; } }
-/* Five in the leadership row since the CFO appointment: keep one even row on desktop
+/* Five in the leadership row since the CFO appointment: one even row on desktop
    rather than four plus an orphan. Falls back to the shared 2-up / 1-up rules below. */
-.team-grid--seven { grid-template-columns: repeat(4, 1fr); }
-.team-grid--seven .person { min-height: 128px; }
-@media (max-width: 1180px) and (min-width: 901px) { .team-grid--seven { grid-template-columns: repeat(3, 1fr); } }
+.team-grid--five { grid-template-columns: repeat(5, 1fr); }
+.team-grid--five .person { min-height: 128px; }
+@media (max-width: 1180px) and (min-width: 901px) { .team-grid--five { grid-template-columns: repeat(3, 1fr); } }
 @media (max-width: 900px) { .team-grid { grid-template-columns: repeat(2, 1fr); } .team-sub { grid-template-columns: repeat(3, 1fr); } }
 @media (max-width: 560px) { .team-grid, .team-sub { grid-template-columns: 1fr !important; } }
 /* on touch the cards are full width, so give the text room to breathe */
@@ -2795,13 +2795,6 @@ footer { background: #07110D; color: #9DA8A0; border-top: 1px solid rgba(233,238
 .svcx-key { display: flex; flex-wrap: wrap; gap: 8px 22px; margin-top: 22px;
   font: 500 10.5px/1.7 "IBM Plex Mono", monospace; text-transform: uppercase; letter-spacing: 1.6px; color: var(--grey); }
 
-/* The CFO card carries a longer bio than the rest, and on a phone the card is
-   narrow enough that it wraps to the full height. Give the leadership row more
-   room below 560px. Appended last so it wins over the shared .team-grid rule. */
-@media (max-width: 560px) {
-  .team-grid--seven .person { min-height: 152px; }
-}
-
 /* An illustration standing in for hardware has to say so on the page, not just
    in the alt text. Used on the Defense UAS case, where the hero is a render. */
 .cd-illus { position: relative; z-index: 2; margin: 26px 0 0;
@@ -2817,4 +2810,151 @@ footer { background: #07110D; color: #9DA8A0; border-top: 1px solid rgba(233,238
 .person__tag { display: inline-block; margin-top: 10px; padding: 4px 8px;
   font: 500 9px/1 "IBM Plex Mono", monospace; text-transform: uppercase; letter-spacing: 1.6px;
   color: var(--emerald); border: 1px solid rgba(10, 73, 56, .32); }
+
+/* The CFO and CSO cards carry longer bios than the rest, and on a phone the card is
+   narrow enough that the text wraps to full height. Give the leadership row more room
+   below 560px. Appended last so it wins over the shared .team-grid rule. */
+@media (max-width: 560px) {
+  .team-grid--five .person { min-height: 152px; }
+}
+
+/* Seven in the leadership row: one even row on desktop rather than four plus an
+   orphan. Two of those executives also sit on the board, so their card carries a
+   tag instead of being listed again in a board section. */
+.team-grid--seven { grid-template-columns: repeat(4, 1fr); }
+.team-grid--seven .person { min-height: 128px; }
+@media (max-width: 1180px) and (min-width: 901px) { .team-grid--seven { grid-template-columns: repeat(3, 1fr); } }
 .team-note { margin-top: 12px; max-width: 640px; font-size: 14px; line-height: 1.6; color: rgba(7,7,7,.6); }
+/* the shared .team-grid breakpoints live earlier in this file, so the modifier
+   needs its own copies or it would stay at four columns on a phone */
+@media (max-width: 900px) { .team-grid--seven { grid-template-columns: repeat(2, 1fr); } }
+@media (max-width: 560px) { .team-grid--seven { grid-template-columns: 1fr !important; }
+  .team-grid--seven .person { min-height: 132px; } }
+
+/* ---------- Team: engineering spec plate ----------
+   The card reads as a datasheet: a part line, a role code, registration marks at
+   two corners, then labelled fields. The front carries the role, and the back,
+   which holds the background, cross-fades in on hover, focus or tap. Replaces the
+   3D flip; the .is-flipped class still drives it on touch. */
+/* Both faces sit in the same grid cell, so the card is exactly as tall as the
+   longer of the two at any width. No min-height to keep in sync, and the bio can
+   never be clipped. */
+.team-grid .person {
+  position: relative; display: grid; grid-template-columns: 1fr; padding: 0; min-height: 0;
+  background: transparent; border: 0; box-shadow: none; clip-path: none;
+  perspective: none; overflow: visible;
+  /* the card is stretched to the tallest in its row, so the row and the front
+     face have to stretch with it or the plate borders stop short */
+  align-content: stretch; grid-template-rows: 1fr; row-gap: 0;
+}
+.team-grid .person__face {
+  grid-area: 1 / 1; align-self: stretch;
+  position: relative; inset: auto; display: block; align-content: start; row-gap: 0;
+  padding: 15px 17px 17px; background: var(--bone);
+  border: 1px solid rgba(7, 7, 7, .13); clip-path: none; box-shadow: none;
+  backface-visibility: visible; -webkit-backface-visibility: visible;
+  transition: opacity .34s ease, transform .34s cubic-bezier(.3, .9, .35, 1),
+              border-color .25s ease, box-shadow .25s ease;
+}
+/* registration marks, top left and bottom right */
+.team-grid .person__face::before,
+.team-grid .person__face::after {
+  content: ''; position: absolute; width: 9px; height: 9px;
+  border-color: var(--emerald); border-style: solid; opacity: .5;
+}
+.team-grid .person__face::before { top: 6px; left: 6px; border-width: 1px 0 0 1px; }
+.team-grid .person__face::after { bottom: 6px; right: 6px; border-width: 0 1px 1px 0; }
+
+.person__head { display: flex; justify-content: flex-end; align-items: center;
+  padding-bottom: 9px; border-bottom: 1px solid rgba(7, 7, 7, .08); }
+/* headshot sits at the left of the head row, the role code stays pinned right.
+   The files in assets/team/card are pre-cropped to one framing (same face size,
+   eyes at the same height) so every portrait reads at the same scale. */
+.person__photo { flex: 0 0 auto; width: 64px; height: 64px; margin-right: auto;
+  overflow: hidden; background: #f4f4f2; border: 1px solid rgba(7, 7, 7, .13); }
+.person__photo img { display: block; width: 100%; height: 100%; object-fit: cover; }
+.team-sub .person__photo { width: 56px; height: 56px; }
+.person__head { align-items: flex-start; }
+.person__id { font: 500 8.5px/1 "IBM Plex Mono", monospace; letter-spacing: 1.5px; color: var(--grey); }
+.person__code { font: 600 8.5px/1 "IBM Plex Mono", monospace; letter-spacing: 1.4px;
+  color: var(--bone); background: var(--emerald); padding: 5px 7px; }
+
+.team-grid .person__name { margin-top: 11px; font-size: 15.5px; font-weight: 600;
+  letter-spacing: -.35px; line-height: 1.18; white-space: normal; }
+.person__fields { margin: 11px 0 0; display: flex; align-items: baseline;
+  column-gap: 9px; row-gap: 0; }
+.person__fields dt { flex: 0 0 auto; font: 400 8px/1.6 "IBM Plex Mono", monospace;
+  letter-spacing: 1.2px; text-transform: uppercase; color: var(--grey); }
+.person__fields dd { flex: 1 1 auto; }
+.person__fields dd { margin: 0; font-size: 11.5px; line-height: 1.5; color: rgba(7, 7, 7, .62); }
+.person__fields dd.person__roleval { color: var(--emerald); font-weight: 500; }
+
+/* The reveal. The card is only as tall as the role plate, so the background panel
+   is taken out of flow and overlays it rather than padding every card out to the
+   length of its longest bio. The panel carries the background and nothing else,
+   centred in the plate: the name and the code are already on the face you were
+   just looking at. */
+.team-grid .person__back {
+  position: absolute; top: 0; left: 0; width: 100%; height: auto; min-height: 100%;
+  z-index: 3; display: grid; align-content: center; justify-items: center;
+  padding: 16px 20px; opacity: 0; pointer-events: none;
+  transform: translateY(10px) scale(.985);
+  transition: opacity .3s ease, transform .44s cubic-bezier(.2, .85, .3, 1),
+              border-color .25s ease, box-shadow .25s ease;
+}
+.team-grid .person__back .person__head,
+.team-grid .person__back .person__name,
+.team-grid .person__back .person__fields dt { display: none; }
+.team-grid .person__back .person__fields { display: block; margin: 0; max-width: 30ch; }
+.team-grid .person__back .person__fields dd { text-align: center; }
+/* the line settles in just behind the plate, so the two reads are not simultaneous */
+.team-grid .person__back .person__fields dd {
+  opacity: 0; transform: translateY(7px);
+  transition: opacity .3s ease .07s, transform .42s cubic-bezier(.2, .85, .3, 1) .07s;
+}
+.team-grid .person:hover .person__back .person__fields dd,
+.team-grid .person:focus-within .person__back .person__fields dd { opacity: 1; transform: none; }
+
+.team-grid .person:hover, .team-grid .person:focus-within { z-index: 6; }
+.team-grid .person__front { transition: opacity .26s ease, transform .4s cubic-bezier(.2, .85, .3, 1),
+  border-color .25s ease, box-shadow .25s ease; }
+.team-grid .person:hover .person__front,
+.team-grid .person:focus-within .person__front { opacity: 0; transform: translateY(-8px) scale(.99); }
+.team-grid .person:hover .person__back,
+.team-grid .person:focus-within .person__back { opacity: 1; transform: none; }
+.team-grid .person:hover .person__face,
+.team-grid .person:focus-within .person__face,
+.team-grid .person.is-flipped .person__face {
+  border-color: rgba(10, 73, 56, .42); box-shadow: 0 14px 32px rgba(7, 7, 7, .09);
+}
+@media (prefers-reduced-motion: reduce) {
+  .team-grid .person__face, .team-grid .person__back .person__fields dd { transition: opacity .01s linear; }
+  .team-grid .person__back, .team-grid .person__back .person__fields dd,
+  .team-grid .person:hover .person__front { transform: none; }
+}
+
+/* the three smaller groups carry shorter bios, so they need less plate */
+.team-grid.team-sub .person__name { font-size: 14.5px; white-space: normal; }
+.team-grid.team-sub .person__fields dd { font-size: 11.5px; }
+.team-inline .person__name { white-space: normal; }
+.team-inline .person__face { padding: 15px 17px 17px; }
+
+
+/* No hover means no reveal to discover, so a touch device gets one taller plate
+   with both fields on it rather than a card that hides half its content behind a
+   tap. The two faces stack into a single bordered plate. */
+@media (hover: none) {
+  .team-grid .person { grid-template-rows: auto auto; align-content: start; }
+  .team-grid .person__front { grid-area: 1 / 1; border-bottom: 0; padding-bottom: 0; }
+  .team-grid .person__back { position: static; grid-area: 2 / 1; width: auto;
+    min-height: 0; opacity: 1; transform: none; display: block; justify-items: stretch;
+    padding: 0 17px 17px; border-top: 0; pointer-events: auto; }
+  .team-grid .person__back .person__fields { display: flex; max-width: none; }
+  .team-grid .person__back .person__fields dt { display: block; }
+  .team-grid .person__back .person__fields dd { text-align: left; opacity: 1; transform: none; }
+  .team-grid .person.is-flipped .person__front { opacity: 1; transform: none; }
+  .team-grid .person__back .person__head,
+  .team-grid .person__back .person__name { display: none; }
+  .team-grid .person__back .person__fields { margin-top: 9px; }
+  .team-grid .person__front::after, .team-grid .person__back::before { display: none; }
+}
