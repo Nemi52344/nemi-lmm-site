@@ -91,6 +91,25 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 .ir-team-head { margin-bottom: 32px; }
 .ir-team-head .kicker { color: var(--emerald); }
 .ir-team-head h2 { margin-top: 14px; }
+.ir-cta-sec { min-height: 0; display: block; padding: 0 0 clamp(64px, 8vw, 104px); }
+.ir-cta-box { position: relative; overflow: hidden; display: grid; grid-template-columns: 1.4fr 1fr; gap: 40px; align-items: center;
+  padding: clamp(36px, 5vw, 64px); background: #0a1512; color: #fff;
+  clip-path: polygon(0 0, calc(100% - 28px) 0, 100% 28px, 100% 100%, 0 100%); }
+.ir-cta-box::before { content: ''; position: absolute; inset: 0; pointer-events: none; opacity: .5;
+  background-image: linear-gradient(rgba(16,163,126,.14) 1px, transparent 1px), linear-gradient(90deg, rgba(16,163,126,.14) 1px, transparent 1px);
+  background-size: 44px 44px; -webkit-mask-image: linear-gradient(90deg, transparent 0%, #000 70%); mask-image: linear-gradient(90deg, transparent 0%, #000 70%); }
+.ir-cta-box::after { content: ''; position: absolute; right: -120px; bottom: -160px; width: 420px; height: 420px; border-radius: 50%;
+  background: radial-gradient(circle, rgba(16,163,126,.35), transparent 65%); pointer-events: none; }
+.ir-cta-box > * { position: relative; z-index: 1; }
+.ir-cta-box .kicker { color: var(--signal); }
+.ir-cta-box h2 { margin-top: 14px; font-size: clamp(30px, 3.6vw, 48px); line-height: 1.08; letter-spacing: -1.2px; }
+.ir-cta-box p { margin-top: 14px; max-width: 520px; font-size: 16px; line-height: 1.65; color: rgba(255,255,255,.74); }
+.ir-cta-act { display: flex; flex-direction: column; gap: 14px; align-items: flex-start; justify-self: end; }
+.ir-cta-act .btn--ghost { clip-path: none; color: #fff; border-color: rgba(255,255,255,.4); }
+.ir-cta-act .btn--ghost:hover { border-color: var(--signal); color: var(--signal); }
+.ir-cta-mail { font: 500 12px/1.4 "IBM Plex Mono", monospace; letter-spacing: 1px; color: rgba(255,255,255,.6); }
+.ir-cta-mail a { color: #fff; }
+@media (max-width: 900px) { .ir-cta-box { grid-template-columns: 1fr; gap: 26px; } .ir-cta-act { justify-self: start; } }
 @media (max-width: 980px) { .ir-intro, .ir-deck { grid-template-columns: 1fr; gap: 24px; } .ir-press { grid-template-columns: 1fr 1fr; } }
 @media (max-width: 620px) { .ir-press { grid-template-columns: 1fr; } .ir-deck__cover { aspect-ratio: 4 / 3; } }
 </style>
@@ -259,6 +278,24 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       <div class="person">
         <div class="person__face person__front"><div class="person__head" aria-hidden="true"><span class="person__photo"><img src="assets/team/card/manoj-ganesh.jpg" alt="" width="320" height="320" loading="lazy" decoding="async"></span><span class="person__code">IND</span></div><div class="person__name">Manoj Ganesh, PhD</div><dl class="person__fields"><dt>Role</dt><dd class="person__roleval">Independent Director</dd></dl></div>
         <div class="person__face person__back"><div class="person__head" aria-hidden="true"><span class="person__code">IND</span></div><div class="person__name" aria-hidden="true">Manoj Ganesh, PhD</div><dl class="person__fields"><dt>Background</dt><dd>Senior Staff Process Scientist at Regeneron, where he co-led its Center of Automation. PhD, NYU Poly.</dd></dl></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="bg-bone ir-cta-sec">
+  <div class="wrap">
+    <div class="ir-cta-box">
+      <div>
+        <div class="kicker">Investor relations</div>
+        <h2>Build the future of manufacturing with us.</h2>
+        <p>For investor materials, meetings with the team or any question about NEMI, contact our investor relations team.</p>
+      </div>
+      <div class="ir-cta-act">
+        <a class="btn btn--signal" href="mailto:invest@nemilmm.com?subject=Investor%20enquiry">Contact investor relations &rarr;</a>
+        <a class="btn btn--ghost" href="mailto:invest@nemilmm.com?subject=Investor%20presentation">Request the presentation</a>
+        <span class="ir-cta-mail"><a href="mailto:invest@nemilmm.com">invest@nemilmm.com</a></span>
       </div>
     </div>
   </div>
