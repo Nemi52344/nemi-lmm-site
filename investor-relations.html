@@ -61,20 +61,38 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 .ir-intro { display: grid; grid-template-columns: 1fr 1.4fr; gap: 56px; align-items: start; }
 .ir-intro p { font-size: 18px; line-height: 1.75; color: rgba(7,7,7,.74); }
 .ir-intro p + p { margin-top: 16px; }
-.ir-deck { display: grid; grid-template-columns: 1.25fr 1fr; gap: 0; border: 1px solid rgba(7,7,7,.12); background: #fff; margin-top: 34px; }
-.ir-deck__cover { position: relative; aspect-ratio: 16 / 9; background: #0a1512; overflow: hidden; color: #fff; }
-.ir-deck__photo { position: absolute; right: 0; top: 0; width: 58%; height: 100%; object-fit: cover; opacity: .9;
-  clip-path: polygon(22% 0, 100% 0, 100% 100%, 0 100%); }
-.ir-deck__cover-in { position: absolute; inset: 0; padding: 28px 30px; display: flex; flex-direction: column; justify-content: space-between;
-  background: linear-gradient(90deg, #0a1512 40%, rgba(10,21,18,.15) 75%); }
-.ir-deck__logo { height: 18px; width: auto; max-width: 110px; align-self: flex-start; object-fit: contain; }
-.ir-deck__k { font: 500 9.5px/1.4 "IBM Plex Mono", monospace; letter-spacing: 1.8px; text-transform: uppercase; color: rgba(255,255,255,.6); }
-.ir-deck__t { font-size: clamp(30px, 3.4vw, 46px); font-weight: 600; line-height: 1.02; letter-spacing: -1.2px; }
-.ir-deck__t span { color: var(--signal); }
-.ir-deck__body { padding: 30px 32px; display: flex; flex-direction: column; justify-content: center; gap: 12px; }
-.ir-deck__body h3 { font-size: 24px; letter-spacing: -.5px; }
-.ir-deck__body p { font-size: 15px; line-height: 1.65; color: rgba(7,7,7,.66); }
-.ir-deck__meta { font: 500 10.5px/1.4 "IBM Plex Mono", monospace; letter-spacing: 1.6px; text-transform: uppercase; color: var(--emerald); }
+.ir-pres-head { display: flex; flex-wrap: wrap; align-items: flex-end; justify-content: space-between; gap: 18px 32px; }
+.ir-pres-head .kicker { color: var(--emerald); }
+.ir-pres-head h2 { margin-top: 14px; }
+.ir-pres-head p { margin-top: 10px; font-size: 16px; line-height: 1.6; color: rgba(7,7,7,.66); }
+.ir-pres-head .ir-btns { margin-top: 0; }
+.dv { margin-top: 30px; background: #0a1512; border: 1px solid rgba(7,7,7,.14); box-shadow: 0 24px 60px rgba(7,7,7,.12); }
+.dv__stage { position: relative; aspect-ratio: 16 / 9; max-height: calc(100vh - 230px); width: 100%; background: #0a1512; overflow: hidden; touch-action: pan-y; user-select: none; }
+.dv__stage img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: contain; display: block; }
+.dv__nav { position: absolute; top: 50%; z-index: 2; transform: translateY(-50%); width: 48px; height: 48px; display: grid; place-items: center;
+  border: 1px solid rgba(255,255,255,.25); background: rgba(10,21,18,.72); color: #fff; font-size: 22px; line-height: 1; cursor: pointer;
+  opacity: 0; transition: opacity .2s, background .2s, border-color .2s; }
+.dv__nav--prev { left: 16px; } .dv__nav--next { right: 16px; }
+.dv__stage:hover .dv__nav, .dv__nav:focus-visible { opacity: 1; }
+.dv__nav:hover { background: var(--emerald); border-color: var(--emerald); }
+.dv__nav[disabled] { opacity: 0 !important; pointer-events: none; }
+.dv__bar { display: flex; align-items: center; gap: 16px; padding: 12px 18px; border-top: 1px solid rgba(255,255,255,.08); color: #fff; }
+.dv__count { font: 500 12px/1 "IBM Plex Mono", monospace; letter-spacing: 1.5px; color: var(--signal); white-space: nowrap; }
+.dv__title { flex: 1; min-width: 0; font-size: 14px; color: rgba(255,255,255,.78); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.dv__btn { flex: none; background: none; border: 1px solid rgba(255,255,255,.22); color: #fff; height: 34px; padding: 0 12px;
+  font: 500 11px/1 "IBM Plex Mono", monospace; letter-spacing: 1.2px; text-transform: uppercase; cursor: pointer; display: inline-flex; align-items: center; gap: 8px; text-decoration: none; }
+.dv__btn:hover { border-color: var(--signal); color: var(--signal); }
+.dv__thumbs { display: flex; gap: 10px; padding: 0 18px 18px; overflow-x: auto; scroll-behavior: smooth; scrollbar-width: thin; scrollbar-color: rgba(255,255,255,.25) transparent; }
+.dv__thumb { flex: none; width: 128px; padding: 0; border: 2px solid transparent; background: none; cursor: pointer; position: relative; opacity: .55; transition: opacity .2s, border-color .2s; }
+.dv__thumb img { display: block; width: 100%; height: auto; aspect-ratio: 16 / 9; object-fit: cover; }
+.dv__thumb span { position: absolute; left: 4px; bottom: 4px; font: 500 9px/1 "IBM Plex Mono", monospace; color: #fff; background: rgba(10,21,18,.8); padding: 3px 4px; }
+.dv__thumb:hover { opacity: .9; }
+.dv__thumb[aria-current="true"] { opacity: 1; border-color: var(--signal); }
+.dv:fullscreen { display: flex; flex-direction: column; justify-content: center; border: 0; }
+.dv:fullscreen .dv__stage { aspect-ratio: auto; max-height: none; flex: 1; }
+.dv:fullscreen .dv__thumbs { display: none; }
+@media (hover: none) { .dv__nav { opacity: 1; width: 40px; height: 40px; } }
+@media (max-width: 620px) { .dv__nav { display: none; } .dv__title { display: none; } .dv__bar { justify-content: space-between; padding: 10px 12px; } .dv__thumb { width: 96px; } .dv__thumbs { padding: 0 12px 12px; } .dv__fs-l { display: none; } }
 .ir-btns { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 8px; }
 .ir-btns .btn--ghost { clip-path: none; color: var(--ink); border-color: rgba(7,7,7,.35); }
 .ir-btns .btn--ghost:hover { color: var(--emerald); border-color: var(--emerald); }
@@ -110,8 +128,8 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 .ir-cta-mail { font: 500 12px/1.4 "IBM Plex Mono", monospace; letter-spacing: 1px; color: rgba(255,255,255,.6); }
 .ir-cta-mail a { color: #fff; }
 @media (max-width: 900px) { .ir-cta-box { grid-template-columns: 1fr; gap: 26px; } .ir-cta-act { justify-self: start; } }
-@media (max-width: 980px) { .ir-intro, .ir-deck { grid-template-columns: 1fr; gap: 24px; } .ir-press { grid-template-columns: 1fr 1fr; } }
-@media (max-width: 620px) { .ir-press { grid-template-columns: 1fr; } .ir-deck__cover { aspect-ratio: 4 / 3; } }
+@media (max-width: 980px) { .ir-intro { grid-template-columns: 1fr; gap: 24px; } .ir-press { grid-template-columns: 1fr 1fr; } }
+@media (max-width: 620px) { .ir-press { grid-template-columns: 1fr; } }
 </style>
 </head>
 <body>
@@ -128,10 +146,10 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       <a href="about.html">About Us</a>
       <a href="offerings.html">Offerings</a>
       <div class="nav__item">
-        <a href="blog.html" class="active" aria-haspopup="true">Resources<span class="nav__caret" aria-hidden="true">&#9662;</span></a>
+        <a href="blog.html" aria-haspopup="true">Resources<span class="nav__caret" aria-hidden="true">&#9662;</span></a>
         <div class="nav__drop">
           <a href="case-studies.html">Case Studies</a>
-          <a href="blog.html" class="is-current" aria-current="page">Blogs</a>
+          <a href="blog.html">Blogs</a>
           <a href="faq.html">FAQs</a>
         </div>
       </div>
@@ -154,30 +172,31 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   <span class="ir-banner__cue" aria-hidden="true"></span>
 </section>
 
-<!-- PRESENTATION -->
-<section class="bg-oat bp bp--light ir-sec">
+<!-- PRESENTATION · self-hosted slide viewer (assets/docs/deck) -->
+<section class="bg-oat bp bp--light ir-sec" id="presentation">
   <div class="wrap">
-    <h2 class="ir-h">Investor presentation</h2>
-    <div class="ir-deck">
-      <div class="ir-deck__cover">
-        <img class="ir-deck__photo" src="assets/img/fac-assembly.jpg" alt="">
-        <div class="ir-deck__cover-in">
-          <img class="ir-deck__logo" src="assets/img/logo-dark.png?v=2" alt="NEMI">
-          <div>
-            <div class="ir-deck__k">Do for hardware what LLMs did for software</div>
-            <div class="ir-deck__t">LMM for<br><span>Physical AI</span></div>
-          </div>
-          <div class="ir-deck__k">October 2026</div>
-        </div>
+    <div class="ir-pres-head">
+      <div>
+        <div class="kicker">Investor presentation &middot; October 2026</div>
+        <h2 class="ir-h">LMM for Physical AI: the investor presentation</h2>
+        <p>Investor presentation &middot; October 2026. All 31 slides: use the arrows, swipe, or pick a thumbnail.</p>
       </div>
-      <div class="ir-deck__body">
-        <span class="ir-deck__meta">Presentation &middot; October 2026</span>
-        <h3>LMM for Physical AI</h3>
-        <p>How the LMM stack, our owned factories and Manufacturing-as-a-Service fit together, the team behind them, and the plan.</p>
-        <div class="ir-btns">
-          <a class="btn btn--signal" href="assets/docs/NEMI_Investor_Presentation_Oct2026.pptx" download>Download the presentation (PPTX, 24 MB)</a>
-        </div>
+      <div class="ir-btns">
+        <a class="btn btn--signal" href="assets/docs/NEMI_Investor_Presentation_Oct2026.pptx" download>Download the deck (PPTX, 24 MB)</a>
       </div>
+    </div>
+    <div class="dv" id="dv" tabindex="0" aria-roledescription="carousel" aria-label="LMM for Physical AI, investor presentation">
+      <div class="dv__stage">
+        <img id="dv-img" src="assets/docs/deck/slide-01.webp" width="1600" height="900" alt="Slide 1: LMM for Physical AI">
+        <button class="dv__nav dv__nav--prev" id="dv-prev" type="button" aria-label="Previous slide">&#8592;</button>
+        <button class="dv__nav dv__nav--next" id="dv-next" type="button" aria-label="Next slide">&#8594;</button>
+      </div>
+      <div class="dv__bar">
+        <span class="dv__count" id="dv-count" aria-live="polite">01 / 31</span>
+        <span class="dv__title" id="dv-title">LMM for Physical AI</span>
+        <button class="dv__btn" id="dv-fs" type="button" aria-label="Full screen">&#x26F6;<span class="dv__fs-l"> Full screen</span></button>
+      </div>
+      <div class="dv__thumbs" id="dv-thumbs" aria-label="All slides"></div>
     </div>
   </div>
 </section>
@@ -294,7 +313,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       </div>
       <div class="ir-cta-act">
         <a class="btn btn--signal" href="mailto:invest@nemilmm.com?subject=Investor%20enquiry">Contact investor relations &rarr;</a>
-        <a class="btn btn--ghost" href="assets/docs/NEMI_Investor_Presentation_Oct2026.pptx" download>Download the presentation</a>
+        <a class="btn btn--ghost" href="#presentation">View the presentation</a>
         <span class="ir-cta-mail"><a href="mailto:invest@nemilmm.com">invest@nemilmm.com</a></span>
       </div>
     </div>
@@ -334,6 +353,46 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   </div>
 </footer>
 
+<script>
+/* Presentation viewer: arrows, keys, swipe, thumbnails, full screen. */
+(function () {
+  var T = ['LMM for Physical AI','Legal disclaimer','Executive summary','Trillions of dollars of manufacturing will be transformed by AI','Whoever owns the factories owns the data','Our LMM (Large Manufacturing Model) stack','Powering the LMM are 3 suites of applications','Within each suite are multiple capabilities','We apply LMM to provide Manufacturing-as-a-Service','Competitors simulate. We execute in owned factories.','Case studies','Who already builds with us, aerospace to consumer','The Plan: AI-enabled, asset-backed roll-up today; full-stack LMM platform tomorrow','MaaS peers: either pre-AI full-stack, or AI native single process solutions','Capability peers','Growth is always capacity-constrained','M&A buys capacity + data, then compounds both','India concentration: the plan to get below 40% of revenue','$25M to deliver every milestone needed for a successful IPO','Five gates you can hold us to','Leaders who built manufacturing and AI systems at scale','Governance and bench: board, advisors & operating leadership','Every manufacturing company will run on AI. Only one becomes default.','Terms & structure','Disciplined scale-up: run-rate profitable, EBITDA+ CY27E','Mix shifts toward MaaS, the highest-margin engine','Unit economics: the expansion loop is locked in','Current cap table','Risks & mitigation','Comparable transactions','Valuation computation'];
+  var N = T.length, i = 0, dv = document.getElementById('dv'), img = document.getElementById('dv-img'),
+      cnt = document.getElementById('dv-count'), ttl = document.getElementById('dv-title'),
+      prev = document.getElementById('dv-prev'), next = document.getElementById('dv-next'), th = document.getElementById('dv-thumbs');
+  function nn(n) { return (n < 10 ? '0' : '') + n; }
+  function src(k, t) { return 'assets/docs/deck/' + (t ? 'thumb-' : 'slide-') + nn(k + 1) + '.webp'; }
+  T.forEach(function (t, k) {
+    var b = document.createElement('button'); b.type = 'button'; b.className = 'dv__thumb'; b.setAttribute('aria-label', 'Slide ' + (k + 1) + ': ' + t);
+    b.innerHTML = '<img loading="lazy" src="' + src(k, 1) + '" alt="" width="320" height="180"><span>' + nn(k + 1) + '</span>';
+    b.onclick = function () { go(k); }; th.appendChild(b);
+  });
+  function go(k) {
+    i = Math.max(0, Math.min(N - 1, k));
+    img.src = src(i); img.alt = 'Slide ' + (i + 1) + ': ' + T[i];
+    cnt.textContent = nn(i + 1) + ' / ' + N; ttl.textContent = T[i];
+    prev.disabled = i === 0; next.disabled = i === N - 1;
+    [].forEach.call(th.children, function (b, k) { b.setAttribute('aria-current', k === i ? 'true' : 'false'); });
+    var c = th.children[i]; th.scrollLeft = c.offsetLeft - (th.clientWidth - c.offsetWidth) / 2;
+    [i - 1, i + 1].forEach(function (k) { if (k >= 0 && k < N) (new Image()).src = src(k); });
+  }
+  prev.onclick = function () { go(i - 1); }; next.onclick = function () { go(i + 1); };
+  dv.addEventListener('keydown', function (e) {
+    if (e.key === 'ArrowRight' || e.key === 'PageDown') { go(i + 1); e.preventDefault(); }
+    else if (e.key === 'ArrowLeft' || e.key === 'PageUp') { go(i - 1); e.preventDefault(); }
+    else if (e.key === 'Home') go(0); else if (e.key === 'End') go(N - 1);
+  });
+  var x0 = null, st = dv.querySelector('.dv__stage');
+  st.addEventListener('touchstart', function (e) { x0 = e.touches[0].clientX; }, { passive: true });
+  st.addEventListener('touchend', function (e) { if (x0 === null) return; var d = e.changedTouches[0].clientX - x0; if (Math.abs(d) > 40) go(i + (d < 0 ? 1 : -1)); x0 = null; });
+  st.addEventListener('click', function (e) { if (e.target === img) go(i + 1); });
+  document.getElementById('dv-fs').onclick = function () {
+    if (document.fullscreenElement) document.exitFullscreen();
+    else if (dv.requestFullscreen) dv.requestFullscreen(); else if (dv.webkitRequestFullscreen) dv.webkitRequestFullscreen();
+  };
+  go(0);
+})();
+</script>
 <script src="assets/js/fx.js?v=2"></script>
 <script>
 /* Team cards: the plate shows the role, and the background fades in on hover or
