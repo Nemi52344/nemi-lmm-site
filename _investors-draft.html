@@ -31,7 +31,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   Rule for this page: every number and every document on it must already be filed.
   No website-only version of the deck, no figure that is not in the release or the S-4.
 -->
-<title>Investors | NEMI</title>
+<title>Investor Relations · NEMI</title>
 <meta name="description" content="Investor information for NEMI, including the proposed business combination, SEC filings and investor relations contact.">
 <meta name="robots" content="noindex, nofollow"><!-- DRAFT ONLY: delete on announcement day -->
 <!-- SEO:start -->
@@ -57,74 +57,55 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <link rel="icon" type="image/png" sizes="16x16" href="assets/img/favicon-16.png?v=7">
 <link rel="apple-touch-icon" sizes="180x180" href="assets/img/apple-touch-icon.png?v=7">
 <style>
-/* Investors page (draft). Layout after agilityrobotics.com/investors: announcement, quick links,
-   filings, webcast, questions, team in tabs, IR contact, legends. NEMI emerald system. */
-.ir-sec, .ir-cta { padding: clamp(56px, 7vw, 96px) 0; min-height: 0; }
-.ir-sec--tight { padding-top: 0; }
-.ir-wrap { max-width: 980px; }
-.ir-eyebrow { font: 500 11px/1 "IBM Plex Mono", monospace; letter-spacing: 2px; text-transform: uppercase; color: var(--emerald); }
-.ir-lead h2 { margin-top: 16px; font-size: clamp(28px, 3.6vw, 44px); line-height: 1.12; letter-spacing: -1px; }
-.ir-sub { margin-top: 18px; max-width: 760px; font-size: 17px; line-height: 1.7; color: rgba(7,7,7,.72); }
-.ir-actions { margin-top: 28px; display: flex; flex-wrap: wrap; gap: 14px; }
-.ir-actions .btn--ghost { clip-path: none; color: var(--ink); border-color: rgba(7,7,7,.35); }
-.ir-actions .btn--ghost:hover { border-color: var(--emerald); color: var(--emerald); }
-.ir-note { margin-top: 18px; font-size: 13px; color: rgba(7,7,7,.55); }
-.ir-h { font-size: clamp(24px, 2.8vw, 34px); letter-spacing: -.6px; margin-bottom: 26px; }
-.ir-h--lg { font-size: clamp(30px, 3.8vw, 46px); letter-spacing: -1.2px; margin-bottom: 34px; }
-.ir-quick { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; }
-.ir-q { position: relative; display: flex; flex-direction: column; gap: 8px; padding: 22px 22px 24px;
-  background: #fff; border: 1px solid rgba(7,7,7,.12); color: var(--ink); text-decoration: none;
-  transition: border-color .2s, transform .2s, box-shadow .2s; }
-.ir-q:hover { border-color: var(--emerald); transform: translateY(-2px); box-shadow: 0 12px 28px rgba(7,7,7,.07); }
-.ir-q__k { font: 500 10px/1 "IBM Plex Mono", monospace; letter-spacing: 1.6px; color: var(--emerald); }
-.ir-q__t { font-size: 19px; font-weight: 600; letter-spacing: -.3px; }
-.ir-q__d { font-size: 13px; color: rgba(7,7,7,.55); }
-.ir-q__go { position: absolute; right: 20px; bottom: 20px; color: var(--emerald); font-size: 18px; }
-.ir-docs { list-style: none; margin: 0; padding: 0; border-top: 1px solid rgba(7,7,7,.14); }
-.ir-docs li { display: grid; grid-template-columns: 200px 1fr auto; gap: 18px; align-items: baseline;
-  padding: 18px 4px; border-bottom: 1px solid rgba(7,7,7,.14); }
-.ir-docs__k { font: 500 10.5px/1.4 "IBM Plex Mono", monospace; letter-spacing: 1.5px; text-transform: uppercase; color: var(--grey); }
-.ir-docs a { color: var(--ink); font-weight: 500; }
-.ir-docs a:hover { color: var(--emerald); }
-.ir-docs time { font-size: 13px; color: rgba(7,7,7,.55); }
-.ir-faq { margin-top: 8px; border-top: 1px solid rgba(7,7,7,.14); }
-.ir-faq details { border-bottom: 1px solid rgba(7,7,7,.14); padding: 18px 4px; }
-.ir-faq summary { cursor: pointer; font-weight: 600; font-size: 17px; list-style: none; display: flex; justify-content: space-between; gap: 16px; }
-.ir-faq summary::after { content: '+'; color: var(--emerald); font-weight: 400; font-size: 22px; line-height: 1; }
-.ir-faq details[open] summary::after { content: '\2212'; }
-.ir-faq details p { margin-top: 12px; color: rgba(7,7,7,.72); line-height: 1.7; }
-.ir-legends p { font-size: 12.5px; line-height: 1.7; color: rgba(7,7,7,.62); margin-bottom: 14px; max-width: 980px; }
-
-/* Team cards, after the Agility leadership grid: photo on top, tinted panel with name and title,
-   a square "+" that opens the background over the photo. */
-.tm-tabs { display: flex; gap: 34px; border-bottom: 1px solid rgba(7,7,7,.2); margin-bottom: 34px; overflow-x: auto; }
-.tm-tab { appearance: none; background: none; border: 0; padding: 0 0 14px; cursor: pointer; white-space: nowrap;
-  font: 600 13px/1 "IBM Plex Mono", monospace; letter-spacing: 1.6px; text-transform: uppercase; color: rgba(7,7,7,.5);
-  border-bottom: 2px solid transparent; margin-bottom: -1px; }
-.tm-tab[aria-selected="true"] { color: var(--ink); border-bottom-color: var(--emerald); }
-.tm-tab:focus-visible { outline: 2px solid var(--emerald); outline-offset: 4px; }
-.tm-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 32px; }
-.tm-grid[hidden] { display: none; }
-.tm-card { background: #e6f0eb; display: flex; flex-direction: column; }
-.tm-photo { position: relative; aspect-ratio: 5 / 4; overflow: hidden; background: #f2f2ef; }
-.tm-photo img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform .5s ease; }
-.tm-card:hover .tm-photo img { transform: scale(1.03); }
-.tm-plus { position: absolute; top: 12px; right: 12px; z-index: 3; width: 34px; height: 34px; border: 0; cursor: pointer;
-  background: var(--emerald); color: #fff; font-size: 20px; line-height: 1; display: grid; place-items: center;
-  clip-path: polygon(0 0, calc(100% - 8px) 0, 100% 8px, 100% 100%, 0 100%); transition: background .2s; }
-.tm-plus span { transition: transform .25s ease; }
-.tm-plus:hover { background: #0d7a5c; }
-.tm-plus[aria-expanded="true"] span { transform: rotate(45deg); }
-.tm-plus:focus-visible { outline: 2px solid #fff; outline-offset: -5px; }
-.tm-bio { position: absolute; inset: 0; z-index: 2; background: rgba(10,73,56,.95); color: #fff;
-  padding: 26px 56px 24px 24px; display: flex; align-items: flex-end; }
-.tm-bio[hidden] { display: none; }
-.tm-bio p { margin: 0; font-size: 14.5px; line-height: 1.6; }
-.tm-body { padding: 20px 20px 26px; }
-.tm-body h3 { font-size: 22px; font-weight: 600; letter-spacing: -.4px; line-height: 1.2; }
-.tm-body p { margin-top: 8px; font-size: 14.5px; line-height: 1.45; color: rgba(7,7,7,.72); }
-@media (max-width: 980px) { .ir-quick { grid-template-columns: repeat(2, 1fr); } .tm-grid { grid-template-columns: repeat(2, 1fr); gap: 22px; } }
-@media (max-width: 620px) { .ir-quick, .tm-grid { grid-template-columns: 1fr; } .ir-docs li { grid-template-columns: 1fr; gap: 6px; } .tm-tabs { gap: 22px; } }
+/* Investor Relations (draft, unpublished). Banner, intro, presentation, latest press,
+   leadership and board in the About page's card format. */
+.ir-banner { position: relative; min-height: 0; display: block; padding: 0; color: #fff; overflow: hidden; }
+.ir-banner__img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: 50% 60%; }
+.ir-banner::after { content: ''; position: absolute; inset: 0;
+  background: linear-gradient(90deg, rgba(7,7,7,.86) 0%, rgba(7,7,7,.55) 55%, rgba(7,7,7,.25) 100%); }
+.ir-banner .wrap { position: relative; z-index: 1; padding-top: clamp(150px, 18vw, 230px); padding-bottom: clamp(70px, 9vw, 120px); }
+.ir-banner .kicker { color: var(--signal); }
+.ir-banner h1 { margin-top: 18px; font-size: clamp(44px, 7vw, 92px); letter-spacing: -2.4px; line-height: 1; }
+.ir-sec, .ir-sec.bp { min-height: 0; display: block; padding: clamp(64px, 8vw, 104px) 0; }
+.ir-h { font-size: clamp(28px, 3.4vw, 42px); letter-spacing: -1px; line-height: 1.1; }
+.ir-intro { display: grid; grid-template-columns: 1fr 1.4fr; gap: 56px; align-items: start; }
+.ir-intro p { font-size: 18px; line-height: 1.75; color: rgba(7,7,7,.74); }
+.ir-intro p + p { margin-top: 16px; }
+.ir-deck { display: grid; grid-template-columns: 1.25fr 1fr; gap: 0; border: 1px solid rgba(7,7,7,.12); background: #fff; margin-top: 34px; }
+.ir-deck__cover { position: relative; aspect-ratio: 16 / 9; background: #0a1512; overflow: hidden; color: #fff; }
+.ir-deck__photo { position: absolute; right: 0; top: 0; width: 58%; height: 100%; object-fit: cover; opacity: .9;
+  clip-path: polygon(22% 0, 100% 0, 100% 100%, 0 100%); }
+.ir-deck__cover-in { position: absolute; inset: 0; padding: 28px 30px; display: flex; flex-direction: column; justify-content: space-between;
+  background: linear-gradient(90deg, #0a1512 40%, rgba(10,21,18,.15) 75%); }
+.ir-deck__logo { height: 18px; width: auto; max-width: 110px; align-self: flex-start; object-fit: contain; }
+.ir-deck__k { font: 500 9.5px/1.4 "IBM Plex Mono", monospace; letter-spacing: 1.8px; text-transform: uppercase; color: rgba(255,255,255,.6); }
+.ir-deck__t { font-size: clamp(30px, 3.4vw, 46px); font-weight: 600; line-height: 1.02; letter-spacing: -1.2px; }
+.ir-deck__t span { color: var(--signal); }
+.ir-deck__body { padding: 30px 32px; display: flex; flex-direction: column; justify-content: center; gap: 12px; }
+.ir-deck__body h3 { font-size: 24px; letter-spacing: -.5px; }
+.ir-deck__body p { font-size: 15px; line-height: 1.65; color: rgba(7,7,7,.66); }
+.ir-deck__meta { font: 500 10.5px/1.4 "IBM Plex Mono", monospace; letter-spacing: 1.6px; text-transform: uppercase; color: var(--emerald); }
+.ir-btns { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 8px; }
+.ir-btns .btn--ghost { clip-path: none; color: var(--ink); border-color: rgba(7,7,7,.35); }
+.ir-btns .btn--ghost:hover { color: var(--emerald); border-color: var(--emerald); }
+.ir-press { display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px; margin-top: 34px; }
+.ir-pr { display: flex; flex-direction: column; background: #fff; border: 1px solid rgba(7,7,7,.12); color: var(--ink);
+  text-decoration: none; transition: border-color .2s, transform .2s, box-shadow .2s; }
+.ir-pr:hover { border-color: var(--emerald); transform: translateY(-3px); box-shadow: 0 14px 30px rgba(7,7,7,.08); }
+.ir-pr__img { aspect-ratio: 16 / 9; overflow: hidden; background: #e9e6df; }
+.ir-pr__img img { width: 100%; height: 100%; object-fit: cover; display: block; filter: grayscale(.15); }
+.ir-pr__body { padding: 20px 22px 24px; display: flex; flex-direction: column; gap: 10px; flex: 1; }
+.ir-pr__meta { font: 500 10px/1.4 "IBM Plex Mono", monospace; letter-spacing: 1.6px; text-transform: uppercase; color: var(--emerald); }
+.ir-pr__t { font-size: 19px; font-weight: 600; line-height: 1.3; letter-spacing: -.3px; }
+.ir-pr__go { margin-top: auto; font-size: 13px; color: rgba(7,7,7,.6); }
+.ir-pr--soon { border-style: dashed; background: transparent; }
+.ir-pr--soon:hover { transform: none; box-shadow: none; border-color: rgba(7,7,7,.12); }
+.ir-pr--soon .ir-pr__body { justify-content: center; min-height: 100%; }
+.ir-team-head { margin-bottom: 32px; }
+.ir-team-head .kicker { color: var(--emerald); }
+.ir-team-head h2 { margin-top: 14px; }
+@media (max-width: 980px) { .ir-intro, .ir-deck { grid-template-columns: 1fr; gap: 24px; } .ir-press { grid-template-columns: 1fr 1fr; } }
+@media (max-width: 620px) { .ir-press { grid-template-columns: 1fr; } .ir-deck__cover { aspect-ratio: 4 / 3; } }
 </style>
 </head>
 <body>
@@ -133,7 +114,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <!-- End Google Tag Manager (noscript) -->
 
-<header class="nav nav--light">
+<header class="nav">
   <div class="wrap">
     <a class="nav__logo" href="home.html"><img src="assets/img/logo-dark.png?v=2" alt="NEMI"></a>
     <nav class="nav__links" id="menu">
@@ -156,305 +137,151 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   </div>
 </header>
 
-<!-- HERO -->
-<section class="phero phero--compact bp">
-  <div class="hero__grid"></div>
-  <div class="crops" aria-hidden="true"><span>+</span><span>+</span><span>+</span><span>+</span></div>
+<!-- BANNER -->
+<section class="ir-banner">
+  <img class="ir-banner__img" src="assets/img/about-aerial.jpg" alt="Aerial view of a NEMI factory campus in India">
   <div class="wrap">
-    <div class="kicker">Investors</div>
-    <h1 style="margin-top:22px">Investor <span class="accent">information.</span></h1>
-    <p>{{ONE LINE, FROM THE PRESS RELEASE HEADLINE. No figure that is not in the filed release.}}</p>
+    <div class="kicker">NEMI Corp</div>
+    <h1>Investor Relations</h1>
   </div>
 </section>
 
-<!-- ANNOUNCEMENT -->
+<!-- INTRO -->
 <section class="bg-bone bp bp--light ir-sec">
-  <div class="wrap ir-wrap">
-    <div class="ir-lead">
-      <p class="ir-eyebrow"><time datetime="{{YYYY-MM-DD}}">{{DD Month YYYY}}</time> &middot; Announcement</p>
-      <h2>{{PRESS RELEASE HEADLINE, WORD FOR WORD AS FILED}}</h2>
-      <p class="ir-sub">{{First paragraph of the release, word for word. Nothing added, nothing rounded.}}</p>
-      <div class="ir-actions">
-        <a class="btn btn--signal" href="{{LINK TO FILED RELEASE}}">Read the press release &rarr;</a>
-        <a class="btn btn--ghost" href="{{LINK TO FILED PRESENTATION}}">Investor presentation &rarr;</a>
+  <div class="wrap ir-intro">
+    <h2 class="ir-h">Do for hardware what <span class="accent-deep">LLMs did for software.</span></h2>
+    <div>
+      <p>NEMI is building the Large Manufacturing Model (LMM): one AI system that runs the arc of a physical product, from idea through engineering and production to what is learned in the field.</p>
+      <p>We train it where the data lives, in our own full-stack factories in India, and sell that capability to customers as Manufacturing-as-a-Service across aerospace, defense, automotive and industrial programs.</p>
+    </div>
+  </div>
+</section>
+
+<!-- PRESENTATION · the file is added on the day it may be shared publicly; it is never stored in this
+     repository before then. Until counsel clears it, the buttons point at the investor inbox. -->
+<section class="bg-oat bp bp--light ir-sec">
+  <div class="wrap">
+    <h2 class="ir-h">Investor presentation</h2>
+    <div class="ir-deck">
+      <div class="ir-deck__cover">
+        <img class="ir-deck__photo" src="assets/img/fac-assembly.jpg" alt="">
+        <div class="ir-deck__cover-in">
+          <img class="ir-deck__logo" src="assets/img/logo-dark.png?v=2" alt="NEMI">
+          <div>
+            <div class="ir-deck__k">Do for hardware what LLMs did for software</div>
+            <div class="ir-deck__t">LMM for<br><span>Physical AI</span></div>
+          </div>
+          <div class="ir-deck__k">October 2026</div>
+        </div>
       </div>
-      <p class="ir-note">The investor presentation on this page is identical to the exhibit filed with the SEC.
-        There is no website-only version.</p>
+      <div class="ir-deck__body">
+        <span class="ir-deck__meta">Presentation &middot; October 2026</span>
+        <h3>LMM for Physical AI</h3>
+        <p>How the LMM stack, our owned factories and Manufacturing-as-a-Service fit together, the team behind them, and the plan.</p>
+        <div class="ir-btns">
+          <a class="btn btn--signal" href="mailto:invest@nemilmm.com?subject=Investor%20presentation">Request the presentation &rarr;</a>
+        </div>
+      </div>
     </div>
   </div>
 </section>
 
-<!-- QUICK LINKS · one card per filed item. Each goes live only when its document is filed. -->
-<section class="bg-bone bp bp--light ir-sec ir-sec--tight">
-  <div class="wrap">
-    <div class="ir-quick">
-      <a class="ir-q" href="{{LINK TO FILED RELEASE}}"><span class="ir-q__k">01</span><span class="ir-q__t">Press release</span><span class="ir-q__d">{{DD Mon YYYY}}</span><span class="ir-q__go" aria-hidden="true">&rarr;</span></a>
-      <a class="ir-q" href="{{LINK TO FILED PRESENTATION}}"><span class="ir-q__k">02</span><span class="ir-q__t">Investor presentation</span><span class="ir-q__d">As filed with the SEC</span><span class="ir-q__go" aria-hidden="true">&rarr;</span></a>
-      <a class="ir-q" href="#webcast"><span class="ir-q__k">03</span><span class="ir-q__t">Webcast</span><span class="ir-q__d">{{Date, or "Replay"}}</span><span class="ir-q__go" aria-hidden="true">&rarr;</span></a>
-      <a class="ir-q" href="#filings"><span class="ir-q__k">04</span><span class="ir-q__t">SEC filings</span><span class="ir-q__d">Links to EDGAR</span><span class="ir-q__go" aria-hidden="true">&rarr;</span></a>
-    </div>
-  </div>
-</section>
-
-<!-- DOCUMENTS · every row links to a filed document. No document here that is not on EDGAR. -->
-<section class="bg-oat bp bp--light ir-sec" id="filings">
-  <div class="wrap">
-    <h2 class="ir-h">Documents and filings</h2>
-    <ul class="ir-docs">
-      <li><span class="ir-docs__k">Press release</span><a href="{{URL}}">{{Title}}</a><time datetime="{{YYYY-MM-DD}}">{{DD Mon YYYY}}</time></li>
-      <li><span class="ir-docs__k">Investor presentation</span><a href="{{URL}}">{{Title}}</a><time datetime="{{YYYY-MM-DD}}">{{DD Mon YYYY}}</time></li>
-      <li><span class="ir-docs__k">Form 425</span><a href="{{EDGAR URL}}">Filed communication</a><time datetime="{{YYYY-MM-DD}}">{{DD Mon YYYY}}</time></li>
-      <li><span class="ir-docs__k">SPAC filings</span><a href="{{SPAC EDGAR PAGE}}">{{SPAC NAME}} on SEC EDGAR</a><time>Ongoing</time></li>
-      <!-- STAGE 3 · add on the day the S-4 is filed. Link to EDGAR, never re-host the document.
-      <li><span class="ir-docs__k">Form S-4</span><a href="{{EDGAR URL}}">Registration statement</a><time datetime="{{YYYY-MM-DD}}">{{DD Mon YYYY}}</time></li>
-      -->
-    </ul>
-  </div>
-</section>
-
-<!-- WEBCAST -->
-<section class="bg-bone bp bp--light ir-sec" id="webcast">
-  <div class="wrap ir-wrap">
-    <div class="ir-lead">
-      <h2 class="ir-h">Webcast</h2>
-      <p class="ir-sub">{{Date and time, or "Replay available below" once the call is done.}}</p>
-      <div class="ir-actions"><a class="btn btn--ink" href="{{WEBCAST URL}}">Watch the replay &rarr;</a></div>
-      <p class="ir-note">Anything said on the call that goes beyond the filed release and presentation is a
-        problem, not a bonus. The transcript is filed on Form 425 the same day.</p>
-    </div>
-  </div>
-</section>
-
-<!-- FAQ · short and factual. No opinion, no forecast, no number that is not filed. -->
-<section class="bg-oat bp bp--light ir-sec">
-  <div class="wrap">
-    <h2 class="ir-h">Questions</h2>
-    <div class="ir-faq">
-      <details><summary>What was announced?</summary><p>{{Two sentences, from the release.}}</p></details>
-      <details><summary>Who is the counterparty?</summary><p>{{SPAC name and a one-line description, from the release.}}</p></details>
-      <details><summary>When is the transaction expected to close?</summary><p>{{Only the timing language used in the filed release. Nothing more precise.}}</p></details>
-      <details><summary>What happens to NEMI&rsquo;s business?</summary><p>{{From the release. Customers and operations continue as described there.}}</p></details>
-      <details><summary>Where do I find the filings?</summary><p>All filings are available free of charge on the SEC&rsquo;s website at <a href="https://www.sec.gov">sec.gov</a>. See the documents section above.</p></details>
-      <details><summary>I am a NEMI customer or supplier. Does this change anything for me?</summary><p>{{From the release. Route anything beyond it to the IR contact, not to sales.}}</p></details>
-    </div>
-  </div>
-</section>
-
-<!-- STAGE 3 · VOTE AND REDEMPTION. Uncomment at S-4 effectiveness, built with the proxy solicitor.
-     This is where the de-SPACs that closed well spent most of their website effort.
+<!-- LATEST PRESS · newest first. Add each release on the day it is issued. -->
 <section class="bg-bone bp bp--light ir-sec">
   <div class="wrap">
-    <h2 class="ir-h">How to vote</h2>
-    <ul class="ir-docs">
-      <li><span class="ir-docs__k">Meeting date</span><span>{{DATE}}</span></li>
-      <li><span class="ir-docs__k">Record date</span><span>{{DATE}}</span></li>
-      <li><span class="ir-docs__k">Redemption deadline</span><span>{{DATE AND TIME}}</span></li>
-      <li><span class="ir-docs__k">Definitive proxy</span><a href="{{EDGAR URL}}">Read the proxy statement</a></li>
-      <li><span class="ir-docs__k">Proxy solicitor</span><span>{{FIRM}} &middot; {{PHONE}} &middot; {{EMAIL}}</span></li>
-    </ul>
-  </div>
-</section>
--->
-
-<!-- TEAM · leadership, board, India operating leadership, advisors. Names, titles and bios follow
-     vShare and vPresent (Oct 2026) and match the About page word for word. Before announcement day,
-     check every line against the S-4 draft: officer and director bios there are the ones that count. -->
-<section class="bg-bone bp bp--light ir-sec" id="team">
-  <div class="wrap">
-    <h2 class="ir-h ir-h--lg">Our leadership team &amp; board of directors</h2>
-    <div class="tm-tabs" role="tablist" aria-label="Team">
-      <button class="tm-tab" role="tab" id="tab-leadership" aria-controls="panel-leadership" aria-selected="true" tabindex="0">Leadership</button>
-      <button class="tm-tab" role="tab" id="tab-board" aria-controls="panel-board" aria-selected="false" tabindex="-1">Board</button>
-      <button class="tm-tab" role="tab" id="tab-india" aria-controls="panel-india" aria-selected="false" tabindex="-1">India operations</button>
-      <button class="tm-tab" role="tab" id="tab-advisors" aria-controls="panel-advisors" aria-selected="false" tabindex="-1">Advisors</button>
+    <h2 class="ir-h">Latest press</h2>
+    <div class="ir-press">
+      <a class="ir-pr" href="blog-world-order-hardware-manufacturing.html">
+        <div class="ir-pr__img"><img src="assets/img/blog/world-order-4-b17-line.jpg" alt="" loading="lazy"></div>
+        <div class="ir-pr__body">
+          <span class="ir-pr__meta">30 Sep 2026 &middot; Blog</span>
+          <span class="ir-pr__t">The World Order Is Determined by Hardware and Manufacturing</span>
+          <span class="ir-pr__go">Read &rarr;</span>
+        </div>
+      </a>
+      <a class="ir-pr" href="master-plan.html">
+        <div class="ir-pr__img"><img src="assets/img/about-aerial.jpg" alt="" loading="lazy"></div>
+        <div class="ir-pr__body">
+          <span class="ir-pr__meta">Sep 2026 &middot; Founder&rsquo;s letter</span>
+          <span class="ir-pr__t">The Nemi Master Plan</span>
+          <span class="ir-pr__go">Read &rarr;</span>
+        </div>
+      </a>
+      <div class="ir-pr ir-pr--soon">
+        <div class="ir-pr__body">
+          <span class="ir-pr__meta">Press releases</span>
+          <span class="ir-pr__t">Press releases will be published here.</span>
+          <span class="ir-pr__go">Media: <a href="mailto:info@nemilmm.com">info@nemilmm.com</a></span>
+        </div>
+      </div>
     </div>
-    <div class="tm-grid" role="tabpanel" id="panel-leadership" aria-labelledby="tab-leadership">
-        <article class="tm-card">
-          <div class="tm-photo">
-            <img src="assets/team/portrait/anirudh-ravi-narayanan.jpg" alt="Anirudh Ravi Narayanan" width="600" height="480" loading="lazy" decoding="async">
-            <div class="tm-bio" id="tm-leadership-0" hidden><p>Aerospace and defense electronics engineer. Yale, McKinsey Digital and Industrial practices. Built NEMI greenfield to 300k sq ft.</p></div>
-            <button class="tm-plus" type="button" aria-expanded="false" aria-controls="tm-leadership-0" aria-label="Background: Anirudh Ravi Narayanan"><span aria-hidden="true">+</span></button>
-          </div>
-          <div class="tm-body"><h3>Anirudh Ravi Narayanan</h3><p>Chief Executive Officer</p></div>
-        </article>
-        <article class="tm-card">
-          <div class="tm-photo">
-            <img src="assets/team/portrait/kevin-flick.jpg" alt="Kevin Flick" width="600" height="480" loading="lazy" decoding="async">
-            <div class="tm-bio" id="tm-leadership-1" hidden><p>20+ years in principal investing, capital markets and M&amp;A. $5B+ raised, three listings on NASDAQ, NYSE and TSX. Goldman Sachs, Hicks Muse, EY.</p></div>
-            <button class="tm-plus" type="button" aria-expanded="false" aria-controls="tm-leadership-1" aria-label="Background: Kevin Flick"><span aria-hidden="true">+</span></button>
-          </div>
-          <div class="tm-body"><h3>Kevin Flick</h3><p>Chief Financial Officer</p></div>
-        </article>
-        <article class="tm-card">
-          <div class="tm-photo">
-            <img src="assets/team/portrait/sam-swaminathan.jpg" alt="Sam Swaminathan" width="600" height="480" loading="lazy" decoding="async">
-            <div class="tm-bio" id="tm-leadership-2" hidden><p>General Partner at De La Cr&egrave;me Ventures, ex-SVP at Fractal Analytics. Board director and NEMI investor.</p></div>
-            <button class="tm-plus" type="button" aria-expanded="false" aria-controls="tm-leadership-2" aria-label="Background: Sam Swaminathan"><span aria-hidden="true">+</span></button>
-          </div>
-          <div class="tm-body"><h3>Sam Swaminathan</h3><p>Chief Business Officer</p></div>
-        </article>
-        <article class="tm-card">
-          <div class="tm-photo">
-            <img src="assets/team/portrait/mary-pruce.jpg" alt="Mary Pruce" width="600" height="480" loading="lazy" decoding="async">
-            <div class="tm-bio" id="tm-leadership-3" hidden><p>Senior HR executive, most recently Head of HR at RK Pharma. SHRM-SCP and HRCI-SPHR certified.</p></div>
-            <button class="tm-plus" type="button" aria-expanded="false" aria-controls="tm-leadership-3" aria-label="Background: Mary Pruce"><span aria-hidden="true">+</span></button>
-          </div>
-          <div class="tm-body"><h3>Mary Pruce</h3><p>Chief Human Resources Officer</p></div>
-        </article>
-        <article class="tm-card">
-          <div class="tm-photo">
-            <img src="assets/team/portrait/gokul-madhavan.jpg" alt="Gokul Madhavan" width="600" height="480" loading="lazy" decoding="async">
-            <div class="tm-bio" id="tm-leadership-4" hidden><p>Led M&amp;A integrations, built digital finance operations and led digital transformations. A.B. and PhD Harvard, MBA Yale.</p></div>
-            <button class="tm-plus" type="button" aria-expanded="false" aria-controls="tm-leadership-4" aria-label="Background: Gokul Madhavan"><span aria-hidden="true">+</span></button>
-          </div>
-          <div class="tm-body"><h3>Gokul Madhavan</h3><p>Chief Strategy Officer</p></div>
-        </article>
-        <article class="tm-card">
-          <div class="tm-photo">
-            <img src="assets/team/portrait/shreerith-seshadri.jpg" alt="Shreerith Seshadri" width="600" height="480" loading="lazy" decoding="async">
-            <div class="tm-bio" id="tm-leadership-5" hidden><p>Deployed AI used by 100M+ at Meta Quest and Vision. Shaped early architecture at Eightfold.AI. CS, UIUC.</p></div>
-            <button class="tm-plus" type="button" aria-expanded="false" aria-controls="tm-leadership-5" aria-label="Background: Shreerith Seshadri"><span aria-hidden="true">+</span></button>
-          </div>
-          <div class="tm-body"><h3>Shreerith Seshadri</h3><p>Chief Technology Officer</p></div>
-        </article>
-        <article class="tm-card">
-          <div class="tm-photo">
-            <img src="assets/team/portrait/vinoth-thiruvenkatasamy.jpg" alt="Vinoth Thiruvenkatasamy" width="600" height="480" loading="lazy" decoding="async">
-            <div class="tm-bio" id="tm-leadership-6" hidden><p>20+ years in automotive manufacturing and R&amp;D at Nissan and Ford. Scaled production lines from pilot to 100K+ units.</p></div>
-            <button class="tm-plus" type="button" aria-expanded="false" aria-controls="tm-leadership-6" aria-label="Background: Vinoth Thiruvenkatasamy"><span aria-hidden="true">+</span></button>
-          </div>
-          <div class="tm-body"><h3>Vinoth Thiruvenkatasamy</h3><p>Chief Operating Officer</p></div>
-        </article>
-    </div>
-    <div class="tm-grid" role="tabpanel" id="panel-board" aria-labelledby="tab-board" hidden>
-        <article class="tm-card">
-          <div class="tm-photo">
-            <img src="assets/team/portrait/anirudh-ravi-narayanan.jpg" alt="Anirudh Ravi Narayanan" width="600" height="480" loading="lazy" decoding="async">
-            <div class="tm-bio" id="tm-board-0" hidden><p>Aerospace and defense electronics engineer. Yale, McKinsey Digital and Industrial practices.</p></div>
-            <button class="tm-plus" type="button" aria-expanded="false" aria-controls="tm-board-0" aria-label="Background: Anirudh Ravi Narayanan"><span aria-hidden="true">+</span></button>
-          </div>
-          <div class="tm-body"><h3>Anirudh Ravi Narayanan</h3><p>Director &middot; Founder &amp; CEO</p></div>
-        </article>
-        <article class="tm-card">
-          <div class="tm-photo">
-            <img src="assets/team/portrait/sam-swaminathan.jpg" alt="Sam Swaminathan" width="600" height="480" loading="lazy" decoding="async">
-            <div class="tm-bio" id="tm-board-1" hidden><p>General Partner at De La Cr&egrave;me Ventures, ex-SVP at Fractal Analytics. Board director and NEMI investor.</p></div>
-            <button class="tm-plus" type="button" aria-expanded="false" aria-controls="tm-board-1" aria-label="Background: Sam Swaminathan"><span aria-hidden="true">+</span></button>
-          </div>
-          <div class="tm-body"><h3>Sam Swaminathan</h3><p>Director &middot; Chief Business Officer</p></div>
-        </article>
-        <article class="tm-card">
-          <div class="tm-photo">
-            <img src="assets/team/portrait/jingjing-kanik.jpg" alt="Jingjing Kanik" width="600" height="480" loading="lazy" decoding="async">
-            <div class="tm-bio" id="tm-board-2" hidden><p>Executive Director of Data Science at CVS Health, ex-McKinsey. PhD, Yale.</p></div>
-            <button class="tm-plus" type="button" aria-expanded="false" aria-controls="tm-board-2" aria-label="Background: Jingjing Kanik"><span aria-hidden="true">+</span></button>
-          </div>
-          <div class="tm-body"><h3>Jingjing Kanik</h3><p>Independent Director</p></div>
-        </article>
-        <article class="tm-card">
-          <div class="tm-photo">
-            <img src="assets/team/portrait/manoj-ganesh.jpg" alt="Manoj Ganesh, PhD" width="600" height="480" loading="lazy" decoding="async">
-            <div class="tm-bio" id="tm-board-3" hidden><p>Senior Staff Process Scientist at Regeneron, where he co-led its Center of Automation. PhD, NYU Poly.</p></div>
-            <button class="tm-plus" type="button" aria-expanded="false" aria-controls="tm-board-3" aria-label="Background: Manoj Ganesh, PhD"><span aria-hidden="true">+</span></button>
-          </div>
-          <div class="tm-body"><h3>Manoj Ganesh, PhD</h3><p>Independent Director</p></div>
-        </article>
-    </div>
-    <div class="tm-grid" role="tabpanel" id="panel-india" aria-labelledby="tab-india" hidden>
-        <article class="tm-card">
-          <div class="tm-photo">
-            <img src="assets/team/portrait/subramanian-rangaswamy.jpg" alt="Subramanian Ramasamy" width="600" height="480" loading="lazy" decoding="async">
-            <div class="tm-bio" id="tm-india-0" hidden><p>Chartered and cost accountant. 27+ years in manufacturing finance.</p></div>
-            <button class="tm-plus" type="button" aria-expanded="false" aria-controls="tm-india-0" aria-label="Background: Subramanian Ramasamy"><span aria-hidden="true">+</span></button>
-          </div>
-          <div class="tm-body"><h3>Subramanian Ramasamy</h3><p>Chief Financial Officer &middot; India</p></div>
-        </article>
-        <article class="tm-card">
-          <div class="tm-photo">
-            <img src="assets/team/portrait/sadasivam-balasubramaniam.jpg" alt="Sadasivam Balasubramanian" width="600" height="480" loading="lazy" decoding="async">
-            <div class="tm-bio" id="tm-india-1" hidden><p>20 years in electronics. Telematics, defence and aerospace.</p></div>
-            <button class="tm-plus" type="button" aria-expanded="false" aria-controls="tm-india-1" aria-label="Background: Sadasivam Balasubramanian"><span aria-hidden="true">+</span></button>
-          </div>
-          <div class="tm-body"><h3>Sadasivam Balasubramanian</h3><p>President &middot; LMM India Dev Team</p></div>
-        </article>
-        <article class="tm-card">
-          <div class="tm-photo">
-            <img src="assets/team/portrait/vijay-ragavalu.jpg" alt="Vijay Ragavalu" width="600" height="480" loading="lazy" decoding="async">
-            <div class="tm-bio" id="tm-india-2" hidden><p>30+ years in manufacturing. Automation and operational excellence.</p></div>
-            <button class="tm-plus" type="button" aria-expanded="false" aria-controls="tm-india-2" aria-label="Background: Vijay Ragavalu"><span aria-hidden="true">+</span></button>
-          </div>
-          <div class="tm-body"><h3>Vijay Ragavalu</h3><p>President &middot; MaaS India</p></div>
-        </article>
-        <article class="tm-card">
-          <div class="tm-photo">
-            <img src="assets/team/portrait/vijay-ramakrishnan.jpg" alt="Vijay Ramakrishnan" width="600" height="480" loading="lazy" decoding="async">
-            <div class="tm-bio" id="tm-india-3" hidden><p>15+ years in sales and marketing. Greaves Electric, HDFC and MakeMyTrip.</p></div>
-            <button class="tm-plus" type="button" aria-expanded="false" aria-controls="tm-india-3" aria-label="Background: Vijay Ramakrishnan"><span aria-hidden="true">+</span></button>
-          </div>
-          <div class="tm-body"><h3>Vijay Ramakrishnan</h3><p>President &middot; MaaS India, Commercial</p></div>
-        </article>
-    </div>
-    <div class="tm-grid" role="tabpanel" id="panel-advisors" aria-labelledby="tab-advisors" hidden>
-        <article class="tm-card">
-          <div class="tm-photo">
-            <img src="assets/team/portrait/naoya-nishimura.jpg" alt="Naoya Nishimura" width="600" height="480" loading="lazy" decoding="async">
-            <div class="tm-bio" id="tm-advisors-0" hidden><p>CEO of Musashi Auto Parts India. 20+ years across Japan and North America.</p></div>
-            <button class="tm-plus" type="button" aria-expanded="false" aria-controls="tm-advisors-0" aria-label="Background: Naoya Nishimura"><span aria-hidden="true">+</span></button>
-          </div>
-          <div class="tm-body"><h3>Naoya Nishimura</h3><p>Board Advisor</p></div>
-        </article>
-        <article class="tm-card">
-          <div class="tm-photo">
-            <img src="assets/team/portrait/sampath-ravi-narayanan.jpg" alt="Dr. Sampath Ravi Narayanan" width="600" height="480" loading="lazy" decoding="async">
-            <div class="tm-bio" id="tm-advisors-1" hidden><p>Chairman and MD of AXISCADES. Former board member at Air India and Airbus India.</p></div>
-            <button class="tm-plus" type="button" aria-expanded="false" aria-controls="tm-advisors-1" aria-label="Background: Dr. Sampath Ravi Narayanan"><span aria-hidden="true">+</span></button>
-          </div>
-          <div class="tm-body"><h3>Dr. Sampath Ravi Narayanan</h3><p>Board Advisor</p></div>
-        </article>
-        <article class="tm-card">
-          <div class="tm-photo">
-            <img src="assets/team/portrait/vinod-dasari.jpg" alt="Vinod K. Dasari" width="600" height="480" loading="lazy" decoding="async">
-            <div class="tm-bio" id="tm-advisors-2" hidden><p>Former MD and CEO of Ashok Leyland and Royal Enfield.</p></div>
-            <button class="tm-plus" type="button" aria-expanded="false" aria-controls="tm-advisors-2" aria-label="Background: Vinod K. Dasari"><span aria-hidden="true">+</span></button>
-          </div>
-          <div class="tm-body"><h3>Vinod K. Dasari</h3><p>Advisor</p></div>
-        </article>
-        <article class="tm-card">
-          <div class="tm-photo">
-            <img src="assets/team/portrait/ramesh-mangaleswaran.jpg" alt="Ramesh Mangaleswaran" width="600" height="480" loading="lazy" decoding="async">
-            <div class="tm-bio" id="tm-advisors-3" hidden><p>Senior Partner Emeritus at McKinsey &amp; Company, 30 years.</p></div>
-            <button class="tm-plus" type="button" aria-expanded="false" aria-controls="tm-advisors-3" aria-label="Background: Ramesh Mangaleswaran"><span aria-hidden="true">+</span></button>
-          </div>
-          <div class="tm-body"><h3>Ramesh Mangaleswaran</h3><p>Advisor</p></div>
-        </article>
-    </div>
-  </div>
-</section>
-<!-- CONTACT -->
-<section class="bg-ink cta-band bp bp--full ir-cta">
-  <div class="wash"></div>
-  <div class="wrap inner">
-    <h2>Investor <span class="accent">relations.</span></h2>
-    <p style="max-width:560px">{{IR CONTACT NAME OR TEAM}} &middot; <a href="mailto:{{IR EMAIL}}" style="color:inherit">{{IR EMAIL}}</a></p>
-    <p style="max-width:560px;font-size:13px;opacity:.7">Media enquiries: {{MEDIA CONTACT}}. Customer and supplier
-      enquiries continue to go to info@nemilmm.com.</p>
   </div>
 </section>
 
-<!-- LEGENDS · short form on the page, full text on the Legends page. Every post, email and
-     interview about the transaction links to the same page. Never retype these by hand. -->
+<!-- LEADERSHIP · same cards as the About page -->
 <section class="bg-oat bp bp--light ir-sec">
   <div class="wrap">
-    <div class="ir-legends">
-      <p><b>Important information about the proposed business combination and where to find it.</b>
-        {{SHORT FORM, SUPPLIED BY COUNSEL}} Investors and security holders are urged to read the registration
-        statement and the proxy statement/prospectus, when available, carefully and in their entirety. Documents
-        are available free of charge at <a href="https://www.sec.gov">sec.gov</a>.</p>
-      <p><b>No offer or solicitation.</b> This page is for informational purposes only and does not constitute an
-        offer to sell, or the solicitation of an offer to buy, any securities, nor a solicitation of any vote or approval.</p>
-      <p><b>Forward-looking statements.</b> This page contains forward-looking statements. They are not guarantees,
-        and actual results may differ materially.</p>
-      <p><a href="legends.html">Read the full legends &rarr;</a></p>
+    <div class="ir-team-head">
+      <div class="kicker">Leadership</div>
+      <h2 class="ir-h">Leadership team</h2>
+    </div>
+    <div class="team-grid team-grid--seven">
+      <div class="person">
+        <div class="person__face person__front"><div class="person__head" aria-hidden="true"><span class="person__photo"><img src="assets/team/card/anirudh-ravi-narayanan.jpg" alt="" width="320" height="320" loading="lazy" decoding="async"></span><span class="person__code">CEO</span></div><div class="person__name">Anirudh Ravi Narayanan</div><dl class="person__fields"><dt>Role</dt><dd class="person__roleval">Chief Executive Officer</dd></dl></div>
+        <div class="person__face person__back"><div class="person__head" aria-hidden="true"><span class="person__code">CEO</span></div><div class="person__name" aria-hidden="true">Anirudh Ravi Narayanan</div><dl class="person__fields"><dt>Background</dt><dd>Aerospace and defense electronics engineer. Yale, McKinsey Digital and Industrial practices. Built NEMI greenfield to 300k sq ft.</dd></dl></div>
+      </div>
+      <div class="person">
+        <div class="person__face person__front"><div class="person__head" aria-hidden="true"><span class="person__photo"><img src="assets/team/card/kevin-flick.jpg" alt="" width="320" height="320" loading="lazy" decoding="async"></span><span class="person__code">CFO</span></div><div class="person__name">Kevin Flick</div><dl class="person__fields"><dt>Role</dt><dd class="person__roleval">Chief Financial Officer</dd></dl></div>
+        <div class="person__face person__back"><div class="person__head" aria-hidden="true"><span class="person__code">CFO</span></div><div class="person__name" aria-hidden="true">Kevin Flick</div><dl class="person__fields"><dt>Background</dt><dd>20+ years in principal investing, capital markets and M&amp;A. $5B+ raised, three listings on NASDAQ, NYSE and TSX. Goldman Sachs, Hicks Muse, EY.</dd></dl></div>
+      </div>
+      <div class="person">
+        <div class="person__face person__front"><div class="person__head" aria-hidden="true"><span class="person__photo"><img src="assets/team/card/sam-swaminathan.jpg" alt="" width="320" height="320" loading="lazy" decoding="async"></span><span class="person__code">CBO</span></div><div class="person__name">Sam Swaminathan</div><dl class="person__fields"><dt>Role</dt><dd class="person__roleval">Chief Business Officer</dd></dl></div>
+        <div class="person__face person__back"><div class="person__head" aria-hidden="true"><span class="person__code">CBO</span></div><div class="person__name" aria-hidden="true">Sam Swaminathan</div><dl class="person__fields"><dt>Background</dt><dd>General Partner at De La Cr&egrave;me Ventures, ex-SVP at Fractal Analytics. Board director and NEMI investor.</dd></dl></div>
+      </div>
+      <div class="person">
+        <div class="person__face person__front"><div class="person__head" aria-hidden="true"><span class="person__photo"><img src="assets/team/card/mary-pruce.jpg" alt="" width="320" height="320" loading="lazy" decoding="async"></span><span class="person__code">CHRO</span></div><div class="person__name">Mary Pruce</div><dl class="person__fields"><dt>Role</dt><dd class="person__roleval">Chief Human Resources Officer</dd></dl></div>
+        <div class="person__face person__back"><div class="person__head" aria-hidden="true"><span class="person__code">CHRO</span></div><div class="person__name" aria-hidden="true">Mary Pruce</div><dl class="person__fields"><dt>Background</dt><dd>Senior HR executive, most recently Head of HR at RK Pharma. SHRM-SCP and HRCI-SPHR certified.</dd></dl></div>
+      </div>
+      <div class="person">
+        <div class="person__face person__front"><div class="person__head" aria-hidden="true"><span class="person__photo"><img src="assets/team/card/gokul-madhavan.jpg" alt="" width="320" height="320" loading="lazy" decoding="async"></span><span class="person__code">CSO</span></div><div class="person__name">Gokul Madhavan</div><dl class="person__fields"><dt>Role</dt><dd class="person__roleval">Chief Strategy Officer</dd></dl></div>
+        <div class="person__face person__back"><div class="person__head" aria-hidden="true"><span class="person__code">CSO</span></div><div class="person__name" aria-hidden="true">Gokul Madhavan</div><dl class="person__fields"><dt>Background</dt><dd>Led M&amp;A integrations, built digital finance operations and led digital transformations. A.B. and PhD Harvard, MBA Yale.</dd></dl></div>
+      </div>
+      <div class="person">
+        <div class="person__face person__front"><div class="person__head" aria-hidden="true"><span class="person__photo"><img src="assets/team/card/shreerith-seshadri.jpg" alt="" width="320" height="320" loading="lazy" decoding="async"></span><span class="person__code">CTO</span></div><div class="person__name">Shreerith Seshadri</div><dl class="person__fields"><dt>Role</dt><dd class="person__roleval">Chief Technology Officer</dd></dl></div>
+        <div class="person__face person__back"><div class="person__head" aria-hidden="true"><span class="person__code">CTO</span></div><div class="person__name" aria-hidden="true">Shreerith Seshadri</div><dl class="person__fields"><dt>Background</dt><dd>Deployed AI used by 100M+ at Meta Quest and Vision. Shaped early architecture at Eightfold.AI. CS, UIUC.</dd></dl></div>
+      </div>
+      <div class="person">
+        <div class="person__face person__front"><div class="person__head" aria-hidden="true"><span class="person__photo"><img src="assets/team/card/vinoth-thiruvenkatasamy.jpg" alt="" width="320" height="320" loading="lazy" decoding="async"></span><span class="person__code">COO</span></div><div class="person__name">Vinoth Thiruvenkatasamy</div><dl class="person__fields"><dt>Role</dt><dd class="person__roleval">Chief Operating Officer</dd></dl></div>
+        <div class="person__face person__back"><div class="person__head" aria-hidden="true"><span class="person__code">COO</span></div><div class="person__name" aria-hidden="true">Vinoth Thiruvenkatasamy</div><dl class="person__fields"><dt>Background</dt><dd>20+ years in automotive manufacturing and R&amp;D at Nissan and Ford. Scaled production lines from pilot to 100K+ units.</dd></dl></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- BOARD · same cards as the About page -->
+<section class="bg-bone bp bp--light ir-sec">
+  <div class="wrap">
+    <div class="ir-team-head">
+      <div class="kicker">Governance</div>
+      <h2 class="ir-h">Board of directors</h2>
+    </div>
+    <div class="team-grid" style="grid-template-columns:repeat(4,1fr)">
+      <div class="person">
+        <div class="person__face person__front"><div class="person__head" aria-hidden="true"><span class="person__photo"><img src="assets/team/card/anirudh-ravi-narayanan.jpg" alt="" width="320" height="320" loading="lazy" decoding="async"></span><span class="person__code">DIR</span></div><div class="person__name">Anirudh Ravi Narayanan</div><dl class="person__fields"><dt>Role</dt><dd class="person__roleval">Director &middot; Founder &amp; CEO</dd></dl></div>
+        <div class="person__face person__back"><div class="person__head" aria-hidden="true"><span class="person__code">DIR</span></div><div class="person__name" aria-hidden="true">Anirudh Ravi Narayanan</div><dl class="person__fields"><dt>Background</dt><dd>Aerospace and defense electronics engineer. Yale, McKinsey Digital and Industrial practices.</dd></dl></div>
+      </div>
+      <div class="person">
+        <div class="person__face person__front"><div class="person__head" aria-hidden="true"><span class="person__photo"><img src="assets/team/card/sam-swaminathan.jpg" alt="" width="320" height="320" loading="lazy" decoding="async"></span><span class="person__code">DIR</span></div><div class="person__name">Sam Swaminathan</div><dl class="person__fields"><dt>Role</dt><dd class="person__roleval">Director &middot; Chief Business Officer</dd></dl></div>
+        <div class="person__face person__back"><div class="person__head" aria-hidden="true"><span class="person__code">DIR</span></div><div class="person__name" aria-hidden="true">Sam Swaminathan</div><dl class="person__fields"><dt>Background</dt><dd>General Partner at De La Cr&egrave;me Ventures, ex-SVP at Fractal Analytics. Board director and NEMI investor.</dd></dl></div>
+      </div>
+      <div class="person">
+        <div class="person__face person__front"><div class="person__head" aria-hidden="true"><span class="person__photo"><img src="assets/team/card/jingjing-kanik.jpg" alt="" width="320" height="320" loading="lazy" decoding="async"></span><span class="person__code">IND</span></div><div class="person__name">Jingjing Kanik</div><dl class="person__fields"><dt>Role</dt><dd class="person__roleval">Independent Director</dd></dl></div>
+        <div class="person__face person__back"><div class="person__head" aria-hidden="true"><span class="person__code">IND</span></div><div class="person__name" aria-hidden="true">Jingjing Kanik</div><dl class="person__fields"><dt>Background</dt><dd>Executive Director of Data Science at CVS Health, ex-McKinsey. PhD, Yale.</dd></dl></div>
+      </div>
+      <div class="person">
+        <div class="person__face person__front"><div class="person__head" aria-hidden="true"><span class="person__photo"><img src="assets/team/card/manoj-ganesh.jpg" alt="" width="320" height="320" loading="lazy" decoding="async"></span><span class="person__code">IND</span></div><div class="person__name">Manoj Ganesh, PhD</div><dl class="person__fields"><dt>Role</dt><dd class="person__roleval">Independent Director</dd></dl></div>
+        <div class="person__face person__back"><div class="person__head" aria-hidden="true"><span class="person__code">IND</span></div><div class="person__name" aria-hidden="true">Manoj Ganesh, PhD</div><dl class="person__fields"><dt>Background</dt><dd>Senior Staff Process Scientist at Regeneron, where he co-led its Center of Automation. PhD, NYU Poly.</dd></dl></div>
+      </div>
     </div>
   </div>
 </section>
@@ -494,33 +321,11 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
 <script src="assets/js/fx.js?v=2"></script>
 <script>
-/* Team tabs (arrow keys move between tabs) and the "+" background toggle. */
-(function () {
-  var tabs = Array.prototype.slice.call(document.querySelectorAll('.tm-tab'));
-  function select(t) {
-    tabs.forEach(function (x) {
-      var on = x === t;
-      x.setAttribute('aria-selected', on); x.tabIndex = on ? 0 : -1;
-      document.getElementById(x.getAttribute('aria-controls')).hidden = !on;
-    });
-  }
-  tabs.forEach(function (t, i) {
-    t.addEventListener('click', function () { select(t); });
-    t.addEventListener('keydown', function (e) {
-      var d = e.key === 'ArrowRight' ? 1 : e.key === 'ArrowLeft' ? -1 : 0;
-      if (!d) return; e.preventDefault();
-      var n = tabs[(i + d + tabs.length) % tabs.length]; select(n); n.focus();
-    });
-  });
-  Array.prototype.forEach.call(document.querySelectorAll('.tm-plus'), function (b) {
-    b.addEventListener('click', function () {
-      var open = b.getAttribute('aria-expanded') !== 'true';
-      b.setAttribute('aria-expanded', open);
-      document.getElementById(b.getAttribute('aria-controls')).hidden = !open;
-    });
-  });
-})();
+/* Team cards: the plate shows the role, and the background fades in on hover or
+   keyboard focus. Touch devices have no hover, so CSS stacks both fields onto a
+   single plate there instead; nothing to tap, nothing hidden. */
 </script>
+
 
 <!-- Cloudflare Web Analytics --><script type='module' src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "c0f89f8fdcc44be8b836753c1f342d17"}'></script><!-- End Cloudflare Web Analytics -->
 </body>
