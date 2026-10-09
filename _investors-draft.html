@@ -56,6 +56,76 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <link rel="icon" type="image/png" sizes="32x32" href="assets/img/favicon-32.png?v=7">
 <link rel="icon" type="image/png" sizes="16x16" href="assets/img/favicon-16.png?v=7">
 <link rel="apple-touch-icon" sizes="180x180" href="assets/img/apple-touch-icon.png?v=7">
+<style>
+/* Investors page (draft). Layout after agilityrobotics.com/investors: announcement, quick links,
+   filings, webcast, questions, team in tabs, IR contact, legends. NEMI emerald system. */
+.ir-sec, .ir-cta { padding: clamp(56px, 7vw, 96px) 0; min-height: 0; }
+.ir-sec--tight { padding-top: 0; }
+.ir-wrap { max-width: 980px; }
+.ir-eyebrow { font: 500 11px/1 "IBM Plex Mono", monospace; letter-spacing: 2px; text-transform: uppercase; color: var(--emerald); }
+.ir-lead h2 { margin-top: 16px; font-size: clamp(28px, 3.6vw, 44px); line-height: 1.12; letter-spacing: -1px; }
+.ir-sub { margin-top: 18px; max-width: 760px; font-size: 17px; line-height: 1.7; color: rgba(7,7,7,.72); }
+.ir-actions { margin-top: 28px; display: flex; flex-wrap: wrap; gap: 14px; }
+.ir-actions .btn--ghost { clip-path: none; color: var(--ink); border-color: rgba(7,7,7,.35); }
+.ir-actions .btn--ghost:hover { border-color: var(--emerald); color: var(--emerald); }
+.ir-note { margin-top: 18px; font-size: 13px; color: rgba(7,7,7,.55); }
+.ir-h { font-size: clamp(24px, 2.8vw, 34px); letter-spacing: -.6px; margin-bottom: 26px; }
+.ir-h--lg { font-size: clamp(30px, 3.8vw, 46px); letter-spacing: -1.2px; margin-bottom: 34px; }
+.ir-quick { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; }
+.ir-q { position: relative; display: flex; flex-direction: column; gap: 8px; padding: 22px 22px 24px;
+  background: #fff; border: 1px solid rgba(7,7,7,.12); color: var(--ink); text-decoration: none;
+  transition: border-color .2s, transform .2s, box-shadow .2s; }
+.ir-q:hover { border-color: var(--emerald); transform: translateY(-2px); box-shadow: 0 12px 28px rgba(7,7,7,.07); }
+.ir-q__k { font: 500 10px/1 "IBM Plex Mono", monospace; letter-spacing: 1.6px; color: var(--emerald); }
+.ir-q__t { font-size: 19px; font-weight: 600; letter-spacing: -.3px; }
+.ir-q__d { font-size: 13px; color: rgba(7,7,7,.55); }
+.ir-q__go { position: absolute; right: 20px; bottom: 20px; color: var(--emerald); font-size: 18px; }
+.ir-docs { list-style: none; margin: 0; padding: 0; border-top: 1px solid rgba(7,7,7,.14); }
+.ir-docs li { display: grid; grid-template-columns: 200px 1fr auto; gap: 18px; align-items: baseline;
+  padding: 18px 4px; border-bottom: 1px solid rgba(7,7,7,.14); }
+.ir-docs__k { font: 500 10.5px/1.4 "IBM Plex Mono", monospace; letter-spacing: 1.5px; text-transform: uppercase; color: var(--grey); }
+.ir-docs a { color: var(--ink); font-weight: 500; }
+.ir-docs a:hover { color: var(--emerald); }
+.ir-docs time { font-size: 13px; color: rgba(7,7,7,.55); }
+.ir-faq { margin-top: 8px; border-top: 1px solid rgba(7,7,7,.14); }
+.ir-faq details { border-bottom: 1px solid rgba(7,7,7,.14); padding: 18px 4px; }
+.ir-faq summary { cursor: pointer; font-weight: 600; font-size: 17px; list-style: none; display: flex; justify-content: space-between; gap: 16px; }
+.ir-faq summary::after { content: '+'; color: var(--emerald); font-weight: 400; font-size: 22px; line-height: 1; }
+.ir-faq details[open] summary::after { content: '\2212'; }
+.ir-faq details p { margin-top: 12px; color: rgba(7,7,7,.72); line-height: 1.7; }
+.ir-legends p { font-size: 12.5px; line-height: 1.7; color: rgba(7,7,7,.62); margin-bottom: 14px; max-width: 980px; }
+
+/* Team cards, after the Agility leadership grid: photo on top, tinted panel with name and title,
+   a square "+" that opens the background over the photo. */
+.tm-tabs { display: flex; gap: 34px; border-bottom: 1px solid rgba(7,7,7,.2); margin-bottom: 34px; overflow-x: auto; }
+.tm-tab { appearance: none; background: none; border: 0; padding: 0 0 14px; cursor: pointer; white-space: nowrap;
+  font: 600 13px/1 "IBM Plex Mono", monospace; letter-spacing: 1.6px; text-transform: uppercase; color: rgba(7,7,7,.5);
+  border-bottom: 2px solid transparent; margin-bottom: -1px; }
+.tm-tab[aria-selected="true"] { color: var(--ink); border-bottom-color: var(--emerald); }
+.tm-tab:focus-visible { outline: 2px solid var(--emerald); outline-offset: 4px; }
+.tm-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 32px; }
+.tm-grid[hidden] { display: none; }
+.tm-card { background: #e6f0eb; display: flex; flex-direction: column; }
+.tm-photo { position: relative; aspect-ratio: 5 / 4; overflow: hidden; background: #f2f2ef; }
+.tm-photo img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform .5s ease; }
+.tm-card:hover .tm-photo img { transform: scale(1.03); }
+.tm-plus { position: absolute; top: 12px; right: 12px; z-index: 3; width: 34px; height: 34px; border: 0; cursor: pointer;
+  background: var(--emerald); color: #fff; font-size: 20px; line-height: 1; display: grid; place-items: center;
+  clip-path: polygon(0 0, calc(100% - 8px) 0, 100% 8px, 100% 100%, 0 100%); transition: background .2s; }
+.tm-plus span { transition: transform .25s ease; }
+.tm-plus:hover { background: #0d7a5c; }
+.tm-plus[aria-expanded="true"] span { transform: rotate(45deg); }
+.tm-plus:focus-visible { outline: 2px solid #fff; outline-offset: -5px; }
+.tm-bio { position: absolute; inset: 0; z-index: 2; background: rgba(10,73,56,.95); color: #fff;
+  padding: 26px 56px 24px 24px; display: flex; align-items: flex-end; }
+.tm-bio[hidden] { display: none; }
+.tm-bio p { margin: 0; font-size: 14.5px; line-height: 1.6; }
+.tm-body { padding: 20px 20px 26px; }
+.tm-body h3 { font-size: 22px; font-weight: 600; letter-spacing: -.4px; line-height: 1.2; }
+.tm-body p { margin-top: 8px; font-size: 14.5px; line-height: 1.45; color: rgba(7,7,7,.72); }
+@media (max-width: 980px) { .ir-quick { grid-template-columns: repeat(2, 1fr); } .tm-grid { grid-template-columns: repeat(2, 1fr); gap: 22px; } }
+@media (max-width: 620px) { .ir-quick, .tm-grid { grid-template-columns: 1fr; } .ir-docs li { grid-template-columns: 1fr; gap: 6px; } .tm-tabs { gap: 22px; } }
+</style>
 </head>
 <body>
 <!-- Google Tag Manager (noscript) -->
@@ -114,8 +184,20 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   </div>
 </section>
 
+<!-- QUICK LINKS · one card per filed item. Each goes live only when its document is filed. -->
+<section class="bg-bone bp bp--light ir-sec ir-sec--tight">
+  <div class="wrap">
+    <div class="ir-quick">
+      <a class="ir-q" href="{{LINK TO FILED RELEASE}}"><span class="ir-q__k">01</span><span class="ir-q__t">Press release</span><span class="ir-q__d">{{DD Mon YYYY}}</span><span class="ir-q__go" aria-hidden="true">&rarr;</span></a>
+      <a class="ir-q" href="{{LINK TO FILED PRESENTATION}}"><span class="ir-q__k">02</span><span class="ir-q__t">Investor presentation</span><span class="ir-q__d">As filed with the SEC</span><span class="ir-q__go" aria-hidden="true">&rarr;</span></a>
+      <a class="ir-q" href="#webcast"><span class="ir-q__k">03</span><span class="ir-q__t">Webcast</span><span class="ir-q__d">{{Date, or "Replay"}}</span><span class="ir-q__go" aria-hidden="true">&rarr;</span></a>
+      <a class="ir-q" href="#filings"><span class="ir-q__k">04</span><span class="ir-q__t">SEC filings</span><span class="ir-q__d">Links to EDGAR</span><span class="ir-q__go" aria-hidden="true">&rarr;</span></a>
+    </div>
+  </div>
+</section>
+
 <!-- DOCUMENTS · every row links to a filed document. No document here that is not on EDGAR. -->
-<section class="bg-oat bp bp--light ir-sec">
+<section class="bg-oat bp bp--light ir-sec" id="filings">
   <div class="wrap">
     <h2 class="ir-h">Documents and filings</h2>
     <ul class="ir-docs">
@@ -131,7 +213,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 </section>
 
 <!-- WEBCAST -->
-<section class="bg-bone bp bp--light ir-sec">
+<section class="bg-bone bp bp--light ir-sec" id="webcast">
   <div class="wrap ir-wrap">
     <div class="ir-lead">
       <h2 class="ir-h">Webcast</h2>
@@ -174,8 +256,182 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 </section>
 -->
 
+<!-- TEAM · leadership, board, India operating leadership, advisors. Names, titles and bios follow
+     vShare and vPresent (Oct 2026) and match the About page word for word. Before announcement day,
+     check every line against the S-4 draft: officer and director bios there are the ones that count. -->
+<section class="bg-bone bp bp--light ir-sec" id="team">
+  <div class="wrap">
+    <h2 class="ir-h ir-h--lg">Our leadership team &amp; board of directors</h2>
+    <div class="tm-tabs" role="tablist" aria-label="Team">
+      <button class="tm-tab" role="tab" id="tab-leadership" aria-controls="panel-leadership" aria-selected="true" tabindex="0">Leadership</button>
+      <button class="tm-tab" role="tab" id="tab-board" aria-controls="panel-board" aria-selected="false" tabindex="-1">Board</button>
+      <button class="tm-tab" role="tab" id="tab-india" aria-controls="panel-india" aria-selected="false" tabindex="-1">India operations</button>
+      <button class="tm-tab" role="tab" id="tab-advisors" aria-controls="panel-advisors" aria-selected="false" tabindex="-1">Advisors</button>
+    </div>
+    <div class="tm-grid" role="tabpanel" id="panel-leadership" aria-labelledby="tab-leadership">
+        <article class="tm-card">
+          <div class="tm-photo">
+            <img src="assets/team/portrait/anirudh-ravi-narayanan.jpg" alt="Anirudh Ravi Narayanan" width="600" height="480" loading="lazy" decoding="async">
+            <div class="tm-bio" id="tm-leadership-0" hidden><p>Aerospace and defense electronics engineer. Yale, McKinsey Digital and Industrial practices. Built NEMI greenfield to 300k sq ft.</p></div>
+            <button class="tm-plus" type="button" aria-expanded="false" aria-controls="tm-leadership-0" aria-label="Background: Anirudh Ravi Narayanan"><span aria-hidden="true">+</span></button>
+          </div>
+          <div class="tm-body"><h3>Anirudh Ravi Narayanan</h3><p>Chief Executive Officer</p></div>
+        </article>
+        <article class="tm-card">
+          <div class="tm-photo">
+            <img src="assets/team/portrait/kevin-flick.jpg" alt="Kevin Flick" width="600" height="480" loading="lazy" decoding="async">
+            <div class="tm-bio" id="tm-leadership-1" hidden><p>20+ years in principal investing, capital markets and M&amp;A. $5B+ raised, three listings on NASDAQ, NYSE and TSX. Goldman Sachs, Hicks Muse, EY.</p></div>
+            <button class="tm-plus" type="button" aria-expanded="false" aria-controls="tm-leadership-1" aria-label="Background: Kevin Flick"><span aria-hidden="true">+</span></button>
+          </div>
+          <div class="tm-body"><h3>Kevin Flick</h3><p>Chief Financial Officer</p></div>
+        </article>
+        <article class="tm-card">
+          <div class="tm-photo">
+            <img src="assets/team/portrait/sam-swaminathan.jpg" alt="Sam Swaminathan" width="600" height="480" loading="lazy" decoding="async">
+            <div class="tm-bio" id="tm-leadership-2" hidden><p>General Partner at De La Cr&egrave;me Ventures, ex-SVP at Fractal Analytics. Board director and NEMI investor.</p></div>
+            <button class="tm-plus" type="button" aria-expanded="false" aria-controls="tm-leadership-2" aria-label="Background: Sam Swaminathan"><span aria-hidden="true">+</span></button>
+          </div>
+          <div class="tm-body"><h3>Sam Swaminathan</h3><p>Chief Business Officer</p></div>
+        </article>
+        <article class="tm-card">
+          <div class="tm-photo">
+            <img src="assets/team/portrait/mary-pruce.jpg" alt="Mary Pruce" width="600" height="480" loading="lazy" decoding="async">
+            <div class="tm-bio" id="tm-leadership-3" hidden><p>Senior HR executive, most recently Head of HR at RK Pharma. SHRM-SCP and HRCI-SPHR certified.</p></div>
+            <button class="tm-plus" type="button" aria-expanded="false" aria-controls="tm-leadership-3" aria-label="Background: Mary Pruce"><span aria-hidden="true">+</span></button>
+          </div>
+          <div class="tm-body"><h3>Mary Pruce</h3><p>Chief Human Resources Officer</p></div>
+        </article>
+        <article class="tm-card">
+          <div class="tm-photo">
+            <img src="assets/team/portrait/gokul-madhavan.jpg" alt="Gokul Madhavan" width="600" height="480" loading="lazy" decoding="async">
+            <div class="tm-bio" id="tm-leadership-4" hidden><p>Led M&amp;A integrations, built digital finance operations and led digital transformations. A.B. and PhD Harvard, MBA Yale.</p></div>
+            <button class="tm-plus" type="button" aria-expanded="false" aria-controls="tm-leadership-4" aria-label="Background: Gokul Madhavan"><span aria-hidden="true">+</span></button>
+          </div>
+          <div class="tm-body"><h3>Gokul Madhavan</h3><p>Chief Strategy Officer</p></div>
+        </article>
+        <article class="tm-card">
+          <div class="tm-photo">
+            <img src="assets/team/portrait/shreerith-seshadri.jpg" alt="Shreerith Seshadri" width="600" height="480" loading="lazy" decoding="async">
+            <div class="tm-bio" id="tm-leadership-5" hidden><p>Deployed AI used by 100M+ at Meta Quest and Vision. Shaped early architecture at Eightfold.AI. CS, UIUC.</p></div>
+            <button class="tm-plus" type="button" aria-expanded="false" aria-controls="tm-leadership-5" aria-label="Background: Shreerith Seshadri"><span aria-hidden="true">+</span></button>
+          </div>
+          <div class="tm-body"><h3>Shreerith Seshadri</h3><p>Chief Technology Officer</p></div>
+        </article>
+        <article class="tm-card">
+          <div class="tm-photo">
+            <img src="assets/team/portrait/vinoth-thiruvenkatasamy.jpg" alt="Vinoth Thiruvenkatasamy" width="600" height="480" loading="lazy" decoding="async">
+            <div class="tm-bio" id="tm-leadership-6" hidden><p>20+ years in automotive manufacturing and R&amp;D at Nissan and Ford. Scaled production lines from pilot to 100K+ units.</p></div>
+            <button class="tm-plus" type="button" aria-expanded="false" aria-controls="tm-leadership-6" aria-label="Background: Vinoth Thiruvenkatasamy"><span aria-hidden="true">+</span></button>
+          </div>
+          <div class="tm-body"><h3>Vinoth Thiruvenkatasamy</h3><p>Chief Operating Officer</p></div>
+        </article>
+    </div>
+    <div class="tm-grid" role="tabpanel" id="panel-board" aria-labelledby="tab-board" hidden>
+        <article class="tm-card">
+          <div class="tm-photo">
+            <img src="assets/team/portrait/anirudh-ravi-narayanan.jpg" alt="Anirudh Ravi Narayanan" width="600" height="480" loading="lazy" decoding="async">
+            <div class="tm-bio" id="tm-board-0" hidden><p>Aerospace and defense electronics engineer. Yale, McKinsey Digital and Industrial practices.</p></div>
+            <button class="tm-plus" type="button" aria-expanded="false" aria-controls="tm-board-0" aria-label="Background: Anirudh Ravi Narayanan"><span aria-hidden="true">+</span></button>
+          </div>
+          <div class="tm-body"><h3>Anirudh Ravi Narayanan</h3><p>Director &middot; Founder &amp; CEO</p></div>
+        </article>
+        <article class="tm-card">
+          <div class="tm-photo">
+            <img src="assets/team/portrait/sam-swaminathan.jpg" alt="Sam Swaminathan" width="600" height="480" loading="lazy" decoding="async">
+            <div class="tm-bio" id="tm-board-1" hidden><p>General Partner at De La Cr&egrave;me Ventures, ex-SVP at Fractal Analytics. Board director and NEMI investor.</p></div>
+            <button class="tm-plus" type="button" aria-expanded="false" aria-controls="tm-board-1" aria-label="Background: Sam Swaminathan"><span aria-hidden="true">+</span></button>
+          </div>
+          <div class="tm-body"><h3>Sam Swaminathan</h3><p>Director &middot; Chief Business Officer</p></div>
+        </article>
+        <article class="tm-card">
+          <div class="tm-photo">
+            <img src="assets/team/portrait/jingjing-kanik.jpg" alt="Jingjing Kanik" width="600" height="480" loading="lazy" decoding="async">
+            <div class="tm-bio" id="tm-board-2" hidden><p>Executive Director of Data Science at CVS Health, ex-McKinsey. PhD, Yale.</p></div>
+            <button class="tm-plus" type="button" aria-expanded="false" aria-controls="tm-board-2" aria-label="Background: Jingjing Kanik"><span aria-hidden="true">+</span></button>
+          </div>
+          <div class="tm-body"><h3>Jingjing Kanik</h3><p>Independent Director</p></div>
+        </article>
+        <article class="tm-card">
+          <div class="tm-photo">
+            <img src="assets/team/portrait/manoj-ganesh.jpg" alt="Manoj Ganesh, PhD" width="600" height="480" loading="lazy" decoding="async">
+            <div class="tm-bio" id="tm-board-3" hidden><p>Senior Staff Process Scientist at Regeneron, where he co-led its Center of Automation. PhD, NYU Poly.</p></div>
+            <button class="tm-plus" type="button" aria-expanded="false" aria-controls="tm-board-3" aria-label="Background: Manoj Ganesh, PhD"><span aria-hidden="true">+</span></button>
+          </div>
+          <div class="tm-body"><h3>Manoj Ganesh, PhD</h3><p>Independent Director</p></div>
+        </article>
+    </div>
+    <div class="tm-grid" role="tabpanel" id="panel-india" aria-labelledby="tab-india" hidden>
+        <article class="tm-card">
+          <div class="tm-photo">
+            <img src="assets/team/portrait/subramanian-rangaswamy.jpg" alt="Subramanian Ramasamy" width="600" height="480" loading="lazy" decoding="async">
+            <div class="tm-bio" id="tm-india-0" hidden><p>Chartered and cost accountant. 27+ years in manufacturing finance.</p></div>
+            <button class="tm-plus" type="button" aria-expanded="false" aria-controls="tm-india-0" aria-label="Background: Subramanian Ramasamy"><span aria-hidden="true">+</span></button>
+          </div>
+          <div class="tm-body"><h3>Subramanian Ramasamy</h3><p>Chief Financial Officer &middot; India</p></div>
+        </article>
+        <article class="tm-card">
+          <div class="tm-photo">
+            <img src="assets/team/portrait/sadasivam-balasubramaniam.jpg" alt="Sadasivam Balasubramanian" width="600" height="480" loading="lazy" decoding="async">
+            <div class="tm-bio" id="tm-india-1" hidden><p>20 years in electronics. Telematics, defence and aerospace.</p></div>
+            <button class="tm-plus" type="button" aria-expanded="false" aria-controls="tm-india-1" aria-label="Background: Sadasivam Balasubramanian"><span aria-hidden="true">+</span></button>
+          </div>
+          <div class="tm-body"><h3>Sadasivam Balasubramanian</h3><p>President &middot; LMM India Dev Team</p></div>
+        </article>
+        <article class="tm-card">
+          <div class="tm-photo">
+            <img src="assets/team/portrait/vijay-ragavalu.jpg" alt="Vijay Ragavalu" width="600" height="480" loading="lazy" decoding="async">
+            <div class="tm-bio" id="tm-india-2" hidden><p>30+ years in manufacturing. Automation and operational excellence.</p></div>
+            <button class="tm-plus" type="button" aria-expanded="false" aria-controls="tm-india-2" aria-label="Background: Vijay Ragavalu"><span aria-hidden="true">+</span></button>
+          </div>
+          <div class="tm-body"><h3>Vijay Ragavalu</h3><p>President &middot; MaaS India</p></div>
+        </article>
+        <article class="tm-card">
+          <div class="tm-photo">
+            <img src="assets/team/portrait/vijay-ramakrishnan.jpg" alt="Vijay Ramakrishnan" width="600" height="480" loading="lazy" decoding="async">
+            <div class="tm-bio" id="tm-india-3" hidden><p>15+ years in sales and marketing. Greaves Electric, HDFC and MakeMyTrip.</p></div>
+            <button class="tm-plus" type="button" aria-expanded="false" aria-controls="tm-india-3" aria-label="Background: Vijay Ramakrishnan"><span aria-hidden="true">+</span></button>
+          </div>
+          <div class="tm-body"><h3>Vijay Ramakrishnan</h3><p>President &middot; MaaS India, Commercial</p></div>
+        </article>
+    </div>
+    <div class="tm-grid" role="tabpanel" id="panel-advisors" aria-labelledby="tab-advisors" hidden>
+        <article class="tm-card">
+          <div class="tm-photo">
+            <img src="assets/team/portrait/naoya-nishimura.jpg" alt="Naoya Nishimura" width="600" height="480" loading="lazy" decoding="async">
+            <div class="tm-bio" id="tm-advisors-0" hidden><p>CEO of Musashi Auto Parts India. 20+ years across Japan and North America.</p></div>
+            <button class="tm-plus" type="button" aria-expanded="false" aria-controls="tm-advisors-0" aria-label="Background: Naoya Nishimura"><span aria-hidden="true">+</span></button>
+          </div>
+          <div class="tm-body"><h3>Naoya Nishimura</h3><p>Board Advisor</p></div>
+        </article>
+        <article class="tm-card">
+          <div class="tm-photo">
+            <img src="assets/team/portrait/sampath-ravi-narayanan.jpg" alt="Dr. Sampath Ravi Narayanan" width="600" height="480" loading="lazy" decoding="async">
+            <div class="tm-bio" id="tm-advisors-1" hidden><p>Chairman and MD of AXISCADES. Former board member at Air India and Airbus India.</p></div>
+            <button class="tm-plus" type="button" aria-expanded="false" aria-controls="tm-advisors-1" aria-label="Background: Dr. Sampath Ravi Narayanan"><span aria-hidden="true">+</span></button>
+          </div>
+          <div class="tm-body"><h3>Dr. Sampath Ravi Narayanan</h3><p>Board Advisor</p></div>
+        </article>
+        <article class="tm-card">
+          <div class="tm-photo">
+            <img src="assets/team/portrait/vinod-dasari.jpg" alt="Vinod K. Dasari" width="600" height="480" loading="lazy" decoding="async">
+            <div class="tm-bio" id="tm-advisors-2" hidden><p>Former MD and CEO of Ashok Leyland and Royal Enfield.</p></div>
+            <button class="tm-plus" type="button" aria-expanded="false" aria-controls="tm-advisors-2" aria-label="Background: Vinod K. Dasari"><span aria-hidden="true">+</span></button>
+          </div>
+          <div class="tm-body"><h3>Vinod K. Dasari</h3><p>Advisor</p></div>
+        </article>
+        <article class="tm-card">
+          <div class="tm-photo">
+            <img src="assets/team/portrait/ramesh-mangaleswaran.jpg" alt="Ramesh Mangaleswaran" width="600" height="480" loading="lazy" decoding="async">
+            <div class="tm-bio" id="tm-advisors-3" hidden><p>Senior Partner Emeritus at McKinsey &amp; Company, 30 years.</p></div>
+            <button class="tm-plus" type="button" aria-expanded="false" aria-controls="tm-advisors-3" aria-label="Background: Ramesh Mangaleswaran"><span aria-hidden="true">+</span></button>
+          </div>
+          <div class="tm-body"><h3>Ramesh Mangaleswaran</h3><p>Advisor</p></div>
+        </article>
+    </div>
+  </div>
+</section>
 <!-- CONTACT -->
-<section class="bg-ink cta-band bp bp--full">
+<section class="bg-ink cta-band bp bp--full ir-cta">
   <div class="wash"></div>
   <div class="wrap inner">
     <h2>Investor <span class="accent">relations.</span></h2>
@@ -237,6 +493,35 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 </footer>
 
 <script src="assets/js/fx.js?v=2"></script>
+<script>
+/* Team tabs (arrow keys move between tabs) and the "+" background toggle. */
+(function () {
+  var tabs = Array.prototype.slice.call(document.querySelectorAll('.tm-tab'));
+  function select(t) {
+    tabs.forEach(function (x) {
+      var on = x === t;
+      x.setAttribute('aria-selected', on); x.tabIndex = on ? 0 : -1;
+      document.getElementById(x.getAttribute('aria-controls')).hidden = !on;
+    });
+  }
+  tabs.forEach(function (t, i) {
+    t.addEventListener('click', function () { select(t); });
+    t.addEventListener('keydown', function (e) {
+      var d = e.key === 'ArrowRight' ? 1 : e.key === 'ArrowLeft' ? -1 : 0;
+      if (!d) return; e.preventDefault();
+      var n = tabs[(i + d + tabs.length) % tabs.length]; select(n); n.focus();
+    });
+  });
+  Array.prototype.forEach.call(document.querySelectorAll('.tm-plus'), function (b) {
+    b.addEventListener('click', function () {
+      var open = b.getAttribute('aria-expanded') !== 'true';
+      b.setAttribute('aria-expanded', open);
+      document.getElementById(b.getAttribute('aria-controls')).hidden = !open;
+    });
+  });
+})();
+</script>
+
 <!-- Cloudflare Web Analytics --><script type='module' src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "c0f89f8fdcc44be8b836753c1f342d17"}'></script><!-- End Cloudflare Web Analytics -->
 </body>
 </html>
