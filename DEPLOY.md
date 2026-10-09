@@ -33,7 +33,7 @@ After that, every push to `BCA-Ready` rebuilds the demo in about a minute.
 Blocked in `netlify.toml`, in every context:
 
 - `/_s4/*` — the evidence audit, change log, legends draft, blog rules
-- `/_investors-draft.html` — the Investors page draft
+(`investor-relations.html` is viewable on the demo. It is noindex and not linked from the menu.)
 - `/_post-template.html` — the blog post template
 
 Branch deploys and deploy previews also send `X-Robots-Tag: noindex, nofollow`,

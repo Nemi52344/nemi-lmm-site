@@ -7,7 +7,7 @@
 #
 # Everything that is not the production context is told not to be indexed, so a
 # demo URL can never turn up in a search result or be quoted back at us. The
-# draft pages (_s4, the investors page, the post template) stay blocked in every
+# draft pages (_s4, the post template) stay blocked in every
 # context, demo included.
 # ---------------------------------------------------------------------------
 [build]
@@ -62,12 +62,6 @@
   force = true
 
 # Blog post template is a working file, not a page.
-[[redirects]]
-  from = "/_investors-draft.html"
-  to = "/home.html"
-  status = 404
-  force = true
-
 [[redirects]]
   from = "/_post-template.html"
   to = "/home.html"
