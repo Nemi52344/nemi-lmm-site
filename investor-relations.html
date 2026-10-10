@@ -37,7 +37,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="assets/css/style.css?v=189">
+<link rel="stylesheet" href="assets/css/style.css?v=190">
 <link rel="stylesheet" href="assets/css/nav-menu.css?v=12">
 <link rel="stylesheet" href="assets/css/blog.css?v=15">
 <link rel="icon" type="image/svg+xml" href="assets/img/favicon.svg?v=7">
@@ -69,48 +69,50 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 /* The frame is sized from the viewport height so the 16:9 stage always matches
    the slide exactly. Clamping the height alone left the stage wider than 16:9,
    and the contained slide then sat between two dead bars. */
-.dv { width: min(100%, max(900px, calc((100vh - 230px) * 16 / 9))); margin: 30px auto 0;
-  background: #0a1512; border: 1px solid rgba(7,7,7,.14); box-shadow: 0 24px 60px rgba(7,7,7,.12); }
-.dv__stage { position: relative; aspect-ratio: 16 / 9; width: 100%; background: #0a1512; overflow: hidden; touch-action: pan-y; user-select: none; }
-.dv__stage img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: contain; display: block; }
-/* Visible at rest. Hiding both arrows until hover left a 31 slide deck looking
-   like a static image, and on slide one the disabled prev vanished entirely, so
-   the control set moved about as you paged. */
-.dv__nav { position: absolute; top: 50%; z-index: 2; transform: translateY(-50%); width: 48px; height: 48px; display: grid; place-items: center;
-  border: 1px solid rgba(255,255,255,.28); background: rgba(10,21,18,.6); backdrop-filter: blur(6px); color: #fff; font-size: 22px; line-height: 1; cursor: pointer;
-  opacity: .62; transition: opacity .2s, background .2s, border-color .2s, transform .2s; }
-.dv__nav--prev { left: 16px; } .dv__nav--next { right: 16px; }
-.dv__stage:hover .dv__nav { opacity: 1; }
-.dv__nav:hover { background: var(--emerald); border-color: var(--emerald); }
-.dv__nav--prev:hover { transform: translateY(-50%) translateX(-2px); }
-.dv__nav--next:hover { transform: translateY(-50%) translateX(2px); }
-.dv__nav:focus-visible { opacity: 1; outline: 2px solid var(--signal); outline-offset: 2px; }
-.dv__nav[disabled] { opacity: .18; pointer-events: none; }
+/* Deck: aside on the left, slide on the right. */
+.ir-deck { display: grid; grid-template-columns: minmax(230px, 300px) minmax(0, 1fr); gap: clamp(32px, 4.5vw, 72px); align-items: start; }
+.ir-deck__aside .kicker { color: var(--emerald); }
+.ir-deck__aside h2 { margin-top: 12px; }
+.ir-deck__aside p { margin-top: 14px; font-size: 15.5px; line-height: 1.65; color: rgba(7,7,7,.66); }
+.ir-deck__dl { margin-top: 26px; display: inline-flex; align-items: center; gap: 10px; }
+.ir-deck__meta { margin-top: 12px; font: 400 10px/1 "IBM Plex Mono", monospace; letter-spacing: 1.6px; text-transform: uppercase; color: var(--grey); }
 
-/* how far through the deck you are, without counting */
-.dv__prog { height: 2px; background: rgba(255,255,255,.1); }
-.dv__prog span { display: block; height: 100%; width: 0; background: var(--signal); transition: width .3s ease; }
-.dv__bar { display: flex; align-items: center; gap: 16px; padding: 12px 18px; border-top: 1px solid rgba(255,255,255,.08); color: #fff; }
-.dv__count { font: 500 12px/1 "IBM Plex Mono", monospace; letter-spacing: 1.5px; color: var(--signal); white-space: nowrap; }
-.dv__title { flex: 1; min-width: 0; font-size: 14px; color: rgba(255,255,255,.78); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
-.dv__btn { flex: none; background: none; border: 1px solid rgba(255,255,255,.22); color: #fff; height: 34px; padding: 0 12px;
-  font: 500 11px/1 "IBM Plex Mono", monospace; letter-spacing: 1.2px; text-transform: uppercase; cursor: pointer; display: inline-flex; align-items: center; gap: 8px; text-decoration: none; }
-.dv__btn:hover { border-color: var(--signal); color: var(--signal); }
-.dv__thumbs { display: flex; gap: 10px; padding: 14px 18px 18px; overflow-x: auto; scroll-behavior: smooth;
-  scroll-snap-type: x proximity; scrollbar-width: thin; scrollbar-color: rgba(255,255,255,.25) transparent;
-  /* the strip runs off both edges, so it says so */
-  -webkit-mask-image: linear-gradient(90deg, transparent 0, #000 26px, #000 calc(100% - 34px), transparent 100%);
-  mask-image: linear-gradient(90deg, transparent 0, #000 26px, #000 calc(100% - 34px), transparent 100%); }
-.dv__thumb { flex: none; width: 128px; scroll-snap-align: center; padding: 0; border: 2px solid transparent; background: none; cursor: pointer; position: relative; opacity: .55; transition: opacity .2s, border-color .2s; }
-.dv__thumb img { display: block; width: 100%; height: auto; aspect-ratio: 16 / 9; object-fit: cover; }
-.dv__thumb span { position: absolute; left: 4px; bottom: 4px; font: 500 9px/1 "IBM Plex Mono", monospace; color: #fff; background: rgba(10,21,18,.8); padding: 3px 4px; }
-.dv__thumb:hover { opacity: .9; }
-.dv__thumb[aria-current="true"] { opacity: 1; border-color: var(--signal); }
-.dv:fullscreen { display: flex; flex-direction: column; justify-content: center; border: 0; }
-.dv:fullscreen .dv__stage { aspect-ratio: auto; max-height: none; flex: 1; }
-.dv:fullscreen .dv__thumbs { display: none; }
-@media (hover: none) { .dv__nav { opacity: 1; width: 40px; height: 40px; } }
-@media (max-width: 620px) { .dv__nav { display: none; } .dv__title { display: none; } .dv__bar { justify-content: space-between; padding: 10px 12px; } .dv__thumb { width: 96px; } .dv__thumbs { padding: 0 12px 12px; } .dv__fs-l { display: none; } }
+.dv { min-width: 0; }
+/* The slide is the thing. No frame around it beyond its own edge and a shadow,
+   and the stage is exactly 16:9 so nothing is letterboxed. */
+.dv__stage { position: relative; aspect-ratio: 16 / 9; width: 100%; overflow: hidden; background: #0a1512;
+  clip-path: polygon(0 0, calc(100% - 22px) 0, 100% 22px, 100% 100%, 0 100%);
+  box-shadow: 0 26px 70px rgba(7,7,7,.18); touch-action: pan-y; user-select: none; cursor: pointer; }
+.dv__stage img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; display: block; }
+.dv__prog { height: 2px; margin-top: 14px; background: rgba(7,7,7,.12); }
+.dv__prog span { display: block; height: 100%; width: 0; background: var(--emerald); transition: width .3s ease; }
+
+.dv__foot { display: flex; align-items: center; gap: 18px; margin-top: 16px; }
+.dv__step { flex: none; background: none; border: 0; padding: 6px 0; color: var(--ink); cursor: pointer;
+  font: 500 11px/1 "IBM Plex Mono", monospace; letter-spacing: 1.6px; text-transform: uppercase;
+  transition: color .2s, opacity .2s; }
+.dv__step:hover { color: var(--emerald); }
+.dv__step:focus-visible { outline: 2px solid var(--emerald); outline-offset: 3px; }
+.dv__step[disabled] { opacity: .28; pointer-events: none; }
+.dv__step--next { margin-left: 0; }
+.dv__now { flex: 1; min-width: 0; display: flex; align-items: baseline; gap: 14px; }
+.dv__count { flex: none; font: 500 11px/1 "IBM Plex Mono", monospace; letter-spacing: 1.6px; color: var(--emerald); }
+.dv__title { min-width: 0; font-size: 14px; color: rgba(7,7,7,.6); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+
+.dv:fullscreen { display: flex; flex-direction: column; justify-content: center; background: #070707; padding: 20px; }
+.dv:fullscreen .dv__stage { clip-path: none; box-shadow: none; }
+.dv:fullscreen .dv__title, .dv:fullscreen .dv__count { color: rgba(254,254,254,.72); }
+.dv:fullscreen .dv__step { color: #fff; }
+.dv:fullscreen .dv__prog { background: rgba(255,255,255,.14); }
+
+@media (max-width: 900px) {
+  .ir-deck { grid-template-columns: 1fr; gap: 28px; }
+}
+@media (max-width: 620px) {
+  .dv__title { display: none; }
+  .dv__foot { gap: 12px; }
+  .dv__step { font-size: 10px; letter-spacing: 1.2px; }
+}
 .ir-btns { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 8px; }
 .ir-btns .btn--ghost { clip-path: none; color: var(--ink); border-color: rgba(7,7,7,.35); }
 .ir-btns .btn--ghost:hover { color: var(--emerald); border-color: var(--emerald); }
@@ -191,32 +193,36 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   <span class="ir-banner__cue" aria-hidden="true"></span>
 </section>
 
-<!-- PRESENTATION · self-hosted slide viewer (assets/docs/deck) -->
+<!-- PRESENTATION · self-hosted slide viewer (assets/docs/deck).
+     Two columns: the standing detail and the download on the left, the slide
+     itself as large as the column allows on the right. No thumbnail strip, the
+     deck is read in order. -->
 <section class="bg-oat bp bp--light ir-sec" id="presentation">
   <div class="wrap">
-    <div class="ir-pres-head">
-      <div>
-        <div class="kicker">Investor presentation &middot; October 2026</div>
-        <h2 class="ir-h">LMM for Physical AI: the investor presentation</h2>
-        <p>Investor presentation &middot; October 2026. All 31 slides: use the arrows, swipe, or pick a thumbnail.</p>
+    <div class="ir-deck">
+      <aside class="ir-deck__aside">
+        <div class="kicker">October 2026</div>
+        <h2 class="ir-h">Investor presentation</h2>
+        <p>LMM for Physical AI. 31 slides, in order. Use the arrows, your keyboard or swipe.</p>
+        <a class="btn btn--ink ir-deck__dl" href="assets/docs/NEMI_Investor_Presentation_Oct2026.pptx" download>Download <span aria-hidden="true">&#8595;</span></a>
+        <div class="ir-deck__meta">PPTX &middot; 24 MB</div>
+      </aside>
+
+      <div class="dv" id="dv" tabindex="0" aria-roledescription="carousel" aria-label="LMM for Physical AI, investor presentation">
+        <div class="dv__stage">
+          <img id="dv-img" src="assets/docs/deck/slide-01.webp" width="1600" height="900" alt="Slide 1: LMM for Physical AI">
+        </div>
+        <div class="dv__prog" aria-hidden="true"><span id="dv-prog"></span></div>
+        <div class="dv__foot">
+          <button class="dv__step" id="dv-prev" type="button">&#8592; Prev</button>
+          <div class="dv__now">
+            <span class="dv__count" id="dv-count" aria-live="polite">01 / 31</span>
+            <span class="dv__title" id="dv-title">LMM for Physical AI</span>
+          </div>
+          <button class="dv__step" id="dv-fs" type="button" aria-label="Full screen">Full screen</button>
+          <button class="dv__step dv__step--next" id="dv-next" type="button">Next &#8594;</button>
+        </div>
       </div>
-      <div class="ir-btns">
-        <a class="btn btn--signal" href="assets/docs/NEMI_Investor_Presentation_Oct2026.pptx" download>Download the deck (PPTX, 24 MB)</a>
-      </div>
-    </div>
-    <div class="dv" id="dv" tabindex="0" aria-roledescription="carousel" aria-label="LMM for Physical AI, investor presentation">
-      <div class="dv__stage">
-        <img id="dv-img" src="assets/docs/deck/slide-01.webp" width="1600" height="900" alt="Slide 1: LMM for Physical AI">
-        <button class="dv__nav dv__nav--prev" id="dv-prev" type="button" aria-label="Previous slide">&#8592;</button>
-        <button class="dv__nav dv__nav--next" id="dv-next" type="button" aria-label="Next slide">&#8594;</button>
-      </div>
-      <div class="dv__prog" aria-hidden="true"><span id="dv-prog"></span></div>
-      <div class="dv__bar">
-        <span class="dv__count" id="dv-count" aria-live="polite">01 / 31</span>
-        <span class="dv__title" id="dv-title">LMM for Physical AI</span>
-        <button class="dv__btn" id="dv-fs" type="button" aria-label="Full screen">&#x26F6;<span class="dv__fs-l"> Full screen</span></button>
-      </div>
-      <div class="dv__thumbs" id="dv-thumbs" aria-label="All slides"></div>
     </div>
   </div>
 </section>
@@ -380,23 +386,16 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   var T = ['LMM for Physical AI','Legal disclaimer','Executive summary','Trillions of dollars of manufacturing will be transformed by AI','Whoever owns the factories owns the data','Our LMM (Large Manufacturing Model) stack','Powering the LMM are 3 suites of applications','Within each suite are multiple capabilities','We apply LMM to provide Manufacturing-as-a-Service','Competitors simulate. We execute in owned factories.','Case studies','Who already builds with us, aerospace to consumer','The Plan: AI-enabled, asset-backed roll-up today; full-stack LMM platform tomorrow','MaaS peers: either pre-AI full-stack, or AI native single process solutions','Capability peers','Growth is always capacity-constrained','M&A buys capacity + data, then compounds both','India concentration: the plan to get below 40% of revenue','$25M to deliver every milestone needed for a successful IPO','Five gates you can hold us to','Leaders who built manufacturing and AI systems at scale','Governance and bench: board, advisors & operating leadership','Every manufacturing company will run on AI. Only one becomes default.','Terms & structure','Disciplined scale-up: run-rate profitable, EBITDA+ CY27E','Mix shifts toward MaaS, the highest-margin engine','Unit economics: the expansion loop is locked in','Current cap table','Risks & mitigation','Comparable transactions','Valuation computation'];
   var N = T.length, i = 0, dv = document.getElementById('dv'), img = document.getElementById('dv-img'),
       cnt = document.getElementById('dv-count'), ttl = document.getElementById('dv-title'),
-      prev = document.getElementById('dv-prev'), next = document.getElementById('dv-next'), th = document.getElementById('dv-thumbs'),
+      prev = document.getElementById('dv-prev'), next = document.getElementById('dv-next'),
       prog = document.getElementById('dv-prog');
   function nn(n) { return (n < 10 ? '0' : '') + n; }
   function src(k, t) { return 'assets/docs/deck/' + (t ? 'thumb-' : 'slide-') + nn(k + 1) + '.webp'; }
-  T.forEach(function (t, k) {
-    var b = document.createElement('button'); b.type = 'button'; b.className = 'dv__thumb'; b.setAttribute('aria-label', 'Slide ' + (k + 1) + ': ' + t);
-    b.innerHTML = '<img loading="lazy" src="' + src(k, 1) + '" alt="" width="320" height="180"><span>' + nn(k + 1) + '</span>';
-    b.onclick = function () { go(k); }; th.appendChild(b);
-  });
   function go(k) {
     i = Math.max(0, Math.min(N - 1, k));
     img.src = src(i); img.alt = 'Slide ' + (i + 1) + ': ' + T[i];
     cnt.textContent = nn(i + 1) + ' / ' + N; ttl.textContent = T[i];
     prev.disabled = i === 0; next.disabled = i === N - 1;
     prog.style.width = ((i + 1) / N * 100).toFixed(2) + '%';
-    [].forEach.call(th.children, function (b, k) { b.setAttribute('aria-current', k === i ? 'true' : 'false'); });
-    var c = th.children[i]; th.scrollLeft = c.offsetLeft - (th.clientWidth - c.offsetWidth) / 2;
     [i - 1, i + 1].forEach(function (k) { if (k >= 0 && k < N) (new Image()).src = src(k); });
   }
   prev.onclick = function () { go(i - 1); }; next.onclick = function () { go(i + 1); };
