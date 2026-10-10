@@ -18,7 +18,7 @@
     '</div>' +
     '</div>' +
     '<a href="careers.html">Careers</a>' +
-    '<a href="investor-relations.html">Investors</a>' +
+    '<a href="invest.html" class="nav__invest">Invest</a>' +
     '<a href="contact.html" class="nav__cta">Contact</a>' +
     '</nav>' +
     '<button class="nav__burger" aria-label="Menu"><span></span><span></span><span></span></button>' +

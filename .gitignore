@@ -19,3 +19,8 @@ Thumbs.db
 # Local secrets (never commit)
 .env
 .env.local
+
+# Confidential, never deployed: the NDA-marked investor presentation and the
+# IR page that embeds it. Kept locally and on the ir-page-hold branch until
+# counsel clears a public version. See _s4/ANNOUNCEMENT_DAY.md.
+_withheld/
