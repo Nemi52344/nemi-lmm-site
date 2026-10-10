@@ -13,6 +13,7 @@
     '<div class="nav__drop">' +
     '<a href="case-studies.html">Case Studies</a>' +
     '<a href="blog.html">Blogs</a>' +
+    '<a href="press.html">Press</a>' +
     '<a href="faq.html">FAQs</a>' +
     '</div>' +
     '</div>' +
