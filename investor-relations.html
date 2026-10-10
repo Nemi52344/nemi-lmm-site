@@ -160,6 +160,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 .ir-cta-act .btn--ghost:hover { border-color: var(--signal); color: var(--signal); }
 .ir-cta-mail { font: 500 12px/1.4 "IBM Plex Mono", monospace; letter-spacing: 1px; color: rgba(255,255,255,.6); }
 .ir-cta-mail a { color: #fff; }
+.ir-note { margin-top: 18px; font-size: 12px; line-height: 1.6; color: rgba(7,7,7,.55); max-width: 60em; }
 @media (max-width: 900px) { .ir-cta-box { grid-template-columns: 1fr; gap: 26px; } .ir-cta-act { justify-self: start; } }
 @media (max-width: 980px) { .ir-intro { grid-template-columns: 1fr; gap: 24px; } .ir-press { grid-template-columns: 1fr 1fr; } }
 @media (max-width: 620px) { .ir-press { grid-template-columns: 1fr; } }
@@ -219,15 +220,15 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         <span class="ir-sample">Sample deck</span>
         <h2 class="ir-h">Investor presentation</h2>
         <p>This is a sample deck. The final investor presentation will replace it.</p>
-        <p>LMM for Physical AI. 12 slides, in order. Use the arrows, your keyboard or swipe.</p>
-        <a class="btn btn--ink ir-deck__dl" href="_withheld/NEMI_Investor_Presentation_Oct2026.pdf" download>Download <span aria-hidden="true">&#8595;</span></a>
-        <div class="ir-deck__meta">Sample &middot; October 2026 &middot; PDF &middot; 10 MB</div>
+        <p id="ir-deck-count">LMM for Physical AI. 12 slides, in order. Use the arrows, your keyboard or swipe.</p>
+        <a class="btn btn--ink ir-deck__dl" id="ir-deck-dl" href="_withheld/NEMI_Investor_Presentation_Oct2026.pdf" download>Download <span aria-hidden="true">&#8595;</span></a>
+        <div class="ir-deck__meta" id="ir-deck-meta">Sample &middot; October 2026 &middot; PDF &middot; 10 MB</div>
       </aside>
 
       <div class="dv" id="dv" tabindex="0" aria-roledescription="carousel" aria-label="LMM for Physical AI, investor presentation">
         <div class="dv__stage">
           <span class="dv__sample" aria-hidden="true">Sample deck</span>
-          <img id="dv-img" src="_withheld/deck/slide-01.webp?v=vs1" width="1600" height="900" alt="Slide 1: LMM for Physical AI">
+          <img id="dv-img" src="assets/ir-sample/slide-01.webp?v=1" width="1600" height="900" alt="Slide 1: LMM for Physical AI">
         </div>
         <div class="dv__prog" aria-hidden="true"><span id="dv-prog"></span></div>
         <div class="dv__foot">
@@ -349,6 +350,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         <span class="ir-cta-mail"><a href="mailto:invest@nemilmm.com">invest@nemilmm.com</a></span>
       </div>
     </div>
+    <p class="ir-note">This page is informational. It is not an offer to sell, or a solicitation of an offer to buy, any security.</p>
   </div>
 </section>
 
@@ -391,13 +393,18 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <script>
 /* Presentation viewer: arrows, keys, swipe, thumbnails, full screen. */
 (function () {
-  /* Slide titles are not in this file. They live with the deck in _withheld/,
-     which is gitignored, so the repository carries no deck content at all.
-     Without them the presentation section is taken out of the page. */
-  var sec = document.getElementById('presentation');
-  fetch('_withheld/deck/titles.json?v=vs1').then(function (r) {
-    if (!r.ok) throw new Error('no deck');
-    return r.json();
+  /* The full deck lives in _withheld/, which is gitignored and blocked on every
+     deployed site, so locally the whole deck shows. Where it is missing, the page
+     falls back to the one public sample slide in assets/ir-sample/. */
+  var sec = document.getElementById('presentation'), BASE = '_withheld/deck/', V = 'vs1';
+  function getJSON(u) { return fetch(u).then(function (r) { if (!r.ok) throw new Error(u); return r.json(); }); }
+  getJSON('_withheld/deck/titles.json?v=vs1').catch(function () {
+    BASE = 'assets/ir-sample/'; V = '1';
+    var c = document.getElementById('ir-deck-count'), d = document.getElementById('ir-deck-dl'), m = document.getElementById('ir-deck-meta');
+    if (c) c.textContent = 'One sample slide is shown here. The full presentation will be published on this page.';
+    if (d) d.remove();
+    if (m) m.textContent = 'Sample \u00b7 October 2026';
+    return getJSON('assets/ir-sample/titles.json?v=1');
   }).then(function (T) { initDeck(T); }).catch(function () { if (sec) sec.remove(); });
   function initDeck(T) {
   var N = T.length, i = 0, dv = document.getElementById('dv'), img = document.getElementById('dv-img'),
@@ -405,7 +412,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       prev = document.getElementById('dv-prev'), next = document.getElementById('dv-next'),
       prog = document.getElementById('dv-prog');
   function nn(n) { return (n < 10 ? '0' : '') + n; }
-  function src(k, t) { return '_withheld/deck/' + (t ? 'thumb-' : 'slide-') + nn(k + 1) + '.webp?v=vs1'; }
+  function src(k, t) { return BASE + (t ? 'thumb-' : 'slide-') + nn(k + 1) + '.webp?v=' + V; }
   function go(k) {
     i = Math.max(0, Math.min(N - 1, k));
     img.src = src(i); img.alt = 'Slide ' + (i + 1) + ': ' + T[i];

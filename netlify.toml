@@ -70,14 +70,9 @@
   status = 404
   force = true
 
-# Until counsel clears a public deck, the Investors button lands on the
-# coming-soon page in every deployed context. Locally the full draft shows.
-# Publishing is deleting this one rule.
-[[redirects]]
-  from = "/investor-relations.html"
-  to = "/invest.html"
-  status = 302
-  force = true
+# The Investor Relations page is visible on deployed sites with ONE sample slide
+# (assets/ir-sample/, the cover with the confidential mark removed). The full
+# deck stays in _withheld/, which is never in the repository and returns 404.
 
 [[redirects]]
   from = "/assets/docs/*"
