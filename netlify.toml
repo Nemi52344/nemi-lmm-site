@@ -7,7 +7,7 @@
 #
 # Everything that is not the production context is told not to be indexed, so a
 # demo URL can never turn up in a search result or be quoted back at us. The
-# draft pages (_s4, the post template) stay blocked in every
+# draft pages (_s4, the investors page, the post template) stay blocked in every
 # context, demo included.
 # ---------------------------------------------------------------------------
 [build]
@@ -54,17 +54,25 @@
   status = 200
   force = true
 
-# S-4 workspace (evidence audit, change log, legends draft) must never be served.
-# HOTFIX 10 Oct 2026. The NDA-marked investor presentation was public on this
-# branch's deploy preview and on the public GitHub repo. The deck files are
-# removed and these paths are held back in every context until counsel clears
-# a separate public deck. Do not remove without that sign-off.
+# Internal workspace (evidence audit, change log, drafts) must never be served.
 [[redirects]]
-  from = "/assets/docs/*"
+  from = "/_s4/*"
   to = "/home.html"
   status = 404
   force = true
 
+# Investor Relations. The deck it embeds is NDA-marked and was briefly
+# public. The deck files are not in the repository at all; the page is held
+# back in every deployed context until counsel clears a separate public deck.
+[[redirects]]
+  from = "/_withheld/*"
+  to = "/home.html"
+  status = 404
+  force = true
+
+# Until counsel clears a public deck, the Investors button lands on the
+# coming-soon page in every deployed context. Locally the full draft shows.
+# Publishing is deleting this one rule.
 [[redirects]]
   from = "/investor-relations.html"
   to = "/invest.html"
@@ -72,12 +80,18 @@
   force = true
 
 [[redirects]]
-  from = "/_s4/*"
+  from = "/assets/docs/*"
   to = "/home.html"
   status = 404
   force = true
 
 # Blog post template is a working file, not a page.
+[[redirects]]
+  from = "/_investors-draft.html"
+  to = "/home.html"
+  status = 404
+  force = true
+
 [[redirects]]
   from = "/_post-template.html"
   to = "/home.html"

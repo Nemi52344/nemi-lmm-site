@@ -12,13 +12,13 @@
     '<a href="blog.html" aria-haspopup="true">Resources<span class="nav__caret" aria-hidden="true">&#9662;</span></a>' +
     '<div class="nav__drop">' +
     '<a href="case-studies.html">Case Studies</a>' +
-    '<a href="blog.html">Blogs</a>' +
+    '<a href="blog.html">Blog</a>' +
     '<a href="press.html">Press</a>' +
     '<a href="faq.html">FAQs</a>' +
     '</div>' +
     '</div>' +
     '<a href="careers.html">Careers</a>' +
-    '<a href="investor-relations.html">Investors</a>' +
+    '<a href="investor-relations.html" class="nav__invest">Investors</a>' +
     '<a href="contact.html" class="nav__cta">Contact</a>' +
     '</nav>' +
     '<button class="nav__burger" aria-label="Menu"><span></span><span></span><span></span></button>' +
@@ -84,12 +84,17 @@
   var heroParts = heroTitle ? Array.prototype.slice.call(heroTitle.querySelectorAll('.ht')) : [];
   if (heroParts.length) {
     var heroDone = function () {
-      if (heroLede) heroLede.classList.add('is-in');
+      Array.prototype.forEach.call(document.querySelectorAll('.hero-lede'), function (el) { el.classList.add('is-in'); });
     };
     if (window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches) {
       heroParts.forEach(function (p) { p.textContent = p.getAttribute('data-text'); });
       heroDone();
     } else {
+      /* hand over from the plain headline to the animated one, only now that we
+         know the typewriter is actually going to run */
+      heroTitle.classList.add('is-typed');
+      /* only now hold the lede and the button back for the typewriter */
+      document.documentElement.classList.add('hero-anim');
       heroTitle.classList.add('typing');
       var pi = 0, ci = 0;
       (function typeStep() {

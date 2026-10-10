@@ -53,7 +53,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
       "image": "https://nemilmm.com/assets/img/og-card.jpg?v=1",
       "email": "info@nemilmm.com",
       "telephone": "+91-99403-26856",
-      "description": "NEMI builds the Large Manufacturing Model, the AI stack that runs the entire arc of a physical product, run in its own full-stack factories.",
+      "description": "NEMI builds the Large Manufacturing Model, the AI stack that runs the entire arc of a physical product, in use every day in its own full-stack factories.",
       "sameAs": [
         "https://www.linkedin.com/company/nemi-lmm/",
         "https://x.com/Nemi_corp"
@@ -101,7 +101,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="assets/css/home.css?v=95">
+<link rel="stylesheet" href="assets/css/home.css?v=42">
 <link rel="stylesheet" href="assets/css/nav-menu.css?v=12">
 </head>
 <body data-page="home">
@@ -118,8 +118,12 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   <div class="hero-veil"></div>
   <div class="crops" aria-hidden="true"><span>+</span><span>+</span><span>+</span><span>+</span></div>
   <div class="container hero--center">
-    <h1 class="display" id="heroTitle"><span class="hero-ghost" aria-hidden="true">NEMI LMM for Physical AI</span><span class="hero-live"><span class="ht" data-text="NEMI LMM for Physical AI"></span></span></h1>
+    <!-- The headline is in the markup and visible on load. The typewriter is an
+     enhancement: home.js adds .is-typed, which hands over to the animated
+     copy. With JS off, slow, or reduced-motion, the plain headline stands. -->
+    <h1 class="display" id="heroTitle"><span class="hero-ghost" aria-hidden="true">NEMI LMM for Physical AI</span><span class="hero-plain">NEMI LMM for Physical AI</span><span class="hero-live"><span class="ht" data-text="NEMI LMM for Physical AI"></span></span></h1>
     <p class="lede hero-lede" id="heroLede">Not AI for manufacturing &mdash; AI that runs manufacturing, winning on cost, quality and speed.<br>Trained inside our own factories, on the parts we design, tool and ship.</p>
+    <div class="hero-cta hero-lede"><a class="btn btn--signal" href="offerings.html">Explore our capabilities</a></div>
   </div>
   <div class="scroll-hint"></div>
 </section>
@@ -132,7 +136,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         <article class="tcard">
           <div class="thesis-panel__grid">
             <div>
-              <p class="thesis-panel__text">Hardware has no large public datasets to scrape. <em>Whoever owns the factories owns the data.</em></p>
+              <p class="thesis-panel__text">Hardware has no large public datasets to scrape. <em>That data is made on the factory floor, so we run our own.</em></p>
             </div>
             <div class="thesis-vid thesis-vid--big"><video autoplay muted loop playsinline preload="auto" aria-hidden="true"><source src="assets/video/thesis-data.mp4?v=5" type="video/mp4"></video></div>
           </div>
@@ -189,7 +193,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
           <span class="loop4-letter">I</span>
           <span class="loop4-kicker">Improve &middot; <b>Atlas</b></span>
           <h3>Field to next design</h3>
-          <p>Every deployed unit reports back. Field learning feeds the next loop.</p>
+          <p>Every deployed unit is built to report back, so field learning can feed the next loop.</p>
         </div>
       </div>
       <div class="loop4-return">
@@ -208,16 +212,16 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     </div>
     <div class="suite-media">
       <figure>
-        <figcaption class="dev-bar" aria-hidden="true"><span class="dev-dots"><span></span><span></span><span></span></span><span class="dev-app">Anvil &middot; Engineering Suite</span><span class="dev-live">Live</span></figcaption>
-        <img src="assets/img/suite-anvil.jpg?v=3" alt="Anvil CAD interface">
+        <figcaption class="dev-bar" aria-hidden="true"><span class="dev-dots"><span></span><span></span><span></span></span><span class="dev-app">Anvil &middot; Engineering Suite</span></figcaption>
+        <img src="assets/img/suite-anvil.jpg?v=3" alt="Anvil engineering suite: generative CAD and simulation workspace">
       </figure>
       <figure>
         <figcaption class="dev-bar" aria-hidden="true"><span class="dev-dots"><span></span><span></span><span></span></span><span class="dev-app">Orion &middot; Factory OS</span><span class="dev-live dev-live--muted">In validation</span></figcaption>
-        <img src="assets/img/suite-orion.jpg?v=4" alt="Orion factory ERP">
+        <img src="assets/img/suite-orion.jpg?v=4" alt="Orion factory OS: digital-twin view of the production floor">
       </figure>
       <figure>
         <figcaption class="dev-bar" aria-hidden="true"><span class="dev-dots"><span></span><span></span><span></span></span><span class="dev-app">Atlas &middot; Post Manufacturing Data Capture</span><span class="dev-live dev-live--muted">Roadmap</span></figcaption>
-        <img src="assets/img/suite-atlas.jpg?v=2" alt="Atlas field telemetry">
+        <img src="assets/img/suite-atlas.jpg?v=2" alt="Atlas post-manufacturing data capture interface">
       </figure>
     </div>
     <div class="container suite-stage">
@@ -228,7 +232,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         </div>
         <div class="suite-info">
           <h3>Orion</h3>
-          <p>The factory's operating system. A live digital twin directing people first, robots next.</p>
+          <p>The factory's operating system. A digital twin directing people first, robots next.</p>
         </div>
         <div class="suite-info">
           <h3>Atlas</h3>
@@ -246,8 +250,8 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <div class="split">
       <div>
         <span class="eyebrow reveal">Fortress Factories</span>
-        <h2 class="h-lg reveal">Competitors Simulate. We Execute.</h2>
-        <p class="lede reveal" style="margin-top:1.4rem;">Full-stack factories that manufacture batteries, motors, electronics, metals, plastics, tooling, and complex assemblies, sold to customers as Manufacturing-as-a-Service.</p>
+        <h2 class="h-lg reveal">One company, the software and the factory.</h2>
+        <p class="lede reveal" style="margin-top:1.4rem;">Our engineering software and our production floors are run by the same company, so a design change reaches the line without a handover. The factories manufacture batteries, motors, electronics, metals, plastics, tooling and complex assemblies, sold as Manufacturing-as-a-Service.</p>
         <div class="fort-certs reveal reveal-d1">
           <div class="fort-cert"><b>AS9100D:2016</b><span>Aerospace QMS &middot; Certified</span></div>
           <div class="fort-cert"><b>ISO 9001:2015</b><span>Quality Management &middot; Certified</span></div>
@@ -262,6 +266,55 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         <div class="img-block"><span class="ib-par"><img src="assets/img/fort-motors.jpg" alt="Wound motor stator on the motor line" loading="lazy"></span><span class="img-cap">Motors</span></div>
       </div>
     </div>
+  </div>
+</section>
+
+<!-- DELIVERED · three results, each one taken from its case study page. Change a
+     number here only when the case page changes. Bar widths are the NEMI figure as a
+     share of the comparison figure. Type and data only, no images. -->
+<section class="sec sec-line-top light proof-sec" id="delivered">
+  <div class="container">
+    <div class="proof-head reveal">
+      <h2 class="h-lg">Programs we have delivered.</h2>
+      <p class="proof-head__lede">Customers come to us for the work itself. We engineer, tool and produce their part, sub-assembly or complete product, in our own factories.</p>
+    </div>
+
+    <div class="proof-grid proof-grid--graphite">
+      <a class="proof reveal" href="case-messenger.html">
+        <span class="proof__k"><em>01</em>Electric vehicles &middot; Internal program</span>
+        <div class="proof__n"><b>9<small>mo</small></b><span>concept to<br>production-ready</span></div>
+        <p class="proof__d">The BNC Messenger C110, built with NEMI subsidiary BNC Motors, from blank sheet to production-ready.</p>
+        <div class="proof__bars" role="img" aria-label="Benchmark 18 months, NEMI 9 months">
+          <div class="pb"><span class="pb__l">Benchmark</span><span class="pb__t"><i style="--w:100%"></i></span><span class="pb__v">18 mo</span></div>
+          <div class="pb pb--n"><span class="pb__l">NEMI</span><span class="pb__t"><i style="--w:50%"></i></span><span class="pb__v">9 mo</span></div>
+        </div>
+        <span class="proof__more">Read the case <span class="proof__arr" aria-hidden="true">&rarr;</span></span>
+      </a>
+
+      <a class="proof reveal reveal-d1" href="case-drone.html">
+        <span class="proof__k"><em>02</em>Defense &middot; UAS</span>
+        <div class="proof__n"><b>4<small>mo</small></b><span>to a full<br>drone powertrain</span></div>
+        <p class="proof__d">Battery, motor, ESC and ground control, engineered and built in-house for a defense OEM.</p>
+        <div class="proof__bars" role="img" aria-label="Typical market lead time 16 months, NEMI 4 months">
+          <div class="pb"><span class="pb__l">Typical</span><span class="pb__t"><i style="--w:100%"></i></span><span class="pb__v">16 mo</span></div>
+          <div class="pb pb--n"><span class="pb__l">NEMI</span><span class="pb__t"><i style="--w:25%"></i></span><span class="pb__v">4 mo</span></div>
+        </div>
+        <span class="proof__more">Read the case <span class="proof__arr" aria-hidden="true">&rarr;</span></span>
+      </a>
+
+      <a class="proof reveal reveal-d2" href="case-pmi.html">
+        <span class="proof__k"><em>03</em>Aerospace &middot; Precision parts</span>
+        <div class="proof__n"><b>10&ndash;15<small>&micro;m</small></b><span>held<br>first time</span></div>
+        <p class="proof__d">A flight-critical clamp for an aerospace OEM, with machine runtime per job more than halved.</p>
+        <div class="proof__bars" role="img" aria-label="Runtime per job before 7 hours, NEMI 3 hours">
+          <div class="pb"><span class="pb__l">Before</span><span class="pb__t"><i style="--w:100%"></i></span><span class="pb__v">7 hrs</span></div>
+          <div class="pb pb--n"><span class="pb__l">NEMI</span><span class="pb__t"><i style="--w:43%"></i></span><span class="pb__v">3 hrs</span></div>
+        </div>
+        <span class="proof__more">Read the case <span class="proof__arr" aria-hidden="true">&rarr;</span></span>
+      </a>
+    </div>
+
+    <div class="proof-foot reveal"><a href="case-studies.html">All case studies <span aria-hidden="true">&rarr;</span></a></div>
   </div>
 </section>
 
@@ -334,7 +387,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   </div>
 </section>
 
-<script src="assets/js/home.js?v=29"></script>
+<script src="assets/js/home.js?v=31"></script>
 <footer>
   <div class="foot-wrap">
     <div class="foot-grid">
@@ -348,17 +401,19 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         <li><a href="home.html">Home</a></li>
         <li><a href="about.html">About Us</a></li>
         <li><a href="offerings.html">Offerings</a></li>
-        <li><a href="case-studies.html">Case Studies</a></li>
-        <li><a href="blog.html">Blogs</a></li>
-        <li><a href="press.html">Press</a></li>
-        <li><a href="faq.html">FAQs</a></li>
         <li><a href="careers.html">Careers</a></li>
         <li><a href="contact.html">Contact</a></li>
       </ul></div>
+      <div><h4>Resources</h4><ul>
+        <li><a href="case-studies.html">Case Studies</a></li>
+        <li><a href="blog.html">Blog</a></li>
+        <li><a href="press.html">Press</a></li>
+        <li><a href="faq.html">FAQs</a></li>
+      </ul></div>
       <div><h4>Platform</h4><ul>
-        <li><a href="offerings.html">Anvil &middot; Engineer</a></li>
-        <li><a href="offerings.html">Orion &middot; Manufacture</a></li>
-        <li><a href="offerings.html">Atlas &middot; Improve</a></li>
+        <li><a href="lmm-stack.html#anvil">Anvil &middot; Engineer</a></li>
+        <li><a href="lmm-stack.html#orion">Orion &middot; Manufacture</a></li>
+        <li><a href="lmm-stack.html#atlas">Atlas &middot; Improve</a></li>
       </ul></div>
       <div><h4>Contact</h4><ul>
         <li><a href="mailto:info@nemilmm.com">info@nemilmm.com</a></li>

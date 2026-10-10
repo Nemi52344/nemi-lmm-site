@@ -49,7 +49,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
       "name": "What is the Large Manufacturing Model (LMM)?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "One AI system that runs the entire arc of a physical product, from idea and engineering through manufacturing to field feedback. It is delivered through three suites: Anvil (engineering), Orion (the factory OS) and Atlas (field telemetry)."
+        "text": "One AI system built to run the entire arc of a physical product, from idea and engineering through manufacturing to field feedback. It is delivered through three suites at different stages: Anvil (engineering) is in use today, Orion (the factory OS) is in validation, and Atlas (post-manufacturing data capture) is on the roadmap."
       }
     },
     {
@@ -81,7 +81,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
       "name": "Are you certified for aerospace and regulated work?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "Yes. Our factories are certified to AS9100D:2016 (aerospace quality management) and ISO 9001:2015, and hold flight-critical tolerances in serial supply."
+        "text": "Yes. NEMI is certified to AS9100D:2016 (aerospace quality management) and ISO 9001:2015."
       }
     },
     {
@@ -99,7 +99,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="assets/css/style.css?v=189">
+<link rel="stylesheet" href="assets/css/style.css?v=199">
 <link rel="stylesheet" href="assets/css/nav-menu.css?v=12">
 <link rel="icon" type="image/svg+xml" href="assets/img/favicon.svg?v=7">
 <link rel="icon" type="image/png" sizes="32x32" href="assets/img/favicon-32.png?v=7">
@@ -123,13 +123,13 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         <a href="blog.html" class="active" aria-haspopup="true">Resources<span class="nav__caret" aria-hidden="true">&#9662;</span></a>
         <div class="nav__drop">
           <a href="case-studies.html">Case Studies</a>
-          <a href="blog.html">Blogs</a>
+          <a href="blog.html">Blog</a>
           <a href="press.html">Press</a>
           <a href="faq.html" class="is-current" aria-current="page">FAQs</a>
         </div>
       </div>
       <a href="careers.html">Careers</a>
-      <a href="investor-relations.html">Investors</a>
+      <a href="investor-relations.html" class="nav__invest">Investors</a>
       <a href="contact.html" class="nav__cta">Contact</a>
     </nav>
     <button class="nav__burger" aria-label="Menu" onclick="document.getElementById('menu').classList.toggle('open')"><span></span><span></span><span></span></button>
@@ -153,7 +153,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <div class="faq">
       <details class="faq__item">
         <summary>What is the Large Manufacturing Model (LMM)?</summary>
-        <p>One AI system that runs the entire arc of a physical product, from idea and engineering through manufacturing to field feedback. It is delivered through three suites: Anvil (engineering), Orion (the factory OS) and Atlas (field telemetry).</p>
+        <p>One AI system built to run the entire arc of a physical product, from idea and engineering through manufacturing to field feedback. It is delivered through three suites at different stages: Anvil (engineering) is in use today, Orion (the factory OS) is in validation, and Atlas (post-manufacturing data capture) is on the roadmap.</p>
       </details>
       <details class="faq__item">
         <summary>Do you actually manufacture, or just provide software?</summary>
@@ -169,7 +169,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       </details>
       <details class="faq__item">
         <summary>Are you certified for aerospace and regulated work?</summary>
-        <p>Yes. Our factories are certified to AS9100D:2016 (aerospace quality management) and ISO 9001:2015, and hold flight-critical tolerances in serial supply.</p>
+        <p>Yes. NEMI is certified to AS9100D:2016 (aerospace quality management) and ISO 9001:2015.</p>
       </details>
       <details class="faq__item">
         <summary>Where is NEMI based?</summary>
@@ -213,17 +213,19 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         <li><a href="home.html">Home</a></li>
         <li><a href="about.html">About Us</a></li>
         <li><a href="offerings.html">Offerings</a></li>
-        <li><a href="case-studies.html">Case Studies</a></li>
-        <li><a href="blog.html">Blogs</a></li>
-        <li><a href="press.html">Press</a></li>
-        <li><a href="faq.html">FAQs</a></li>
         <li><a href="careers.html">Careers</a></li>
         <li><a href="contact.html">Contact</a></li>
       </ul></div>
+      <div><h4>Resources</h4><ul>
+        <li><a href="case-studies.html">Case Studies</a></li>
+        <li><a href="blog.html">Blog</a></li>
+        <li><a href="press.html">Press</a></li>
+        <li><a href="faq.html">FAQs</a></li>
+      </ul></div>
       <div><h4>Platform</h4><ul>
-        <li><a href="offerings.html">Anvil &middot; Engineer</a></li>
-        <li><a href="offerings.html">Orion &middot; Manufacture</a></li>
-        <li><a href="offerings.html">Atlas &middot; Improve</a></li>
+        <li><a href="lmm-stack.html#anvil">Anvil &middot; Engineer</a></li>
+        <li><a href="lmm-stack.html#orion">Orion &middot; Manufacture</a></li>
+        <li><a href="lmm-stack.html#atlas">Atlas &middot; Improve</a></li>
       </ul></div>
       <div><h4>Contact</h4><ul>
         <li><a href="mailto:info@nemilmm.com">info@nemilmm.com</a></li>

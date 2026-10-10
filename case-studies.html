@@ -43,7 +43,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="assets/css/style.css?v=189">
+<link rel="stylesheet" href="assets/css/style.css?v=199">
 <link rel="stylesheet" href="assets/css/nav-menu.css?v=12">
 <link rel="icon" type="image/svg+xml" href="assets/img/favicon.svg?v=7">
 <link rel="icon" type="image/png" sizes="32x32" href="assets/img/favicon-32.png?v=7">
@@ -67,13 +67,13 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         <a href="blog.html" class="active" aria-haspopup="true">Resources<span class="nav__caret" aria-hidden="true">&#9662;</span></a>
         <div class="nav__drop">
           <a href="case-studies.html" class="is-current" aria-current="page">Case Studies</a>
-          <a href="blog.html">Blogs</a>
+          <a href="blog.html">Blog</a>
           <a href="press.html">Press</a>
           <a href="faq.html">FAQs</a>
         </div>
       </div>
       <a href="careers.html">Careers</a>
-      <a href="investor-relations.html">Investors</a>
+      <a href="investor-relations.html" class="nav__invest">Investors</a>
       <a href="contact.html" class="nav__cta">Contact</a>
     </nav>
     <button class="nav__burger" aria-label="Menu" onclick="document.getElementById('menu').classList.toggle('open')"><span></span><span></span><span></span></button>
@@ -109,7 +109,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <div class="wrap cs-grid">
       <figure class="cs-visual">
         <span class="cs-badge">Case 01</span>
-        <img class="cs-photo" src="assets/img/case/bnc-hero.jpg" alt="BNC Messenger C110" loading="lazy">
+        <img class="cs-photo" src="assets/img/case/bnc-hero.jpg" alt="BNC Messenger C110 electric motorcycle" loading="lazy">
         <div class="cc" aria-hidden="true">
           <div class="cc__hud">
             <span class="cc__lg"><i class="i-conv"></i>Conventional</span>
@@ -145,7 +145,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         <div class="cs-metrics">
           <div><b>18 → 9 mo</b><span>to production</span></div>
           <div><b>&lt;$0.5M</b><span>program cost</span></div>
-          <div><b>100%</b><span>spec met</span></div>
+          <div><b>50%</b><span>cycle compression</span></div>
         </div>
         <a class="cs-more" href="case-messenger.html">Read the full case study →</a>
       </div>
@@ -156,7 +156,8 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <div class="wrap cs-grid">
       <figure class="cs-visual">
         <span class="cs-badge">Case 02</span>
-        <img class="cs-photo" src="assets/img/case/aero-hero.jpg" alt="Precision-machined aerospace components" loading="lazy">
+        <img class="cs-photo" src="assets/img/case/aero-hero.jpg" alt="Illustration of precision-machined aerospace components" loading="lazy">
+        <span class="cs-illus">Illustration</span>
         <div class="cc" aria-hidden="true">
           <div class="cc__hud">
             <span class="cc__lg"><i class="i-conv"></i>Conventional</span>
@@ -204,7 +205,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <div class="wrap cs-grid">
       <figure class="cs-visual">
         <span class="cs-badge">Case 03</span>
-        <img class="cs-photo" src="assets/img/case/coffee-hero.jpg" alt="Smart filter-coffee machine" loading="lazy">
+        <img class="cs-photo" src="assets/img/case/coffee-hero.jpg" alt="Smart self-cleaning filter-coffee vending machine" loading="lazy">
         <div class="cc" aria-hidden="true">
           <div class="cc__hud">
             <span class="cc__lg"><i class="i-conv"></i>Conventional</span>
@@ -232,7 +233,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       <div class="cs-info rv">
         <div class="cs-scope">Consumer Appliances</div>
         <h3 class="cs-title">A vending-machine line in <span class="accent-deep">5 weeks.</span></h3>
-        <p class="cs-desc">A smart self-cleaning filter-coffee machine, 100 cups an hour. Anvil re-engineered components to eliminate tooling, the imported refrigeration unit was localized as a sealed swap-cartridge, and a full host-cell line was documented to 400 units/month.</p>
+        <p class="cs-desc">A smart self-cleaning filter-coffee machine, 100 cups an hour. Anvil re-engineered components to eliminate tooling, the imported refrigeration unit was localized as a sealed swap-cartridge, and a full host-cell line was documented for a capacity of 400 units/month.</p>
         <dl class="cs-rows">
           <div><dt>Client</dt><dd>Consumer Appliances brand</dd></div>
           <div><dt>Scope</dt><dd>Re-engineer · Localize · Line</dd></div>
@@ -240,7 +241,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         </dl>
         <div class="cs-metrics">
           <div><b>5 wks</b><span>line stood up</span></div>
-          <div><b>400 / mo</b><span>zero tooling</span></div>
+          <div><b>400 / mo</b><span>capacity, zero tooling</span></div>
           <div><b>−20%</b><span>BOM cost</span></div>
         </div>
         <a class="cs-more" href="case-coffee.html">Read the full case study →</a>
@@ -288,7 +289,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
           <div><dt>Timeline</dt><dd>4 months · $100k</dd></div>
         </dl>
         <div class="cs-metrics">
-          <div><b>16 → 4 mo</b><span>development</span></div>
+          <div><b>16 → 4 mo</b><span>vs typical market lead time</span></div>
           <div><b>$100k</b><span>Development cost</span></div>
           <div><b>4 / 4</b><span>in-house</span></div>
         </div>
@@ -323,17 +324,19 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         <li><a href="home.html">Home</a></li>
         <li><a href="about.html">About Us</a></li>
         <li><a href="offerings.html">Offerings</a></li>
-        <li><a href="case-studies.html">Case Studies</a></li>
-        <li><a href="blog.html">Blogs</a></li>
-        <li><a href="press.html">Press</a></li>
-        <li><a href="faq.html">FAQs</a></li>
         <li><a href="careers.html">Careers</a></li>
         <li><a href="contact.html">Contact</a></li>
       </ul></div>
+      <div><h4>Resources</h4><ul>
+        <li><a href="case-studies.html">Case Studies</a></li>
+        <li><a href="blog.html">Blog</a></li>
+        <li><a href="press.html">Press</a></li>
+        <li><a href="faq.html">FAQs</a></li>
+      </ul></div>
       <div><h4>Platform</h4><ul>
-        <li><a href="offerings.html">Anvil &middot; Engineer</a></li>
-        <li><a href="offerings.html">Orion &middot; Manufacture</a></li>
-        <li><a href="offerings.html">Atlas &middot; Improve</a></li>
+        <li><a href="lmm-stack.html#anvil">Anvil &middot; Engineer</a></li>
+        <li><a href="lmm-stack.html#orion">Orion &middot; Manufacture</a></li>
+        <li><a href="lmm-stack.html#atlas">Atlas &middot; Improve</a></li>
       </ul></div>
       <div><h4>Contact</h4><ul>
         <li><a href="mailto:info@nemilmm.com">info@nemilmm.com</a></li>

@@ -82,7 +82,7 @@ section { padding: 88px 0; }
   position: relative;
   font-family: "IBM Plex Mono", monospace;
   font-size: 12px; letter-spacing: 2px; text-transform: uppercase;
-  color: rgba(236,231,221,0.62); transition: color .2s; padding: 8px 16px;
+  color: rgba(236,231,221,0.85); transition: color .2s; padding: 8px 16px;
 }
 .nav__links a:not(.nav__cta)::after {
   content: ""; position: absolute; left: 16px; right: 16px; bottom: 2px; height: 1.5px;
@@ -602,6 +602,11 @@ section { padding: 88px 0; }
 .team-sub.team-grid .person { min-height: 98px; }
 .team-sub .person__back p { font-size: 9.5px; line-height: 1.38; }
 @media (prefers-reduced-motion: reduce) { .person__face { transition: none; } }
+/* Five in the leadership row since the CFO appointment: keep one even row on desktop
+   rather than four plus an orphan. Falls back to the shared 2-up / 1-up rules below. */
+.team-grid--seven { grid-template-columns: repeat(4, 1fr); }
+.team-grid--seven .person { min-height: 128px; }
+@media (max-width: 1180px) and (min-width: 901px) { .team-grid--seven { grid-template-columns: repeat(3, 1fr); } }
 /* Five in the leadership row since the CFO appointment: one even row on desktop
    rather than four plus an orphan. Falls back to the shared 2-up / 1-up rules below. */
 .team-grid--five { grid-template-columns: repeat(5, 1fr); }
@@ -2318,7 +2323,7 @@ button.btn {
 /* ---------- Canonical dark footer (shared with home) ---------- */
 footer { background: #07110D; color: #9DA8A0; border-top: 1px solid rgba(233,238,231,0.13); padding: 4rem 0 2.5rem; font-size: 0.82rem; }
 .foot-wrap { max-width: 1280px; margin: 0 auto; padding: 0 24px; }
-.foot-grid { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 2.5rem; margin-bottom: 3.5rem; }
+.foot-grid { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr 1fr; gap: 2.5rem; margin-bottom: 3.5rem; }
 .foot-grid h4 { font-family: 'IBM Plex Mono', monospace; font-size: 0.66rem; letter-spacing: 0.22em; color: var(--signal); margin-bottom: 1.1rem; text-transform: uppercase; }
 .foot-grid ul { list-style: none; margin: 0; padding: 0; }
 .foot-grid ul li { margin-bottom: 0.55rem; }
@@ -2785,7 +2790,7 @@ footer { background: #07110D; color: #9DA8A0; border-top: 1px solid rgba(233,238
 
 /* ---------- Offering status labels ----------
    Which categories are the near-term focus and which are available on request.
-   Lives here rather than in style.css so the S-4 wording changes stay in one file. */
+   Lives here rather than in style.css so the compliance wording changes stay in one file. */
 .svcx-tile__status {
   display: inline-block; margin-bottom: 8px;
   font: 500 9.5px/1 "IBM Plex Mono", monospace; text-transform: uppercase; letter-spacing: 1.8px;
@@ -2794,6 +2799,13 @@ footer { background: #07110D; color: #9DA8A0; border-top: 1px solid rgba(233,238
 .svcx-tile__status:not(:empty) { vertical-align: middle; }
 .svcx-key { display: flex; flex-wrap: wrap; gap: 8px 22px; margin-top: 22px;
   font: 500 10.5px/1.7 "IBM Plex Mono", monospace; text-transform: uppercase; letter-spacing: 1.6px; color: var(--grey); }
+
+/* The CFO card carries a longer bio than the rest, and on a phone the card is
+   narrow enough that it wraps to the full height. Give the leadership row more
+   room below 560px. Appended last so it wins over the shared .team-grid rule. */
+@media (max-width: 560px) {
+  .team-grid--seven .person { min-height: 152px; }
+}
 
 /* An illustration standing in for hardware has to say so on the page, not just
    in the alt text. Used on the Defense UAS case, where the hero is a render. */
@@ -2810,7 +2822,7 @@ footer { background: #07110D; color: #9DA8A0; border-top: 1px solid rgba(233,238
 .person__tag { display: inline-block; margin-top: 10px; padding: 4px 8px;
   font: 500 9px/1 "IBM Plex Mono", monospace; text-transform: uppercase; letter-spacing: 1.6px;
   color: var(--emerald); border: 1px solid rgba(10, 73, 56, .32); }
-
+.team-note { margin-top: 12px; max-width: 640px; font-size: 14px; line-height: 1.6; color: rgba(7,7,7,.6); }
 /* The CFO and CSO cards carry longer bios than the rest, and on a phone the card is
    narrow enough that the text wraps to full height. Give the leadership row more room
    below 560px. Appended last so it wins over the shared .team-grid rule. */
@@ -2958,3 +2970,40 @@ footer { background: #07110D; color: #9DA8A0; border-top: 1px solid rgba(233,238
   .team-grid .person__back .person__fields { margin-top: 9px; }
   .team-grid .person__front::after, .team-grid .person__back::before { display: none; }
 }
+
+/* ---------- Release card ----------
+   The thumbnail already carries the headline, the date and the wire mark, so it
+   loses the wash and the overlaid kicker: darkening the artwork or setting a
+   second label over it would only fight the graphic. It sits beside the text at
+   its own 16:9 rather than above it at full width, which kept the listing from
+   turning one release into a billboard. */
+.post--release { grid-template-columns: minmax(0, 360px) minmax(0, 1fr); align-items: center;
+  /* the thumbnail is a framed graphic, so it is inset from the card edge rather
+     than bled to it, the way a photograph would be */
+  padding: clamp(20px, 2.2vw, 30px); gap: clamp(20px, 2.4vw, 34px); }
+/* align-self must not be stretch here: a stretched height plus the 16/9 ratio
+   drives the width back out and the thumbnail overflows its own column. */
+.post--release .post__cover { min-height: 0; aspect-ratio: 16 / 9; padding: 0;
+  background-color: var(--ink); align-self: center; width: 100%; }
+.post--release .post__photo { object-fit: cover; z-index: 0; }
+.post--release .post__cover--photo::after,
+.post--release .post__cover-k { display: none; }
+.post--release .post__body { gap: 11px; padding: 0; }
+.post--release .post__title { font-size: clamp(19px, 1.7vw, 23px); letter-spacing: -.5px; }
+.post--release .post__excerpt { font-size: 14.5px; line-height: 1.65; }
+@media (max-width: 760px) {
+  .post--release { grid-template-columns: 1fr; }
+  .post--release .post__cover { align-self: auto; }
+}
+
+/* A certification chip states a standard. It does not state who holds it, for
+   what scope, at which site, or until when, and those are the four things a
+   reader checking the claim needs. */
+.cert-scope { margin: 14px 0 0; max-width: 62ch;
+  font: 400 12px/1.6 "IBM Plex Mono", monospace; letter-spacing: .3px; color: rgba(7,7,7,.52); }
+.bg-ink .cert-scope, .sec-fortress .cert-scope { color: rgba(236,231,221,.5); }
+
+/* Letters from the founder: a heading over the CEO's own writing on the blog */
+.post-group__head { margin-bottom: 26px; max-width: 760px; }
+.post-group__h { font-size: clamp(24px, 2.6vw, 32px); font-weight: 600; letter-spacing: -.6px; line-height: 1.15; }
+.post-group__p { margin-top: 10px; font-size: 15.5px; line-height: 1.65; color: rgba(7,7,7,.64); }

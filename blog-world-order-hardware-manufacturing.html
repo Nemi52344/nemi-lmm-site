@@ -80,7 +80,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="assets/css/style.css?v=189">
+<link rel="stylesheet" href="assets/css/style.css?v=199">
 <link rel="stylesheet" href="assets/css/nav-menu.css?v=12">
 <link rel="stylesheet" href="assets/css/blog.css?v=15">
 <link rel="icon" type="image/svg+xml" href="assets/img/favicon.svg?v=7">
@@ -105,13 +105,13 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         <a href="blog.html" class="active" aria-haspopup="true">Resources<span class="nav__caret" aria-hidden="true">&#9662;</span></a>
         <div class="nav__drop">
           <a href="case-studies.html">Case Studies</a>
-          <a href="blog.html" class="is-current" aria-current="page">Blogs</a>
+          <a href="blog.html" class="is-current" aria-current="page">Blog</a>
           <a href="press.html">Press</a>
           <a href="faq.html">FAQs</a>
         </div>
       </div>
       <a href="careers.html">Careers</a>
-      <a href="investor-relations.html">Investors</a>
+      <a href="investor-relations.html" class="nav__invest">Investors</a>
       <a href="contact.html" class="nav__cta">Contact</a>
     </nav>
     <button class="nav__burger" aria-label="Menu" onclick="document.getElementById('menu').classList.toggle('open')"><span></span><span></span><span></span></button>
@@ -122,7 +122,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <article>
 <header class="art-hero bp bp--light">
   <div class="art-wrap">
-    <nav class="art-crumbs" aria-label="Breadcrumb"><a href="home.html">Home</a> / <a href="blog.html">Blogs</a> / The world order is decided by manufacturing</nav>
+    <nav class="art-crumbs" aria-label="Breadcrumb"><a href="home.html">Home</a> / <a href="blog.html">Blog</a> / The world order is decided by manufacturing</nav>
     <!-- CATEGORY: exactly one of Company · Engineering · Factory floor · Industry -->
     <a class="art-cat" href="blog.html">Industry</a>
     <h1 class="art-title">The world order is determined by <span class="accent-deep">hardware and manufacturing.</span></h1>
@@ -219,17 +219,14 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <!-- SOURCES · required whenever the post contains a number, a customer result or a comparison -->
     <section class="art-notes" aria-labelledby="src-h">
       <h2 id="src-h">Sources</h2>
-      <!-- VERIFY EACH before this goes live. Historical figures, not NEMI claims, but the
-           same rule applies: every number traces to a named document. Sources 2, 4, 5 and 7
-           still need a specific reference. -->
-            <ol>
+      <ol>
         <li id="src-1">Shares of world manufacturing output, 1750&ndash;1900: Paul Bairoch, &ldquo;International Industrialization Levels from 1750 to 1980&rdquo;, <i>Journal of European Economic History</i>, 1982. <a href="#ref-1" aria-label="Back to text">&#8617;</a></li>
-        <li id="src-2">German steel output and the chemical and electrical industries to 1913: standard economic histories of the Kaiserreich; figure to be tied to a named source before publication. <a href="#ref-2" aria-label="Back to text">&#8617;</a></li>
+        <li id="src-2">Steel output of Germany, Britain and France in 1913, and Germany&rsquo;s place in chemicals and electrical engineering: Paul Kennedy, <i>The Rise and Fall of the Great Powers</i> (Random House, 1987), chapter 5, drawing on B. R. Mitchell, <i>European Historical Statistics 1750&ndash;1970</i> (Macmillan, 1975). <a href="#ref-2" aria-label="Back to text">&#8617;</a></li>
         <li id="src-3">Model T chassis assembly time before and after the moving line: Ford Motor Company historical records. <a href="#ref-3" aria-label="Back to text">&#8617;</a></li>
-        <li id="src-4">US wartime aircraft production and Liberty ship build times: US wartime production statistics. <a href="#ref-4" aria-label="Back to text">&#8617;</a></li>
-        <li id="src-5">US share of global manufacturing output in the immediate post-war years. <a href="#ref-5" aria-label="Back to text">&#8617;</a></li>
+        <li id="src-4">US military aircraft output, about 300,000 from 1940 to 1945: US Army Air Forces, <i>Army Air Forces Statistical Digest, World War II</i> (1945). Liberty ship build times: Frederic C. Lane, <i>Ships for Victory: A History of Shipbuilding under the U.S. Maritime Commission in World War II</i> (Johns Hopkins Press, 1951). <a href="#ref-4" aria-label="Back to text">&#8617;</a></li>
+        <li id="src-5">US share of world manufacturing output after the war: Bairoch (1982), as in note 1, and Kennedy (1987), chapter 7. <a href="#ref-5" aria-label="Back to text">&#8617;</a></li>
         <li id="src-6">China&rsquo;s share of global manufacturing value added: UNIDO and World Bank data. <a href="#ref-6" aria-label="Back to text">&#8617;</a></li>
-        <li id="src-7">Comparative shipbuilding output, China and the United States. <a href="#ref-7" aria-label="Back to text">&#8617;</a></li>
+        <li id="src-7">China above half of global commercial shipbuilding, the United States about 0.1 per cent in 2024: Center for Strategic and International Studies, <i>Ship Wars: Confronting China&rsquo;s Dual-Use Shipbuilding Empire</i> (March 2025). <a href="#ref-7" aria-label="Back to text">&#8617;</a></li>
       </ol>
     </section>
     <!-- DISCLOSURE · keep when the post talks about plans, roadmap, targets, ambitions or the future.
@@ -239,8 +236,8 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       are not guarantees, and actual results may differ materially. NEMI undertakes no obligation to update them
       except as required by law.</p>
 
-    <!-- DO NOT ADD: any mention of the transaction, the SPAC, a listing, valuation, projections, ownership,
-         timetable or fundraising. That content is a public filing (Form 425) and lives only on the Investors page. -->
+    <!-- DO NOT ADD: corporate transactions, financing, valuation, projections, ownership or timetables.
+         Anything of that kind is cleared by counsel first and lives only on the Investors page. -->
   </div>
 </div>
 </article>
@@ -292,17 +289,19 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         <li><a href="home.html">Home</a></li>
         <li><a href="about.html">About Us</a></li>
         <li><a href="offerings.html">Offerings</a></li>
-        <li><a href="case-studies.html">Case Studies</a></li>
-        <li><a href="blog.html">Blogs</a></li>
-        <li><a href="press.html">Press</a></li>
-        <li><a href="faq.html">FAQs</a></li>
         <li><a href="careers.html">Careers</a></li>
         <li><a href="contact.html">Contact</a></li>
       </ul></div>
+      <div><h4>Resources</h4><ul>
+        <li><a href="case-studies.html">Case Studies</a></li>
+        <li><a href="blog.html">Blog</a></li>
+        <li><a href="press.html">Press</a></li>
+        <li><a href="faq.html">FAQs</a></li>
+      </ul></div>
       <div><h4>Platform</h4><ul>
-        <li><a href="offerings.html">Anvil &middot; Engineer</a></li>
-        <li><a href="offerings.html">Orion &middot; Manufacture</a></li>
-        <li><a href="offerings.html">Atlas &middot; Improve</a></li>
+        <li><a href="lmm-stack.html#anvil">Anvil &middot; Engineer</a></li>
+        <li><a href="lmm-stack.html#orion">Orion &middot; Manufacture</a></li>
+        <li><a href="lmm-stack.html#atlas">Atlas &middot; Improve</a></li>
       </ul></div>
       <div><h4>Contact</h4><ul>
         <li><a href="mailto:info@nemilmm.com">info@nemilmm.com</a></li>
