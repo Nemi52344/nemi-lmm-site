@@ -2657,3 +2657,11 @@ h1, h2, h3, h4 { text-transform: none; letter-spacing: -0.015em; }
    the old Live badge, muted and without the pulse. */
 .dev-live--muted { color: rgba(233, 238, 231, 0.62); border-color: rgba(233, 238, 231, 0.24); }
 .dev-live--muted::before { background: rgba(233, 238, 231, 0.45); animation: none; }
+
+/* Hero lede: exactly two lines on desktop, one per sentence. On narrow screens the
+   sentences wrap naturally. */
+.hero-lede .hl { display: block; }
+@media (min-width: 900px) {
+  .hero .lede.hero-lede { max-width: none; }
+  .hero-lede .hl { white-space: nowrap; }
+}
