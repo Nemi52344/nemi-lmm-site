@@ -2930,3 +2930,15 @@ footer { background: #07110D; color: #9DA8A0; border-top: 1px solid rgba(233,238
   .team-grid .person__back .person__fields { margin-top: 9px; }
   .team-grid .person__front::after, .team-grid .person__back::before { display: none; }
 }
+
+/* ---------- Release card ----------
+   A press release leads with its own 16:9 thumbnail, which already carries the
+   headline, the date and the wire mark. So it takes the full width of the card
+   and loses the wash and the overlaid kicker: darkening the artwork or setting a
+   second label on top of it would only fight the graphic. */
+.post--release { grid-template-columns: 1fr; }
+.post--release .post__cover { min-height: 0; aspect-ratio: 16 / 9; padding: 0;
+  background-color: var(--ink); }
+.post--release .post__photo { object-fit: cover; z-index: 0; }
+.post--release .post__cover--photo::after,
+.post--release .post__cover-k { display: none; }
