@@ -2932,13 +2932,23 @@ footer { background: #07110D; color: #9DA8A0; border-top: 1px solid rgba(233,238
 }
 
 /* ---------- Release card ----------
-   A press release leads with its own 16:9 thumbnail, which already carries the
-   headline, the date and the wire mark. So it takes the full width of the card
-   and loses the wash and the overlaid kicker: darkening the artwork or setting a
-   second label on top of it would only fight the graphic. */
-.post--release { grid-template-columns: 1fr; }
+   The thumbnail already carries the headline, the date and the wire mark, so it
+   loses the wash and the overlaid kicker: darkening the artwork or setting a
+   second label over it would only fight the graphic. It sits beside the text at
+   its own 16:9 rather than above it at full width, which kept the listing from
+   turning one release into a billboard. */
+.post--release { grid-template-columns: minmax(0, 360px) minmax(0, 1fr); align-items: center; }
+/* align-self must not be stretch here: a stretched height plus the 16/9 ratio
+   drives the width back out and the thumbnail overflows its own column. */
 .post--release .post__cover { min-height: 0; aspect-ratio: 16 / 9; padding: 0;
-  background-color: var(--ink); }
+  background-color: var(--ink); align-self: center; width: 100%; }
 .post--release .post__photo { object-fit: cover; z-index: 0; }
 .post--release .post__cover--photo::after,
 .post--release .post__cover-k { display: none; }
+.post--release .post__body { gap: 11px; padding: clamp(22px, 2.6vw, 34px); }
+.post--release .post__title { font-size: clamp(19px, 1.7vw, 23px); letter-spacing: -.5px; }
+.post--release .post__excerpt { font-size: 14.5px; line-height: 1.65; }
+@media (max-width: 760px) {
+  .post--release { grid-template-columns: 1fr; }
+  .post--release .post__cover { align-self: auto; }
+}
