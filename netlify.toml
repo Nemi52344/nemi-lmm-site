@@ -55,6 +55,22 @@
   force = true
 
 # S-4 workspace (evidence audit, change log, legends draft) must never be served.
+# HOTFIX 10 Oct 2026. The NDA-marked investor presentation was public on this
+# branch's deploy preview and on the public GitHub repo. The deck files are
+# removed and these paths are held back in every context until counsel clears
+# a separate public deck. Do not remove without that sign-off.
+[[redirects]]
+  from = "/assets/docs/*"
+  to = "/home.html"
+  status = 404
+  force = true
+
+[[redirects]]
+  from = "/investor-relations.html"
+  to = "/invest.html"
+  status = 302
+  force = true
+
 [[redirects]]
   from = "/_s4/*"
   to = "/home.html"
