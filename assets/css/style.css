@@ -2937,7 +2937,10 @@ footer { background: #07110D; color: #9DA8A0; border-top: 1px solid rgba(233,238
    second label over it would only fight the graphic. It sits beside the text at
    its own 16:9 rather than above it at full width, which kept the listing from
    turning one release into a billboard. */
-.post--release { grid-template-columns: minmax(0, 360px) minmax(0, 1fr); align-items: center; }
+.post--release { grid-template-columns: minmax(0, 360px) minmax(0, 1fr); align-items: center;
+  /* the thumbnail is a framed graphic, so it is inset from the card edge rather
+     than bled to it, the way a photograph would be */
+  padding: clamp(20px, 2.2vw, 30px); gap: clamp(20px, 2.4vw, 34px); }
 /* align-self must not be stretch here: a stretched height plus the 16/9 ratio
    drives the width back out and the thumbnail overflows its own column. */
 .post--release .post__cover { min-height: 0; aspect-ratio: 16 / 9; padding: 0;
@@ -2945,7 +2948,7 @@ footer { background: #07110D; color: #9DA8A0; border-top: 1px solid rgba(233,238
 .post--release .post__photo { object-fit: cover; z-index: 0; }
 .post--release .post__cover--photo::after,
 .post--release .post__cover-k { display: none; }
-.post--release .post__body { gap: 11px; padding: clamp(22px, 2.6vw, 34px); }
+.post--release .post__body { gap: 11px; padding: 0; }
 .post--release .post__title { font-size: clamp(19px, 1.7vw, 23px); letter-spacing: -.5px; }
 .post--release .post__excerpt { font-size: 14.5px; line-height: 1.65; }
 @media (max-width: 760px) {
