@@ -2653,11 +2653,6 @@ h1, h2, h3, h4 { text-transform: none; letter-spacing: -0.015em; }
   .proof-sec .proof, .proof-sec .proof:first-child { padding: 28px 24px; border-top: 0; }
 }
 
-/* Product maturity chips: Orion in validation, Atlas on the roadmap. Same chip as
-   the old Live badge, muted and without the pulse. */
-.dev-live--muted { color: rgba(233, 238, 231, 0.62); border-color: rgba(233, 238, 231, 0.24); }
-.dev-live--muted::before { background: rgba(233, 238, 231, 0.45); animation: none; }
-
 /* Hero lede: exactly two lines on desktop, one per sentence. On narrow screens the
    sentences wrap naturally. */
 .hero-lede .hl { display: block; }
