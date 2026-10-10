@@ -1,0 +1,281 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-WJJ3WK78');</script>
+<!-- End Google Tag Manager -->
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-RLBK1DLVN7"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-RLBK1DLVN7');
+</script>
+<!--
+  NEMI BLOG POST TEMPLATE. Not a page. Blocked from the public site in netlify.toml.
+  How to use it: _s4/BLOG_RULES.md
+  1. Copy to blog-<slug>.html (lowercase, hyphens). Never publish this file itself.
+  2. Replace every {{PLACEHOLDER}}. Search for "{{" before publishing: zero hits allowed.
+  3. Remove the robots noindex line below.
+  4. Every number in the body needs a numbered source in "Sources" and a row in the evidence audit.
+-->
+<title>{{TITLE}} | NEMI</title>
+<meta name="description" content="{{DESCRIPTION: 140-160 characters, no numbers that are not in the body}}">
+<meta name="robots" content="noindex, nofollow"><!-- TEMPLATE ONLY: delete this line in the real post -->
+<!-- SEO:start -->
+<link rel="canonical" href="https://nemilmm.com/blog-{{SLUG}}.html">
+<meta name="theme-color" content="#070707">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="NEMI">
+<meta property="og:locale" content="en_US">
+<meta property="og:url" content="https://nemilmm.com/blog-{{SLUG}}.html">
+<meta property="og:title" content="{{TITLE}}">
+<meta property="og:description" content="{{DESCRIPTION}}">
+<meta property="og:image" content="https://nemilmm.com/assets/img/og-card.jpg?v=1">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="article:published_time" content="{{YYYY-MM-DD}}">
+<meta property="article:modified_time" content="{{YYYY-MM-DD}}">
+<meta property="article:section" content="{{CATEGORY}}">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:site" content="@Nemi_corp">
+<meta name="twitter:title" content="{{TITLE}}">
+<meta name="twitter:description" content="{{DESCRIPTION}}">
+<meta name="twitter:image" content="https://nemilmm.com/assets/img/og-card.jpg?v=1">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "{{TITLE}}",
+  "description": "{{DESCRIPTION}}",
+  "url": "https://nemilmm.com/blog-{{SLUG}}.html",
+  "mainEntityOfPage": "https://nemilmm.com/blog-{{SLUG}}.html",
+  "image": "https://nemilmm.com/assets/img/og-card.jpg?v=1",
+  "datePublished": "{{YYYY-MM-DD}}",
+  "dateModified": "{{YYYY-MM-DD}}",
+  "articleSection": "{{CATEGORY}}",
+  "author": { "@type": "Person", "name": "{{AUTHOR NAME}}", "jobTitle": "{{AUTHOR ROLE}}" },
+  "publisher": {
+    "@type": "Organization",
+    "name": "NEMI",
+    "logo": { "@type": "ImageObject", "url": "https://nemilmm.com/assets/img/logo-light.png" }
+  }
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://nemilmm.com/" },
+    { "@type": "ListItem", "position": 2, "name": "Blogs", "item": "https://nemilmm.com/blog.html" },
+    { "@type": "ListItem", "position": 3, "name": "{{TITLE}}" }
+  ]
+}
+</script>
+<!-- SEO:end -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/css/style.css?v=189">
+<link rel="stylesheet" href="assets/css/nav-menu.css?v=12">
+<link rel="stylesheet" href="assets/css/blog.css?v=15">
+<link rel="icon" type="image/svg+xml" href="assets/img/favicon.svg?v=7">
+<link rel="icon" type="image/png" sizes="32x32" href="assets/img/favicon-32.png?v=7">
+<link rel="icon" type="image/png" sizes="16x16" href="assets/img/favicon-16.png?v=7">
+<link rel="apple-touch-icon" sizes="180x180" href="assets/img/apple-touch-icon.png?v=7">
+</head>
+<body>
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-WJJ3WK78"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
+
+<header class="nav nav--light">
+  <div class="wrap">
+    <a class="nav__logo" href="home.html"><img src="assets/img/logo-dark.png?v=2" alt="NEMI"></a>
+    <nav class="nav__links" id="menu">
+      <a href="home.html">Home</a>
+      <a href="about.html">About Us</a>
+      <a href="offerings.html">Offerings</a>
+      <div class="nav__item">
+        <a href="blog.html" class="active" aria-haspopup="true">Resources<span class="nav__caret" aria-hidden="true">&#9662;</span></a>
+        <div class="nav__drop">
+          <a href="case-studies.html">Case Studies</a>
+          <a href="blog.html" class="is-current" aria-current="page">Blogs</a>
+          <a href="press.html">Press</a>
+          <a href="faq.html">FAQs</a>
+        </div>
+      </div>
+      <a href="careers.html">Careers</a>
+      <a href="investor-relations.html">Investors</a>
+      <a href="contact.html" class="nav__cta">Contact</a>
+    </nav>
+    <button class="nav__burger" aria-label="Menu" onclick="document.getElementById('menu').classList.toggle('open')"><span></span><span></span><span></span></button>
+  </div>
+</header>
+
+<!-- ARTICLE · HEADER -->
+<article>
+<header class="art-hero bp bp--light">
+  <div class="art-wrap">
+    <nav class="art-crumbs" aria-label="Breadcrumb"><a href="home.html">Home</a> / <a href="blog.html">Blogs</a> / {{SHORT TITLE}}</nav>
+    <!-- CATEGORY: exactly one of Company · Engineering · Factory floor · Industry -->
+    <a class="art-cat" href="blog.html">{{CATEGORY}}</a>
+    <h1 class="art-title">{{TITLE}}</h1>
+    <p class="art-dek">{{DEK: one or two sentences. What the reader learns. No superlatives, no absolutes.}}</p>
+    <div class="art-byline">
+      <span>By <b>{{AUTHOR NAME}}</b>, {{AUTHOR ROLE}}</span>
+      <span>Published <time datetime="{{YYYY-MM-DD}}">{{DD Mon YYYY}}</time></span>
+      <!-- Keep this line only once the post has been edited after publishing -->
+      <span>Updated <time datetime="{{YYYY-MM-DD}}">{{DD Mon YYYY}}</time></span>
+      <span>{{N}} min read</span>
+    </div>
+  </div>
+</header>
+
+<!-- OPTIONAL COVER. Delete the whole band if there is no image. Photos must be ours
+     or licensed; no customer parts, logos or sites without written permission.
+     The band carries the blueprint grid: without it this strip of the page is blank. -->
+<div class="art-coverband bp bp--light">
+<figure class="art-cover">
+  <img src="assets/img/{{COVER}}.jpg" alt="{{ALT TEXT}}" width="1600" height="900" loading="eager">
+  <figcaption>{{CAPTION}}</figcaption>
+</figure>
+</div>
+
+<!-- ARTICLE · BODY -->
+<div class="art-body bp bp--light">
+  <div class="art-wrap">
+    <div class="prose">
+      <p>{{Opening paragraph.}}</p>
+
+      <h2>{{Section heading}}</h2>
+      <p>{{Body text. Any figure gets a numbered source, like this.}}<sup><a href="#src-1" id="ref-1">1</a></sup></p>
+      <!-- Audit trail: each <sup> maps to a row in _s4/S4_evidence_audit.xlsx. Note the row ID here: {{C##}} -->
+
+      <ul>
+        <li>{{List item}}</li>
+        <li>{{List item}}</li>
+      </ul>
+
+      <!-- Quotes: only with the speaker's written approval, filed with the post's evidence. -->
+      <blockquote>
+        <p>{{Quote}}</p>
+        <cite>{{Name, role, organisation}}</cite>
+      </blockquote>
+
+      <h2>{{Section heading}}</h2>
+      <p>{{Body text.}}</p>
+    </div>
+
+    <!-- SOURCES · required whenever the post contains a number, a customer result or a comparison -->
+    <section class="art-notes" aria-labelledby="src-h">
+      <h2 id="src-h">Sources</h2>
+      <ol>
+        <li id="src-1">{{Public description of the source, e.g. "NEMI program records, 2024. Figures are for this program only."}} <a href="#ref-1" aria-label="Back to text">&#8617;</a></li>
+      </ol>
+    </section>
+
+    <!-- UPDATE HISTORY · never edit a published post silently. Add a dated line for every change
+         and a matching row in _s4/CHANGELOG.md. Delete this section until the first edit. -->
+    <section class="art-notes" aria-labelledby="upd-h">
+      <h2 id="upd-h">Update history</h2>
+      <ul>
+        <li><time datetime="{{YYYY-MM-DD}}">{{DD Mon YYYY}}</time>: {{What changed and why.}}</li>
+      </ul>
+    </section>
+
+    <!-- DISCLOSURE · keep when the post talks about plans, roadmap, targets, ambitions or the future.
+         Counsel owns the wording; replace with the Legends page link once it is live. -->
+    <p class="art-disclosure"><b>Forward-looking statements.</b> This post contains forward-looking statements,
+      including statements about NEMI&rsquo;s plans, products and future performance. They reflect current beliefs,
+      are not guarantees, and actual results may differ materially. NEMI undertakes no obligation to update them
+      except as required by law.</p>
+
+    <!-- DO NOT ADD: any mention of the transaction, the SPAC, a listing, valuation, projections, ownership,
+         timetable or fundraising. That content is a public filing (Form 425) and lives only on the Investors page. -->
+  </div>
+</div>
+</article>
+
+<!-- RELATED · one or two post cards copied from blog.html. Delete the section if there are none. -->
+<section class="art-related bp bp--light">
+  <div class="wrap">
+    <h2>Keep reading</h2>
+    <div class="posts">
+      <a class="post" href="master-plan.html" data-category="Company">
+        <div class="post__cover">
+          <div class="mpl-plate__crops" aria-hidden="true"><span>+</span><span>+</span></div>
+          <div class="post__cover-k">Founder's letter</div>
+          <div class="post__cover-t">The Nemi Master Plan</div>
+        </div>
+        <div class="post__body">
+          <div class="post__meta"><time datetime="2026-09-01">September 2026</time> &middot; Company &middot; Founder's letter</div>
+          <h3 class="post__title">The NEMI Master Plan</h3>
+          <p class="post__excerpt">Do for hardware what LLMs did for software. The founder&rsquo;s letter: why NEMI exists, and the three phases of the plan.</p>
+          <span class="post__go">Read the letter &rarr;</span>
+        </div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="bg-ink cta-band bp bp--full">
+  <div class="wash"></div>
+  <div class="wrap inner">
+    <h2>Your program could be <span class="accent">the next one.</span></h2>
+    <div style="display:flex;gap:12px;flex-wrap:wrap">
+      <a href="contact.html" class="btn btn--signal">Submit a part &rarr;</a>
+      <a href="offerings.html" class="btn btn--ghost">See the Offerings</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="foot-wrap">
+    <div class="foot-grid">
+      <div>
+        <a class="foot-logo" href="home.html"><img src="assets/img/logo-dark.png?v=2" alt="NEMI"></a>
+        <p class="foot-tag">NEMI LMM for Physical AI.<br>Texas, US &middot; Chennai &middot; Coimbatore, India</p>
+        <div class="foot-certs"><span class="foot-cert">AS9100D:2016</span><span class="foot-cert">ISO 9001:2015</span></div>
+        <div class="foot-social"><a href="https://www.linkedin.com/company/nemi-lmm/" target="_blank" rel="noopener" aria-label="NEMI on LinkedIn" title="NEMI on LinkedIn"><svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true" focusable="false"><path fill="currentColor" d="M4.98 3.5a2.5 2.5 0 1 1 0 5 2.5 2.5 0 0 1 0-5zM3 9h4v12H3V9zm7 0h3.8v1.7h.05c.53-.95 1.83-1.95 3.77-1.95 4.03 0 4.78 2.5 4.78 5.75V21h-4v-5.6c0-1.34-.03-3.06-1.9-3.06-1.9 0-2.2 1.46-2.2 2.96V21h-3.9V9z"/></svg></a><a href="https://x.com/Nemi_corp" target="_blank" rel="noopener" aria-label="NEMI on X" title="NEMI on X"><svg viewBox="0 0 24 24" width="16" height="16" aria-hidden="true" focusable="false"><path fill="currentColor" d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg></a></div>
+      </div>
+      <div><h4>NEMI</h4><ul>
+        <li><a href="home.html">Home</a></li>
+        <li><a href="about.html">About Us</a></li>
+        <li><a href="offerings.html">Offerings</a></li>
+        <li><a href="case-studies.html">Case Studies</a></li>
+        <li><a href="blog.html">Blogs</a></li>
+        <li><a href="press.html">Press</a></li>
+        <li><a href="faq.html">FAQs</a></li>
+        <li><a href="careers.html">Careers</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul></div>
+      <div><h4>Platform</h4><ul>
+        <li><a href="offerings.html">Anvil &middot; Engineer</a></li>
+        <li><a href="offerings.html">Orion &middot; Manufacture</a></li>
+        <li><a href="offerings.html">Atlas &middot; Improve</a></li>
+      </ul></div>
+      <div><h4>Contact</h4><ul>
+        <li><a href="mailto:info@nemilmm.com">info@nemilmm.com</a></li>
+        <li><a href="tel:+919940326856">+91 99403 26856</a></li>
+      </ul></div>
+    </div>
+    <div class="foot-base"><span>&copy; 2026 NEMI Corp. All rights reserved.</span><span>Texas, US &middot; Chennai &middot; Coimbatore, India</span></div>
+  </div>
+</footer>
+
+<script src="assets/js/fx.js?v=2"></script>
+<!-- Cloudflare Web Analytics --><script type='module' src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "c0f89f8fdcc44be8b836753c1f342d17"}'></script><!-- End Cloudflare Web Analytics -->
+</body>
+</html>

@@ -2783,6 +2783,34 @@ footer { background: #07110D; color: #9DA8A0; border-top: 1px solid rgba(233,238
   .post__cover { min-height: 210px; }
 }
 
+/* ---------- Offering status labels ----------
+   Which categories are the near-term focus and which are available on request.
+   Lives here rather than in style.css so the S-4 wording changes stay in one file. */
+.svcx-tile__status {
+  display: inline-block; margin-bottom: 8px;
+  font: 500 9.5px/1 "IBM Plex Mono", monospace; text-transform: uppercase; letter-spacing: 1.8px;
+  padding: 5px 8px; border: 1px solid rgba(7,7,7,.18); color: var(--grey);
+}
+.svcx-tile__status:not(:empty) { vertical-align: middle; }
+.svcx-key { display: flex; flex-wrap: wrap; gap: 8px 22px; margin-top: 22px;
+  font: 500 10.5px/1.7 "IBM Plex Mono", monospace; text-transform: uppercase; letter-spacing: 1.6px; color: var(--grey); }
+
+/* An illustration standing in for hardware has to say so on the page, not just
+   in the alt text. Used on the Defense UAS case, where the hero is a render. */
+.cd-illus { position: relative; z-index: 2; margin: 26px 0 0;
+  font: 500 10px/1 "IBM Plex Mono", monospace; text-transform: uppercase; letter-spacing: 1.8px;
+  color: rgba(236,231,221,.6); }
+.cs-illus { position: absolute; left: 14px; bottom: 14px; z-index: 2;
+  font: 500 9.5px/1 "IBM Plex Mono", monospace; text-transform: uppercase; letter-spacing: 1.6px;
+  color: rgba(255,255,255,.82); background: rgba(7,7,7,.55); padding: 5px 8px; }
+@media (max-width: 720px) { .cd-illus { margin-top: 20px; font-size: 9px; } }
+
+/* Two executives also sit on the board. Rather than list them twice, the card
+   carries a small tag and the board section shows only the independents. */
+.person__tag { display: inline-block; margin-top: 10px; padding: 4px 8px;
+  font: 500 9px/1 "IBM Plex Mono", monospace; text-transform: uppercase; letter-spacing: 1.6px;
+  color: var(--emerald); border: 1px solid rgba(10, 73, 56, .32); }
+
 /* The CFO and CSO cards carry longer bios than the rest, and on a phone the card is
    narrow enough that the text wraps to full height. Give the leadership row more room
    below 560px. Appended last so it wins over the shared .team-grid rule. */

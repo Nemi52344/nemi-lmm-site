@@ -1,3 +1,32 @@
+# ---------------------------------------------------------------------------
+# DEMO SITE (Netlify) vs LIVE SITE (EC2, nginx)
+#
+#   main       -> pulled onto the EC2 box by hand. Netlify does NOT build it.
+#   BCA-Ready  -> the demo. Netlify branch deploy, at
+#                 https://bca-ready--<site-name>.netlify.app
+#
+# Everything that is not the production context is told not to be indexed, so a
+# demo URL can never turn up in a search result or be quoted back at us. The
+# draft pages (_s4, the post template) stay blocked in every
+# context, demo included.
+# ---------------------------------------------------------------------------
+[build]
+  publish = "."
+
+[context.branch-deploy]
+  [context.branch-deploy.environment]
+    DEMO = "true"
+
+[[context.branch-deploy.headers]]
+  for = "/*"
+  [context.branch-deploy.headers.values]
+    X-Robots-Tag = "noindex, nofollow, noarchive"
+
+[[context.deploy-preview.headers]]
+  for = "/*"
+  [context.deploy-preview.headers.values]
+    X-Robots-Tag = "noindex, nofollow, noarchive"
+
 [functions]
   directory = "netlify/functions"
   node_bundler = "esbuild"
@@ -23,6 +52,20 @@
   from = "/api/health"
   to = "/.netlify/functions/health"
   status = 200
+  force = true
+
+# S-4 workspace (evidence audit, change log, legends draft) must never be served.
+[[redirects]]
+  from = "/_s4/*"
+  to = "/home.html"
+  status = 404
+  force = true
+
+# Blog post template is a working file, not a page.
+[[redirects]]
+  from = "/_post-template.html"
+  to = "/home.html"
+  status = 404
   force = true
 
 # The homepage is home.html, not index.html, so "/" has no directory index of
