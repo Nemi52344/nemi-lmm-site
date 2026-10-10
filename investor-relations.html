@@ -37,7 +37,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="assets/css/style.css?v=194">
+<link rel="stylesheet" href="assets/css/style.css?v=195">
 <link rel="stylesheet" href="assets/css/nav-menu.css?v=12">
 <link rel="stylesheet" href="assets/css/blog.css?v=15">
 <link rel="icon" type="image/svg+xml" href="assets/img/favicon.svg?v=7">
@@ -116,12 +116,20 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 .ir-btns { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 8px; }
 .ir-btns .btn--ghost { clip-path: none; color: var(--ink); border-color: rgba(7,7,7,.35); }
 .ir-btns .btn--ghost:hover { color: var(--emerald); border-color: var(--emerald); }
-.ir-press { display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px; margin-top: 34px; }
+.ir-press-head { display: flex; align-items: baseline; justify-content: space-between; gap: 20px; flex-wrap: wrap; }
+.ir-press-all { font: 500 11px/1 "IBM Plex Mono", monospace; letter-spacing: 1.6px; text-transform: uppercase;
+  color: var(--emerald); text-decoration: none; border-bottom: 1px solid currentColor; padding-bottom: 3px; }
+.ir-press-all:hover { color: var(--ink); }
+/* auto-fit with a hard max keeps one release the size of a card instead of
+   stretching it across the row, and lines up cleanly as more are added */
+.ir-press { display: grid; grid-template-columns: repeat(auto-fit, minmax(0, 380px)); gap: 22px; margin-top: 34px; }
 .ir-pr { display: flex; flex-direction: column; background: #fff; border: 1px solid rgba(7,7,7,.12); color: var(--ink);
   text-decoration: none; transition: border-color .2s, transform .2s, box-shadow .2s; }
 .ir-pr:hover { border-color: var(--emerald); transform: translateY(-3px); box-shadow: 0 14px 30px rgba(7,7,7,.08); }
 .ir-pr__img { aspect-ratio: 16 / 9; overflow: hidden; background: #e9e6df; }
 .ir-pr__img img { width: 100%; height: 100%; object-fit: cover; display: block; filter: grayscale(.15); }
+/* a release thumbnail is artwork, not a photograph, so it keeps its own colour */
+.ir-pr--release .ir-pr__img img { filter: none; }
 .ir-pr__body { padding: 20px 22px 24px; display: flex; flex-direction: column; gap: 10px; flex: 1; }
 .ir-pr__meta { font: 500 10px/1.4 "IBM Plex Mono", monospace; letter-spacing: 1.6px; text-transform: uppercase; color: var(--emerald); }
 .ir-pr__t { font-size: 19px; font-weight: 600; line-height: 1.3; letter-spacing: -.3px; }
@@ -227,33 +235,22 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   </div>
 </section>
 
-<!-- LATEST PRESS · newest first -->
+<!-- PRESS RELEASES · newest first. Releases only. Blog posts and the founder's
+     letter belong on their own pages, not in an investor's list of statements
+     the company has put on the wire. -->
 <section class="bg-bone bp bp--light ir-sec">
   <div class="wrap">
-    <h2 class="ir-h">Latest press</h2>
+    <div class="ir-press-head">
+      <h2 class="ir-h">Press releases</h2>
+      <a class="ir-press-all" href="press.html">All releases &rarr;</a>
+    </div>
     <div class="ir-press">
-      <a class="ir-pr" href="https://www.einpresswire.com/article/945790331/nemi-names-kevin-flick-cfo-to-accelerate-ai-adoption-in-the-physical-economy" target="_blank" rel="noopener">
-        <div class="ir-pr__img"><img src="assets/team/portrait/kevin-flick.jpg" alt="" loading="lazy" style="object-position:50% 30%"></div>
+      <a class="ir-pr ir-pr--release" href="https://www.einpresswire.com/article/945790331/nemi-names-kevin-flick-cfo-to-accelerate-ai-adoption-in-the-physical-economy" target="_blank" rel="noopener">
+        <div class="ir-pr__img"><img src="assets/img/press/kevin-flick-cfo-release.webp?v=3" alt="NEMI and EIN Presswire lockup, press release dated 28 September 2026" loading="lazy"></div>
         <div class="ir-pr__body">
-          <span class="ir-pr__meta">Press release &middot; EIN Presswire</span>
+          <span class="ir-pr__meta">28 September 2026 &middot; EIN Presswire</span>
           <span class="ir-pr__t">NEMI Names Kevin Flick CFO to Accelerate AI Adoption in the Physical Economy</span>
           <span class="ir-pr__go">Read the release &#8599;</span>
-        </div>
-      </a>
-      <a class="ir-pr" href="blog-world-order-hardware-manufacturing.html">
-        <div class="ir-pr__img"><img src="assets/img/blog/world-order-4-b17-line.jpg" alt="" loading="lazy"></div>
-        <div class="ir-pr__body">
-          <span class="ir-pr__meta">30 Sep 2026 &middot; Blog</span>
-          <span class="ir-pr__t">The World Order Is Determined by Hardware and Manufacturing</span>
-          <span class="ir-pr__go">Read &rarr;</span>
-        </div>
-      </a>
-      <a class="ir-pr" href="master-plan.html">
-        <div class="ir-pr__img"><img src="assets/img/about-aerial.jpg" alt="" loading="lazy"></div>
-        <div class="ir-pr__body">
-          <span class="ir-pr__meta">Sep 2026 &middot; Founder&rsquo;s letter</span>
-          <span class="ir-pr__t">The Nemi Master Plan</span>
-          <span class="ir-pr__go">Read &rarr;</span>
         </div>
       </a>
     </div>
